@@ -38,6 +38,13 @@ export const translations = {
       lipBlush: 'Lip Blush',
       plasmaPen: 'Plasma Pen Skin Lifting',
     },
+    gallery: {
+      title: 'Galleria',
+      subtitle: 'Il Nostro Lavoro',
+      healed: 'Risultati Guariti',
+      beforeLabel: 'Prima',
+      afterLabel: 'Dopo',
+    },
     contact: {
       title: 'Contattaci',
       location: 'Varese, Italia',
@@ -85,6 +92,13 @@ export const translations = {
       microblading: 'Microblading',
       lipBlush: 'Lip Blush',
       plasmaPen: 'Plasma Pen Skin Lifting',
+    },
+    gallery: {
+      title: 'Gallery',
+      subtitle: 'Our Work',
+      healed: 'Healed Results',
+      beforeLabel: 'Before',
+      afterLabel: 'After',
     },
     contact: {
       title: 'Contact Us',
@@ -134,6 +148,13 @@ export const translations = {
       lipBlush: 'Lip Blush',
       plasmaPen: 'Lifting Cutané au Plasma Pen',
     },
+    gallery: {
+      title: 'Galerie',
+      subtitle: 'Notre Travail',
+      healed: 'Résultats Cicatrisés',
+      beforeLabel: 'Avant',
+      afterLabel: 'Après',
+    },
     contact: {
       title: 'Contactez-nous',
       location: 'Varese, Italie',
@@ -181,6 +202,13 @@ export const translations = {
       microblading: 'مايكروبليدنج',
       lipBlush: 'أحمر الشفاه',
       plasmaPen: 'شد الجلد بقلم البلازما',
+    },
+    gallery: {
+      title: 'المعرض',
+      subtitle: 'أعمالنا',
+      healed: 'نتائج بعد الشفاء',
+      beforeLabel: 'قبل',
+      afterLabel: 'بعد',
     },
     contact: {
       title: 'اتصل بنا',
