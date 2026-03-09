@@ -1,5 +1,6 @@
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Shield, Lock } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export const Footer = () => {
   const { t } = useLanguage();
