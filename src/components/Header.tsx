@@ -12,22 +12,22 @@ export const Header = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80 border-b border-gold/20">
-      <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-        <div className="flex items-center gap-8">
-          <h1 className="heading-luxury-bold text-xl tracking-tight">
-            Belle Femme Academy
+    <header className="fixed top-0 w-full z-50 glass-card border-b border-accent/10 border-t-0 border-x-0">
+      <div className="container mx-auto px-6 md:px-12 py-5 flex items-center justify-between">
+        <div className="flex items-center gap-10">
+          <h1 className="heading-editorial-bold text-base tracking-[0.15em] text-foreground">
+            BELLE FEMME
           </h1>
-          <nav className="hidden md:flex gap-6">
+          <nav className="hidden md:flex gap-8">
             <button
               onClick={() => scrollToSection('academy')}
-              className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
+              className="border-draw text-xs tracking-[0.2em] uppercase text-foreground/60 hover:text-accent transition-colors pb-1"
             >
               {t.nav.academy}
             </button>
             <button
               onClick={() => scrollToSection('treatments')}
-              className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
+              className="border-draw text-xs tracking-[0.2em] uppercase text-foreground/60 hover:text-accent transition-colors pb-1"
             >
               {t.nav.treatments}
             </button>

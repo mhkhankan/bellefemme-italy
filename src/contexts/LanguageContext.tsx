@@ -14,15 +14,13 @@ export const LanguageProvider = ({ children }: { children: React.ReactNode }) =>
   const [language, setLanguage] = useState<Language>('it');
 
   useEffect(() => {
-    // Update document direction and lang attribute
     document.documentElement.dir = isRTL(language) ? 'rtl' : 'ltr';
     document.documentElement.lang = language;
     
-    // Add font class for Arabic
     if (language === 'ar') {
-      document.documentElement.classList.add('arabic-text');
+      document.documentElement.classList.add('arabic-editorial');
     } else {
-      document.documentElement.classList.remove('arabic-text');
+      document.documentElement.classList.remove('arabic-editorial');
     }
   }, [language]);
 
