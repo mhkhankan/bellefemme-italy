@@ -1,5 +1,6 @@
 import { useLanguage } from '@/contexts/LanguageContext';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
 export const Treatments = () => {
   const { t } = useLanguage();
