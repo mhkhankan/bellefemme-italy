@@ -217,6 +217,35 @@ export const translations = {
       lipBlush: 'Lip Blush',
       plasmaPen: 'Plasma Pen Skin Lifting',
     },
+    treatmentsPage: {
+      heroTitle: 'The Art of the Face',
+      heroSubtitle: 'High-End Aesthetic Treatments',
+      cta: 'Request Private Consultation',
+      safety: 'REACH 2026 & ASL Varese Compliant',
+      healedResults: 'Healed Results',
+      beforeLabel: 'Before',
+      afterLabel: 'After',
+      brows: {
+        name: 'Brows',
+        poetic: 'The Architecture of the Gaze',
+        description: 'Microblading, Powder Brows and hybrid techniques for perfectly sculpted brows, designed around your unique facial morphology.',
+      },
+      lips: {
+        name: 'Lips',
+        poetic: 'A Symphony of Color',
+        description: 'Lip Blush and lip definition for a natural, harmonious color that enhances the beauty of your smile.',
+      },
+      eyes: {
+        name: 'Eyes',
+        poetic: 'Timeless Elegance',
+        description: 'Permanent eyeliner and gaze enhancement for lasting elegance that frames your eyes.',
+      },
+      paramedical: {
+        name: 'Paramedical',
+        poetic: 'Rebirth',
+        description: 'Camouflage and aesthetic reconstruction treatments to restore confidence and natural beauty.',
+      },
+    },
     gallery: {
       title: 'Gallery',
       subtitle: 'Our Work',
