@@ -54,6 +54,7 @@ export const Academy = () => {
             className="md:col-span-4 md:mt-16"
           >
             <CourseCard
+              href="/course/microblading"
               title={t.courses.microblading.title}
               duration={t.courses.microblading.duration}
               description={t.courses.microblading.description}
