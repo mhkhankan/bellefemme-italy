@@ -54,6 +54,39 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
+  }
+
+  /* RTL Support */
+  [dir="rtl"] {
+    direction: rtl;
+  }
+
+  /* Luxury Typography */
+  .heading-luxury {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+  }
+
+  .heading-luxury-bold {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+  }
+
+  .arabic-text {
+    font-family: 'Amiri', serif;
+  }
+
+  /* Gold border utility */
+  .border-gold {
+    border-color: hsl(var(--gold));
+  }
+
+  /* Smooth scroll */
+  html {
+    scroll-behavior: smooth;
   }
 }
