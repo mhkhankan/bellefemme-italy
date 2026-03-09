@@ -355,6 +355,35 @@ export const translations = {
       lipBlush: 'Lip Blush',
       plasmaPen: 'Lifting Cutané au Plasma Pen',
     },
+    treatmentsPage: {
+      heroTitle: "L'Art du Visage",
+      heroSubtitle: 'Traitements Esthétiques Haut de Gamme',
+      cta: 'Demander une Consultation',
+      safety: 'Conforme REACH 2026 & ASL Varese',
+      healedResults: 'Résultats Cicatrisés',
+      beforeLabel: 'Avant',
+      afterLabel: 'Après',
+      brows: {
+        name: 'Sourcils',
+        poetic: "L'Architecture du Regard",
+        description: 'Microblading, Powder Brows et techniques hybrides pour des sourcils parfaitement sculptés, conçus selon la morphologie unique de votre visage.',
+      },
+      lips: {
+        name: 'Lèvres',
+        poetic: 'Symphonie de Couleurs',
+        description: 'Lip Blush et définition des lèvres pour une couleur naturelle et harmonieuse qui sublime la beauté de votre sourire.',
+      },
+      eyes: {
+        name: 'Yeux',
+        poetic: 'Élégance Intemporelle',
+        description: 'Eyeliner permanent et sublimation du regard pour une élégance durable qui encadre vos yeux.',
+      },
+      paramedical: {
+        name: 'Paramédical',
+        poetic: 'Renaissance',
+        description: 'Traitements de camouflage et reconstruction esthétique pour redonner confiance et beauté naturelle.',
+      },
+    },
     gallery: {
       title: 'Galerie',
       subtitle: 'Notre Travail',
