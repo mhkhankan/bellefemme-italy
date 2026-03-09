@@ -1,5 +1,22 @@
 export type Language = 'it' | 'en' | 'fr' | 'ar';
 
+export interface DaySyllabus {
+  title: string;
+  items: string[];
+}
+
+export interface CourseTranslation {
+  title: string;
+  duration: string;
+  description: string;
+  subtitle?: string;
+  days?: DaySyllabus[];
+  starterKit?: {
+    title: string;
+    items: string[];
+  };
+}
+
 export const translations = {
   it: {
     hero: {
@@ -16,20 +33,43 @@ export const translations = {
     courses: {
       title: 'Corsi Professionali',
       subtitle: 'Formazione di eccellenza per professionisti del settore',
+      viewDetails: 'Dettagli Corso',
       pmu: {
         title: 'PMU Completo',
         duration: '5 Giorni',
         description: 'Corso completo con collaborazione di Specialisti Medici',
+        subtitle: 'Teoria, Mapping, Pigmentologia · Live Demo · Pratica su Modella',
+        days: [
+          { title: 'Giorno 01 — Fondamenti & Teoria', items: ['Teoria del colore e pigmentologia', 'Anatomia del viso e mappatura', 'Igiene e sicurezza REACH 2026', 'Tecniche di disegno e simmetria'] },
+          { title: 'Giorno 02 — Mapping & Tecnica', items: ['Mapping avanzato del sopracciglio', 'Introduzione all\'ago e movimento', 'Pratica su pelle artificiale', 'Correzione e feedback personale'] },
+          { title: 'Giorno 03 — Applicazione & Stile', items: ['Stile Ombré e Powder Brows', 'Combinazioni di tecniche miste', 'Gestione del cliente e consulenza', 'Documentazione fotografica'] },
+          { title: 'Giorno 04 — Live Demo & Modella', items: ['Demo dal vivo della Master Trainer', 'Applicazione su prima modella reale', 'Gestione del dolore e comfort', 'Protocollo post-trattamento'] },
+          { title: 'Giorno 05 — Gala & Certificazione', items: ['Seconda sessione su modella', 'Revisione e rifinitura avanzata', 'Cerimonia di Certificazione Internazionale', 'Gala di chiusura con portfolio'] },
+        ],
+        starterKit: {
+          title: 'Kit Professionale Incluso',
+          items: ['Pigmenti certificati REACH 2026 (set completo)', 'Aghi e cartucce professionali', 'Dermografo digitale di precisione', 'Manuale tecnico esclusivo Belle Femme', 'Certificato Internazionale + Attestato ASL'],
+        },
       },
       microblading: {
         title: 'Microblading Freestyle',
         duration: '3 Giorni',
         description: 'Progressione a 14 Livelli',
+        subtitle: 'Hair-stroke patterns · 14 Livelli · Shading Avanzato · Pratica su Modella',
+        days: [
+          { title: 'Giorno 01 — Hair-stroke & Fondamenti', items: ['Tecnica hair-stroke dal livello 1 al 5', 'Pattern naturali e direzione del pelo', 'Mappatura e simmetria freestyle', 'Pratica intensiva su pelle artificiale'] },
+          { title: 'Giorno 02 — Livelli Avanzati (6–14)', items: ['Progressione livelli 6–14 Freestyle', 'Tecniche di shading misto', 'Combinazioni microblading + powder', 'Sessione di feedback e correzione'] },
+          { title: 'Giorno 03 — Modella & Portfolio', items: ['Applicazione su modella reale', 'Protocollo touch-up e guarigione', 'Documentazione portfolio professionale', 'Certificazione Microblading Freestyle'] },
+        ],
       },
       masterclass: {
         title: 'Masterclass Specializzate',
-        duration: 'Variabile',
+        duration: '1 Giorno',
         description: 'Labbra, Eyeliner, Laminazione Kerafill',
+        subtitle: 'Tecnica Avanzata · Hands-on Intensivo · Watch & Learn',
+        days: [
+          { title: 'Masterclass — Tecnica Avanzata', items: ['Focus tecnica specializzata (Lip Blush / Eyeliner / Kerafill)', 'Demo avanzata dalla Master Trainer', 'Sessione hands-on guidata', 'Watch & Learn: casi clinici reali', 'Attestato di partecipazione specializzata'] },
+        ],
       },
     },
     treatments: {
@@ -76,6 +116,16 @@ export const translations = {
       },
       backToAcademy: 'Torna all\'Academy',
     },
+    coursePage: {
+      reach: 'REACH 2026 Conforme',
+      asl: 'Conforme ASL',
+      backToAcademy: 'Torna all\'Academy',
+      bookCourse: 'Prenota il Corso',
+      whatsapp: 'Info su WhatsApp',
+      starterKitBadge: 'Kit Incluso',
+      address: 'Studio Master — Via Varese, Italia',
+      vat: 'P.IVA 03794680128',
+    },
   },
   en: {
     hero: {
@@ -92,20 +142,43 @@ export const translations = {
     courses: {
       title: 'Professional Courses',
       subtitle: 'Excellence training for industry professionals',
+      viewDetails: 'Course Details',
       pmu: {
         title: 'Complete PMU',
         duration: '5 Days',
         description: 'Complete course featuring Medical Specialist collaboration',
+        subtitle: 'Theory, Mapping, Pigmentology · Live Demo · Live Model Practice',
+        days: [
+          { title: 'Day 01 — Foundations & Theory', items: ['Colour theory and pigmentology', 'Facial anatomy and mapping', 'Hygiene and REACH 2026 safety', 'Drawing techniques and symmetry'] },
+          { title: 'Day 02 — Mapping & Technique', items: ['Advanced eyebrow mapping', 'Needle introduction and movement', 'Practice on artificial skin', 'Personal correction and feedback'] },
+          { title: 'Day 03 — Application & Style', items: ['Ombré and Powder Brow styles', 'Mixed technique combinations', 'Client management and consultation', 'Photographic documentation'] },
+          { title: 'Day 04 — Live Demo & Model', items: ['Live demo by Master Trainer', 'Application on first real model', 'Pain management and comfort', 'Post-treatment protocol'] },
+          { title: 'Day 05 — Gala & Certification', items: ['Second model session', 'Advanced review and refinement', 'International Certification Ceremony', 'Closing Gala with portfolio'] },
+        ],
+        starterKit: {
+          title: 'Professional Starter Kit Included',
+          items: ['REACH 2026 certified pigments (full set)', 'Professional needles and cartridges', 'Digital precision dermograph', 'Exclusive Belle Femme technical manual', 'International Certificate + ASL Attestation'],
+        },
       },
       microblading: {
         title: 'Microblading Freestyle',
         duration: '3 Days',
         description: '14 Level Progression',
+        subtitle: 'Hair-stroke patterns · 14 Levels · Advanced Shading · Live Model',
+        days: [
+          { title: 'Day 01 — Hair-stroke & Foundations', items: ['Hair-stroke technique levels 1–5', 'Natural patterns and hair direction', 'Freestyle mapping and symmetry', 'Intensive practice on artificial skin'] },
+          { title: 'Day 02 — Advanced Levels (6–14)', items: ['Freestyle levels 6–14 progression', 'Mixed shading techniques', 'Microblading + powder combinations', 'Feedback and correction session'] },
+          { title: 'Day 03 — Model & Portfolio', items: ['Application on real model', 'Touch-up and healing protocol', 'Professional portfolio documentation', 'Microblading Freestyle Certification'] },
+        ],
       },
       masterclass: {
         title: 'Specialized Masterclasses',
-        duration: 'Variable',
+        duration: '1 Day',
         description: 'Lips, Eyeliner, Kerafill Lamination',
+        subtitle: 'Advanced Technique · Intensive Hands-on · Watch & Learn',
+        days: [
+          { title: 'Masterclass — Advanced Technique', items: ['Specialized technique focus (Lip Blush / Eyeliner / Kerafill)', 'Advanced demo by Master Trainer', 'Guided hands-on session', 'Watch & Learn: real clinical cases', 'Certificate of specialized participation'] },
+        ],
       },
     },
     treatments: {
@@ -152,6 +225,16 @@ export const translations = {
       },
       backToAcademy: 'Back to Academy',
     },
+    coursePage: {
+      reach: 'REACH 2026 Compliant',
+      asl: 'ASL Compliant',
+      backToAcademy: 'Back to Academy',
+      bookCourse: 'Book this Course',
+      whatsapp: 'Info on WhatsApp',
+      starterKitBadge: 'Kit Included',
+      address: 'Master Studio — Varese, Italy',
+      vat: 'VAT 03794680128',
+    },
   },
   fr: {
     hero: {
@@ -168,20 +251,43 @@ export const translations = {
     courses: {
       title: 'Cours Professionnels',
       subtitle: 'Formation d\'excellence pour professionnels',
+      viewDetails: 'Détails du Cours',
       pmu: {
         title: 'PMU Complet',
         duration: '5 Jours',
         description: 'Cours complet avec collaboration de Spécialistes Médicaux',
+        subtitle: 'Théorie, Mapping, Pigmentologie · Démo Live · Pratique sur Modèle',
+        days: [
+          { title: 'Jour 01 — Fondements & Théorie', items: ['Théorie des couleurs et pigmentologie', 'Anatomie faciale et cartographie', 'Hygiène et sécurité REACH 2026', 'Techniques de dessin et symétrie'] },
+          { title: 'Jour 02 — Mapping & Technique', items: ['Cartographie avancée du sourcil', 'Introduction à l\'aiguille et au mouvement', 'Pratique sur peau artificielle', 'Correction personnalisée et retours'] },
+          { title: 'Jour 03 — Application & Style', items: ['Styles Ombré et Powder Brows', 'Combinaisons de techniques mixtes', 'Gestion client et consultation', 'Documentation photographique'] },
+          { title: 'Jour 04 — Démo Live & Modèle', items: ['Démo en direct de la Master Trainer', 'Application sur premier modèle réel', 'Gestion de la douleur et confort', 'Protocole post-traitement'] },
+          { title: 'Jour 05 — Gala & Certification', items: ['Deuxième session sur modèle', 'Révision et perfectionnement avancé', 'Cérémonie de Certification Internationale', 'Gala de clôture avec portfolio'] },
+        ],
+        starterKit: {
+          title: 'Kit Professionnel Inclus',
+          items: ['Pigments certifiés REACH 2026 (set complet)', 'Aiguilles et cartouches professionnelles', 'Dermographe numérique de précision', 'Manuel technique exclusif Belle Femme', 'Certificat International + Attestation ASL'],
+        },
       },
       microblading: {
         title: 'Microblading Freestyle',
         duration: '3 Jours',
         description: 'Progression à 14 Niveaux',
+        subtitle: 'Hair-stroke patterns · 14 Niveaux · Shading Avancé · Modèle Réel',
+        days: [
+          { title: 'Jour 01 — Hair-stroke & Fondements', items: ['Technique hair-stroke niveaux 1–5', 'Patterns naturels et direction des poils', 'Mapping et symétrie freestyle', 'Pratique intensive sur peau artificielle'] },
+          { title: 'Jour 02 — Niveaux Avancés (6–14)', items: ['Progression freestyle niveaux 6–14', 'Techniques de shading mixte', 'Combinaisons microblading + powder', 'Session de feedback et correction'] },
+          { title: 'Jour 03 — Modèle & Portfolio', items: ['Application sur modèle réel', 'Protocole retouche et cicatrisation', 'Documentation portfolio professionnel', 'Certification Microblading Freestyle'] },
+        ],
       },
       masterclass: {
         title: 'Masterclasses Spécialisées',
-        duration: 'Variable',
+        duration: '1 Jour',
         description: 'Lèvres, Eyeliner, Lamination Kerafill',
+        subtitle: 'Technique Avancée · Hands-on Intensif · Watch & Learn',
+        days: [
+          { title: 'Masterclass — Technique Avancée', items: ['Focus technique spécialisée (Lip Blush / Eyeliner / Kerafill)', 'Démo avancée par la Master Trainer', 'Session hands-on guidée', 'Watch & Learn : cas cliniques réels', 'Attestation de participation spécialisée'] },
+        ],
       },
     },
     treatments: {
@@ -228,6 +334,16 @@ export const translations = {
       },
       backToAcademy: 'Retour à l\'Académie',
     },
+    coursePage: {
+      reach: 'Conforme REACH 2026',
+      asl: 'Conforme ASL',
+      backToAcademy: 'Retour à l\'Académie',
+      bookCourse: 'Réserver ce Cours',
+      whatsapp: 'Info sur WhatsApp',
+      starterKitBadge: 'Kit Inclus',
+      address: 'Master Studio — Varese, Italie',
+      vat: 'TVA 03794680128',
+    },
   },
   ar: {
     hero: {
@@ -244,20 +360,43 @@ export const translations = {
     courses: {
       title: 'الدورات المهنية',
       subtitle: 'تدريب متميز للمحترفين',
+      viewDetails: 'تفاصيل الدورة',
       pmu: {
         title: 'PMU الكامل',
         duration: '٥ أيام',
         description: 'دورة كاملة بالتعاون مع أخصائيين طبيين',
+        subtitle: 'النظرية، الرسم، علم الأصباغ · عرض مباشر · تطبيق على موديل',
+        days: [
+          { title: 'اليوم ٠١ — الأسس والنظرية', items: ['نظرية الألوان وعلم الأصباغ', 'تشريح الوجه والرسم', 'النظافة وسلامة REACH 2026', 'تقنيات الرسم والتناسق'] },
+          { title: 'اليوم ٠٢ — الرسم والتقنية', items: ['رسم الحاجب المتقدم', 'مقدمة الإبرة والحركة', 'التطبيق على بشرة اصطناعية', 'التصحيح الشخصي والتغذية الراجعة'] },
+          { title: 'اليوم ٠٣ — التطبيق والأسلوب', items: ['أسلوب أومبري وباودر براوز', 'مجموعات التقنيات المختلطة', 'إدارة العميل والاستشارة', 'التوثيق الفوتوغرافي'] },
+          { title: 'اليوم ٠٤ — العرض المباشر والموديل', items: ['عرض مباشر من المدربة الرئيسية', 'التطبيق على أول موديل حقيقي', 'إدارة الألم والراحة', 'بروتوكول ما بعد العلاج'] },
+          { title: 'اليوم ٠٥ — الحفل والشهادة', items: ['جلسة الموديل الثانية', 'المراجعة والتحسين المتقدم', 'حفل الشهادة الدولية', 'حفل الختام مع الحقيبة'] },
+        ],
+        starterKit: {
+          title: 'طقم احترافي مشمول',
+          items: ['أصباغ معتمدة REACH 2026 (طقم كامل)', 'إبر وخراطيش احترافية', 'قلم رقمي دقيق للجلد', 'دليل تقني حصري Belle Femme', 'شهادة دولية + اعتماد ASL'],
+        },
       },
       microblading: {
         title: 'مايكروبليدنج حر',
         duration: '٣ أيام',
         description: 'تقدم ١٤ مستوى',
+        subtitle: 'أنماط شعر · ١٤ مستوى · تظليل متقدم · موديل حقيقي',
+        days: [
+          { title: 'اليوم ٠١ — شعرة والأسس', items: ['تقنية شعرة من المستوى ١ إلى ٥', 'الأنماط الطبيعية واتجاه الشعر', 'الرسم الحر والتناسق', 'تطبيق مكثف على بشرة اصطناعية'] },
+          { title: 'اليوم ٠٢ — المستويات المتقدمة (٦–١٤)', items: ['تقدم المستويات ٦–١٤ الحرة', 'تقنيات التظليل المختلطة', 'مجموعات مايكروبليدنج + باودر', 'جلسة تغذية راجعة وتصحيح'] },
+          { title: 'اليوم ٠٣ — الموديل والحقيبة', items: ['التطبيق على موديل حقيقي', 'بروتوكول اللمسات والشفاء', 'توثيق حقيبة احترافية', 'شهادة مايكروبليدنج الحر'] },
+        ],
       },
       masterclass: {
         title: 'دورات متخصصة',
-        duration: 'متغير',
+        duration: 'يوم واحد',
         description: 'الشفاه، الآيلاينر، ترطيب كيرافيل',
+        subtitle: 'تقنية متقدمة · تطبيق مكثف · مشاهدة وتعلم',
+        days: [
+          { title: 'ماستركلاس — تقنية متقدمة', items: ['تركيز التقنية المتخصصة (Lip Blush / Eyeliner / Kerafill)', 'عرض متقدم من المدربة الرئيسية', 'جلسة تطبيق موجهة', 'مشاهدة وتعلم: حالات سريرية حقيقية', 'شهادة مشاركة متخصصة'] },
+        ],
       },
     },
     treatments: {
@@ -303,6 +442,16 @@ export const translations = {
         specialistSub: 'خبرة فريدة في الجماليات المتوسطية والعربية',
       },
       backToAcademy: 'العودة إلى الأكاديمية',
+    },
+    coursePage: {
+      reach: 'متوافق مع REACH 2026',
+      asl: 'متوافق مع ASL',
+      backToAcademy: 'العودة إلى الأكاديمية',
+      bookCourse: 'احجز هذه الدورة',
+      whatsapp: 'معلومات عبر واتساب',
+      starterKitBadge: 'الطقم مشمول',
+      address: 'الاستوديو الرئيسي — فاريزي، إيطاليا',
+      vat: 'P.IVA 03794680128',
     },
   },
 };
