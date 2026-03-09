@@ -11,6 +11,7 @@ export const translations = {
     nav: {
       academy: 'Academy',
       treatments: 'Trattamenti',
+      about: 'Chi Sono',
     },
     courses: {
       title: 'Corsi Professionali',
@@ -55,6 +56,26 @@ export const translations = {
       reach: 'REACH 2026 Conforme',
       gdpr: 'Privacy GDPR',
     },
+    about: {
+      label: 'Belle Femme Academy',
+      heroTitle: 'Eccellenza Europea',
+      bio1: 'Con una formazione in Graphic Design, Mouna ha portato un occhio unico per la precisione e la composizione nel mondo dell\'estetica. Ogni tratto è calcolato, ogni curva è intenzionale — l\'arte incontra la scienza sulla tela più delicata.',
+      bio2: 'In qualità di Giudice Internazionale di PMU e Master Trainer certificata, ha formato centinaia di professionisti in tutto il Mediterraneo e il Medio Oriente, elevando gli standard del settore con la sua metodologia rigorosa.',
+      bio3: 'Oggi, dal suo Master Studio a Varese, continua a perfezionare la sua arte e a formare la prossima generazione di artisti dell\'estetica, fondendo tradizione mediterranea e innovazione europea.',
+      credentialsLabel: 'Traguardi Professionali',
+      credentialsTitle: 'Credenziali & Maestria',
+      credentials: {
+        judge: 'Giudice Internazionale',
+        judgeSub: 'Giudice ufficiale in competizioni internazionali di PMU',
+        trainer: 'Master Trainer Certificata',
+        trainerSub: 'Oltre 10 anni di formazione professionale internazionale',
+        design: 'Esperta in Graphic Design',
+        designSub: 'Precisione artistica dalla formazione in design grafico',
+        specialist: 'Specialista Mediterranea & Araba',
+        specialistSub: 'Expertise unica nell\'estetica mediterranea e araba',
+      },
+      backToAcademy: 'Torna all\'Academy',
+    },
   },
   en: {
     hero: {
@@ -66,6 +87,7 @@ export const translations = {
     nav: {
       academy: 'Academy',
       treatments: 'Treatments',
+      about: 'About',
     },
     courses: {
       title: 'Professional Courses',
@@ -110,6 +132,26 @@ export const translations = {
       reach: 'REACH 2026 Compliant',
       gdpr: 'GDPR Privacy',
     },
+    about: {
+      label: 'Belle Femme Academy',
+      heroTitle: 'European Excellence',
+      bio1: 'With a foundation in Graphic Design, Mouna brought a unique eye for precision and composition to the world of aesthetics. Every stroke is calculated, every curve intentional — art meets science on the most delicate canvas.',
+      bio2: 'As an International PMU Judge and Certified Master Trainer, she has trained hundreds of professionals across the Mediterranean and Middle East, elevating industry standards with her rigorous methodology.',
+      bio3: 'Today, from her Master Studio in Varese, she continues to refine her craft and train the next generation of aesthetic artists, blending Mediterranean tradition with European innovation.',
+      credentialsLabel: 'Professional Milestones',
+      credentialsTitle: 'Credentials & Mastery',
+      credentials: {
+        judge: 'International Judge',
+        judgeSub: 'Official judge at international PMU competitions',
+        trainer: 'Certified Master Trainer',
+        trainerSub: '10+ years of international professional training',
+        design: 'Graphic Design Expert',
+        designSub: 'Artistic precision from graphic design background',
+        specialist: 'Mediterranean & Arab Specialist',
+        specialistSub: 'Unique expertise in Mediterranean and Arab aesthetics',
+      },
+      backToAcademy: 'Back to Academy',
+    },
   },
   fr: {
     hero: {
@@ -121,6 +163,7 @@ export const translations = {
     nav: {
       academy: 'Académie',
       treatments: 'Traitements',
+      about: 'À Propos',
     },
     courses: {
       title: 'Cours Professionnels',
@@ -165,6 +208,26 @@ export const translations = {
       reach: 'Conforme REACH 2026',
       gdpr: 'Confidentialité RGPD',
     },
+    about: {
+      label: 'Belle Femme Academy',
+      heroTitle: 'Excellence Européenne',
+      bio1: 'Avec une formation en Graphic Design, Mouna a apporté un œil unique pour la précision et la composition dans le monde de l\'esthétique. Chaque trait est calculé, chaque courbe intentionnelle — l\'art rencontre la science sur la toile la plus délicate.',
+      bio2: 'En tant que Juge International de PMU et Master Trainer certifiée, elle a formé des centaines de professionnels à travers la Méditerranée et le Moyen-Orient, élevant les standards de l\'industrie avec sa méthodologie rigoureuse.',
+      bio3: 'Aujourd\'hui, depuis son Master Studio à Varese, elle continue de perfectionner son art et de former la prochaine génération d\'artistes esthétiques, alliant tradition méditerranéenne et innovation européenne.',
+      credentialsLabel: 'Jalons Professionnels',
+      credentialsTitle: 'Références & Maîtrise',
+      credentials: {
+        judge: 'Juge International',
+        judgeSub: 'Juge officielle aux compétitions internationales de PMU',
+        trainer: 'Master Trainer Certifiée',
+        trainerSub: 'Plus de 10 ans de formation professionnelle internationale',
+        design: 'Experte en Graphic Design',
+        designSub: 'Précision artistique issue de la formation en design graphique',
+        specialist: 'Spécialiste Méditerranéenne & Arabe',
+        specialistSub: 'Expertise unique en esthétique méditerranéenne et arabe',
+      },
+      backToAcademy: 'Retour à l\'Académie',
+    },
   },
   ar: {
     hero: {
@@ -176,6 +239,7 @@ export const translations = {
     nav: {
       academy: 'الأكاديمية',
       treatments: 'العلاجات',
+      about: 'عن منى',
     },
     courses: {
       title: 'الدورات المهنية',
@@ -219,6 +283,26 @@ export const translations = {
       academy: 'Belle Femme Academy - فاريزي',
       reach: 'متوافق مع REACH 2026',
       gdpr: 'خصوصية GDPR',
+    },
+    about: {
+      label: 'Belle Femme Academy',
+      heroTitle: 'التميز الأوروبي',
+      bio1: 'بخلفية في التصميم الجرافيكي، جلبت منى نظرة فريدة للدقة والتكوين إلى عالم التجميل. كل ضربة محسوبة، كل منحنى مقصود — الفن يلتقي بالعلم على أرق لوحة.',
+      bio2: 'بصفتها حكمة دولية في PMU ومدربة رئيسية معتمدة، قامت بتدريب مئات المحترفين عبر البحر الأبيض المتوسط والشرق الأوسط، مرتقية بمعايير الصناعة بمنهجيتها الصارمة.',
+      bio3: 'اليوم، من استوديوها الرئيسي في فاريزي، تواصل صقل فنها وتدريب الجيل القادم من فناني التجميل، مازجة بين التقاليد المتوسطية والابتكار الأوروبي.',
+      credentialsLabel: 'الإنجازات المهنية',
+      credentialsTitle: 'المؤهلات والإتقان',
+      credentials: {
+        judge: 'حكمة دولية',
+        judgeSub: 'حكمة رسمية في مسابقات PMU الدولية',
+        trainer: 'مدربة رئيسية معتمدة',
+        trainerSub: 'أكثر من ١٠ سنوات من التدريب المهني الدولي',
+        design: 'خبيرة تصميم جرافيكي',
+        designSub: 'دقة فنية من خلفية التصميم الجرافيكي',
+        specialist: 'متخصصة في الجماليات المتوسطية والعربية',
+        specialistSub: 'خبرة فريدة في الجماليات المتوسطية والعربية',
+      },
+      backToAcademy: 'العودة إلى الأكاديمية',
     },
   },
 };
