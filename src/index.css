@@ -2,50 +2,50 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
 @layer base {
   :root {
-    /* Clinical Luxury Design System */
-    --background: 0 0% 100%; /* Pure white */
-    --foreground: 0 0% 13%; /* Charcoal #222222 */
+    /* High-Fashion Editorial Design System */
+    --background: 0 0% 2%; /* Midnight Ink #050505 */
+    --foreground: 38 20% 85%; /* Warm cream text */
 
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 13%;
+    --card: 0 0% 6%; /* Dark glass base */
+    --card-foreground: 38 20% 85%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 13%;
+    --popover: 0 0% 8%;
+    --popover-foreground: 38 20% 85%;
 
-    --primary: 38 49% 57%; /* Champagne Gold #C5A059 */
-    --primary-foreground: 0 0% 100%;
+    --primary: 38 60% 39%; /* Antique Bronze #99792E */
+    --primary-foreground: 0 0% 2%;
 
-    --secondary: 0 0% 98%;
-    --secondary-foreground: 0 0% 13%;
+    --secondary: 0 0% 8%;
+    --secondary-foreground: 38 20% 85%;
 
-    --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 45%;
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 50%;
 
-    --accent: 38 49% 57%; /* Gold accent */
-    --accent-foreground: 0 0% 100%;
+    --accent: 38 49% 57%; /* Muted Gold #C5A059 */
+    --accent-foreground: 0 0% 2%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 38 49% 57%; /* Gold borders */
-    --input: 0 0% 90%;
+    --border: 38 60% 39% / 0.3; /* Gold border with opacity */
+    --input: 0 0% 12%;
     --ring: 38 49% 57%;
 
-    --radius: 0rem; /* Sharp clinical edges */
+    --radius: 0rem;
 
-    /* Custom luxury tokens */
+    /* Editorial luxury tokens */
     --gold: 38 49% 57%;
     --gold-light: 38 49% 67%;
-    --charcoal: 0 0% 13%;
-    --pure-white: 0 0% 100%;
+    --bronze: 38 60% 39%;
+    --midnight: 0 0% 2%;
+    --onyx: 0 0% 5%;
+    --charcoal-deep: 0 0% 10%;
+    --glass-bg: 0 0% 8% / 0.6;
+    --glass-border: 38 49% 57% / 0.15;
+    --glow-gold: 38 49% 57% / 0.4;
   }
-
 }
 
 @layer base {
@@ -55,7 +55,31 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+  }
+
+  /* Film grain texture overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 256px 256px;
+  }
+
+  /* Cinematic radial vignette */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 9998;
+    pointer-events: none;
+    background: radial-gradient(ellipse at center, transparent 30%, hsl(0 0% 0% / 0.5) 100%);
   }
 
   /* RTL Support */
@@ -63,26 +87,107 @@ All colors MUST be HSL.
     direction: rtl;
   }
 
-  /* Luxury Typography */
-  .heading-luxury {
-    font-family: 'Playfair Display', serif;
-    font-weight: 400;
-    letter-spacing: 0.02em;
+  /* Editorial Typography */
+  .heading-editorial {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
   }
 
-  .heading-luxury-bold {
-    font-family: 'Playfair Display', serif;
+  .heading-editorial-italic {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-style: italic;
+    letter-spacing: 0.06em;
+  }
+
+  .heading-editorial-bold {
+    font-family: 'Cormorant Garamond', serif;
     font-weight: 600;
-    letter-spacing: 0.01em;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
   }
 
-  .arabic-text {
-    font-family: 'Amiri', serif;
+  .arabic-editorial {
+    font-family: 'Reem Kufi', sans-serif;
   }
 
-  /* Gold border utility */
-  .border-gold {
-    border-color: hsl(var(--gold));
+  /* Glassmorphism card */
+  .glass-card {
+    background: hsl(var(--glass-bg));
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 0.5px solid hsl(var(--glass-border));
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .glass-card:hover {
+    border-color: hsl(var(--gold) / 0.4);
+    box-shadow: 0 0 40px -10px hsl(var(--glow-gold));
+  }
+
+  /* Luxury button glow */
+  .btn-luxury {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .btn-luxury::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    background: linear-gradient(135deg, hsl(var(--bronze)), hsl(var(--gold)), hsl(var(--bronze)));
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
+
+  .btn-luxury:hover::before {
+    opacity: 1;
+  }
+
+  .btn-luxury:hover {
+    box-shadow: 0 0 30px -5px hsl(var(--glow-gold)),
+                0 0 60px -10px hsl(var(--gold) / 0.2);
+  }
+
+  /* Border draw animation */
+  .border-draw {
+    position: relative;
+  }
+
+  .border-draw::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 0.5px;
+    background: hsl(var(--gold));
+    transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .border-draw:hover::after {
+    width: 100%;
+  }
+
+  /* Watermark text */
+  .watermark {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    color: hsl(var(--gold) / 0.04);
+    user-select: none;
+    pointer-events: none;
+  }
+
+  /* Gold divider */
+  .divider-gold {
+    height: 0.5px;
+    background: linear-gradient(90deg, transparent, hsl(var(--gold) / 0.6), transparent);
   }
 
   /* Smooth scroll */
