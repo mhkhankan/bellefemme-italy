@@ -32,12 +32,12 @@ export const Header = () => {
             >
               {t.nav.academy}
             </button>
-            <button
-              onClick={() => scrollToSection('treatments')}
+            <Link
+              to="/treatments"
               className="border-draw text-xs tracking-[0.2em] uppercase text-foreground/60 hover:text-accent transition-colors pb-1"
             >
               {t.nav.treatments}
-            </button>
+            </Link>
             <Link
               to="/about-mouna"
               className="border-draw text-xs tracking-[0.2em] uppercase text-foreground/60 hover:text-accent transition-colors pb-1"

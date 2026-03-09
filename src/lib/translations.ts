@@ -79,6 +79,35 @@ export const translations = {
       lipBlush: 'Lip Blush',
       plasmaPen: 'Plasma Pen Skin Lifting',
     },
+    treatmentsPage: {
+      heroTitle: "L'Arte del Viso",
+      heroSubtitle: 'Trattamenti Estetici di Alta Gamma',
+      cta: 'Richiedi Consulenza Privata',
+      safety: 'REACH 2026 & ASL Varese Conforme',
+      healedResults: 'Lavoro Guarito',
+      beforeLabel: 'Prima',
+      afterLabel: 'Dopo',
+      brows: {
+        name: 'Sopracciglia',
+        poetic: "L'Architettura dello Sguardo",
+        description: 'Microblading, Powder Brows e tecniche ibride per sopracciglia perfettamente scolpite, studiate sulla morfologia unica del tuo viso.',
+      },
+      lips: {
+        name: 'Labbra',
+        poetic: 'Sinfonia di Colore',
+        description: 'Lip Blush e definizione labbra per un colore naturale e armonioso che esalta la bellezza del tuo sorriso.',
+      },
+      eyes: {
+        name: 'Occhi',
+        poetic: 'Sguardo Senza Tempo',
+        description: 'Eyeliner permanente e valorizzazione dello sguardo per un\'eleganza duratura che incornicia i tuoi occhi.',
+      },
+      paramedical: {
+        name: 'Paramedicale',
+        poetic: 'Rinascita',
+        description: 'Trattamenti di camouflage e ricostruzione estetica per restituire fiducia e bellezza naturale.',
+      },
+    },
     gallery: {
       title: 'Galleria',
       subtitle: 'Il Nostro Lavoro',
@@ -187,6 +216,35 @@ export const translations = {
       microblading: 'Microblading',
       lipBlush: 'Lip Blush',
       plasmaPen: 'Plasma Pen Skin Lifting',
+    },
+    treatmentsPage: {
+      heroTitle: 'The Art of the Face',
+      heroSubtitle: 'High-End Aesthetic Treatments',
+      cta: 'Request Private Consultation',
+      safety: 'REACH 2026 & ASL Varese Compliant',
+      healedResults: 'Healed Results',
+      beforeLabel: 'Before',
+      afterLabel: 'After',
+      brows: {
+        name: 'Brows',
+        poetic: 'The Architecture of the Gaze',
+        description: 'Microblading, Powder Brows and hybrid techniques for perfectly sculpted brows, designed around your unique facial morphology.',
+      },
+      lips: {
+        name: 'Lips',
+        poetic: 'A Symphony of Color',
+        description: 'Lip Blush and lip definition for a natural, harmonious color that enhances the beauty of your smile.',
+      },
+      eyes: {
+        name: 'Eyes',
+        poetic: 'Timeless Elegance',
+        description: 'Permanent eyeliner and gaze enhancement for lasting elegance that frames your eyes.',
+      },
+      paramedical: {
+        name: 'Paramedical',
+        poetic: 'Rebirth',
+        description: 'Camouflage and aesthetic reconstruction treatments to restore confidence and natural beauty.',
+      },
     },
     gallery: {
       title: 'Gallery',
@@ -297,6 +355,35 @@ export const translations = {
       lipBlush: 'Lip Blush',
       plasmaPen: 'Lifting Cutané au Plasma Pen',
     },
+    treatmentsPage: {
+      heroTitle: "L'Art du Visage",
+      heroSubtitle: 'Traitements Esthétiques Haut de Gamme',
+      cta: 'Demander une Consultation',
+      safety: 'Conforme REACH 2026 & ASL Varese',
+      healedResults: 'Résultats Cicatrisés',
+      beforeLabel: 'Avant',
+      afterLabel: 'Après',
+      brows: {
+        name: 'Sourcils',
+        poetic: "L'Architecture du Regard",
+        description: 'Microblading, Powder Brows et techniques hybrides pour des sourcils parfaitement sculptés, conçus selon la morphologie unique de votre visage.',
+      },
+      lips: {
+        name: 'Lèvres',
+        poetic: 'Symphonie de Couleurs',
+        description: 'Lip Blush et définition des lèvres pour une couleur naturelle et harmonieuse qui sublime la beauté de votre sourire.',
+      },
+      eyes: {
+        name: 'Yeux',
+        poetic: 'Élégance Intemporelle',
+        description: 'Eyeliner permanent et sublimation du regard pour une élégance durable qui encadre vos yeux.',
+      },
+      paramedical: {
+        name: 'Paramédical',
+        poetic: 'Renaissance',
+        description: 'Traitements de camouflage et reconstruction esthétique pour redonner confiance et beauté naturelle.',
+      },
+    },
     gallery: {
       title: 'Galerie',
       subtitle: 'Notre Travail',
@@ -405,6 +492,35 @@ export const translations = {
       microblading: 'مايكروبليدنج',
       lipBlush: 'أحمر الشفاه',
       plasmaPen: 'شد الجلد بقلم البلازما',
+    },
+    treatmentsPage: {
+      heroTitle: 'فن الوجه',
+      heroSubtitle: 'علاجات تجميلية فاخرة',
+      cta: 'طلب استشارة خاصة',
+      safety: 'متوافق مع REACH 2026 & ASL Varese',
+      healedResults: 'نتائج بعد الشفاء',
+      beforeLabel: 'قبل',
+      afterLabel: 'بعد',
+      brows: {
+        name: 'الحواجب',
+        poetic: 'هندسة النظرة',
+        description: 'مايكروبليدنج، باودر براوز وتقنيات هجينة لحواجب منحوتة بشكل مثالي، مصممة حسب شكل وجهك الفريد.',
+      },
+      lips: {
+        name: 'الشفاه',
+        poetic: 'سيمفونية الألوان',
+        description: 'ليب بلاش وتحديد الشفاه للحصول على لون طبيعي ومتناغم يعزز جمال ابتسامتك.',
+      },
+      eyes: {
+        name: 'العيون',
+        poetic: 'نظرة خالدة',
+        description: 'آيلاينر دائم وتعزيز النظرة لأناقة دائمة تؤطر عينيك.',
+      },
+      paramedical: {
+        name: 'الطبي التجميلي',
+        poetic: 'ولادة جديدة',
+        description: 'علاجات التمويه وإعادة البناء التجميلي لاستعادة الثقة والجمال الطبيعي.',
+      },
     },
     gallery: {
       title: 'المعرض',

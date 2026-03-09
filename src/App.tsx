@@ -9,6 +9,7 @@ import AboutMouna from "./pages/AboutMouna";
 import CoursePMU from "./pages/CoursePMU";
 import CourseMicroblading from "./pages/CourseMicroblading";
 import CourseMasterclass from "./pages/CourseMasterclass";
+import TreatmentsPage from "./pages/TreatmentsPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -23,6 +24,7 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/about-mouna" element={<AboutMouna />} />
+            <Route path="/treatments" element={<TreatmentsPage />} />
             <Route path="/course/pmu" element={<CoursePMU />} />
             <Route path="/course/microblading" element={<CourseMicroblading />} />
             <Route path="/course/masterclass" element={<CourseMasterclass />} />
