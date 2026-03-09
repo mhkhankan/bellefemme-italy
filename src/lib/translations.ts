@@ -79,6 +79,35 @@ export const translations = {
       lipBlush: 'Lip Blush',
       plasmaPen: 'Plasma Pen Skin Lifting',
     },
+    treatmentsPage: {
+      heroTitle: "L'Arte del Viso",
+      heroSubtitle: 'Trattamenti Estetici di Alta Gamma',
+      cta: 'Richiedi Consulenza Privata',
+      safety: 'REACH 2026 & ASL Varese Conforme',
+      healedResults: 'Lavoro Guarito',
+      beforeLabel: 'Prima',
+      afterLabel: 'Dopo',
+      brows: {
+        name: 'Sopracciglia',
+        poetic: "L'Architettura dello Sguardo",
+        description: 'Microblading, Powder Brows e tecniche ibride per sopracciglia perfettamente scolpite, studiate sulla morfologia unica del tuo viso.',
+      },
+      lips: {
+        name: 'Labbra',
+        poetic: 'Sinfonia di Colore',
+        description: 'Lip Blush e definizione labbra per un colore naturale e armonioso che esalta la bellezza del tuo sorriso.',
+      },
+      eyes: {
+        name: 'Occhi',
+        poetic: 'Sguardo Senza Tempo',
+        description: 'Eyeliner permanente e valorizzazione dello sguardo per un\'eleganza duratura che incornicia i tuoi occhi.',
+      },
+      paramedical: {
+        name: 'Paramedicale',
+        poetic: 'Rinascita',
+        description: 'Trattamenti di camouflage e ricostruzione estetica per restituire fiducia e bellezza naturale.',
+      },
+    },
     gallery: {
       title: 'Galleria',
       subtitle: 'Il Nostro Lavoro',
