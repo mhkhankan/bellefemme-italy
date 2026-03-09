@@ -493,6 +493,35 @@ export const translations = {
       lipBlush: 'أحمر الشفاه',
       plasmaPen: 'شد الجلد بقلم البلازما',
     },
+    treatmentsPage: {
+      heroTitle: 'فن الوجه',
+      heroSubtitle: 'علاجات تجميلية فاخرة',
+      cta: 'طلب استشارة خاصة',
+      safety: 'متوافق مع REACH 2026 & ASL Varese',
+      healedResults: 'نتائج بعد الشفاء',
+      beforeLabel: 'قبل',
+      afterLabel: 'بعد',
+      brows: {
+        name: 'الحواجب',
+        poetic: 'هندسة النظرة',
+        description: 'مايكروبليدنج، باودر براوز وتقنيات هجينة لحواجب منحوتة بشكل مثالي، مصممة حسب شكل وجهك الفريد.',
+      },
+      lips: {
+        name: 'الشفاه',
+        poetic: 'سيمفونية الألوان',
+        description: 'ليب بلاش وتحديد الشفاه للحصول على لون طبيعي ومتناغم يعزز جمال ابتسامتك.',
+      },
+      eyes: {
+        name: 'العيون',
+        poetic: 'نظرة خالدة',
+        description: 'آيلاينر دائم وتعزيز النظرة لأناقة دائمة تؤطر عينيك.',
+      },
+      paramedical: {
+        name: 'الطبي التجميلي',
+        poetic: 'ولادة جديدة',
+        description: 'علاجات التمويه وإعادة البناء التجميلي لاستعادة الثقة والجمال الطبيعي.',
+      },
+    },
     gallery: {
       title: 'المعرض',
       subtitle: 'أعمالنا',
