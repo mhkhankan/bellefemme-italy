@@ -9,6 +9,7 @@ import AboutMouna from "./pages/AboutMouna";
 import CoursePMU from "./pages/CoursePMU";
 import CourseMicroblading from "./pages/CourseMicroblading";
 import CourseMasterclass from "./pages/CourseMasterclass";
+import TreatmentsPage from "./pages/TreatmentsPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
