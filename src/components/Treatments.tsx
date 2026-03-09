@@ -4,11 +4,12 @@ import { useNavigate } from 'react-router-dom';
 
 export const Treatments = () => {
   const { t } = useLanguage();
+  const navigate = useNavigate();
 
   const treatments = [
-    t.treatments.microblading,
-    t.treatments.lipBlush,
-    t.treatments.plasmaPen,
+    { label: t.treatments.microblading, key: 'brows' },
+    { label: t.treatments.lipBlush, key: 'lips' },
+    { label: t.treatments.plasmaPen, key: 'eyes' },
   ];
 
   return (
