@@ -68,6 +68,7 @@ export const Academy = () => {
             className="md:col-span-3 md:mt-32"
           >
             <CourseCard
+              href="/course/masterclass"
               title={t.courses.masterclass.title}
               duration={t.courses.masterclass.duration}
               description={t.courses.masterclass.description}

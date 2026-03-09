@@ -6,6 +6,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import Index from "./pages/Index";
 import AboutMouna from "./pages/AboutMouna";
+import CoursePMU from "./pages/CoursePMU";
+import CourseMicroblading from "./pages/CourseMicroblading";
+import CourseMasterclass from "./pages/CourseMasterclass";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -20,6 +23,9 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/about-mouna" element={<AboutMouna />} />
+            <Route path="/course/pmu" element={<CoursePMU />} />
+            <Route path="/course/microblading" element={<CourseMicroblading />} />
+            <Route path="/course/masterclass" element={<CourseMasterclass />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
