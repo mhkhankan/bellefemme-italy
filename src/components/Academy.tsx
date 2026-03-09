@@ -40,6 +40,7 @@ export const Academy = () => {
             className="md:col-span-5"
           >
             <CourseCard
+              href="/course/pmu"
               title={t.courses.pmu.title}
               duration={t.courses.pmu.duration}
               description={t.courses.pmu.description}
@@ -53,6 +54,7 @@ export const Academy = () => {
             className="md:col-span-4 md:mt-16"
           >
             <CourseCard
+              href="/course/microblading"
               title={t.courses.microblading.title}
               duration={t.courses.microblading.duration}
               description={t.courses.microblading.description}
@@ -66,6 +68,7 @@ export const Academy = () => {
             className="md:col-span-3 md:mt-32"
           >
             <CourseCard
+              href="/course/masterclass"
               title={t.courses.masterclass.title}
               duration={t.courses.masterclass.duration}
               description={t.courses.masterclass.description}
