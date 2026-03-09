@@ -40,6 +40,7 @@ export const Academy = () => {
             className="md:col-span-5"
           >
             <CourseCard
+              href="/course/pmu"
               title={t.courses.pmu.title}
               duration={t.courses.pmu.duration}
               description={t.courses.pmu.description}
