@@ -11,9 +11,9 @@ export const Footer = () => {
         <div className="grid md:grid-cols-12 gap-12">
           {/* Brand */}
           <div className="md:col-span-4 space-y-4">
-            <h3 className="heading-editorial-bold text-sm tracking-[0.2em] text-foreground">
+            <Link to="/" className="heading-editorial-bold text-sm tracking-[0.2em] text-foreground hover:text-accent transition-colors">
               BELLE FEMME ACADEMY
-            </h3>
+            </Link>
             <p className="text-xs text-foreground/30 tracking-wider">Varese, Italia</p>
             <p className="text-xs text-foreground/20 tracking-wider">P.IVA: 03794680128</p>
           </div>

@@ -47,11 +47,12 @@ export const Treatments = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.12 }}
-                className="glass-card group cursor-default"
+                className="glass-card group cursor-pointer"
+                onClick={() => navigate('/treatments')}
               >
                 <div className="p-8 flex items-center justify-between">
                   <h3 className="heading-editorial text-xl md:text-2xl text-foreground group-hover:text-accent transition-colors duration-500">
-                    {treatment}
+                    {treatment.label}
                   </h3>
                   <div className="w-8 h-px bg-accent/30 group-hover:w-16 group-hover:bg-accent transition-all duration-700" />
                 </div>
