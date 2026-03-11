@@ -1,6 +1,18 @@
 import { useLanguage } from '@/contexts/LanguageContext';
 import { CourseCard } from './CourseCard';
 import { motion } from 'framer-motion';
+import { Award } from 'lucide-react';
+
+const courseKeys = [
+  { key: 'pmu', href: '/course/pmu', span: 'md:col-span-6' },
+  { key: 'microblading', href: '/course/microblading', span: 'md:col-span-6' },
+  { key: 'ombre_powder', href: '/course/ombre-powder', span: 'md:col-span-4' },
+  { key: 'ombre_lips', href: '/course/ombre-lips', span: 'md:col-span-4' },
+  { key: 'eyeliner', href: '/course/eyeliner', span: 'md:col-span-4' },
+  { key: 'masterclass_brows', href: '/course/masterclass-brows', span: 'md:col-span-4' },
+  { key: 'masterclass_lashes', href: '/course/masterclass-lashes', span: 'md:col-span-4' },
+  { key: 'masterclass_lamination', href: '/course/masterclass-lamination', span: 'md:col-span-4' },
+] as const;
 
 export const Academy = () => {
   const { t } = useLanguage();
@@ -13,7 +25,7 @@ export const Academy = () => {
       </div>
 
       <div className="container mx-auto px-6 md:px-12 relative z-10">
-        {/* Asymmetric header */}
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -30,51 +42,43 @@ export const Academy = () => {
           </p>
         </motion.div>
 
-        {/* Staggered asymmetric grid */}
+        {/* Course Grid */}
         <div className="grid md:grid-cols-12 gap-6">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className="md:col-span-5"
-          >
-            <CourseCard
-              href="/course/pmu"
-              title={t.courses.pmu.title}
-              duration={t.courses.pmu.duration}
-              description={t.courses.pmu.description}
-            />
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.15 }}
-            className="md:col-span-4 md:mt-16"
-          >
-            <CourseCard
-              href="/course/microblading"
-              title={t.courses.microblading.title}
-              duration={t.courses.microblading.duration}
-              description={t.courses.microblading.description}
-            />
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.3 }}
-            className="md:col-span-3 md:mt-32"
-          >
-            <CourseCard
-              href="/course/masterclass"
-              title={t.courses.masterclass.title}
-              duration={t.courses.masterclass.duration}
-              description={t.courses.masterclass.description}
-            />
-          </motion.div>
+          {courseKeys.map(({ key, href, span }, i) => {
+            const course = t.courses[key] as { title: string; duration: string; description: string };
+            return (
+              <motion.div
+                key={key}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: i * 0.08 }}
+                className={span}
+              >
+                <CourseCard
+                  href={href}
+                  title={course.title}
+                  duration={course.duration}
+                  description={course.description}
+                />
+              </motion.div>
+            );
+          })}
         </div>
+
+        {/* Certification Note */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="mt-16 flex items-start gap-3 glass-card p-6 max-w-2xl"
+        >
+          <Award className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+          <p className="text-xs text-foreground/50 tracking-wide leading-relaxed">
+            {t.courses.certNote}
+          </p>
+        </motion.div>
       </div>
     </section>
   );

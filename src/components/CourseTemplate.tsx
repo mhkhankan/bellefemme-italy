@@ -2,7 +2,7 @@ import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Shield, CheckCircle, MapPin, Phone, ArrowLeft, Package, Play, Pause } from 'lucide-react';
+import { Shield, CheckCircle, MapPin, Phone, ArrowLeft, Package, Play, Pause, Award } from 'lucide-react';
 
 interface DaySyllabus {
   title: string;
@@ -14,11 +14,13 @@ interface StarterKit {
   items: string[];
 }
 
+type CourseKey = 'pmu' | 'microblading' | 'masterclass' | 'ombre_powder' | 'ombre_lips' | 'eyeliner' | 'masterclass_brows' | 'masterclass_lashes' | 'masterclass_lamination';
+
 interface CourseTemplateProps {
-  courseKey: 'pmu' | 'microblading' | 'masterclass';
+  courseKey: CourseKey;
   videoSrc?: string;
   posterSrc?: string;
-  technique?: string; // e.g. "Brows", "Lip Blush", "Eyeliner"
+  technique?: string;
 }
 
 export const CourseTemplate = ({ courseKey, videoSrc, posterSrc, technique }: CourseTemplateProps) => {
@@ -42,6 +44,8 @@ export const CourseTemplate = ({ courseKey, videoSrc, posterSrc, technique }: Co
   const days = course.days ?? [];
   const dayCount = days.length;
   const hasStarterKit = !!course.starterKit;
+
+  const whatsappMsg = encodeURIComponent(`Ciao Mouna, vorrei informazioni sul corso ${course.title} a Varese`);
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -81,8 +85,6 @@ export const CourseTemplate = ({ courseKey, videoSrc, posterSrc, technique }: Co
             <ArrowLeft className={`w-3 h-3 transition-transform group-hover:-translate-x-1 ${isRTL ? 'rotate-180' : ''}`} />
             {cp.backToAcademy}
           </button>
-
-          {/* Authority Badges */}
           <div className="flex items-center gap-3">
             <span className="flex items-center gap-1.5 text-[10px] tracking-[0.15em] uppercase text-accent/70 border border-accent/20 px-3 py-1">
               <Shield className="w-2.5 h-2.5" />
@@ -96,14 +98,14 @@ export const CourseTemplate = ({ courseKey, videoSrc, posterSrc, technique }: Co
         </div>
       </div>
 
-      {/* ── Hero Header with Hover-to-Play Video ── */}
+      {/* ── Hero Header ── */}
       <section
-        className="relative h-[60vh] md:h-[75vh] overflow-hidden cursor-pointer group"
+        className="relative overflow-hidden cursor-pointer group"
+        style={{ minHeight: '60svh' }}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         onClick={togglePlay}
       >
-        {/* Poster / fallback gradient */}
         {posterSrc ? (
           <img
             src={posterSrc}
@@ -114,7 +116,6 @@ export const CourseTemplate = ({ courseKey, videoSrc, posterSrc, technique }: Co
           <div className="absolute inset-0 bg-gradient-to-br from-onyx via-background to-muted" />
         )}
 
-        {/* Video */}
         {videoSrc && (
           <video
             ref={videoRef}
@@ -127,35 +128,23 @@ export const CourseTemplate = ({ courseKey, videoSrc, posterSrc, technique }: Co
           />
         )}
 
-        {/* Overlay gradient */}
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-r from-background/60 to-transparent" />
 
-        {/* Watermark */}
         <div className="watermark absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[10vw] whitespace-nowrap">
           {technique ?? course.title}
         </div>
 
-        {/* Play/Pause indicator */}
         {videoSrc && (
           <div className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'}`}>
             <div className="glass-card p-4 rounded-full border border-accent/30">
-              {isPlaying ? (
-                <Pause className="w-6 h-6 text-accent" />
-              ) : (
-                <Play className="w-6 h-6 text-accent" />
-              )}
+              {isPlaying ? <Pause className="w-6 h-6 text-accent" /> : <Play className="w-6 h-6 text-accent" />}
             </div>
           </div>
         )}
 
-        {/* Course title content */}
         <div className="absolute bottom-0 left-0 right-0 container mx-auto px-6 md:px-12 pb-12">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
+          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
             <div className="flex flex-wrap items-center gap-3 mb-4">
               <span className="text-xs tracking-[0.25em] uppercase text-accent/70 border border-accent/20 px-3 py-1">
                 {course.duration}
@@ -183,17 +172,10 @@ export const CourseTemplate = ({ courseKey, videoSrc, posterSrc, technique }: Co
       {/* ── Main Content ── */}
       <div className="container mx-auto px-6 md:px-12 py-20">
         <div className="grid md:grid-cols-12 gap-12">
-
           {/* Left: Day Selector + Syllabus */}
           <div className="md:col-span-7">
-            {/* Dynamic Day Selector */}
             {dayCount > 1 && (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className="mb-10"
-              >
+              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="mb-10">
                 <div className="flex flex-wrap gap-2">
                   {Array.from({ length: dayCount }, (_, i) => (
                     <button
@@ -212,7 +194,6 @@ export const CourseTemplate = ({ courseKey, videoSrc, posterSrc, technique }: Co
               </motion.div>
             )}
 
-            {/* Syllabus content */}
             <AnimatePresence mode="wait">
               {days.length > 0 && (
                 <motion.div
@@ -246,9 +227,8 @@ export const CourseTemplate = ({ courseKey, videoSrc, posterSrc, technique }: Co
             </AnimatePresence>
           </div>
 
-          {/* Right: Starter Kit + CTA */}
+          {/* Right: Starter Kit + Cert + CTA */}
           <div className="md:col-span-5 space-y-6">
-            {/* Conditional Starter Kit Card */}
             {hasStarterKit && course.starterKit && (
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -256,13 +236,10 @@ export const CourseTemplate = ({ courseKey, videoSrc, posterSrc, technique }: Co
                 transition={{ duration: 0.7, delay: 0.2 }}
                 className="glass-card p-8 relative overflow-hidden"
               >
-                {/* Glassmorphism glow accent */}
                 <div className="absolute -top-10 -right-10 w-32 h-32 bg-accent/5 rounded-full blur-2xl pointer-events-none" />
                 <div className="flex items-center gap-2 mb-5">
                   <Package className="w-4 h-4 text-accent" />
-                  <span className="text-xs tracking-[0.2em] uppercase text-accent/80">
-                    {course.starterKit.title}
-                  </span>
+                  <span className="text-xs tracking-[0.2em] uppercase text-accent/80">{course.starterKit.title}</span>
                 </div>
                 <div className="divider-gold w-full mb-5" />
                 <ul className="space-y-3">
@@ -276,6 +253,20 @@ export const CourseTemplate = ({ courseKey, videoSrc, posterSrc, technique }: Co
               </motion.div>
             )}
 
+            {/* Certification Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.25 }}
+              className="glass-card p-6 flex items-start gap-3"
+            >
+              <Award className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
+              <div>
+                <p className="text-xs tracking-[0.2em] uppercase text-accent/80 mb-2">{cp.certTitle}</p>
+                <p className="text-xs text-foreground/40 tracking-wide leading-relaxed">{cp.certText}</p>
+              </div>
+            </motion.div>
+
             {/* CTA Card */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -283,7 +274,6 @@ export const CourseTemplate = ({ courseKey, videoSrc, posterSrc, technique }: Co
               transition={{ duration: 0.7, delay: 0.35 }}
               className="glass-card p-8 space-y-5"
             >
-              {/* REACH + ASL badges */}
               <div className="flex flex-col gap-2">
                 <div className="flex items-center gap-2 text-[10px] tracking-[0.15em] uppercase text-accent/60">
                   <Shield className="w-3 h-3" />
@@ -296,28 +286,27 @@ export const CourseTemplate = ({ courseKey, videoSrc, posterSrc, technique }: Co
               </div>
               <div className="divider-gold w-full" />
 
-              {/* WhatsApp CTA */}
+              {/* Secure Your Seat — Gold Ghost Button */}
               <a
-                href="https://wa.me/393516605507"
+                href={`https://wa.me/393516605507?text=${whatsappMsg}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-luxury flex items-center justify-center gap-2 w-full py-4 text-xs tracking-[0.25em] uppercase bg-accent text-accent-foreground hover:bg-accent/90 transition-all duration-500"
+                className="btn-luxury flex items-center justify-center gap-2 w-full py-4 text-xs tracking-[0.25em] uppercase border border-accent text-accent hover:bg-accent hover:text-accent-foreground transition-all duration-500"
+              >
+                {cp.secureYourSeat}
+              </a>
+
+              {/* WhatsApp Info */}
+              <a
+                href={`https://wa.me/393516605507?text=${whatsappMsg}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-luxury flex items-center justify-center gap-2 w-full py-4 text-xs tracking-[0.25em] uppercase border border-accent/30 text-foreground/60 hover:text-accent hover:border-accent/60 transition-all duration-500"
               >
                 <Phone className="w-3.5 h-3.5" />
                 {cp.whatsapp}
               </a>
 
-              {/* Book Course */}
-              <a
-                href="https://wa.me/393516605507"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-luxury flex items-center justify-center gap-2 w-full py-4 text-xs tracking-[0.25em] uppercase border border-accent/30 text-foreground/60 hover:text-accent hover:border-accent/60 transition-all duration-500"
-              >
-                {cp.bookCourse}
-              </a>
-
-              {/* Contact info */}
               <div className="space-y-1.5 pt-2 border-t border-foreground/10">
                 <div className="flex items-center gap-2 text-[10px] text-foreground/30 tracking-wide">
                   <MapPin className="w-2.5 h-2.5 flex-shrink-0" />
@@ -330,7 +319,7 @@ export const CourseTemplate = ({ courseKey, videoSrc, posterSrc, technique }: Co
         </div>
       </div>
 
-      {/* ── Course Footer ── */}
+      {/* ── Footer ── */}
       <footer className="border-t border-accent/10 py-8 mt-10">
         <div className="container mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-6 text-[10px] tracking-[0.2em] uppercase">

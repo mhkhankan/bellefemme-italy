@@ -27,7 +27,7 @@ const AboutMouna = () => {
       <Header />
 
       {/* Hero Biography */}
-      <section ref={heroRef} className="relative min-h-screen pt-20 py-24 overflow-hidden">
+      <section ref={heroRef} className="relative min-h-screen pt-20 py-32 overflow-hidden">
         {/* Watermark */}
         <motion.div
           style={{ y: watermarkY }}
