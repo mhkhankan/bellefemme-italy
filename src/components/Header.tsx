@@ -27,22 +27,22 @@ export const Header = () => {
           </Link>
           <nav className="hidden md:flex gap-8">
             <button
+              onClick={() => scrollToSection('atelier')}
+              className="border-draw text-xs tracking-[0.2em] uppercase text-foreground/60 hover:text-accent transition-colors pb-1"
+            >
+              {t.nav.atelier}
+            </button>
+            <button
               onClick={() => scrollToSection('academy')}
               className="border-draw text-xs tracking-[0.2em] uppercase text-foreground/60 hover:text-accent transition-colors pb-1"
             >
               {t.nav.academy}
             </button>
             <Link
-              to="/treatments"
+              to="/la-firma"
               className="border-draw text-xs tracking-[0.2em] uppercase text-foreground/60 hover:text-accent transition-colors pb-1"
             >
-              {t.nav.treatments}
-            </Link>
-            <Link
-              to="/about-mouna"
-              className="border-draw text-xs tracking-[0.2em] uppercase text-foreground/60 hover:text-accent transition-colors pb-1"
-            >
-              {t.nav.about}
+              {t.nav.firma}
             </Link>
           </nav>
         </div>

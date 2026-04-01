@@ -1,7 +1,6 @@
 import { CinematicHero } from '@/components/CinematicHero';
 import { TreatmentArchitecture } from '@/components/TreatmentArchitecture';
-import { Heritage } from '@/components/Heritage';
-import { Concierge } from '@/components/Concierge';
+import { AcademySection } from '@/components/AcademySection';
 import { SiteFooter } from '@/components/SiteFooter';
 import { WhatsAppSticky } from '@/components/WhatsAppSticky';
 import { StickyHeader } from '@/components/StickyHeader';
@@ -12,8 +11,7 @@ const Index = () => {
       <StickyHeader />
       <CinematicHero />
       <TreatmentArchitecture />
-      <Heritage />
-      <Concierge />
+      <AcademySection />
       <SiteFooter />
       <WhatsAppSticky />
     </div>
