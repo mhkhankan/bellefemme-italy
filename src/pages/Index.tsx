@@ -1,25 +1,21 @@
-import { Header } from '@/components/Header';
-import { Hero } from '@/components/Hero';
-import { Academy } from '@/components/Academy';
-import { Treatments } from '@/components/Treatments';
-import { Gallery } from '@/components/Gallery';
-import { SocialTrust } from '@/components/SocialTrust';
-import { Contact } from '@/components/Contact';
-import { Footer } from '@/components/Footer';
-import { WhatsAppButton } from '@/components/WhatsAppButton';
+import { SplitHero } from '@/components/SplitHero';
+import { TreatmentArchitecture } from '@/components/TreatmentArchitecture';
+import { Heritage } from '@/components/Heritage';
+import { Concierge } from '@/components/Concierge';
+import { SiteFooter } from '@/components/SiteFooter';
+import { WhatsAppSticky } from '@/components/WhatsAppSticky';
+import { StickyHeader } from '@/components/StickyHeader';
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
-      <Header />
-      <Hero />
-      <Academy />
-      <Treatments />
-      <Gallery />
-      <SocialTrust />
-      <Contact />
-      <Footer />
-      <WhatsAppButton />
+      <StickyHeader />
+      <SplitHero />
+      <TreatmentArchitecture />
+      <Heritage />
+      <Concierge />
+      <SiteFooter />
+      <WhatsAppSticky />
     </div>
   );
 };
