@@ -22,7 +22,7 @@ export const Concierge = () => {
         >
           <p className="text-[10px] tracking-[0.4em] uppercase text-primary/60">Private Concierge</p>
 
-          <h2 className="font-cormorant text-3xl md:text-5xl font-light text-foreground tracking-wide">
+          <h2 className="font-cormorant text-3xl md:text-5xl font-light text-foreground tracking-[2px]">
             Secure Your <span className="italic text-primary">Atelier</span> Appointment
           </h2>
 
@@ -60,7 +60,7 @@ export const Concierge = () => {
               rel="noopener noreferrer"
               className="inline-block text-[11px] tracking-[0.2em] uppercase border border-primary text-primary px-10 py-4 hover:bg-primary hover:text-primary-foreground transition-all duration-500"
             >
-              Start a Private Consultation with Mouna
+              Start a Private Consultation
             </a>
           </div>
         </motion.div>
