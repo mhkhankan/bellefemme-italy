@@ -24,7 +24,7 @@ interface LocationSheetProps {
 
 export const LocationSheet = ({ open, onOpenChange, treatmentName }: LocationSheetProps) => {
   const isMobile = useIsMobile();
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const { toast } = useToast();
   const [spots, setSpots] = useState<SpotData[]>([]);
   const [phantomPhone, setPhantomPhone] = useState('');
@@ -43,7 +43,10 @@ export const LocationSheet = ({ open, onOpenChange, treatmentName }: LocationShe
   }, [open]);
 
   const handleSelect = (location: string) => {
-    const msg = `Hi Mouna, I want to discuss ${treatmentName} in ${location}.`;
+    // Italian message for active hubs
+    const msg = language === 'it'
+      ? `Buongiorno Mouna, desidero una consulenza presso l'Atelier di ${location} per ${treatmentName}.`
+      : `Hi Mouna, I would like a consultation at the ${location} Atelier for ${treatmentName}.`;
     window.open(`${WHATSAPP_BASE}${encodeURIComponent(msg)}`, '_blank');
     onOpenChange(false);
   };
@@ -90,13 +93,13 @@ export const LocationSheet = ({ open, onOpenChange, treatmentName }: LocationShe
           );
         })}
 
-        {/* Phantom demand — Milano & Roma */}
+        {/* Phantom demand — Milano & Roma: WAITLIST ONLY */}
         {phantomLocations.map((loc) => (
           <div key={loc} className="border-b border-primary/10 last:border-b-0">
             <div className="w-full text-left font-cormorant text-lg md:text-xl text-foreground/30 px-6 py-4 min-h-[44px] flex items-center justify-between">
               <span>{loc}</span>
               <span className="text-[10px] font-inter tracking-[0.1em] uppercase text-destructive/60">
-                {t.treatments.soldOut} · {t.concierge.phantomLabel}
+                {t.treatments.waitlistOnly}
               </span>
             </div>
             {!phantomCity || phantomCity === loc ? (
