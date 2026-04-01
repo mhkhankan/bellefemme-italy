@@ -75,3 +75,9 @@
     scroll-behavior: smooth;
   }
 }
+
+/* Jurist ticker animation */
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}

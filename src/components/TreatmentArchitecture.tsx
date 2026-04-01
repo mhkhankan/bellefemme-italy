@@ -4,19 +4,15 @@ import { LocationSheet } from './LocationSheet';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const treatments = [
-  {
-    number: '01',
-    titleKey: 'brows' as const,
-  },
-  {
-    number: '02',
-    titleKey: 'lips' as const,
-  },
-  {
-    number: '03',
-    titleKey: 'paramedical' as const,
-  },
+  { number: '01', titleKey: 'brows' as const },
+  { number: '02', titleKey: 'lips' as const },
+  { number: '03', titleKey: 'paramedical' as const },
 ];
+
+const fadeInVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0 },
+};
 
 export const TreatmentArchitecture = () => {
   const [sheetOpen, setSheetOpen] = useState(false);
@@ -34,10 +30,11 @@ export const TreatmentArchitecture = () => {
         {/* Section header */}
         <div className="py-24 md:py-32">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            variants={fadeInVariants}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true, margin: '-100px' }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
             className="text-center"
           >
             <p className="text-[10px] tracking-[0.4em] uppercase text-primary/60 mb-4">Treatment Architecture</p>
@@ -47,24 +44,27 @@ export const TreatmentArchitecture = () => {
           </motion.div>
         </div>
 
-        {/* Full-viewport scroll-snap treatment blocks on mobile */}
-        <div className="md:hidden snap-y snap-mandatory">
+        {/* Mobile: scroll-snap-type: y mandatory */}
+        <div className="md:hidden" style={{ scrollSnapType: 'y mandatory' }}>
           {treatments.map((item) => {
             const data = t.treatmentsPage[item.titleKey];
             return (
-              <div
+              <motion.div
                 key={item.number}
-                className="snap-start flex flex-col justify-end px-6 pb-8 pt-16 border-t border-primary/10"
-                style={{ minHeight: '100svh' }}
+                variants={fadeInVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: '-60px' }}
+                transition={{ duration: 0.5, ease: 'easeInOut' }}
+                className="flex flex-col justify-end px-6 pb-8 pt-16 border-t border-primary/10"
+                style={{ minHeight: '100svh', scrollSnapAlign: 'start' }}
               >
-                {/* Placeholder for high-end photography */}
                 <div className="flex-1 flex items-center justify-center mb-8">
                   <div className="w-full aspect-[4/5] bg-card border border-primary/10 flex items-center justify-center">
                     <span className="font-cormorant text-6xl font-light text-primary/10">{item.number}</span>
                   </div>
                 </div>
-
-                {/* Content in thumb zone (bottom 30%) */}
+                {/* Thumb zone — bottom 30% */}
                 <div className="space-y-4">
                   <p className="text-[10px] tracking-[0.3em] uppercase text-primary/50">{data.poetic}</p>
                   <h3 className="font-cormorant text-2xl font-light text-foreground tracking-[2px]">{data.name}</h3>
@@ -76,12 +76,12 @@ export const TreatmentArchitecture = () => {
                     {t.treatments.checkAvailability}
                   </button>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>
 
-        {/* Desktop layout */}
+        {/* Desktop: smooth natural scroll */}
         <div className="hidden md:block">
           <div className="space-y-40 max-w-4xl mx-auto px-12">
             {treatments.map((item, i) => {
@@ -89,10 +89,11 @@ export const TreatmentArchitecture = () => {
               return (
                 <motion.div
                   key={item.number}
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  variants={fadeInVariants}
+                  initial="hidden"
+                  whileInView="visible"
                   viewport={{ once: true, margin: '-80px' }}
-                  transition={{ duration: 0.8, delay: i * 0.15 }}
+                  transition={{ duration: 0.5, ease: 'easeInOut', delay: i * 0.1 }}
                   className="space-y-8"
                 >
                   <div className="grid grid-cols-12 gap-12 items-start">
@@ -105,15 +106,11 @@ export const TreatmentArchitecture = () => {
                       <p className="text-sm text-muted-foreground leading-relaxed">{data.description}</p>
                     </div>
                   </div>
-
-                  {/* High-end photo placeholder */}
                   <div className="aspect-[16/9] bg-card border border-primary/10 flex items-center justify-center">
                     <span className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground/30">
                       High-Resolution Photography
                     </span>
                   </div>
-
-                  {/* Director's Rule: dedicated CTA per block */}
                   <div className="text-center">
                     <button
                       onClick={() => openConsultation(data.name)}
@@ -122,8 +119,6 @@ export const TreatmentArchitecture = () => {
                       {t.treatments.checkAvailability}
                     </button>
                   </div>
-
-                  {/* Gold divider */}
                   {i < treatments.length - 1 && (
                     <div className="pt-8">
                       <div className="h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
