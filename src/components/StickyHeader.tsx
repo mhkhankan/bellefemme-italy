@@ -1,7 +1,12 @@
 import { motion } from 'framer-motion';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { LanguageSwitcher } from './LanguageSwitcher';
+import { Link } from 'react-router-dom';
 import sealImage from '@/assets/seal.png';
 
 export const StickyHeader = () => {
+  const { t } = useLanguage();
+
   return (
     <motion.header
       initial={{ opacity: 0 }}
@@ -17,24 +22,28 @@ export const StickyHeader = () => {
           </span>
         </a>
         <nav className="hidden md:flex gap-10">
-          {['Atelier', 'Academy', 'Heritage', 'Concierge'].map((item) => (
-            <a
-              key={item}
-              href={`#${item.toLowerCase()}`}
-              className="text-[11px] tracking-[0.25em] uppercase text-foreground/40 hover:text-primary transition-colors duration-500"
-            >
-              {item}
-            </a>
-          ))}
+          <a
+            href="#atelier"
+            className="text-[11px] tracking-[0.25em] uppercase text-foreground/40 hover:text-primary transition-colors duration-500"
+          >
+            {t.nav.atelier}
+          </a>
+          <a
+            href="#academy"
+            className="text-[11px] tracking-[0.25em] uppercase text-foreground/40 hover:text-primary transition-colors duration-500"
+          >
+            {t.nav.academy}
+          </a>
+          <Link
+            to="/la-firma"
+            className="text-[11px] tracking-[0.25em] uppercase text-foreground/40 hover:text-primary transition-colors duration-500"
+          >
+            {t.nav.firma}
+          </Link>
         </nav>
-        <a
-          href="https://wa.me/393516605507?text=Ciao%20Mouna%2C%20vorrei%20prenotare%20una%20consulenza%20privata."
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-[10px] tracking-[0.2em] uppercase text-primary border border-primary/30 px-4 py-2 min-h-[44px] flex items-center hover:bg-primary hover:text-primary-foreground transition-all duration-500"
-        >
-          Direct Inquiry
-        </a>
+        <div className="flex items-center gap-4">
+          <LanguageSwitcher />
+        </div>
       </div>
     </motion.header>
   );

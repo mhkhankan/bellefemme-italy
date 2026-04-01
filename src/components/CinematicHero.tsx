@@ -1,7 +1,10 @@
 import { motion } from 'framer-motion';
+import { useLanguage } from '@/contexts/LanguageContext';
 import sealImage from '@/assets/seal.png';
 
 export const CinematicHero = () => {
+  const { t } = useLanguage();
+
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -18,10 +21,12 @@ export const CinematicHero = () => {
         poster="/hero-poster.jpg"
       />
 
-      {/* Forest green gradient overlay */}
+      {/* 50% Forest green gradient overlay on bottom half */}
       <div
         className="absolute inset-0 pointer-events-none"
-        style={{ background: 'linear-gradient(to bottom, hsla(150,30%,7%,0.6), hsla(150,30%,7%,0.85))' }}
+        style={{
+          background: 'linear-gradient(to bottom, hsla(150,30%,7%,0.25) 0%, hsla(150,30%,7%,0.5) 40%, hsla(150,30%,7%,0.85) 100%)',
+        }}
       />
 
       {/* Content */}
@@ -48,14 +53,13 @@ export const CinematicHero = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.4 }}
-          className="text-center space-y-4"
+          className="text-center space-y-4 max-w-xl"
         >
           <h1 className="font-cormorant text-4xl md:text-6xl lg:text-7xl font-light text-foreground tracking-[3px] leading-[1.1]">
-            The Art of<br />
-            <span className="italic text-primary">Precision</span>
+            {t.hero.title}
           </h1>
-          <p className="text-sm text-foreground/50 max-w-sm mx-auto leading-relaxed">
-            Where architectural science meets elite permanent makeup artistry.
+          <p className="text-sm text-foreground/50 max-w-md mx-auto leading-relaxed">
+            {t.hero.subtitle}
           </p>
         </motion.div>
 
@@ -68,15 +72,15 @@ export const CinematicHero = () => {
         >
           <button
             onClick={() => scrollTo('atelier')}
-            className="flex-1 text-[11px] tracking-[0.2em] uppercase bg-primary text-primary-foreground px-8 py-4 min-h-[44px] hover:bg-primary/90 transition-all duration-500"
+            className="flex-1 font-inter font-bold text-[11px] tracking-[0.2em] uppercase bg-primary text-primary-foreground px-8 py-4 min-h-[44px] hover:bg-primary/90 transition-all duration-500"
           >
-            Enter the Atelier
+            {t.nav.atelier}
           </button>
           <button
             onClick={() => scrollTo('academy')}
-            className="flex-1 text-[11px] tracking-[0.2em] uppercase border border-primary/40 text-primary px-8 py-4 min-h-[44px] hover:bg-primary hover:text-primary-foreground transition-all duration-500"
+            className="flex-1 font-inter font-bold text-[11px] tracking-[0.2em] uppercase border border-primary/40 text-primary px-8 py-4 min-h-[44px] hover:bg-primary hover:text-primary-foreground transition-all duration-500"
           >
-            The Academy
+            {t.nav.academy}
           </button>
         </motion.div>
       </div>
