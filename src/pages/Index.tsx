@@ -1,4 +1,4 @@
-import { SplitHero } from '@/components/SplitHero';
+import { CinematicHero } from '@/components/CinematicHero';
 import { TreatmentArchitecture } from '@/components/TreatmentArchitecture';
 import { Heritage } from '@/components/Heritage';
 import { Concierge } from '@/components/Concierge';
@@ -10,7 +10,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <StickyHeader />
-      <SplitHero />
+      <CinematicHero />
       <TreatmentArchitecture />
       <Heritage />
       <Concierge />
