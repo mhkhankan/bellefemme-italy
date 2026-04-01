@@ -1,4 +1,4 @@
-import { MessageCircle } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 export const WhatsAppSticky = () => {
   return (
@@ -8,9 +8,9 @@ export const WhatsAppSticky = () => {
       rel="noopener noreferrer"
       className="fixed right-6 bottom-6 z-50 flex items-center gap-3 group border border-primary/30 bg-background/90 backdrop-blur-sm px-4 py-3 hover:bg-primary hover:border-primary transition-all duration-500"
     >
-      <MessageCircle className="w-4 h-4 text-primary group-hover:text-primary-foreground transition-colors" />
-      <span className="text-[10px] tracking-[0.15em] uppercase text-primary group-hover:text-primary-foreground transition-colors hidden sm:inline">
-        WhatsApp Consultation
+      <ArrowRight className="w-3.5 h-3.5 text-primary group-hover:text-primary-foreground transition-colors" />
+      <span className="text-[10px] tracking-[0.15em] uppercase text-primary group-hover:text-primary-foreground transition-colors">
+        Consultation
       </span>
     </a>
   );

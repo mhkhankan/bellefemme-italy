@@ -29,7 +29,7 @@ export const StickyHeader = () => {
           rel="noopener noreferrer"
           className="text-[10px] tracking-[0.2em] uppercase text-primary border border-primary/30 px-4 py-2 hover:bg-primary hover:text-primary-foreground transition-all duration-500"
         >
-          Book Now
+          Direct Inquiry
         </a>
       </div>
     </motion.header>
