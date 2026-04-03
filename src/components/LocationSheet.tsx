@@ -5,6 +5,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { supabase } from '@/integrations/supabase/client';
 import { useEffect, useState } from 'react';
 import { useToast } from '@/hooks/use-toast';
+import { useScarcity } from '@/hooks/useScarcity';
 
 const WHATSAPP_BASE = 'https://wa.me/393516605507?text=';
 
@@ -14,7 +15,7 @@ interface SpotData {
 }
 
 const activeLocations = ['Varese', 'Jerago con Orago', 'Gavirate', 'Cocquio Trevisago'];
-const phantomLocations = ['Milano', 'Roma'];
+const prestigeLocations = ['Milano', 'Roma'];
 
 interface LocationSheetProps {
   open: boolean;
@@ -27,9 +28,10 @@ export const LocationSheet = ({ open, onOpenChange, treatmentName }: LocationShe
   const { t, language } = useLanguage();
   const { toast } = useToast();
   const [spots, setSpots] = useState<SpotData[]>([]);
-  const [phantomPhone, setPhantomPhone] = useState('');
-  const [phantomCity, setPhantomCity] = useState('');
+  const [prestigePhone, setPrestigePhone] = useState('');
+  const [prestigeCity, setPrestigeCity] = useState('');
   const [submitting, setSubmitting] = useState(false);
+  const scarcitySpots = useScarcity();
 
   useEffect(() => {
     if (open) {
@@ -43,7 +45,6 @@ export const LocationSheet = ({ open, onOpenChange, treatmentName }: LocationShe
   }, [open]);
 
   const handleSelect = (location: string) => {
-    // Italian message for active hubs
     const msg = language === 'it'
       ? `Buongiorno Mouna, desidero una consulenza presso l'Atelier di ${location} per ${treatmentName}.`
       : `Hi Mouna, I would like a consultation at the ${location} Atelier for ${treatmentName}.`;
@@ -51,25 +52,29 @@ export const LocationSheet = ({ open, onOpenChange, treatmentName }: LocationShe
     onOpenChange(false);
   };
 
-  const handlePhantomSubmit = async () => {
-    if (!phantomPhone.trim() || !phantomCity) return;
+  const handlePrestigeSubmit = async () => {
+    if (!prestigePhone.trim() || !prestigeCity) return;
     setSubmitting(true);
     try {
       await supabase.from('waitlist_leads').insert({
-        phone: phantomPhone.trim(),
-        city: phantomCity,
+        phone: prestigePhone.trim(),
+        city: prestigeCity,
         treatment: treatmentName,
       });
       toast({ title: t.concierge.waitlistSuccess });
-      setPhantomPhone('');
-      setPhantomCity('');
+      setPrestigePhone('');
+      setPrestigeCity('');
     } catch {
       // silently fail
     }
     setSubmitting(false);
   };
 
-  const getSpots = (loc: string) => spots.find((s) => s.location === loc)?.spots_remaining ?? 4;
+  const getSpots = (loc: string) => spots.find((s) => s.location === loc)?.spots_remaining ?? scarcitySpots;
+
+  const prestigeLabel = language === 'it'
+    ? "Atelier al completo. Inserisci il tuo numero per l'accesso prioritario alla prossima apertura."
+    : 'Atelier fully booked. Enter your number for priority access to the next opening.';
 
   const content = (
     <div className="space-y-4 py-4 px-2">
@@ -93,43 +98,41 @@ export const LocationSheet = ({ open, onOpenChange, treatmentName }: LocationShe
           );
         })}
 
-        {/* Phantom demand — Milano & Roma: WAITLIST ONLY */}
-        {phantomLocations.map((loc) => (
+        {/* Prestige Hubs — Milano & Roma: SOLD OUT / LISTA D'ATTESA */}
+        {prestigeLocations.map((loc) => (
           <div key={loc} className="border-b border-primary/10 last:border-b-0">
-            <div className="w-full text-left font-cormorant text-lg md:text-xl text-foreground/30 px-6 py-4 min-h-[44px] flex items-center justify-between">
+            <button
+              onClick={() => setPrestigeCity(prestigeCity === loc ? '' : loc)}
+              className="w-full text-left font-cormorant text-lg md:text-xl text-foreground/30 px-6 py-4 min-h-[44px] flex items-center justify-between"
+            >
               <span>{loc}</span>
-              <span className="text-[10px] font-inter tracking-[0.1em] uppercase text-destructive/60">
-                {t.treatments.waitlistOnly}
+              <span className="text-[10px] font-inter tracking-[0.15em] uppercase" style={{ color: 'hsl(30, 33%, 48%)' }}>
+                SOLD OUT / LISTA D'ATTESA
               </span>
-            </div>
-            {!phantomCity || phantomCity === loc ? (
-              <div className="px-6 pb-4">
-                <button
-                  onClick={() => setPhantomCity(loc)}
-                  className={`text-[10px] tracking-[0.15em] uppercase text-primary/50 hover:text-primary transition-colors ${phantomCity === loc ? 'hidden' : ''}`}
-                >
-                  → {t.concierge.joinWaitlist}
-                </button>
-                {phantomCity === loc && (
-                  <div className="flex gap-2 mt-2">
-                    <input
-                      type="tel"
-                      value={phantomPhone}
-                      onChange={(e) => setPhantomPhone(e.target.value)}
-                      placeholder={t.concierge.phonePlaceholder}
-                      className="flex-1 bg-transparent border border-primary/20 px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground min-h-[44px]"
-                    />
-                    <button
-                      onClick={handlePhantomSubmit}
-                      disabled={submitting || !phantomPhone.trim()}
-                      className="font-inter font-bold text-[10px] tracking-[0.15em] uppercase bg-primary text-primary-foreground px-4 py-2 min-h-[44px] hover:bg-primary/90 transition-colors disabled:opacity-50"
-                    >
-                      {t.concierge.joinWaitlist}
-                    </button>
-                  </div>
-                )}
+            </button>
+            {prestigeCity === loc && (
+              <div className="px-6 pb-4 space-y-3">
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  {prestigeLabel}
+                </p>
+                <div className="flex gap-2">
+                  <input
+                    type="tel"
+                    value={prestigePhone}
+                    onChange={(e) => setPrestigePhone(e.target.value)}
+                    placeholder={t.concierge.phonePlaceholder}
+                    className="flex-1 bg-transparent border border-primary/20 px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground min-h-[44px]"
+                  />
+                  <button
+                    onClick={handlePrestigeSubmit}
+                    disabled={submitting || !prestigePhone.trim()}
+                    className="font-inter font-bold text-[10px] tracking-[0.15em] uppercase bg-primary text-primary-foreground px-4 py-2 min-h-[44px] hover:bg-primary/90 transition-colors disabled:opacity-50"
+                  >
+                    {t.concierge.joinWaitlist}
+                  </button>
+                </div>
               </div>
-            ) : null}
+            )}
           </div>
         ))}
       </div>
