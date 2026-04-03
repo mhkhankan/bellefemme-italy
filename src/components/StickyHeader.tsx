@@ -1,8 +1,7 @@
 import { useLanguage } from '@/contexts/LanguageContext';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import sealImage from '@/assets/seal.png';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 
 export const StickyHeader = () => {
@@ -11,6 +10,20 @@ export const StickyHeader = () => {
   const navigate = useNavigate();
   const isHome = location.pathname === '/';
   const [menuOpen, setMenuOpen] = useState(false);
+  const [visible, setVisible] = useState(!isHome); // visible immediately on non-home pages
+
+  useEffect(() => {
+    if (!isHome) {
+      setVisible(true);
+      return;
+    }
+    const handleScroll = () => {
+      setVisible(window.scrollY > 150);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isHome]);
 
   const scrollToSection = (id: string) => {
     setMenuOpen(false);
@@ -29,14 +42,19 @@ export const StickyHeader = () => {
         backgroundColor: 'hsla(150, 30%, 7%, 0.9)',
         backdropFilter: 'blur(12px)',
         WebkitBackdropFilter: 'blur(12px)',
+        opacity: visible ? 1 : 0,
+        pointerEvents: visible ? 'auto' : 'none',
+        transition: 'opacity 1.5s ease',
       }}
     >
       <div className="container mx-auto px-6 md:px-12 py-3 flex items-center justify-between">
         {/* Logo → always links to Home */}
-        <Link to="/" className="flex items-center gap-3">
-          <img src={sealImage} alt="Belle Femme" className="w-8 h-8 object-contain" />
-          <span className="font-cormorant text-sm tracking-[0.3em] uppercase text-primary hidden sm:inline">
-            Belle Femme
+        <Link to="/" className="flex flex-col">
+          <span className="font-cormorant text-sm tracking-[0.4em] uppercase text-primary">
+            Atelier
+          </span>
+          <span className="font-inter text-[9px] tracking-[0.2em] uppercase text-foreground/40">
+            by Mouna Chabbar
           </span>
         </Link>
 
@@ -64,7 +82,6 @@ export const StickyHeader = () => {
 
         <div className="flex items-center gap-2">
           <LanguageSwitcher />
-          {/* Mobile hamburger */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             className="md:hidden min-h-[44px] min-w-[44px] flex items-center justify-center text-foreground/60"

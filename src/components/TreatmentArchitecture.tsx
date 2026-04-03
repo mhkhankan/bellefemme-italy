@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { LocationSheet } from './LocationSheet';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useScarcity } from '@/hooks/useScarcity';
 
 const treatments = [
   { number: '01', titleKey: 'brows' as const },
@@ -17,12 +18,17 @@ const fadeInVariants = {
 export const TreatmentArchitecture = () => {
   const [sheetOpen, setSheetOpen] = useState(false);
   const [selectedTreatment, setSelectedTreatment] = useState('');
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const spots = useScarcity();
 
   const openConsultation = (treatmentName: string) => {
     setSelectedTreatment(treatmentName);
     setSheetOpen(true);
   };
+
+  const tickerText = language === 'it'
+    ? `${spots} Posti Disponibili questa settimana a Varese`
+    : `${spots} Spots Available this week in Varese`;
 
   return (
     <>
@@ -35,12 +41,16 @@ export const TreatmentArchitecture = () => {
             whileInView="visible"
             viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.5, ease: 'easeOut' }}
-            className="text-center"
+            className="text-center space-y-6"
           >
             <p className="text-[10px] tracking-[0.4em] uppercase text-primary/60 mb-4">Treatment Architecture</p>
             <h2 className="font-cormorant text-3xl md:text-5xl font-light text-foreground tracking-[2px]">
               {t.nav.atelier}
             </h2>
+            {/* Scarcity ticker */}
+            <p className="text-[11px] tracking-[0.2em] uppercase text-primary/80 font-inter">
+              {tickerText}
+            </p>
           </motion.div>
         </div>
 
