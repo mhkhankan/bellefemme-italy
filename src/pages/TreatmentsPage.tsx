@@ -136,7 +136,7 @@ const TreatmentsPage = () => {
   const tp = t.treatmentsPage;
 
   const treatments: TreatmentData[] = [
-    { key: 'brows', ...tp.brows, beforeImg: PLACEHOLDER, afterImg: PLACEHOLDER },
+    { key: 'brows', ...tp.brows, beforeImg: '/treatments/brow-architecture-mapping.jpg', afterImg: PLACEHOLDER },
     { key: 'lips', ...tp.lips, beforeImg: PLACEHOLDER, afterImg: PLACEHOLDER },
     { key: 'eyes', ...tp.eyes, beforeImg: PLACEHOLDER, afterImg: PLACEHOLDER },
     { key: 'paramedical', ...tp.paramedical, beforeImg: PLACEHOLDER, afterImg: PLACEHOLDER },

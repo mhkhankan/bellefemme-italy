@@ -120,11 +120,15 @@ export const TreatmentArchitecture = () => {
                       <p className="text-sm text-muted-foreground leading-relaxed">{data.description}</p>
                     </div>
                   </div>
-                  <div className="aspect-[16/9] bg-card border border-primary/10 flex items-center justify-center">
-                    <span className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground/30">
-                      High-Resolution Photography
-                    </span>
-                  </div>
+                  {item.titleKey === 'brows' ? (
+                    <img src="/treatments/brow-architecture-mapping.jpg" alt={data.name} className="aspect-[4/5] w-full object-cover" />
+                  ) : (
+                    <div className="aspect-[16/9] bg-card border border-primary/10 flex items-center justify-center">
+                      <span className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground/30">
+                        High-Resolution Photography
+                      </span>
+                    </div>
+                  )}
                   <div className="text-center">
                     <button
                       onClick={() => openConsultation(data.name)}
