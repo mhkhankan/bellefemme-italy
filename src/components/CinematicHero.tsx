@@ -8,6 +8,7 @@ export const CinematicHero = () => {
         src="/branding/hero-architect.jpg"
         alt=""
         className="absolute inset-0 w-full h-full object-cover"
+        style={{ objectPosition: 'center 20%' }}
       />
 
       {/* Subtle bottom gradient for depth */}
