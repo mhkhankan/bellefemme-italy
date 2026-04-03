@@ -70,9 +70,13 @@ export const TreatmentArchitecture = () => {
                 style={{ minHeight: '100svh', scrollSnapAlign: 'start' }}
               >
                 <div className="flex-1 flex items-center justify-center mb-8">
-                  <div className="w-full aspect-[4/5] bg-card border border-primary/10 flex items-center justify-center">
-                    <span className="font-cormorant text-6xl font-light text-primary/10">{item.number}</span>
-                  </div>
+                  {item.titleKey === 'brows' ? (
+                    <img src="/treatments/brow-architecture-mapping.jpg" alt={data.name} className="w-full aspect-[4/5] object-cover" />
+                  ) : (
+                    <div className="w-full aspect-[4/5] bg-card border border-primary/10 flex items-center justify-center">
+                      <span className="font-cormorant text-6xl font-light text-primary/10">{item.number}</span>
+                    </div>
+                  )}
                 </div>
                 {/* Thumb zone — bottom 30% */}
                 <div className="space-y-4">
