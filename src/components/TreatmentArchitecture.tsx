@@ -70,9 +70,13 @@ export const TreatmentArchitecture = () => {
                 style={{ minHeight: '100svh', scrollSnapAlign: 'start' }}
               >
                 <div className="flex-1 flex items-center justify-center mb-8">
-                  <div className="w-full aspect-[4/5] bg-card border border-primary/10 flex items-center justify-center">
-                    <span className="font-cormorant text-6xl font-light text-primary/10">{item.number}</span>
-                  </div>
+                  {item.titleKey === 'brows' ? (
+                    <img src="/treatments/brow-architecture-mapping.jpg" alt={data.name} className="w-full aspect-[4/5] object-cover" />
+                  ) : (
+                    <div className="w-full aspect-[4/5] bg-card border border-primary/10 flex items-center justify-center">
+                      <span className="font-cormorant text-6xl font-light text-primary/10">{item.number}</span>
+                    </div>
+                  )}
                 </div>
                 {/* Thumb zone — bottom 30% */}
                 <div className="space-y-4">
@@ -116,11 +120,15 @@ export const TreatmentArchitecture = () => {
                       <p className="text-sm text-muted-foreground leading-relaxed">{data.description}</p>
                     </div>
                   </div>
-                  <div className="aspect-[16/9] bg-card border border-primary/10 flex items-center justify-center">
-                    <span className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground/30">
-                      High-Resolution Photography
-                    </span>
-                  </div>
+                  {item.titleKey === 'brows' ? (
+                    <img src="/treatments/brow-architecture-mapping.jpg" alt={data.name} className="aspect-[4/5] w-full object-cover" />
+                  ) : (
+                    <div className="aspect-[16/9] bg-card border border-primary/10 flex items-center justify-center">
+                      <span className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground/30">
+                        High-Resolution Photography
+                      </span>
+                    </div>
+                  )}
                   <div className="text-center">
                     <button
                       onClick={() => openConsultation(data.name)}
