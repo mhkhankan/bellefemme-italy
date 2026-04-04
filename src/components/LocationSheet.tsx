@@ -45,9 +45,6 @@ export const LocationSheet = ({ open, onOpenChange, treatmentName }: LocationShe
         .then(({ data }) => {
           if (data) setSpots(data);
           setLoading(false);
-        })
-        .catch(() => {
-          setLoading(false);
         });
     }
   }, [open]);
