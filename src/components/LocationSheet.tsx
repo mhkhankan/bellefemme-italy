@@ -5,7 +5,6 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { supabase } from '@/integrations/supabase/client';
 import { useEffect, useState } from 'react';
 import { useToast } from '@/hooks/use-toast';
-import { useScarcity } from '@/hooks/useScarcity';
 
 const WHATSAPP_BASE = 'https://wa.me/393516605507?text=';
 
@@ -28,22 +27,27 @@ export const LocationSheet = ({ open, onOpenChange, treatmentName }: LocationShe
   const { t, language } = useLanguage();
   const { toast } = useToast();
   const [spots, setSpots] = useState<SpotData[]>([]);
+  const [loading, setLoading] = useState(true);
   const [eliteModalCity, setEliteModalCity] = useState('');
   const [eliteName, setEliteName] = useState('');
   const [elitePhone, setElitePhone] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const scarcitySpots = useScarcity();
 
   useEffect(() => {
     if (open) {
       setSubmitted(false);
       setEliteModalCity('');
+      setLoading(true);
       supabase
         .from('spots_availability')
         .select('location, spots_remaining')
         .then(({ data }) => {
           if (data) setSpots(data);
+          setLoading(false);
+        })
+        .catch(() => {
+          setLoading(false);
         });
     }
   }, [open]);
@@ -66,12 +70,15 @@ export const LocationSheet = ({ open, onOpenChange, treatmentName }: LocationShe
       });
       setSubmitted(true);
     } catch {
-      // silently fail
+      toast({
+        title: language === 'it' ? 'Errore di connessione.' : 'Connection error.',
+        description: language === 'it' ? 'Scrivici direttamente su WhatsApp.' : 'Please contact us on WhatsApp.',
+      });
     }
     setSubmitting(false);
   };
 
-  const getSpots = (loc: string) => spots.find((s) => s.location === loc)?.spots_remaining ?? scarcitySpots;
+  const getSpots = (loc: string) => spots.find((s) => s.location === loc)?.spots_remaining;
 
   // Elite Atelier "ACCESSO RISERVATO" modal
   if (eliteModalCity && !submitted) {
@@ -186,10 +193,17 @@ export const LocationSheet = ({ open, onOpenChange, treatmentName }: LocationShe
   }
 
   // Main location selector
+  const consultationNote = language === 'it'
+    ? 'Ogni trattamento è preceduto da una consulenza personalizzata — in sede o via WhatsApp.'
+    : 'Every treatment begins with a personalised consultation — in person or via WhatsApp.';
+
   const content = (
     <div className="space-y-4 py-4 px-2">
       <p className="text-center text-sm text-muted-foreground">
         {t.concierge.whereDesire}
+      </p>
+      <p className="font-cormorant italic text-sm text-primary/70 text-center px-4 mb-4">
+        {consultationNote}
       </p>
       <div className="flex flex-col gap-1">
         {/* Active Hubs */}
@@ -203,7 +217,11 @@ export const LocationSheet = ({ open, onOpenChange, treatmentName }: LocationShe
             >
               <span>{loc}</span>
               <span className="text-[10px] font-inter tracking-[0.1em] uppercase text-primary/60">
-                {remaining} {t.treatments.spotsRemaining}
+                {loading ? (
+                  <span className="shimmer-venetian inline-block w-20 h-3 rounded" />
+                ) : remaining !== undefined ? (
+                  `${remaining} ${t.treatments.spotsRemaining}`
+                ) : null}
               </span>
             </button>
           );
@@ -214,12 +232,16 @@ export const LocationSheet = ({ open, onOpenChange, treatmentName }: LocationShe
           <button
             key={loc}
             onClick={() => setEliteModalCity(loc)}
-            className="w-full text-left font-cormorant text-lg md:text-xl text-foreground/30 hover:text-foreground/50 px-6 py-4 min-h-[48px] border-b border-primary/10 last:border-b-0 transition-all duration-300 flex items-center justify-between"
+            className="w-full text-left font-cormorant text-lg md:text-xl text-foreground/70 hover:text-primary px-6 py-4 min-h-[48px] border-b border-primary/10 last:border-b-0 hover:bg-primary/5 transition-all duration-300 flex items-center justify-between"
           >
             <span>{loc}</span>
             <span
-              className="text-[10px] font-inter tracking-[0.15em] uppercase"
-              style={{ color: 'hsl(43, 76%, 52%)' }}
+              className="text-[9px] font-inter tracking-[0.15em] uppercase px-2 py-1 rounded-full"
+              style={{
+                backgroundColor: 'hsl(43 76% 52% / 0.15)',
+                border: '1px solid hsl(43 76% 52% / 0.4)',
+                color: 'hsl(43 76% 52%)',
+              }}
             >
               LISTA PRIORITARIA
             </span>

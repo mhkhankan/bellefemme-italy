@@ -1,8 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { LocationSheet } from './LocationSheet';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { useScarcity } from '@/hooks/useScarcity';
 
 interface Treatment {
   number: string;
@@ -70,6 +69,14 @@ const TREATMENTS: Treatment[] = [
     description: 'Il progetto totale del volto. Utilizzo della Sezione Aurea per ridisegnare i punti di forza del viso attraverso l\'equilibrio visagistico.',
     imagePath: '/treatments/07-brow-blueprint.jpg',
   },
+  {
+    number: '08',
+    id: 'private-consultation',
+    title: 'PRIVATE CONSULTATION',
+    subtitle: "Il Primo Passo verso l'Armonia",
+    description: 'Ogni percorso Belle Femme inizia con una consulenza personalizzata con Mouna Chabbar — in sede o via WhatsApp. Un\'analisi visagistica del viso, della struttura ossea e delle aspettative. Nessun trattamento senza comprensione.',
+    imagePath: '/treatments/08-consultation.jpg',
+  },
 ];
 
 const fadeIn = {
@@ -82,21 +89,64 @@ export const TreatmentArchitecture = () => {
   const [selectedTreatment, setSelectedTreatment] = useState('');
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const { t, language } = useLanguage();
-  const spots = useScarcity();
   const [activeIndex, setActiveIndex] = useState(0);
+  const [inSection, setInSection] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const section = document.getElementById('atelier');
+      if (section) {
+        const rect = section.getBoundingClientRect();
+        setInSection(rect.top < window.innerHeight && rect.bottom > 0);
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const openConsultation = (treatmentName: string) => {
     setSelectedTreatment(treatmentName);
     setSheetOpen(true);
   };
 
+  const handleTreatmentCTA = (item: Treatment) => {
+    if (item.id === 'private-consultation') {
+      const msg = encodeURIComponent('Buongiorno Mouna, vorrei verificare la disponibilità per una consulenza privata.');
+      window.open(`https://wa.me/393516605507?text=${msg}`, '_blank');
+    } else {
+      openConsultation(item.title);
+    }
+  };
+
   const tickerText = language === 'it'
-    ? `${spots} Posti Disponibili questa settimana a Varese`
-    : `${spots} Spots Available this week in Varese`;
+    ? 'La Collezione — 8 Trattamenti Esclusivi'
+    : 'The Collection — 8 Exclusive Treatments';
 
   const scrollToTreatment = (index: number) => {
     const el = document.getElementById(`treatment-${index}`);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const TreatmentImage = ({ item, sizeClass, numberSize }: { item: Treatment; sizeClass: string; numberSize: string }) => {
+    const [imgFailed, setImgFailed] = useState(false);
+    return (
+      <>
+        {!imgFailed ? (
+          <img
+            src={item.imagePath}
+            alt={item.title}
+            className={`${sizeClass} object-cover`}
+            loading={item.number <= '02' ? 'eager' : 'lazy'}
+            onError={() => setImgFailed(true)}
+          />
+        ) : (
+          <div className={`${sizeClass} shimmer-venetian flex items-center justify-center`}>
+            <span className={`font-cormorant ${numberSize} font-light text-primary/20`}>{item.number}</span>
+          </div>
+        )}
+      </>
+    );
   };
 
   return (
@@ -113,7 +163,7 @@ export const TreatmentArchitecture = () => {
             className="text-center space-y-6"
           >
             <p className="text-[10px] tracking-[0.4em] uppercase text-primary/60">
-              The 7-Point Collection
+              The 8-Point Collection
             </p>
             <h2 className="font-cormorant text-3xl md:text-5xl font-light text-foreground tracking-[2px]">
               {t.nav.atelier}
@@ -167,19 +217,7 @@ export const TreatmentArchitecture = () => {
             >
               {/* Treatment image */}
               <div className="flex-1 flex items-center justify-center mb-8">
-                <img
-                  src={item.imagePath}
-                  alt={item.title}
-                  className="w-full aspect-[4/5] object-cover"
-                  loading={index === 0 ? 'eager' : 'lazy'}
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).style.display = 'none';
-                    (e.target as HTMLImageElement).nextElementSibling?.classList.remove('hidden');
-                  }}
-                />
-                <div className="hidden w-full aspect-[4/5] shimmer-venetian flex items-center justify-center">
-                  <span className="font-cormorant text-6xl font-light text-primary/10">{item.number}</span>
-                </div>
+                <TreatmentImage item={item} sizeClass="w-full aspect-[4/5]" numberSize="text-6xl" />
               </div>
 
               {/* Thumb zone — bottom 30% */}
@@ -217,15 +255,36 @@ export const TreatmentArchitecture = () => {
                 </AnimatePresence>
 
                 <button
-                  onClick={() => openConsultation(item.title)}
+                  onClick={() => handleTreatmentCTA(item)}
                   className="w-full font-inter font-bold text-[10px] tracking-[0.2em] uppercase bg-primary text-primary-foreground px-8 py-4 min-h-[48px] hover:bg-primary/90 transition-all duration-500 mt-4"
                 >
-                  {t.treatments.checkAvailability}
+                  {item.id === 'private-consultation'
+                    ? 'Verifica Disponibilità Consulenza'
+                    : t.treatments.checkAvailability}
                 </button>
               </div>
             </motion.div>
           ))}
         </div>
+
+        {/* Mobile scroll dot indicator */}
+        {inSection && (
+          <div className="md:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-40 flex items-center gap-2">
+            {TREATMENTS.map((_, i) => (
+              <div
+                key={i}
+                className="rounded-full transition-all duration-300"
+                style={{
+                  width: activeIndex === i ? '8px' : '4px',
+                  height: activeIndex === i ? '8px' : '4px',
+                  backgroundColor: activeIndex === i
+                    ? 'hsl(43 76% 52%)'
+                    : 'hsl(43 76% 52% / 0.3)',
+                }}
+              />
+            ))}
+          </div>
+        )}
 
         {/* Desktop: natural scroll */}
         <div className="hidden md:block">
@@ -246,20 +305,7 @@ export const TreatmentArchitecture = () => {
                 <div className="grid grid-cols-12 gap-16 items-center w-full py-16">
                   {/* Image column */}
                   <div className={`col-span-5 ${index % 2 === 0 ? 'order-1' : 'order-2'}`}>
-                    <img
-                      src={item.imagePath}
-                      alt={item.title}
-                      className="w-full aspect-[4/5] object-cover"
-                      loading={index < 2 ? 'eager' : 'lazy'}
-                      onError={(e) => {
-                        const target = e.target as HTMLImageElement;
-                        target.style.display = 'none';
-                        target.nextElementSibling?.classList.remove('hidden');
-                      }}
-                    />
-                    <div className="hidden w-full aspect-[4/5] shimmer-venetian flex items-center justify-center">
-                      <span className="font-cormorant text-8xl font-light text-primary/10">{item.number}</span>
-                    </div>
+                    <TreatmentImage item={item} sizeClass="w-full aspect-[4/5]" numberSize="text-8xl" />
                   </div>
 
                   {/* Text column */}
@@ -292,10 +338,12 @@ export const TreatmentArchitecture = () => {
                     </AnimatePresence>
 
                     <button
-                      onClick={() => openConsultation(item.title)}
+                      onClick={() => handleTreatmentCTA(item)}
                       className="font-inter font-bold text-[10px] tracking-[0.2em] uppercase border border-primary/30 text-primary px-10 py-4 min-h-[48px] hover:bg-primary hover:text-primary-foreground transition-all duration-500"
                     >
-                      {t.treatments.checkAvailability}
+                      {item.id === 'private-consultation'
+                        ? 'Verifica Disponibilità Consulenza'
+                        : t.treatments.checkAvailability}
                     </button>
                   </div>
                 </div>

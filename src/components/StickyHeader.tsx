@@ -18,7 +18,7 @@ export const StickyHeader = () => {
       return;
     }
     const handleScroll = () => {
-      setVisible(window.scrollY > 150);
+      setVisible(window.scrollY > 80);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
@@ -44,7 +44,7 @@ export const StickyHeader = () => {
         WebkitBackdropFilter: 'blur(12px)',
         opacity: visible ? 1 : 0,
         pointerEvents: visible ? 'auto' : 'none',
-        transition: 'opacity 1.5s ease',
+        transition: 'opacity 0.6s ease',
       }}
     >
       <div className="container mx-auto px-6 md:px-12 py-3 flex items-center justify-between">

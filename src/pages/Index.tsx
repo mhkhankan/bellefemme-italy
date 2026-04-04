@@ -4,11 +4,12 @@ import { AcademySection } from '@/components/AcademySection';
 import { SiteFooter } from '@/components/SiteFooter';
 import { WhatsAppSticky } from '@/components/WhatsAppSticky';
 import { StickyHeader } from '@/components/StickyHeader';
+import { CookieConsent } from '@/components/CookieConsent';
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background relative">
-      {/* Phi Grid Blueprint — fixed at 5% opacity */}
+      {/* Phi Grid Blueprint — fixed at 3% opacity */}
       <div
         className="fixed inset-0 z-0 pointer-events-none"
         style={{
@@ -25,6 +26,7 @@ const Index = () => {
         <AcademySection />
         <SiteFooter />
         <WhatsAppSticky />
+        <CookieConsent />
       </div>
     </div>
   );

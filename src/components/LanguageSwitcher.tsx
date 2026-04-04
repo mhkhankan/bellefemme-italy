@@ -1,10 +1,9 @@
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Language } from '@/lib/translations';
 
-const languages: { code: Language; label: string; disabled?: boolean }[] = [
+const languages: { code: Language; label: string }[] = [
   { code: 'it', label: 'IT' },
   { code: 'en', label: 'EN' },
-  { code: 'ar', label: 'AR' },
 ];
 
 export const LanguageSwitcher = () => {

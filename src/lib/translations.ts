@@ -1,4 +1,4 @@
-export type Language = 'it' | 'en' | 'ar';
+export type Language = 'it' | 'en';
 
 export interface DaySyllabus {
   title: string;
@@ -229,6 +229,11 @@ export const translations = {
       joinWaitlist: 'Entra in Lista d\'Attesa',
       waitlistSuccess: 'Iscrizione completata!',
     },
+    cookie: {
+      text: 'Utilizziamo cookie tecnici per il funzionamento del sito. Continuando accetti il loro utilizzo.',
+      accept: 'Accetta',
+      reject: 'Rifiuta',
+    },
   },
   en: {
     hero: {
@@ -441,145 +446,14 @@ export const translations = {
       joinWaitlist: 'Join Waitlist',
       waitlistSuccess: 'Successfully joined!',
     },
-  },
-  ar: {
-    hero: {
-      title: 'هندسة الجمال',
-      subtitle: 'احجزي استشارتك الخاصة مع المدربة الرئيسية منى شبار في الأتيليه المفضل لديك.',
-      viewCourses: 'عرض الدورات',
-      bookTreatment: 'حجز موعد',
-    },
-    nav: {
-      atelier: 'الأتيليه',
-      academy: 'الأكاديمية',
-      firma: 'التوقيع',
-    },
-    treatments: {
-      title: 'العلاجات',
-      subtitle: 'خدمات تجميلية عالية الجودة',
-      microblading: 'مايكروبليدنغ',
-      lipBlush: 'ليب بلاش',
-      plasmaPen: 'بلازما بن',
-      checkAvailability: 'تحقق من التوفر',
-      spotsRemaining: 'أماكن متاحة',
-      soldOut: 'نفذت',
-      waitlistOnly: 'قائمة الانتظار فقط',
-    },
-    treatmentsPage: {
-      heroTitle: 'فن الوجه',
-      heroSubtitle: 'علاجات تجميلية راقية',
-      cta: 'طلب استشارة خاصة',
-      safety: 'متوافق مع REACH 2026',
-      healedResults: 'نتائج بعد الشفاء',
-      beforeLabel: 'قبل',
-      afterLabel: 'بعد',
-      brows: {
-        name: 'حواجب هندسية',
-        poetic: 'هندسة النظرة',
-        description: 'رسم دقيق للتناسق الرياضي.',
-      },
-      lips: {
-        name: 'بلاش الشفاه المخملي',
-        poetic: 'سيمفونية اللون',
-        description: 'استعادة طبيعية للمحيط واللون.',
-      },
-      eyes: {
-        name: 'العيون',
-        poetic: 'أناقة خالدة',
-        description: 'آيلاينر دائم وتعزيز النظرة.',
-      },
-      paramedical: {
-        name: 'تحييد الميلانين',
-        poetic: 'ولادة لونية جديدة',
-        description: 'موازنة متخصصة للألوان.',
-      },
-    },
-    gallery: {
-      title: 'المعرض',
-      subtitle: 'أعمالنا',
-      healed: 'نتائج بعد الشفاء',
-      beforeLabel: 'قبل',
-      afterLabel: 'بعد',
-    },
-    contact: {
-      title: 'اتصل بنا',
-      location: 'فاريزي، إيطاليا',
-      whatsapp: 'استشارة مباشرة',
-    },
-    footer: {
-      academy: 'Belle Femme Academy - Varese',
-      reach: 'متوافق REACH 2026',
-      gdpr: 'خصوصية GDPR',
-    },
-    about: {
-      label: 'Belle Femme Academy',
-      heroTitle: 'التوقيع',
-      bio1: 'مع أساس في التصميم الجرافيكي، جلبت منى عيناً فريدة للدقة والتكوين إلى عالم التجميل.',
-      bio2: 'بصفتها حكمة دولية في PMU ومدربة رئيسية معتمدة، درّبت المئات من المحترفين.',
-      bio3: 'اليوم، من استوديو الماستر في فاريزي، تواصل صقل فنها وتدريب الجيل القادم.',
-      credentialsLabel: 'إنجازات مهنية',
-      credentialsTitle: 'مؤهلات وإتقان',
-      credentials: {
-        judge: 'حكمة دولية',
-        judgeSub: 'حكمة رسمية في مسابقات PMU الدولية',
-        trainer: 'مدربة رئيسية معتمدة',
-        trainerSub: 'أكثر من 10 سنوات من التدريب المهني الدولي',
-        design: 'خبيرة تصميم جرافيكي',
-        designSub: 'دقة فنية من خلفية التصميم الجرافيكي',
-        specialist: 'متخصصة متوسطية وعربية',
-        specialistSub: 'خبرة فريدة في الجماليات المتوسطية والعربية',
-      },
-      backToAcademy: 'العودة للأكاديمية',
-    },
-    courses: {
-      title: 'الدورات المهنية',
-      subtitle: 'تدريب متميز للمحترفين',
-      viewDetails: 'تفاصيل الدورة',
-      certNote: 'يحصل جميع الطلاب على شهادة رسمية من Belle Femme Academy ودعم مباشر.',
-      pmu: { title: 'PMU الكامل', duration: '٥ أيام', description: 'أومبري باودر براوز، كفر أب، أومبري/فل ليبس، آيلاينر كلاسيكي' },
-      microblading: { title: 'مايكروبليدنغ فريستايل', duration: '٣ أيام', description: 'تقدم منظم على 14 مستوى' },
-      ombre_powder: { title: 'أومبري باودر براوز', duration: 'يومان', description: 'تقنيات شادينغ مكثفة' },
-      ombre_lips: { title: 'أومبري ليبس', duration: 'يومان', description: 'شادينغ ناعم أو تأثير أحمر الشفاه' },
-      eyeliner: { title: 'آيلاينر كلاسيكي', duration: 'يوم واحد', description: 'تصميم وتقنيات التصبيغ' },
-      masterclass_brows: { title: 'هندسة الحاجب', duration: 'يوم واحد', description: 'رسم متقدم بالبوصلة والخيط' },
-      masterclass_lashes: { title: 'إكستنشن الرموش', duration: 'يوم واحد', description: 'إتقان صنع المراوح' },
-      masterclass_lamination: { title: 'لامينيشن الرموش والحواجب', duration: 'يوم واحد', description: 'رفع متقدم بنظام كيرافيل' },
-    },
-    coursePage: {
-      reach: 'متوافق REACH 2026',
-      asl: 'متوافق ASL',
-      backToAcademy: 'العودة للأكاديمية',
-      bookCourse: 'احجز الدورة',
-      secureYourSeat: 'احجز مقعدك',
-      whatsapp: 'استشارة مباشرة',
-      starterKitBadge: 'طقم مشمول',
-      address: 'استوديو ماستر — فاريزي، إيطاليا',
-      vat: 'P.IVA 03794680128',
-      certTitle: 'الشهادة والدعم',
-      certText: 'شهادة رسمية ودعم مباشر من المدربة الرئيسية منى شبار.',
-    },
-    academy: {
-      title: 'الأكاديمية',
-      subtitle: 'تدريب متميز في فن المكياج الدائم',
-      description: 'تعلمي مباشرة من المدربة الرئيسية منى شبار.',
-      waitlistTitle: 'قائمة الانتظار النخبوية',
-      waitlistCta: 'طلب المنهج',
-      namePlaceholder: 'الاسم الكامل',
-      phonePlaceholder: 'رقم الهاتف',
-      cityPlaceholder: 'المدينة',
-      successMessage: 'تم إرسال الطلب بنجاح!',
-    },
-    concierge: {
-      selectAtelier: 'اختاري الأتيليه',
-      whereDesire: 'أين ترغبين في علاجك؟',
-      phantomLabel: 'قائمة الانتظار فقط',
-      phonePlaceholder: 'رقم هاتفك',
-      joinWaitlist: 'انضمي لقائمة الانتظار',
-      waitlistSuccess: 'تم الانضمام بنجاح!',
+    cookie: {
+      text: 'We use technical cookies for the functioning of the site. By continuing you accept their use.',
+      accept: 'Accept',
+      reject: 'Reject',
     },
   },
 };
 
 export function isRTL(lang: Language): boolean {
-  return lang === 'ar';
+  return false;
 }
