@@ -5,7 +5,7 @@ import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 
 export const AcademySection = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const { toast } = useToast();
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
@@ -26,7 +26,10 @@ export const AcademySection = () => {
       setSubmitted(true);
       toast({ title: t.academy.successMessage });
     } catch {
-      // silently fail
+      toast({
+        title: language === 'it' ? 'Errore di connessione.' : 'Connection error.',
+        description: language === 'it' ? 'Scrivici su WhatsApp per iscriverti.' : 'Please contact us on WhatsApp to register.',
+      });
     }
     setSubmitting(false);
   };

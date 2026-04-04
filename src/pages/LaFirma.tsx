@@ -3,8 +3,8 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { StickyHeader } from '@/components/StickyHeader';
 import { SiteFooter } from '@/components/SiteFooter';
 import { WhatsAppSticky } from '@/components/WhatsAppSticky';
+import { CookieConsent } from '@/components/CookieConsent';
 import { Link } from 'react-router-dom';
-import sealImage from '@/assets/seal.png';
 
 const JURIST_CITIES = ['MILAN', 'DUBAI', 'VENEZIA', 'CAPPADOCIA', 'ROMANIA'];
 
@@ -13,23 +13,19 @@ const LaFirma = () => {
 
   const bioHeader = language === 'it'
     ? "L'Architetto dello Sguardo"
-    : language === 'ar'
-    ? 'مهندسة النظرة'
     : 'The Architect of the Gaze';
 
   const bioBody = language === 'it'
     ? "Con una formazione in Graphic Design e un decennio di maestria globale, Mouna Chabbar non applica semplicemente pigmento; ingegnerizza la simmetria. In qualità di Giurista Internazionale che unisce il rigore tecnico europeo all'estetica mediorientale, il suo \"Metodo Blueprint\" è il gold standard dell'armonia facciale."
-    : language === 'ar'
-    ? 'مع شهادة في التصميم الجرافيكي وعقد من الإتقان العالمي، منى شبار لا تطبق الصبغة فحسب؛ بل تهندس التناسق.'
     : "With a degree in Graphic Design and a decade of global mastery, Mouna Chabbar does not just apply pigment; she engineers symmetry. As an International Jurist bridging European technical rigor with Middle Eastern aesthetics, her \"Blueprint Method\" is the gold standard of facial harmony.";
 
-  const juristLabel = language === 'it' ? 'GIUDICE INTERNAZIONALE' : language === 'ar' ? 'حكمة دولية' : 'INTERNATIONAL JUDGE';
+  const juristLabel = language === 'it' ? 'GIUDICE INTERNAZIONALE' : 'INTERNATIONAL JUDGE';
 
   return (
     <div className="min-h-screen bg-background">
       <StickyHeader />
 
-      {/* Blueprint background layer — 5% opacity golden ratio lines */}
+      {/* Blueprint background layer */}
       <div className="fixed inset-0 pointer-events-none z-0 opacity-[0.04]">
         <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
           <defs>
@@ -66,11 +62,10 @@ const LaFirma = () => {
         </div>
       </section>
 
-      {/* 60/40 Asymmetric Grid — Desktop: sticky portrait left, scrollable bio right */}
+      {/* 60/40 Asymmetric Grid */}
       <section className="relative z-10 pb-16 md:pb-24">
         <div className="container mx-auto px-6 md:px-12 max-w-5xl">
           <div className="flex flex-col md:flex-row gap-12 md:gap-16">
-            {/* Left 60% — Sticky Portrait */}
             <div className="md:w-[58%] md:self-start md:sticky md:top-28">
               <div className="aspect-[3/4] bg-card border border-primary/10 flex items-center justify-center">
                 <span className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground/30">
@@ -79,7 +74,6 @@ const LaFirma = () => {
               </div>
             </div>
 
-            {/* Right 40% — Scrollable bio */}
             <div className="md:w-[42%] space-y-12">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -96,7 +90,6 @@ const LaFirma = () => {
                 </p>
               </motion.div>
 
-              {/* Credentials */}
               <div className="border-t border-primary/10 pt-12 space-y-8">
                 <p className="text-[10px] tracking-[0.4em] uppercase text-primary/60">{t.about.credentialsLabel}</p>
                 <h3 className="font-cormorant text-xl font-light text-foreground tracking-[2px]">
@@ -120,7 +113,7 @@ const LaFirma = () => {
         </div>
       </section>
 
-      {/* THE JURIST POWER-BAR — Full-width scrolling ticker */}
+      {/* THE JURIST POWER-BAR */}
       <section className="relative z-10 border-y border-primary/20 overflow-hidden py-5 md:py-6">
         <div className="flex animate-[ticker_20s_linear_infinite] whitespace-nowrap">
           {[...Array(4)].map((_, rep) => (
@@ -142,7 +135,7 @@ const LaFirma = () => {
         </div>
       </section>
 
-      {/* THE CLIMAX SIGNATURE — Gold seal, large, fade-in */}
+      {/* THE CLIMAX SIGNATURE */}
       <section className="relative z-10 py-32">
         <div className="container mx-auto px-6 md:px-12 text-center" style={{ paddingBottom: '150px' }}>
           <motion.div
@@ -152,11 +145,9 @@ const LaFirma = () => {
             transition={{ duration: 1.5, ease: 'easeOut' }}
             className="space-y-8"
           >
-            <img
-              src={sealImage}
-              alt="Belle Femme Signature Seal"
-              className="w-1/2 md:w-[30%] max-w-xs object-contain mx-auto opacity-70"
-            />
+            <div className="w-1/2 md:w-[30%] max-w-xs aspect-square shimmer-venetian mx-auto flex items-center justify-center">
+              <span className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground/30">Seal</span>
+            </div>
             <p className="font-cormorant text-xl md:text-2xl italic tracking-[3px]" style={{ color: 'hsl(30, 33%, 48%)' }}>
               Mouna Chabbar
             </p>
@@ -180,6 +171,7 @@ const LaFirma = () => {
         <SiteFooter />
       </div>
       <WhatsAppSticky />
+      <CookieConsent />
     </div>
   );
 };

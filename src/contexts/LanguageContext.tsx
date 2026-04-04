@@ -1,10 +1,10 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { Language, translations, isRTL } from '@/lib/translations';
+import { Language, translations } from '@/lib/translations';
 
 interface LanguageContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
-  t: typeof translations.en;
+  t: typeof translations.it;
   isRTL: boolean;
 }
 
@@ -14,21 +14,15 @@ export const LanguageProvider = ({ children }: { children: React.ReactNode }) =>
   const [language, setLanguage] = useState<Language>('it');
 
   useEffect(() => {
-    document.documentElement.dir = isRTL(language) ? 'rtl' : 'ltr';
+    document.documentElement.dir = 'ltr';
     document.documentElement.lang = language;
-    
-    if (language === 'ar') {
-      document.documentElement.classList.add('arabic-editorial');
-    } else {
-      document.documentElement.classList.remove('arabic-editorial');
-    }
   }, [language]);
 
   const value: LanguageContextType = {
     language,
     setLanguage,
     t: translations[language] as typeof translations.it,
-    isRTL: isRTL(language),
+    isRTL: false,
   };
 
   return (
