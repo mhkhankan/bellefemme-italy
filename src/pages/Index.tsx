@@ -15,7 +15,7 @@ const Index = () => {
           backgroundImage: 'url(/branding/phi-grid-blueprint.svg)',
           backgroundSize: '800px 800px',
           backgroundRepeat: 'repeat',
-          opacity: 0.05,
+          opacity: 0.03,
         }}
       />
       <div className="relative z-10">

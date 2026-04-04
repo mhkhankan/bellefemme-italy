@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,42 +6,42 @@
 
 @layer base {
   :root {
-    /* Deep Forest Green Luxury System */
-    --background: 150 30% 7%; /* #0B1A14 */
-    --foreground: 40 20% 85%;
+    /* Obsidian × Venetian Gold System */
+    --background: 0 0% 0%; /* #000000 Obsidian Black */
+    --foreground: 0 0% 96%; /* #F5F5F5 Soft White */
 
-    --card: 150 25% 9%;
-    --card-foreground: 40 20% 85%;
+    --card: 0 0% 4%;
+    --card-foreground: 0 0% 96%;
 
-    --popover: 150 25% 10%;
-    --popover-foreground: 40 20% 85%;
+    --popover: 0 0% 5%;
+    --popover-foreground: 0 0% 96%;
 
-    --primary: 30 33% 48%; /* Bronze-Gold #A67C52 */
-    --primary-foreground: 150 30% 5%;
+    --primary: 43 76% 52%; /* #D4AF37 Venetian Gold */
+    --primary-foreground: 0 0% 0%;
 
-    --secondary: 150 20% 12%;
-    --secondary-foreground: 40 20% 85%;
+    --secondary: 0 0% 8%;
+    --secondary-foreground: 0 0% 96%;
 
-    --muted: 150 15% 14%;
-    --muted-foreground: 150 10% 45%;
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 50%;
 
-    --accent: 30 33% 48%;
-    --accent-foreground: 150 30% 5%;
+    --accent: 43 76% 52%; /* Venetian Gold */
+    --accent-foreground: 0 0% 0%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 30 33% 48% / 0.2;
-    --input: 150 20% 14%;
-    --ring: 30 33% 48%;
+    --border: 43 76% 52% / 0.15;
+    --input: 0 0% 10%;
+    --ring: 43 76% 52%;
 
     --radius: 0rem;
 
     /* Luxury tokens */
-    --bronze: 30 33% 48%;
-    --bronze-light: 30 33% 58%;
-    --forest: 150 30% 7%;
-    --forest-light: 150 25% 12%;
+    --venetian: 43 76% 52%;
+    --venetian-light: 43 76% 62%;
+    --obsidian: 0 0% 0%;
+    --obsidian-light: 0 0% 6%;
   }
 }
 
@@ -62,7 +62,6 @@
     letter-spacing: 2px;
   }
 
-  /* Hide scrollbar for carousel */
   .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -76,7 +75,24 @@
   }
 }
 
-/* Jurist ticker animation */
+/* Venetian Gold shimmer loading state */
+@keyframes venetian-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.shimmer-venetian {
+  background: linear-gradient(
+    90deg,
+    hsl(0 0% 6%) 0%,
+    hsl(43 76% 52% / 0.15) 50%,
+    hsl(0 0% 6%) 100%
+  );
+  background-size: 200% 100%;
+  animation: venetian-shimmer 2s ease-in-out infinite;
+}
+
+/* Ticker animation */
 @keyframes ticker {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
