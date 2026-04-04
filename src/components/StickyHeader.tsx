@@ -10,7 +10,7 @@ export const StickyHeader = () => {
   const navigate = useNavigate();
   const isHome = location.pathname === '/';
   const [menuOpen, setMenuOpen] = useState(false);
-  const [visible, setVisible] = useState(!isHome); // visible immediately on non-home pages
+  const [visible, setVisible] = useState(!isHome);
 
   useEffect(() => {
     if (!isHome) {
@@ -39,7 +39,7 @@ export const StickyHeader = () => {
     <header
       className="fixed top-0 w-full z-50 border-b border-primary/10"
       style={{
-        backgroundColor: 'hsla(150, 30%, 7%, 0.9)',
+        backgroundColor: 'hsla(0, 0%, 0%, 0.92)',
         backdropFilter: 'blur(12px)',
         WebkitBackdropFilter: 'blur(12px)',
         opacity: visible ? 1 : 0,
@@ -48,7 +48,6 @@ export const StickyHeader = () => {
       }}
     >
       <div className="container mx-auto px-6 md:px-12 py-3 flex items-center justify-between">
-        {/* Logo → always links to Home */}
         <Link to="/" className="flex flex-col">
           <span className="font-cormorant text-sm tracking-[0.4em] uppercase text-primary">
             Atelier
@@ -58,7 +57,6 @@ export const StickyHeader = () => {
           </span>
         </Link>
 
-        {/* Desktop nav */}
         <nav className="hidden md:flex gap-10">
           <button
             onClick={() => scrollToSection('atelier')}
@@ -91,11 +89,10 @@ export const StickyHeader = () => {
         </div>
       </div>
 
-      {/* Mobile dropdown */}
       {menuOpen && (
         <nav
           className="md:hidden border-t border-primary/10 px-6 py-6 flex flex-col gap-4"
-          style={{ backgroundColor: 'hsla(150, 30%, 7%, 0.95)' }}
+          style={{ backgroundColor: 'hsla(0, 0%, 0%, 0.95)' }}
         >
           <button
             onClick={() => scrollToSection('atelier')}
