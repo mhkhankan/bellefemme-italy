@@ -8,6 +8,7 @@ import { CourseLocationSheet } from './CourseLocationSheet';
 import { StickyHeader } from './StickyHeader';
 import { SiteFooter } from './SiteFooter';
 import { WhatsAppSticky } from './WhatsAppSticky';
+import { StructuredData } from './StructuredData';
 
 interface CourseTemplateProps {
   course: Course;
@@ -27,6 +28,10 @@ export const CourseTemplate = ({ course }: CourseTemplateProps) => {
 
   return (
     <div className="min-h-screen bg-background">
+      <StructuredData
+        path={course.slug}
+        pageTitle={`${course.bf_name} — Belle Femme Academy`}
+      />
       <StickyHeader />
 
       {/* Back navigation */}

@@ -2,82 +2,27 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { LocationSheet } from './LocationSheet';
 import { useLanguage } from '@/contexts/LanguageContext';
+import type { TreatmentItem } from '@/lib/translations';
 
-interface Treatment {
-  number: string;
-  id: string;
-  title: string;
-  subtitle: string;
-  description: string;
-  imagePath: string;
-}
+const IMAGE_MAP: Record<string, string> = {
+  'raw-stroke': '/treatments/01-tratto-grezzo-sopracciglia.jpg',
+  'pigment-restauro': '/treatments/02-pigment-restauro-correttivo.jpg',
+  'shadow-layer': '/treatments/03-shadow-layer-pixelation.jpg',
+  'lip-vitality': '/treatments/04-nude-lip-infusion.jpg',
+  'eye-engineering': '/treatments/05-lash-line-engineering.jpg',
+  'lash-architecture': '/treatments/06-gaze-sculpting-ciglia.jpg',
+  'brow-blueprint': '/treatments/07-brow-architecture-visagismo.jpg',
+};
 
-const TREATMENTS: Treatment[] = [
-  {
-    number: '01',
-    id: 'raw-stroke',
-    title: 'RAW STROKE',
-    subtitle: 'Iperrealismo Strutturale',
-    description: 'Non un semplice tatuaggio, ma una stratificazione di pigmenti biocompatibili che mima la direzione naturale del pelo. Risultato: armonia visibile anche alla luce diretta del sole.',
-    imagePath: '/treatments/01-raw-stroke.jpg',
-  },
-  {
-    number: '02',
-    id: 'pigment-restauro',
-    title: 'PIGMENT RESTAURO',
-    subtitle: 'Laboratorio Correttivo',
-    description: 'Gestione dei viraggi cromatici (grigio/rosso) e migrazioni. Promettiamo neutralizzazione e ripristino dei toni naturali, rispettando la biologia della pelle.',
-    imagePath: '/treatments/02-pigment-restauro.jpg',
-  },
-  {
-    number: '03',
-    id: 'shadow-layer',
-    title: 'SHADOW LAYER',
-    subtitle: 'Pixelation Avanzata',
-    description: 'Una sfumatura tecnica che crea profondità senza saturazione eccessiva. Ideale per chi cerca volume senza l\'effetto "make-up" pesante.',
-    imagePath: '/treatments/03-shadow-layer.jpg',
-  },
-  {
-    number: '04',
-    id: 'lip-vitality',
-    title: 'ANATOMICAL LIP VITALITY',
-    subtitle: 'Simmetria Anatomica',
-    description: 'Definizione dei contorni e saturazione velata per labbra che appaiono sane e rinvigorite, non rifatte. Focus sulla mucosa e il rispetto dei volumi.',
-    imagePath: '/treatments/04-lip-vitality.jpg',
-  },
-  {
-    number: '05',
-    id: 'eye-engineering',
-    title: 'EYE ENGINEERING',
-    subtitle: 'Infracigliare Tecnico',
-    description: 'Un sollevamento visivo dello sguardo attraverso una linea ultra-sottile tra le ciglia. Eleganza invisibile per una profondità quotidiana.',
-    imagePath: '/treatments/05-eye-engineering.jpg',
-  },
-  {
-    number: '06',
-    id: 'lash-architecture',
-    title: 'LASH ARCHITECTURE',
-    subtitle: 'Integrazione Volumetrica',
-    description: 'Progetto di estensione basato sulla biomeccanica dell\'occhio. Utilizziamo mappature personalizzate per sollevare lo sguardo senza appesantire la rima palpebrale.',
-    imagePath: '/treatments/06-lash-architecture.jpg',
-  },
-  {
-    number: '07',
-    id: 'brow-blueprint',
-    title: 'BROW BLUEPRINT',
-    subtitle: "L'Architettura Finale",
-    description: 'Il progetto totale del volto. Utilizzo della Sezione Aurea per ridisegnare i punti di forza del viso attraverso l\'equilibrio visagistico.',
-    imagePath: '/treatments/07-brow-blueprint.jpg',
-  },
-  {
-    number: '08',
-    id: 'private-consultation',
-    title: 'PRIVATE CONSULTATION',
-    subtitle: "Il Primo Passo verso l'Armonia",
-    description: 'Ogni percorso Belle Femme inizia con una consulenza personalizzata con Mouna Chabbar — in sede o via WhatsApp. Un\'analisi visagistica del viso, della struttura ossea e delle aspettative. Nessun trattamento senza comprensione.',
-    imagePath: '/treatments/08-consultation.jpg',
-  },
-];
+const ALT_MAP: Record<string, string> = {
+  'raw-stroke': 'Microblading iperrealismo Varese — Raw Stroke PhiBrows',
+  'pigment-restauro': 'Correzione PMU Varese — Pigment Restauro AcademyS',
+  'shadow-layer': 'Ombre powder brows Milano — Shadow Layer pixelation',
+  'lip-vitality': 'PMU labbra Varese — Nude-Lip Infusion acquerello',
+  'eye-engineering': 'Eyeliner permanente Varese — Lash-Line Engineering',
+  'lash-architecture': 'Laminazione ciglia Varese — Gaze Sculpting Kerafill',
+  'brow-blueprint': 'Architettura sopracciglia Varese — Brow Architecture Sezione Aurea',
+};
 
 const fadeIn = {
   hidden: { opacity: 0, y: 30 },
@@ -91,6 +36,8 @@ export const TreatmentArchitecture = () => {
   const { t, language } = useLanguage();
   const [activeIndex, setActiveIndex] = useState(0);
   const [inSection, setInSection] = useState(false);
+
+  const treatments = t.treatments.items;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -110,32 +57,25 @@ export const TreatmentArchitecture = () => {
     setSheetOpen(true);
   };
 
-  const handleTreatmentCTA = (item: Treatment) => {
-    if (item.id === 'private-consultation') {
-      const msg = encodeURIComponent('Buongiorno Mouna, vorrei verificare la disponibilità per una consulenza privata.');
-      window.open(`https://wa.me/393516605507?text=${msg}`, '_blank');
-    } else {
-      openConsultation(item.title);
-    }
-  };
-
   const tickerText = language === 'it'
-    ? 'La Collezione — 8 Trattamenti Esclusivi'
-    : 'The Collection — 8 Exclusive Treatments';
+    ? 'La Collezione — 7 Trattamenti Esclusivi'
+    : 'The Collection — 7 Exclusive Treatments';
 
   const scrollToTreatment = (index: number) => {
     const el = document.getElementById(`treatment-${index}`);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const TreatmentImage = ({ item, sizeClass, numberSize }: { item: Treatment; sizeClass: string; numberSize: string }) => {
+  const TreatmentImage = ({ item, sizeClass, numberSize }: { item: TreatmentItem; sizeClass: string; numberSize: string }) => {
     const [imgFailed, setImgFailed] = useState(false);
+    const imgPath = IMAGE_MAP[item.id];
+    const altText = ALT_MAP[item.id] || item.title;
     return (
       <>
-        {!imgFailed ? (
+        {imgPath && !imgFailed ? (
           <img
-            src={item.imagePath}
-            alt={item.title}
+            src={imgPath}
+            alt={altText}
             className={`${sizeClass} object-cover`}
             loading={item.number <= '02' ? 'eager' : 'lazy'}
             onError={() => setImgFailed(true)}
@@ -163,7 +103,7 @@ export const TreatmentArchitecture = () => {
             className="text-center space-y-6"
           >
             <p className="text-[10px] tracking-[0.4em] uppercase text-primary/60">
-              The 8-Point Collection
+              The 7-Point Collection
             </p>
             <h2 className="font-cormorant text-3xl md:text-5xl font-light text-foreground tracking-[2px]">
               {t.nav.atelier}
@@ -176,12 +116,12 @@ export const TreatmentArchitecture = () => {
 
         {/* Right-edge progress indicator (desktop only) */}
         <div className="hidden md:flex fixed right-6 top-1/2 -translate-y-1/2 z-40 flex-col gap-3">
-          {TREATMENTS.map((t, i) => (
+          {treatments.map((item, i) => (
             <button
-              key={t.id}
+              key={item.id}
               onClick={() => scrollToTreatment(i)}
               className="group flex items-center gap-2"
-              aria-label={`Go to ${t.title}`}
+              aria-label={`Go to ${item.title}`}
             >
               <span
                 className="block transition-all duration-300"
@@ -202,7 +142,7 @@ export const TreatmentArchitecture = () => {
           className="md:hidden"
           style={{ scrollSnapType: 'y mandatory', height: '100svh', overflowY: 'scroll', overscrollBehavior: 'contain' }}
         >
-          {TREATMENTS.map((item, index) => (
+          {treatments.map((item, index) => (
             <motion.div
               key={item.id}
               id={`treatment-${index}`}
@@ -237,7 +177,9 @@ export const TreatmentArchitecture = () => {
                   onClick={() => setExpandedId(expandedId === item.id ? null : item.id)}
                   className="text-[10px] tracking-[0.15em] uppercase text-primary/50 hover:text-primary transition-colors min-h-[44px] flex items-center"
                 >
-                  {expandedId === item.id ? 'Chiudi −' : 'Dettagli Tecnici +'}
+                  {expandedId === item.id
+                    ? (language === 'it' ? 'Chiudi −' : 'Close −')
+                    : (language === 'it' ? 'Dettagli Tecnici +' : 'Technical Details +')}
                 </button>
 
                 <AnimatePresence>
@@ -255,12 +197,10 @@ export const TreatmentArchitecture = () => {
                 </AnimatePresence>
 
                 <button
-                  onClick={() => handleTreatmentCTA(item)}
+                  onClick={() => openConsultation(item.title)}
                   className="w-full font-inter font-bold text-[10px] tracking-[0.2em] uppercase bg-primary text-primary-foreground px-8 py-4 min-h-[48px] hover:bg-primary/90 transition-all duration-500 mt-4"
                 >
-                  {item.id === 'private-consultation'
-                    ? 'Verifica Disponibilità Consulenza'
-                    : t.treatments.checkAvailability}
+                  {t.treatments.checkAvailability}
                 </button>
               </div>
             </motion.div>
@@ -270,7 +210,7 @@ export const TreatmentArchitecture = () => {
         {/* Mobile scroll dot indicator */}
         {inSection && (
           <div className="md:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-40 flex items-center gap-2">
-            {TREATMENTS.map((_, i) => (
+            {treatments.map((_, i) => (
               <div
                 key={i}
                 className="rounded-full transition-all duration-300"
@@ -289,7 +229,7 @@ export const TreatmentArchitecture = () => {
         {/* Desktop: natural scroll */}
         <div className="hidden md:block">
           <div className="space-y-0 max-w-5xl mx-auto">
-            {TREATMENTS.map((item, index) => (
+            {treatments.map((item, index) => (
               <motion.div
                 key={item.id}
                 id={`treatment-${index}`}
@@ -320,7 +260,9 @@ export const TreatmentArchitecture = () => {
                       onClick={() => setExpandedId(expandedId === item.id ? null : item.id)}
                       className="text-[10px] tracking-[0.15em] uppercase text-primary/50 hover:text-primary transition-colors min-h-[48px] flex items-center"
                     >
-                      {expandedId === item.id ? 'Chiudi −' : 'Dettagli Tecnici +'}
+                      {expandedId === item.id
+                        ? (language === 'it' ? 'Chiudi −' : 'Close −')
+                        : (language === 'it' ? 'Dettagli Tecnici +' : 'Technical Details +')}
                     </button>
 
                     <AnimatePresence>
@@ -338,12 +280,10 @@ export const TreatmentArchitecture = () => {
                     </AnimatePresence>
 
                     <button
-                      onClick={() => handleTreatmentCTA(item)}
+                      onClick={() => openConsultation(item.title)}
                       className="font-inter font-bold text-[10px] tracking-[0.2em] uppercase border border-primary/30 text-primary px-10 py-4 min-h-[48px] hover:bg-primary hover:text-primary-foreground transition-all duration-500"
                     >
-                      {item.id === 'private-consultation'
-                        ? 'Verifica Disponibilità Consulenza'
-                        : t.treatments.checkAvailability}
+                      {t.treatments.checkAvailability}
                     </button>
                   </div>
                 </div>

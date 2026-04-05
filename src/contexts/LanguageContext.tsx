@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { Language, translations } from '@/lib/translations';
+import { Language, translations, isRTL } from '@/lib/translations';
 
 interface LanguageContextType {
   language: Language;
@@ -14,7 +14,8 @@ export const LanguageProvider = ({ children }: { children: React.ReactNode }) =>
   const [language, setLanguage] = useState<Language>('it');
 
   useEffect(() => {
-    document.documentElement.dir = 'ltr';
+    const rtl = isRTL(language);
+    document.documentElement.dir = rtl ? 'rtl' : 'ltr';
     document.documentElement.lang = language;
   }, [language]);
 
@@ -22,7 +23,7 @@ export const LanguageProvider = ({ children }: { children: React.ReactNode }) =>
     language,
     setLanguage,
     t: translations[language] as typeof translations.it,
-    isRTL: false,
+    isRTL: isRTL(language),
   };
 
   return (

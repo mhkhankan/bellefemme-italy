@@ -1,4 +1,4 @@
-export type Language = 'it' | 'en';
+export type Language = 'it' | 'en' | 'ar';
 
 export interface DaySyllabus {
   title: string;
@@ -15,6 +15,14 @@ export interface CourseTranslation {
     title: string;
     items: string[];
   };
+}
+
+export interface TreatmentItem {
+  number: string;
+  id: string;
+  title: string;
+  subtitle: string;
+  description: string;
 }
 
 export const translations = {
@@ -40,6 +48,15 @@ export const translations = {
       spotsRemaining: 'posti disponibili',
       soldOut: 'Sold Out',
       waitlistOnly: 'Solo Lista d\'Attesa',
+      items: [
+        { number: '01', id: 'raw-stroke', title: 'RAW STROKE', subtitle: 'Iperrealismo Strutturale', description: 'Non un semplice tatuaggio, ma una stratificazione di pigmenti biocompatibili che mima la direzione naturale del pelo. Risultato: armonia visibile anche alla luce diretta del sole.' },
+        { number: '02', id: 'pigment-restauro', title: 'PIGMENT RESTAURO', subtitle: 'Laboratorio Correttivo', description: 'Gestione dei viraggi cromatici (grigio/rosso) e migrazioni. Promettiamo neutralizzazione e ripristino dei toni naturali, rispettando la biologia della pelle.' },
+        { number: '03', id: 'shadow-layer', title: 'SHADOW LAYER', subtitle: 'Pixelation Avanzata', description: 'Una sfumatura tecnica che crea profondità senza saturazione eccessiva. Ideale per chi cerca volume senza l\'effetto "make-up" pesante.' },
+        { number: '04', id: 'lip-vitality', title: 'NUDE-LIP INFUSION', subtitle: 'Vitalità Labiale Anatomica', description: 'Definizione dei contorni e saturazione velata per labbra che appaiono sane e rinvigorite, non rifatte. Focus sulla mucosa e il rispetto dei volumi.' },
+        { number: '05', id: 'eye-engineering', title: 'LASH-LINE ENGINEERING', subtitle: 'Evoluzione Profonda dello Sguardo', description: 'Un sollevamento visivo dello sguardo attraverso una linea ultra-sottile tra le ciglia. Eleganza invisibile per una profondità quotidiana.' },
+        { number: '06', id: 'lash-architecture', title: 'GAZE SCULPTING', subtitle: 'Design delle Ciglia su Misura', description: 'Progetto di estensione basato sulla biomeccanica dell\'occhio. Utilizziamo mappature personalizzate per sollevare lo sguardo senza appesantire la rima palpebrale.' },
+        { number: '07', id: 'brow-blueprint', title: 'BROW ARCHITECTURE', subtitle: 'Visagismo Analitico', description: 'Il progetto totale del volto. Utilizzo della Sezione Aurea per ridisegnare i punti di forza del viso attraverso l\'equilibrio visagistico.' },
+      ] as TreatmentItem[],
     },
     treatmentsPage: {
       heroTitle: "L'Arte del Viso",
@@ -230,7 +247,7 @@ export const translations = {
       waitlistSuccess: 'Iscrizione completata!',
     },
     cookie: {
-      text: 'Utilizziamo cookie tecnici per il funzionamento del sito. Continuando accetti il loro utilizzo.',
+      text: 'Questo sito utilizza Google Fonts per migliorare la tipografia. Accettando, consenti il caricamento dei font da server Google. Nessun cookie di profilazione.',
       accept: 'Accetta',
       reject: 'Rifiuta',
     },
@@ -257,6 +274,15 @@ export const translations = {
       spotsRemaining: 'spots remaining',
       soldOut: 'Sold Out',
       waitlistOnly: 'Waitlist Only',
+      items: [
+        { number: '01', id: 'raw-stroke', title: 'RAW STROKE', subtitle: 'Structural Hyper-Realism', description: 'Not a simple tattoo, but a stratification of biocompatible pigments that mimics the natural direction of hair. Result: harmony visible even in direct sunlight.' },
+        { number: '02', id: 'pigment-restauro', title: 'PIGMENT RESTAURO', subtitle: 'The Corrective Lab', description: 'Management of chromatic shifts (grey/red) and migrations. We promise neutralisation and restoration of natural tones, respecting the biology of the skin.' },
+        { number: '03', id: 'shadow-layer', title: 'SHADOW LAYER', subtitle: 'Advanced Pixelation', description: 'A technical gradient that creates depth without excessive saturation. Ideal for those seeking volume without a heavy "make-up" effect.' },
+        { number: '04', id: 'lip-vitality', title: 'NUDE-LIP INFUSION', subtitle: 'Anatomical Lip Vitality', description: 'Contour definition and veiled saturation for lips that appear healthy and revitalised, not redone. Focus on the mucosa and respect for volumes.' },
+        { number: '05', id: 'eye-engineering', title: 'LASH-LINE ENGINEERING', subtitle: 'Deep Gaze Evolution', description: 'A visual lift of the gaze through an ultra-fine line between the lashes. Invisible elegance for everyday depth.' },
+        { number: '06', id: 'lash-architecture', title: 'GAZE SCULPTING', subtitle: 'Precision Lash Design', description: 'An extension project based on the biomechanics of the eye. We use personalised mappings to lift the gaze without weighing down the palpebral rim.' },
+        { number: '07', id: 'brow-blueprint', title: 'BROW ARCHITECTURE', subtitle: 'Analytic Visagism', description: 'The total facial project. Using the Golden Ratio to redesign the strengths of the face through visagistic balance.' },
+      ] as TreatmentItem[],
     },
     treatmentsPage: {
       heroTitle: 'The Art of the Face',
@@ -447,13 +473,56 @@ export const translations = {
       waitlistSuccess: 'Successfully joined!',
     },
     cookie: {
-      text: 'We use technical cookies for the functioning of the site. By continuing you accept their use.',
+      text: 'This site uses Google Fonts to enhance typography. By accepting, you allow fonts to load from Google servers. No profiling cookies.',
       accept: 'Accept',
       reject: 'Reject',
     },
   },
+  ar: {
+    hero: { title: '', subtitle: '', viewCourses: '', bookTreatment: '' },
+    nav: { atelier: '', academy: '', firma: '' },
+    treatments: {
+      title: '', subtitle: '', microblading: '', lipBlush: '', plasmaPen: '',
+      checkAvailability: '', spotsRemaining: '', soldOut: '', waitlistOnly: '',
+      items: [] as TreatmentItem[],
+    },
+    treatmentsPage: {
+      heroTitle: '', heroSubtitle: '', cta: '', safety: '', healedResults: '', beforeLabel: '', afterLabel: '',
+      brows: { name: '', poetic: '', description: '' },
+      lips: { name: '', poetic: '', description: '' },
+      eyes: { name: '', poetic: '', description: '' },
+      paramedical: { name: '', poetic: '', description: '' },
+    },
+    gallery: { title: '', subtitle: '', healed: '', beforeLabel: '', afterLabel: '' },
+    contact: { title: '', location: '', whatsapp: '' },
+    footer: { academy: '', reach: '', gdpr: '' },
+    about: {
+      label: '', heroTitle: '', bio1: '', bio2: '', bio3: '',
+      credentialsLabel: '', credentialsTitle: '',
+      credentials: { judge: '', judgeSub: '', trainer: '', trainerSub: '', design: '', designSub: '', specialist: '', specialistSub: '' },
+      backToAcademy: '',
+    },
+    courses: {
+      title: '', subtitle: '', viewDetails: '', certNote: '',
+      pmu: { title: '', duration: '', description: '', subtitle: '', days: [], starterKit: { title: '', items: [] } },
+      microblading: { title: '', duration: '', description: '', subtitle: '', days: [] },
+      ombre_powder: { title: '', duration: '', description: '', subtitle: '', days: [] },
+      ombre_lips: { title: '', duration: '', description: '', subtitle: '', days: [] },
+      eyeliner: { title: '', duration: '', description: '', subtitle: '', days: [] },
+      masterclass_brows: { title: '', duration: '', description: '', subtitle: '', days: [] },
+      masterclass_lashes: { title: '', duration: '', description: '', subtitle: '', days: [] },
+      masterclass_lamination: { title: '', duration: '', description: '', subtitle: '', days: [] },
+    },
+    coursePage: {
+      reach: '', asl: '', backToAcademy: '', bookCourse: '', secureYourSeat: '',
+      whatsapp: '', starterKitBadge: '', address: '', vat: '', certTitle: '', certText: '',
+    },
+    academy: { title: '', subtitle: '', description: '', waitlistTitle: '', waitlistCta: '', namePlaceholder: '', phonePlaceholder: '', cityPlaceholder: '', successMessage: '' },
+    concierge: { selectAtelier: '', whereDesire: '', phantomLabel: '', phonePlaceholder: '', joinWaitlist: '', waitlistSuccess: '' },
+    cookie: { text: '', accept: '', reject: '' },
+  },
 };
 
 export function isRTL(lang: Language): boolean {
-  return false;
+  return lang === 'ar';
 }

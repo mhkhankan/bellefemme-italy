@@ -1,6 +1,5 @@
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LanguageProvider } from "@/contexts/LanguageContext";
@@ -22,26 +21,24 @@ const queryClient = new QueryClient();
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <LanguageProvider>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/la-firma" element={<LaFirma />} />
-            <Route path="/privacy" element={<Privacy />} />
-            <Route path="/corso-pmu-completo" element={<CoursePMU />} />
-            <Route path="/corso-microblading" element={<CourseMicroblading />} />
-            <Route path="/corso-correzione-pmu" element={<CourseOmbrePowder />} />
-            <Route path="/corso-ombre-lips" element={<CourseOmbreLips />} />
-            <Route path="/corso-eyeliner-permanente" element={<CourseEyeliner />} />
-            <Route path="/masterclass-architettura-sopracciglia" element={<CourseMasterclassBrows />} />
-            <Route path="/masterclass-extension-ciglia" element={<CourseMasterclassLashes />} />
-            <Route path="/masterclass-laminazione-ciglia" element={<CourseMasterclassLamination />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
+      <Toaster />
+      <Sonner />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Index />} />
+          <Route path="/la-firma" element={<LaFirma />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/corso-pmu-completo" element={<CoursePMU />} />
+          <Route path="/corso-microblading" element={<CourseMicroblading />} />
+          <Route path="/corso-correzione-pmu" element={<CourseOmbrePowder />} />
+          <Route path="/corso-ombre-lips" element={<CourseOmbreLips />} />
+          <Route path="/corso-eyeliner-permanente" element={<CourseEyeliner />} />
+          <Route path="/masterclass-architettura-sopracciglia" element={<CourseMasterclassBrows />} />
+          <Route path="/masterclass-extension-ciglia" element={<CourseMasterclassLashes />} />
+          <Route path="/masterclass-laminazione-ciglia" element={<CourseMasterclassLamination />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
     </LanguageProvider>
   </QueryClientProvider>
 );
