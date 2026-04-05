@@ -17,6 +17,7 @@ export type Database = {
       academy_waitlist: {
         Row: {
           city: string
+          course: string | null
           created_at: string
           id: string
           name: string
@@ -24,6 +25,7 @@ export type Database = {
         }
         Insert: {
           city: string
+          course?: string | null
           created_at?: string
           id?: string
           name: string
@@ -31,6 +33,7 @@ export type Database = {
         }
         Update: {
           city?: string
+          course?: string | null
           created_at?: string
           id?: string
           name?: string
