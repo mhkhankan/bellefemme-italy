@@ -66,8 +66,8 @@ export const COURSES: Course[] = [
     duration_en: '2 Days',
     duration_days: 2,
     participants: 4,
-    description_it: '',
-    description_en: '',
+    description_it: 'Corso avanzato di correzione e neutralizzazione PMU. Impara a gestire viraggi cromatici, migrazioni e cover up su lavori precedenti.',
+    description_en: 'Advanced PMU correction and neutralisation course. Learn to manage colour shifts, migrations and cover up on previous work.',
     images: [
       // Add real image paths here when Art Director delivers
       // Example: '/courses/pigment-restauro-01.jpg'
@@ -126,8 +126,8 @@ export const COURSES: Course[] = [
     duration_en: '5 Days',
     duration_days: 5,
     participants: 4,
-    description_it: '',
-    description_en: '',
+    description_it: 'Il curriculum completo della dermopigmentazione: sopracciglia, labbra, eyeliner e correzione in 5 giorni intensivi con Mouna Chabbar.',
+    description_en: 'The complete dermopigmentation curriculum: brows, lips, eyeliner and correction in 5 intensive days with Mouna Chabbar.',
     images: [],
     days: [
       {
@@ -231,8 +231,8 @@ export const COURSES: Course[] = [
     duration_en: '3 Days',
     duration_days: 3,
     participants: 4,
-    description_it: '',
-    description_en: '',
+    description_it: 'Microblading freestyle su 14 livelli progressivi. Dalla direzione del pelo alla shading manuale, con applicazione su modella reale.',
+    description_en: 'Freestyle microblading across 14 progressive levels. From hair direction to manual shading, with live model application.',
     images: [],
     days: [
       {
@@ -304,8 +304,8 @@ export const COURSES: Course[] = [
     duration_en: '2 Days',
     duration_days: 2,
     participants: 4,
-    description_it: '',
-    description_en: '',
+    description_it: "Tecniche Ombre Lips e Full Lips: dalla teoria del colore alla simmetria anatomica, fino all'applicazione su modella reale.",
+    description_en: 'Ombre Lips and Full Lips techniques: from colour theory to anatomical symmetry, through to live model application.',
     images: [],
     days: [
       {
@@ -361,8 +361,8 @@ export const COURSES: Course[] = [
     duration_en: '1 Day',
     duration_days: 1,
     participants: 4,
-    description_it: '',
-    description_en: '',
+    description_it: 'Eyeliner infraciliare classico: design, movimenti della mano e pigmentazione in una giornata intensiva con pratica su modella.',
+    description_en: 'Classic infraciliary eyeliner: design, hand movements and pigmentation in one intensive day with live model practice.',
     images: [],
     days: [
       {
@@ -402,8 +402,8 @@ export const COURSES: Course[] = [
     duration_en: '1 Day',
     duration_days: 1,
     participants: 4,
-    description_it: '',
-    description_en: '',
+    description_it: 'Masterclass di architettura sopraccigliare con compasso e filo. Mappatura avanzata e simmetria morfologica applicata al viso reale.',
+    description_en: 'Brow architecture masterclass with compass and thread. Advanced mapping and morphological symmetry applied to the real face.',
     images: [],
     days: [
       {
@@ -445,8 +445,8 @@ export const COURSES: Course[] = [
     duration_en: '1 Day',
     duration_days: 1,
     participants: 4,
-    description_it: '',
-    description_en: '',
+    description_it: 'Masterclass per la creazione di ventagli volume 2D-6D. Lash mapping personalizzato e tecniche di applicazione avanzata.',
+    description_en: 'Masterclass for creating 2D-6D volume fans. Personalised lash mapping and advanced application techniques.',
     images: [],
     days: [
       {
@@ -488,8 +488,8 @@ export const COURSES: Course[] = [
     duration_en: '1 Day',
     duration_days: 1,
     participants: 4,
-    description_it: '',
-    description_en: '',
+    description_it: 'Laminazione ciglia e sopracciglia con sistema professionale. Lifting avanzato, nutrimento e protocolli di sicurezza e aftercare.',
+    description_en: 'Lash and brow lamination with a professional system. Advanced lifting, nourishment, and safety and aftercare protocols.',
     images: [],
     days: [
       {
