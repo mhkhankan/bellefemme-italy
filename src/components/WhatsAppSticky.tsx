@@ -1,12 +1,25 @@
 import { ArrowRight } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useState, useEffect } from 'react';
 
 export const WhatsAppSticky = () => {
   const { t, language } = useLanguage();
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setVisible(window.scrollY >= window.innerHeight * 0.8);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const msg = language === 'it'
     ? 'Ciao Mouna, vorrei prenotare una consulenza privata.'
     : 'Hello Mouna, I would like to book a private consultation.';
+
+  if (!visible) return null;
 
   return (
     <a

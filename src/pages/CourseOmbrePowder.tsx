@@ -1,11 +1,4 @@
 import { CourseTemplate } from '@/components/CourseTemplate';
-
-const CourseOmbrePowder = () => (
-  <CourseTemplate
-    courseKey="ombre_powder"
-    posterSrc="/hero-poster.jpg"
-    technique="Ombre Powder"
-  />
-);
-
+import { getCourseById } from '@/Data/courses';
+const CourseOmbrePowder = () => <CourseTemplate course={getCourseById('pigment-restauro')!} />;
 export default CourseOmbrePowder;

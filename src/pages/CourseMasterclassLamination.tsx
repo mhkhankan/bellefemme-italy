@@ -1,11 +1,4 @@
 import { CourseTemplate } from '@/components/CourseTemplate';
-
-const CourseMasterclassLamination = () => (
-  <CourseTemplate
-    courseKey="masterclass_lamination"
-    posterSrc="/hero-poster.jpg"
-    technique="Lamination"
-  />
-);
-
+import { getCourseById } from '@/Data/courses';
+const CourseMasterclassLamination = () => <CourseTemplate course={getCourseById('velvet-lift')!} />;
 export default CourseMasterclassLamination;

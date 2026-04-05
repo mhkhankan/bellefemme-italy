@@ -1,11 +1,4 @@
 import { CourseTemplate } from '@/components/CourseTemplate';
-
-const CourseOmbreLips = () => (
-  <CourseTemplate
-    courseKey="ombre_lips"
-    posterSrc="/hero-poster.jpg"
-    technique="Lips"
-  />
-);
-
+import { getCourseById } from '@/Data/courses';
+const CourseOmbreLips = () => <CourseTemplate course={getCourseById('nude-lip-atelier')!} />;
 export default CourseOmbreLips;

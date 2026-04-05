@@ -1,11 +1,4 @@
 import { CourseTemplate } from '@/components/CourseTemplate';
-
-const CourseMicroblading = () => (
-  <CourseTemplate
-    courseKey="microblading"
-    posterSrc="/hero-poster.jpg"
-    technique="Microblading"
-  />
-);
-
+import { getCourseById } from '@/Data/courses';
+const CourseMicroblading = () => <CourseTemplate course={getCourseById('raw-stroke-master')!} />;
 export default CourseMicroblading;

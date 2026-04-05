@@ -1,11 +1,4 @@
 import { CourseTemplate } from '@/components/CourseTemplate';
-
-const CourseMasterclassBrows = () => (
-  <CourseTemplate
-    courseKey="masterclass_brows"
-    posterSrc="/hero-poster.jpg"
-    technique="Brow Architecture"
-  />
-);
-
+import { getCourseById } from '@/Data/courses';
+const CourseMasterclassBrows = () => <CourseTemplate course={getCourseById('brow-blueprint')!} />;
 export default CourseMasterclassBrows;

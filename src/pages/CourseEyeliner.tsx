@@ -1,11 +1,4 @@
 import { CourseTemplate } from '@/components/CourseTemplate';
-
-const CourseEyeliner = () => (
-  <CourseTemplate
-    courseKey="eyeliner"
-    posterSrc="/hero-poster.jpg"
-    technique="Eyeliner"
-  />
-);
-
+import { getCourseById } from '@/Data/courses';
+const CourseEyeliner = () => <CourseTemplate course={getCourseById('lash-line-precision')!} />;
 export default CourseEyeliner;
