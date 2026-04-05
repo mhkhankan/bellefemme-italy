@@ -152,8 +152,8 @@ export const TreatmentArchitecture = () => {
   return (
     <>
       <section id="atelier" className="relative">
-        {/* Section header */}
-        <div className="py-24 md:py-32">
+        {/* Section header — desktop only */}
+        <div className="hidden md:block py-24 md:py-32">
           <motion.div
             variants={fadeIn}
             initial="hidden"
