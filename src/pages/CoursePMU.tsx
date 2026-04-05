@@ -1,11 +1,4 @@
 import { CourseTemplate } from '@/components/CourseTemplate';
-
-const CoursePMU = () => (
-  <CourseTemplate
-    courseKey="pmu"
-    posterSrc="/hero-poster.jpg"
-    technique="Brows"
-  />
-);
-
+import { getCourseById } from '@/Data/courses';
+const CoursePMU = () => <CourseTemplate course={getCourseById('master-blueprint')!} />;
 export default CoursePMU;

@@ -1,11 +1,4 @@
 import { CourseTemplate } from '@/components/CourseTemplate';
-
-const CourseMasterclassLashes = () => (
-  <CourseTemplate
-    courseKey="masterclass_lashes"
-    posterSrc="/hero-poster.jpg"
-    technique="Volume Lashes"
-  />
-);
-
+import { getCourseById } from '@/Data/courses';
+const CourseMasterclassLashes = () => <CourseTemplate course={getCourseById('volume-lash-design')!} />;
 export default CourseMasterclassLashes;
