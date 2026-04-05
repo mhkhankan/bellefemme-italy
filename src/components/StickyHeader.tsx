@@ -48,13 +48,13 @@ export const StickyHeader = () => {
       }}
     >
       <div className="container mx-auto px-6 md:px-12 py-3 flex items-center justify-between">
-        <Link to="/" className="flex flex-col">
-          <span className="font-cormorant text-sm tracking-[0.4em] uppercase text-primary">
-            Atelier
-          </span>
-          <span className="font-inter text-[9px] tracking-[0.2em] uppercase text-foreground/40">
-            by Mouna Chabbar
-          </span>
+        <Link to="/" className="flex items-center">
+          <img
+            src="/branding/BF_logo_wordmark_transparent.png"
+            alt="Belle Femme Atelier"
+            className="h-10 w-auto"
+            style={{ objectFit: 'contain' }}
+          />
         </Link>
 
         <nav className="hidden md:flex gap-10">

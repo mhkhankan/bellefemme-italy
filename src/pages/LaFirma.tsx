@@ -21,6 +21,12 @@ const LaFirma = () => {
 
   const juristLabel = language === 'it' ? 'GIUDICE INTERNAZIONALE' : 'INTERNATIONAL JUDGE';
 
+  const waMsg = encodeURIComponent(
+    language === 'it'
+      ? 'Buongiorno Mouna, vorrei prenotare una consulenza privata.'
+      : 'Hello Mouna, I would like to book a private consultation.'
+  );
+
   return (
     <div className="min-h-screen bg-background">
       <StickyHeader />
@@ -158,13 +164,22 @@ const LaFirma = () => {
         </div>
       </section>
 
-      <div className="relative z-10 text-center pb-16">
+      {/* CTA Block */}
+      <div className="relative z-10 text-center pb-16 flex flex-col sm:flex-row gap-4 justify-center items-center px-6">
         <Link
           to="/"
           className="font-inter font-bold text-[10px] tracking-[0.2em] uppercase border border-primary/30 text-primary px-8 py-3 min-h-[44px] inline-flex items-center hover:bg-primary hover:text-primary-foreground transition-all duration-500"
         >
-          {t.about.backToAcademy}
+          {language === 'it' ? 'Scopri i Trattamenti' : 'Discover Treatments'}
         </Link>
+        <a
+          href={`https://wa.me/393516605507?text=${waMsg}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-inter font-bold text-[10px] tracking-[0.2em] uppercase bg-primary text-primary-foreground px-8 py-3 min-h-[44px] inline-flex items-center hover:bg-primary/90 transition-colors"
+        >
+          {language === 'it' ? 'Prenota una Consulenza' : 'Book a Consultation'}
+        </a>
       </div>
 
       <div className="relative z-10">

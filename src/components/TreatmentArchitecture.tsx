@@ -200,7 +200,7 @@ export const TreatmentArchitecture = () => {
         {/* Mobile: snap-scroll stack */}
         <div
           className="md:hidden"
-          style={{ scrollSnapType: 'y mandatory' }}
+          style={{ scrollSnapType: 'y mandatory', height: '100svh', overflowY: 'scroll', overscrollBehavior: 'contain' }}
         >
           {TREATMENTS.map((item, index) => (
             <motion.div

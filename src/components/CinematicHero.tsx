@@ -58,8 +58,11 @@ export const CinematicHero = () => {
         }}
       />
 
-      {/* Content block */}
-      <div className="absolute bottom-[12%] left-0 right-0 px-8 md:px-16 text-center md:text-left">
+      {/* Content block — safe area aware */}
+      <div
+        className="absolute left-0 right-0 px-8 md:px-16 text-center md:text-left"
+        style={{ bottom: 'max(12%, env(safe-area-inset-bottom, 0px) + 5rem)' }}
+      >
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

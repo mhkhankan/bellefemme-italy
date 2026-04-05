@@ -20,9 +20,10 @@ interface LocationSheetProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   treatmentName: string;
+  mode?: 'treatment' | 'course';
 }
 
-export const LocationSheet = ({ open, onOpenChange, treatmentName }: LocationSheetProps) => {
+export const LocationSheet = ({ open, onOpenChange, treatmentName, mode = 'treatment' }: LocationSheetProps) => {
   const isMobile = useIsMobile();
   const { t, language } = useLanguage();
   const { toast } = useToast();
@@ -76,6 +77,14 @@ export const LocationSheet = ({ open, onOpenChange, treatmentName }: LocationShe
   };
 
   const getSpots = (loc: string) => spots.find((s) => s.location === loc)?.spots_remaining;
+
+  const drawerTitle = mode === 'course'
+    ? (language === 'it' ? 'Seleziona la sede del corso' : 'Select course location')
+    : t.concierge.selectAtelier;
+
+  const consultationNote = mode === 'course'
+    ? (language === 'it' ? 'Ogni corso è preceduto da una consulenza personalizzata con Mouna Chabbar.' : 'Every course begins with a personalised consultation with Mouna Chabbar.')
+    : (language === 'it' ? 'Ogni trattamento è preceduto da una consulenza personalizzata — in sede o via WhatsApp.' : 'Every treatment begins with a personalised consultation — in person or via WhatsApp.');
 
   // Elite Atelier "ACCESSO RISERVATO" modal
   if (eliteModalCity && !submitted) {
@@ -190,10 +199,6 @@ export const LocationSheet = ({ open, onOpenChange, treatmentName }: LocationShe
   }
 
   // Main location selector
-  const consultationNote = language === 'it'
-    ? 'Ogni trattamento è preceduto da una consulenza personalizzata — in sede o via WhatsApp.'
-    : 'Every treatment begins with a personalised consultation — in person or via WhatsApp.';
-
   const content = (
     <div className="space-y-4 py-4 px-2">
       <p className="text-center text-sm text-muted-foreground">
@@ -233,7 +238,7 @@ export const LocationSheet = ({ open, onOpenChange, treatmentName }: LocationShe
           >
             <span>{loc}</span>
             <span
-              className="text-[9px] font-inter tracking-[0.15em] uppercase px-2 py-1 rounded-full"
+              className="text-[9px] font-inter tracking-[0.15em] uppercase px-2 py-1"
               style={{
                 backgroundColor: 'hsl(43 76% 52% / 0.15)',
                 border: '1px solid hsl(43 76% 52% / 0.4)',
@@ -244,6 +249,30 @@ export const LocationSheet = ({ open, onOpenChange, treatmentName }: LocationShe
             </span>
           </button>
         ))}
+
+        {/* Corso Privato — only in course mode */}
+        {mode === 'course' && (
+          <button
+            onClick={() => {
+              const msg = encodeURIComponent(`Buongiorno Mouna, sono interessata a un corso privato 1-to-1: ${treatmentName}. Vorrei ricevere informazioni.`);
+              window.open(`${WHATSAPP_BASE}${msg}`, '_blank');
+              onOpenChange(false);
+            }}
+            className="w-full text-left font-cormorant text-lg md:text-xl text-foreground/70 hover:text-primary px-6 py-4 min-h-[48px] border-b border-primary/10 last:border-b-0 hover:bg-primary/5 transition-all duration-300 flex items-center justify-between"
+          >
+            <span>{language === 'it' ? 'Corso Privato' : 'Private Course'}</span>
+            <span
+              className="text-[9px] font-inter tracking-[0.15em] uppercase px-2 py-1"
+              style={{
+                backgroundColor: 'hsl(43 76% 52% / 0.15)',
+                border: '1px solid hsl(43 76% 52% / 0.4)',
+                color: 'hsl(43 76% 52%)',
+              }}
+            >
+              {language === 'it' ? '1 su 1 con Mouna' : '1 to 1 with Mouna'}
+            </span>
+          </button>
+        )}
       </div>
     </div>
   );
@@ -254,7 +283,7 @@ export const LocationSheet = ({ open, onOpenChange, treatmentName }: LocationShe
         <DrawerContent className="bg-card border-primary/20">
           <DrawerHeader>
             <DrawerTitle className="font-cormorant text-2xl font-light text-foreground tracking-[2px] text-center">
-              {t.concierge.selectAtelier}
+              {drawerTitle}
             </DrawerTitle>
           </DrawerHeader>
           {content}
@@ -268,7 +297,7 @@ export const LocationSheet = ({ open, onOpenChange, treatmentName }: LocationShe
       <DialogContent className="bg-card border-primary/20 max-w-sm">
         <DialogHeader>
           <DialogTitle className="font-cormorant text-2xl font-light text-foreground tracking-[2px] text-center">
-            {t.concierge.selectAtelier}
+            {drawerTitle}
           </DialogTitle>
         </DialogHeader>
         {content}

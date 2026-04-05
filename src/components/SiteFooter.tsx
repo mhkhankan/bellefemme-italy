@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export const SiteFooter = () => {
   return (
     <footer className="border-t border-primary/10 py-12">
@@ -10,6 +12,10 @@ export const SiteFooter = () => {
         </p>
         <p className="text-[10px] text-muted-foreground/40">
           © {new Date().getFullYear()} Belle Femme PMU Atelier & Academy
+          <span className="mx-2">·</span>
+          <Link to="/privacy" className="text-primary/40 hover:text-primary transition-colors">
+            Privacy · GDPR
+          </Link>
         </p>
       </div>
     </footer>

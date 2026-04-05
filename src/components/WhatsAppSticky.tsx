@@ -13,7 +13,8 @@ export const WhatsAppSticky = () => {
       href={`https://wa.me/393516605507?text=${encodeURIComponent(msg)}`}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed right-4 bottom-4 z-50 flex items-center gap-2 group border border-primary/30 bg-background/90 backdrop-blur-sm px-4 py-3 min-h-[44px] hover:bg-primary hover:border-primary transition-all duration-500"
+      className="fixed right-4 z-50 flex items-center gap-2 group border border-primary/30 bg-background/90 backdrop-blur-sm px-4 py-3 min-h-[44px] hover:bg-primary hover:border-primary transition-all duration-500"
+      style={{ bottom: 'max(1.5rem, env(safe-area-inset-bottom, 0px) + 1rem)' }}
     >
       <ArrowRight className="w-3.5 h-3.5 text-primary group-hover:text-primary-foreground transition-colors" />
       <span className="font-inter font-bold text-[9px] tracking-[0.15em] uppercase text-primary group-hover:text-primary-foreground transition-colors">

@@ -5,10 +5,12 @@ import { SiteFooter } from '@/components/SiteFooter';
 import { WhatsAppSticky } from '@/components/WhatsAppSticky';
 import { StickyHeader } from '@/components/StickyHeader';
 import { CookieConsent } from '@/components/CookieConsent';
+import { StructuredData } from '@/components/StructuredData';
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background relative">
+      <StructuredData />
       {/* Phi Grid Blueprint — fixed at 3% opacity */}
       <div
         className="fixed inset-0 z-0 pointer-events-none"
