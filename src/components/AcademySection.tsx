@@ -4,8 +4,26 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 import { COURSES, getFeaturedCourse, getCatalogCourses } from '@/Data/courses';
-import { LocationSheet } from './LocationSheet';
+import { CourseLocationSheet } from './CourseLocationSheet';
+import { Link } from 'react-router-dom';
 import type { Course } from '@/Data/courses';
+
+const TESTIMONIALS_ACADEMY = [
+  {
+    quote_it: 'Mi hai da subito trasmesso sicurezza nel lavoro che stavo eseguendo. In 5 giorni mi sono portata a casa un percorso completo.',
+    quote_en: 'You immediately gave me confidence in the work I was doing. In 5 days I brought home a complete course.',
+    name: 'Giorgia C.',
+    role_it: 'Corsista — Master Blueprint',
+    role_en: 'Student — Master Blueprint',
+  },
+  {
+    quote_it: 'Ottima insegnante, molto attenta e presente anche dopo il corso. Sempre disponibile.',
+    quote_en: 'Excellent teacher, very attentive and present even after the course. Always available.',
+    name: 'Tatiana S.',
+    role_it: 'Corsista — Pigment Restauro',
+    role_en: 'Student — Pigment Restauro',
+  },
+];
 
 const CourseImage = ({ course }: { course: Course }) => {
   const [failed, setFailed] = useState(false);
@@ -149,7 +167,7 @@ export const AcademySection = () => {
               <span>·</span>
               <span>Max {featured.participants} {language === 'it' ? 'partecipanti' : 'participants'}</span>
             </div>
-            {featured.description_it && (
+            {(language === 'it' ? featured.description_it : featured.description_en) && (
               <p className="text-sm text-muted-foreground leading-relaxed">
                 {language === 'it' ? featured.description_it : featured.description_en}
               </p>
@@ -161,12 +179,12 @@ export const AcademySection = () => {
               >
                 {language === 'it' ? 'Richiedi Informazioni' : 'Request Information'}
               </button>
-              <a
-                href={`#course-${featured.id}`}
+              <Link
+                to={featured.slug}
                 className="font-inter font-bold text-[10px] tracking-[0.2em] uppercase border border-primary/30 text-primary px-8 py-4 min-h-[48px] hover:bg-primary hover:text-primary-foreground transition-all duration-500 text-center flex items-center justify-center"
               >
                 {language === 'it' ? 'Scopri il Corso' : 'Discover the Course'}
-              </a>
+              </Link>
             </div>
           </motion.div>
 
@@ -219,43 +237,36 @@ export const AcademySection = () => {
                         transition={{ duration: 0.3 }}
                         className="overflow-hidden"
                       >
-                        <div className="px-4 pb-8 space-y-6 ml-12 md:ml-14">
-                          <div className="sm:hidden flex items-center gap-4 text-[9px] tracking-[0.1em] uppercase text-muted-foreground">
-                            <span>{language === 'it' ? c.duration_it : c.duration_en}</span>
-                            <span>Max {c.participants}</span>
-                          </div>
-
+                        <div className="px-4 pb-8 space-y-6">
+                          {/* Course image — full width */}
                           <CourseImage course={c} />
 
-                          {(language === 'it' ? c.description_it : c.description_en) && (
-                            <p className="text-sm text-muted-foreground leading-relaxed">
-                              {language === 'it' ? c.description_it : c.description_en}
-                            </p>
-                          )}
-
-                          {/* Day syllabus */}
-                          {c.days.map((day, di) => (
-                            <div key={di} className="space-y-2">
-                              <p className="font-inter font-bold text-[10px] tracking-[0.15em] uppercase text-foreground/80">
-                                {language === 'it' ? day.title_it : day.title_en}
-                              </p>
-                              <ul className="space-y-1">
-                                {(language === 'it' ? day.items_it : day.items_en).map((item, ii) => (
-                                  <li key={ii} className="text-sm text-muted-foreground leading-relaxed flex items-start gap-2">
-                                    <span className="text-primary/40 mt-1">·</span>
-                                    <span>{item}</span>
-                                  </li>
-                                ))}
-                              </ul>
+                          <div className="space-y-4">
+                            <div className="sm:hidden flex items-center gap-4 text-[9px] tracking-[0.1em] uppercase text-muted-foreground">
+                              <span>{language === 'it' ? c.duration_it : c.duration_en}</span>
+                              <span>Max {c.participants}</span>
                             </div>
-                          ))}
 
-                          <button
-                            onClick={() => openCourseSheet(c.bf_name)}
-                            className="font-inter font-bold text-[10px] tracking-[0.2em] uppercase bg-primary text-primary-foreground px-8 py-4 min-h-[48px] hover:bg-primary/90 transition-colors"
-                          >
-                            {language === 'it' ? 'Richiedi Informazioni' : 'Request Information'}
-                          </button>
+                            {(language === 'it' ? c.description_it : c.description_en) && (
+                              <p className="text-sm text-muted-foreground leading-relaxed">
+                                {language === 'it' ? c.description_it : c.description_en}
+                              </p>
+                            )}
+
+                            <Link
+                              to={c.slug}
+                              className="font-inter font-bold text-[10px] tracking-[0.2em] uppercase text-primary hover:text-primary/80 transition-colors inline-block min-h-[44px] flex items-center"
+                            >
+                              {language === 'it' ? 'Scopri il Corso \u2192' : 'Discover the Course \u2192'}
+                            </Link>
+
+                            <button
+                              onClick={() => openCourseSheet(c.bf_name)}
+                              className="font-inter font-bold text-[10px] tracking-[0.2em] uppercase bg-primary text-primary-foreground px-8 py-4 min-h-[48px] hover:bg-primary/90 transition-colors block"
+                            >
+                              {language === 'it' ? 'Richiedi Informazioni' : 'Request Information'}
+                            </button>
+                          </div>
                         </div>
                       </motion.div>
                     )}
@@ -338,14 +349,47 @@ export const AcademySection = () => {
               </form>
             )}
           </motion.div>
+
+          {/* ACADEMY TESTIMONIALS */}
+          <div className="mt-24 text-center space-y-12">
+            <h3 className="font-cormorant text-2xl md:text-3xl font-light text-foreground tracking-[2px]">
+              {language === 'it' ? 'Voci delle Corsiste' : 'Student Voices'}
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {TESTIMONIALS_ACADEMY.map((testimonial, i) => (
+                <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: i * 0.15 }} className="space-y-4 text-left">
+                  <p className="font-cormorant italic text-base text-foreground/80 leading-relaxed">
+                    "{language === 'it' ? testimonial.quote_it : testimonial.quote_en}"
+                  </p>
+                  <div>
+                    <p className="font-inter font-bold text-[10px] tracking-[0.15em] uppercase text-primary">
+                      {testimonial.name}
+                    </p>
+                    <p className="text-[10px] text-muted-foreground tracking-wide">
+                      {language === 'it' ? testimonial.role_it : testimonial.role_en}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+            <a
+              href="https://www.instagram.com/bellefemme.pmu/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[10px] tracking-[0.15em] uppercase text-primary/60 hover:text-primary transition-colors inline-block"
+            >
+              {language === 'it'
+                ? 'Leggi tutte le recensioni \u2192 Instagram'
+                : 'Read all reviews \u2192 Instagram'}
+            </a>
+          </div>
         </div>
       </section>
 
-      <LocationSheet
+      <CourseLocationSheet
         open={sheetOpen}
         onOpenChange={setSheetOpen}
-        treatmentName={selectedCourseName}
-        mode="course"
+        courseName={selectedCourseName}
       />
     </>
   );
