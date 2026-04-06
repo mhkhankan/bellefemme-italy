@@ -6,7 +6,7 @@ export const SiteFooter = () => {
       <div className="container mx-auto px-6 md:px-12 max-w-5xl">
         {/* Top row — Logo + Wordmark + Tagline */}
         <div className="flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-8 mb-12">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1">
             <img
               src="/branding/BF_logo_full_transparent.png"
               alt="Belle Femme Logo"
