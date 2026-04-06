@@ -48,14 +48,14 @@ export const StickyHeader = () => {
       }}
     >
       <div className="container mx-auto px-6 md:px-12 py-3 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-3">
+        <Link to="/" className="flex items-center gap-1.5">
           <img
             src="/branding/BF_logo_wordmark_transparent.png"
             alt="Belle Femme Atelier"
             className="h-10 md:h-12 w-auto"
             style={{ objectFit: 'contain' }}
           />
-          <span className="font-cormorant text-lg md:text-xl tracking-[0.12em] text-foreground hidden sm:inline">
+          <span className="font-cormorant text-lg md:text-xl tracking-[0.12em] text-primary hidden sm:inline">
             Belle Femme
           </span>
         </Link>
