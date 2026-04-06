@@ -58,7 +58,7 @@ export const StructuredData = ({ path = '/', pageTitle, pageDescription }: Struc
         "@type": "BeautySalon",
         "@id": "https://bellefemme.it/#business",
         "name": "Belle Femme Atelier",
-        "description": "Trattamenti esclusivi di Dermopigmentazione e Microblading firmati Mouna Chabbar, Grand Master PhiAcademy. Atelier a Varese, Milano, Roma.",
+        "description": "Dermopigmentazione e Microblading — Master Trainer Mouna Chabbar. Trattamenti esclusivi e formazione professionale · Varese · Milano.",
         "url": "https://bellefemme.it",
         "telephone": "+393516605507",
         "email": "info@bellefemme.it",
@@ -71,7 +71,7 @@ export const StructuredData = ({ path = '/', pageTitle, pageDescription }: Struc
         "@id": "https://bellefemme.it/#mouna",
         "name": "Mouna Chabbar",
         "jobTitle": "Master Trainer Dermopigmentazione",
-        "description": "Grand Master PhiAcademy, già Craft Master AcademyS. Giudice internazionale in Dubai, Milano, Venezia, Romania e Turchia.",
+        "description": "Master Trainer — già Master Assistant PhiAcademy · già Craft Master AcademyS. Giudice internazionale in Dubai, Milano, Venezia, Romania e Turchia.",
         "worksFor": { "@id": "https://bellefemme.it/#business" },
         "hasCredential": [
           "Official Master Assistant PhiBrows — PhiAcademy",

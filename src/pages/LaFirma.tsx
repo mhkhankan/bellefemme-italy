@@ -278,8 +278,8 @@ const LaFirma = () => {
           </p>
           <p className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground max-w-md mx-auto">
             {language === 'it'
-              ? 'Grand Master · Formatrice Internazionale · Giudice in 5 Paesi'
-              : 'Grand Master · International Trainer · Judge in 5 Countries'}
+              ? 'Master Trainer · Formatrice Internazionale · Giudice in 5 Paesi'
+              : 'Master Trainer · International Trainer · Judge in 5 Countries'}
           </p>
         </motion.div>
       </section>
