@@ -98,6 +98,13 @@ export const StructuredData = ({ path = '/', pageTitle, pageDescription }: Struc
         "description": s.description,
         "areaServed": ["Varese", "Milano", "Roma"],
       })),
+      ...(path !== '/' && pageTitle && pageDescription ? [{
+        "@type": "Course",
+        "name": pageTitle,
+        "description": pageDescription,
+        "provider": { "@id": "https://bellefemme.it/#academy" },
+        "url": `https://bellefemme.it${path}`,
+      }] : []),
     ]
   };
   return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />;
