@@ -2,7 +2,7 @@ import { CinematicHero } from '@/components/CinematicHero';
 import { TreatmentArchitecture } from '@/components/TreatmentArchitecture';
 import { AcademySection } from '@/components/AcademySection';
 import { SiteFooter } from '@/components/SiteFooter';
-import { WhatsAppSticky } from '@/components/WhatsAppSticky';
+
 import { StickyHeader } from '@/components/StickyHeader';
 import { CookieConsent } from '@/components/CookieConsent';
 import { StructuredData } from '@/components/StructuredData';
@@ -27,7 +27,7 @@ const Index = () => {
         <TreatmentArchitecture />
         <AcademySection />
         <SiteFooter />
-        <WhatsAppSticky />
+        
         <CookieConsent />
       </div>
     </div>

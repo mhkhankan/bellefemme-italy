@@ -7,7 +7,7 @@ import type { Course } from '@/Data/courses';
 import { CourseLocationSheet } from './CourseLocationSheet';
 import { StickyHeader } from './StickyHeader';
 import { SiteFooter } from './SiteFooter';
-import { WhatsAppSticky } from './WhatsAppSticky';
+
 import { StructuredData } from './StructuredData';
 
 interface CourseTemplateProps {
@@ -101,7 +101,7 @@ export const CourseTemplate = ({ course }: CourseTemplateProps) => {
 
       <CourseLocationSheet open={sheetOpen} onOpenChange={setSheetOpen} courseName={course.bf_name} />
       <SiteFooter />
-      <WhatsAppSticky />
+      
     </div>
   );
 };

@@ -218,7 +218,7 @@ const LaFirma = () => {
             ))}
           </div>
           <div className="mt-12 text-center">
-            
+            <a
               href="https://www.facebook.com/bellefemme.varese/reviews"
               target="_blank"
               rel="noopener noreferrer"
@@ -288,7 +288,7 @@ const LaFirma = () => {
       <section className="relative z-10 py-24 md:py-32 border-t border-primary/10">
         <div className="container mx-auto px-6 md:px-12 max-w-md text-center">
           <div className="space-y-4">
-            
+            <a
               href={`https://wa.me/393516605507?text=${waMsg}`}
               target="_blank"
               rel="noopener noreferrer"
@@ -296,7 +296,7 @@ const LaFirma = () => {
             >
               {language === 'it' ? 'Prenota una Consulenza Privata' : 'Book a Private Consultation'}
             </a>
-            
+            <a
               href="/#academy"
               className="block font-inter font-bold text-[10px] tracking-[0.2em] uppercase border border-primary/30 text-primary px-8 py-4 min-h-[48px] hover:bg-primary hover:text-primary-foreground transition-all duration-500"
             >
