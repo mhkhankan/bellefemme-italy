@@ -92,6 +92,16 @@ export const CinematicHero = () => {
           Trattamenti esclusivi firmati Mouna Chabbar
         </motion.p>
 
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.85, duration: 0.8 }}
+          className="font-inter text-[9px] tracking-[0.35em] uppercase mt-3"
+          style={{ color: 'hsl(43 76% 52% / 0.55)' }}
+        >
+          Grand Master PhiAcademy · Giudice Internazionale PMU
+        </motion.p>
+
         <motion.div
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}

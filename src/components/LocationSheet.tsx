@@ -68,10 +68,11 @@ export const LocationSheet = ({ open, onOpenChange, treatmentName, mode = 'treat
       });
       setSubmitted(true);
     } catch {
-      toast({
-        title: language === 'it' ? 'Errore di connessione.' : 'Connection error.',
-        description: language === 'it' ? 'Scrivici direttamente su WhatsApp.' : 'Please contact us on WhatsApp.',
-      });
+      const msg = encodeURIComponent(
+        `Buongiorno Mouna, vorrei entrare in lista d'attesa.\n\nNome: ${eliteName.trim()}\nTelefono: ${elitePhone.trim()}\nCittà: ${eliteModalCity}\nTrattamento: ${treatmentName}`
+      );
+      window.open(`https://wa.me/393516605507?text=${msg}`, '_blank');
+      setSubmitted(true);
     }
     setSubmitting(false);
   };
