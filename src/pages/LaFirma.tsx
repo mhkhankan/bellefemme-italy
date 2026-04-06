@@ -2,7 +2,6 @@ import { motion } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { StickyHeader } from '@/components/StickyHeader';
 import { SiteFooter } from '@/components/SiteFooter';
-import { WhatsAppSticky } from '@/components/WhatsAppSticky';
 import { CookieConsent } from '@/components/CookieConsent';
 import { StructuredData } from '@/components/StructuredData';
 
@@ -11,26 +10,27 @@ const JURIST_CITIES = ['MILANO', 'DUBAI', 'VENEZIA', 'TURCHIA', 'ROMANIA'];
 const CREDENTIALS = {
   tier1: [
     {
-      title_it: 'Official Master Assistant — PhiBrows · PhiAcademy',
-      title_en: 'Official Master Assistant — PhiBrows · PhiAcademy',
+      title_it: 'Già Official Master Assistant — PhiBrows · PhiAcademy',
+      title_en: 'Formerly Official Master Assistant — PhiBrows · PhiAcademy',
       sub_it: 'Uno dei gradi istituzionali più alti assegnati a livello mondiale — autorizzata a fare da mentore, supervisionare e certificare la nuova generazione di artisti su scala globale.',
       sub_en: 'One of the highest institutional ranks assigned worldwide — authorised to mentor, supervise and certify the next generation of artists on a global scale.',
     },
     {
-      title_it: 'Craft Master — MicrobladingS · AcademyS',
-      title_en: 'Craft Master — MicrobladingS · AcademyS',
+      title_it: 'Già Craft Master — AcademyS (PMU, Microblading, Removal)',
+      title_en: 'Formerly Craft Master — AcademyS (PMU, Microblading, Removal)',
       sub_it: 'Educatrice internazionale autorizzata per la tecnica S-Brows — il benchmark globale per la pixelazione ad alta definizione e lo shading meccanico.',
       sub_en: 'Authorised international educator for the S-Brows technique — the global benchmark for high-definition pixelation and machine shading.',
     },
   ],
   tier2: [
+    { title_it: 'Royal Artist — PhiBrows · Branko Babić Microblading Academy', title_en: 'Royal Artist — PhiBrows · Branko Babić Microblading Academy' },
     { title_it: 'Master Long-Lasting Eyebrow Tattooing — BIOTEK Italy', title_en: 'Master Long-Lasting Eyebrow Tattooing — BIOTEK Italy' },
-    { title_it: 'Master Lash Lifting & Filler — Kerafill Italy', title_en: 'Master Lash Lifting & Filler — Kerafill Italy' },
-    { title_it: 'Specialista Rimozione Pigmenti — Protocolli Correttivi Avanzati', title_en: 'Pigment Removal Specialist — Advanced Corrective Protocols' },
+    { title_it: 'Già Master Instructor — Kerafill Italy', title_en: 'Formerly Master Instructor — Kerafill Italy' },
+    { title_it: 'Specialista Rimozione Pigmenti — Protocolli Correttivi Avanzati AcademyS', title_en: 'Pigment Removal Specialist — AcademyS Advanced Corrective Protocols' },
   ],
   tier3: [
-    { title_it: 'Laurea in Graphic Design', title_en: "Bachelor's Degree in Graphic Design" },
-    { title_it: 'Operatore del Benessere EQF 3 — Regione Piemonte', title_en: 'Wellness Operator EQF 3 — Regione Piemonte' },
+    { title_it: 'Laurea in Belle Arti — Comunicazioni Visive e Graphic Design', title_en: 'Bachelor of Fine Arts — Visual Communications & Graphic Design' },
+    { title_it: 'Operatore del Benessere EQF 3 — AFEA Formazione (accreditata Regione Piemonte)', title_en: 'Operatore del Benessere EQF 3 — AFEA Formazione (accredited by Regione Piemonte)' },
     { title_it: 'Attestato Tatuaggi & Piercing — Regione Lombardia', title_en: 'Tattoo & Piercing Licence — Regione Lombardia' },
     { title_it: 'Alumna BCM Milano — Trucco Semipermanente · 30/30', title_en: 'BCM Milan Alumna — Semi-Permanent Make-Up · 30/30' },
   ],
@@ -76,7 +76,7 @@ const LaFirma = () => {
       <StructuredData
         path="/la-firma"
         pageTitle="La Firma — Mouna Chabbar · Belle Femme Atelier"
-        pageDescription="Mouna Chabbar, Grand Master PhiAcademy e già Craft Master AcademyS. Giudice internazionale PMU. Fondatrice di Belle Femme Atelier, Varese."
+        pageDescription="Mouna Chabbar, già Official Master Assistant PhiAcademy e già Craft Master AcademyS. Giudice internazionale PMU. Fondatrice di Belle Femme Atelier, Varese."
       />
       <StickyHeader />
 
@@ -141,8 +141,8 @@ const LaFirma = () => {
                 </h2>
                 <p className="text-sm text-muted-foreground leading-[2] mb-4">
                   {language === 'it'
-                    ? "Una laurea in Graphic Design. Un decennio di competizione internazionale. Mouna Chabbar ha costruito un metodo dove la bellezza è il risultato di una progettazione rigorosa — non di un'interpretazione."
-                    : "A degree in Graphic Design. A decade of international competition. Mouna Chabbar built a method where beauty is the result of rigorous engineering — not interpretation."}
+                    ? "Una laurea in Belle Arti e Comunicazioni Visive (Graphic Designer). Un decennio di competizione internazionale. Mouna Chabbar ha costruito un metodo dove la bellezza è il risultato di una progettazione rigorosa — non di un'interpretazione."
+                    : "A degree in Fine Arts and Visual Communications (Graphic Designer). A decade of international competition. Mouna Chabbar built a method where beauty is the result of rigorous engineering — not interpretation."}
                 </p>
                 <p className="text-sm text-muted-foreground leading-[2]">
                   {language === 'it'
@@ -218,7 +218,7 @@ const LaFirma = () => {
             ))}
           </div>
           <div className="mt-12 text-center">
-            <a
+            
               href="https://www.facebook.com/bellefemme.varese/reviews"
               target="_blank"
               rel="noopener noreferrer"
@@ -288,7 +288,7 @@ const LaFirma = () => {
       <section className="relative z-10 py-24 md:py-32 border-t border-primary/10">
         <div className="container mx-auto px-6 md:px-12 max-w-md text-center">
           <div className="space-y-4">
-            <a
+            
               href={`https://wa.me/393516605507?text=${waMsg}`}
               target="_blank"
               rel="noopener noreferrer"
@@ -296,7 +296,7 @@ const LaFirma = () => {
             >
               {language === 'it' ? 'Prenota una Consulenza Privata' : 'Book a Private Consultation'}
             </a>
-            <a
+            
               href="/#academy"
               className="block font-inter font-bold text-[10px] tracking-[0.2em] uppercase border border-primary/30 text-primary px-8 py-4 min-h-[48px] hover:bg-primary hover:text-primary-foreground transition-all duration-500"
             >
@@ -314,7 +314,6 @@ const LaFirma = () => {
       <div className="relative z-10">
         <SiteFooter />
       </div>
-      <WhatsAppSticky />
       <CookieConsent />
     </div>
   );
