@@ -60,8 +60,8 @@ export const TreatmentArchitecture = () => {
   };
 
   const tickerText = language === 'it'
-    ? 'La Collezione — 7 Trattamenti Esclusivi'
-    : 'The Collection — 7 Exclusive Treatments';
+    ? 'La Collezione — 8 Trattamenti Esclusivi'
+    : 'The Collection — 8 Exclusive Treatments';
 
   const scrollToTreatment = (index: number) => {
     const el = document.getElementById(`treatment-${index}`);
@@ -105,7 +105,7 @@ export const TreatmentArchitecture = () => {
             className="text-center space-y-6"
           >
             <p className="text-[10px] tracking-[0.4em] uppercase text-primary/60">
-              The 7-Point Collection
+              The 8-Point Collection
             </p>
             <h2 className="font-cormorant text-3xl md:text-5xl font-light text-foreground tracking-[2px]">
               {t.nav.atelier}
@@ -167,10 +167,10 @@ export const TreatmentArchitecture = () => {
                 <div className="flex items-baseline gap-4">
                   <span className="font-cormorant text-4xl font-light text-primary/20">{item.number}</span>
                   <div>
-                    <h3 className="font-inter font-bold text-[11px] tracking-[0.2em] uppercase text-foreground">
+                    <h3 className="font-inter font-bold text-[12px] tracking-[0.2em] uppercase text-foreground">
                       {item.title}
                     </h3>
-                    <p className="font-cormorant italic text-lg text-primary/70 mt-1">{item.subtitle}</p>
+                    <p className="font-cormorant italic text-xl text-primary/80 mt-1">{item.subtitle}</p>
                   </div>
                 </div>
 
@@ -191,7 +191,7 @@ export const TreatmentArchitecture = () => {
                       animate={{ opacity: 1, height: 'auto' }}
                       exit={{ opacity: 0, height: 0 }}
                       transition={{ duration: 0.3 }}
-                      className="text-sm text-muted-foreground leading-relaxed overflow-hidden"
+                      className="text-base text-foreground/60 leading-relaxed overflow-hidden"
                     >
                       {item.description}
                     </motion.p>
@@ -256,7 +256,7 @@ export const TreatmentArchitecture = () => {
                     <h3 className="font-inter font-bold text-[12px] tracking-[0.25em] uppercase text-foreground">
                       {item.title}
                     </h3>
-                    <p className="font-cormorant italic text-2xl text-primary/80">{item.subtitle}</p>
+                    <p className="font-cormorant italic text-2xl text-primary/90">{item.subtitle}</p>
 
                     <button
                       onClick={() => setExpandedId(expandedId === item.id ? null : item.id)}
@@ -274,7 +274,7 @@ export const TreatmentArchitecture = () => {
                           animate={{ opacity: 1, height: 'auto' }}
                           exit={{ opacity: 0, height: 0 }}
                           transition={{ duration: 0.3 }}
-                          className="text-sm text-muted-foreground leading-relaxed max-w-md overflow-hidden"
+                          className="text-base text-foreground/60 leading-relaxed max-w-md overflow-hidden"
                         >
                           {item.description}
                         </motion.p>
