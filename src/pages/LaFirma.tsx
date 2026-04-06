@@ -125,11 +125,11 @@ const LaFirma = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24">
             {/* Portrait */}
             <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
-              <div className="aspect-[3/4] shimmer-venetian flex items-center justify-center">
-                <span className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground/30">
-                  Portrait of the Master
-                </span>
-              </div>
+              <img
+                src="/branding/mouna-la-firma.jpg"
+                alt="Mouna Chabbar — Fondatrice Belle Femme Atelier, Master Trainer PMU Varese"
+                className="w-full aspect-[3/4] object-cover object-top"
+              />
             </motion.div>
 
             {/* Right column */}
@@ -146,22 +146,22 @@ const LaFirma = () => {
                 </p>
                 <p className="text-sm text-muted-foreground leading-[2]">
                   {language === 'it'
-                    ? "Il suo Metodo Blueprint applica la Sezione Aurea non come decorazione, ma come protocollo strutturale. Ogni arcata progettata. Ogni proporzione calcolata. Zero improvvisazione."
-                    : "Her Blueprint Method applies the Golden Ratio not as decoration, but as a structural protocol. Every arch engineered. Every proportion calculated. Zero improvisation."}
+                    ? "Dal suo studio a Varese, forma la prossima generazione di artisti PMU con la stessa esigenza che ha definito la sua carriera internazionale: ogni tratto è calcolato, ogni risultato è progettato."
+                    : "From her studio in Varese, she trains the next generation of PMU artists with the same standard that defined her international career: every stroke is calculated, every result is engineered."}
                 </p>
               </motion.div>
 
               {/* CREDENTIALS */}
-              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.2 }}>
-                <h3 className="font-cormorant text-2xl font-light text-foreground tracking-[2px] mb-8">
-                  {language === 'it' ? 'Credenziali & Maestria' : 'Credentials & Mastery'}
-                </h3>
+              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.2 }} className="space-y-8">
+                <p className="text-[10px] tracking-[0.3em] uppercase text-primary/60">
+                  {language === 'it' ? 'Credenziali' : 'Credentials'}
+                </p>
 
                 {/* Tier 1 */}
-                <div className="space-y-6 mb-8">
+                <div className="space-y-6">
                   {CREDENTIALS.tier1.map((c, i) => (
-                    <div key={i} className="border-l-2 border-primary/40 pl-4 space-y-1">
-                      <p className="font-inter font-bold text-[10px] tracking-[0.15em] uppercase text-foreground">
+                    <div key={i} className="space-y-2">
+                      <p className="font-inter font-bold text-[11px] tracking-[0.15em] uppercase text-foreground">
                         {language === 'it' ? c.title_it : c.title_en}
                       </p>
                       <p className="text-xs text-muted-foreground leading-relaxed">
@@ -172,7 +172,7 @@ const LaFirma = () => {
                 </div>
 
                 {/* Tier 2 */}
-                <div className="space-y-3 mb-8">
+                <div className="space-y-2 pt-2 border-t border-primary/10">
                   {CREDENTIALS.tier2.map((c, i) => (
                     <p key={i} className="text-[10px] tracking-[0.1em] uppercase text-foreground/70">
                       {language === 'it' ? c.title_it : c.title_en}
