@@ -218,7 +218,7 @@ const LaFirma = () => {
             ))}
           </div>
           <div className="mt-12 text-center">
-            
+            <a
               href="https://www.facebook.com/bellefemme.varese/reviews"
               target="_blank"
               rel="noopener noreferrer"
