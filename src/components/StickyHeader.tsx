@@ -48,7 +48,7 @@ export const StickyHeader = () => {
       }}
     >
       <div className="container mx-auto px-6 md:px-12 py-3 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-1.5">
+        <Link to="/" className="flex items-center gap-0.5">
           <img
             src="/branding/BF_logo_wordmark_transparent.png"
             alt="Belle Femme Atelier"
