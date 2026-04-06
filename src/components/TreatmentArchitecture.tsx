@@ -12,6 +12,7 @@ const IMAGE_MAP: Record<string, string> = {
   'eye-engineering': '/treatments/05-lash-line-engineering.jpg',
   'lash-architecture': '/treatments/06-gaze-sculpting-ciglia.jpg',
   'brow-blueprint': '/treatments/07-brow-architecture-visagismo.jpg',
+  'lash-sculpting': '/treatments/08-lash-sculpting-volumetria.jpg',
 };
 
 const ALT_MAP: Record<string, string> = {
@@ -22,6 +23,7 @@ const ALT_MAP: Record<string, string> = {
   'eye-engineering': 'Eyeliner permanente Varese — Lash-Line Engineering',
   'lash-architecture': 'Laminazione ciglia Varese — Gaze Sculpting Kerafill',
   'brow-blueprint': 'Architettura sopracciglia Varese — Brow Architecture Sezione Aurea',
+  'lash-sculpting': 'Extension ciglia su misura Varese — Lash Sculpting volumetria',
 };
 
 const fadeIn = {
