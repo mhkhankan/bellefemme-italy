@@ -70,7 +70,7 @@ export const CinematicHero = () => {
           className="font-inter text-[10px] tracking-[0.4em] uppercase"
           style={{ color: 'hsl(43 76% 52% / 0.7)' }}
         >
-          BELLE FEMME ATELIER
+          BELLE FEMME ATELIER E ACADEMIA
         </motion.p>
 
         <motion.h1
@@ -99,7 +99,7 @@ export const CinematicHero = () => {
           className="font-inter text-[9px] tracking-[0.35em] uppercase mt-3"
           style={{ color: 'hsl(43 76% 52% / 0.55)' }}
         >
-          Grand Master PhiAcademy · Giudice Internazionale PMU
+          Craft Master Dermopigmentazione · Giudice Internazionale
         </motion.p>
 
         <motion.div
