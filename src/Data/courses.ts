@@ -66,8 +66,8 @@ export const COURSES: Course[] = [
     duration_en: '2 Days',
     duration_days: 2,
     participants: 4,
-    description_it: 'Corso avanzato di correzione e neutralizzazione PMU. Impara a gestire viraggi cromatici, migrazioni e cover up su lavori precedenti.',
-    description_en: 'Advanced PMU correction and neutralisation course. Learn to manage colour shifts, migrations and cover up on previous work.',
+    description_it: 'Il corso più richiesto da chi lavora già nel settore. In due giorni intensivi impari a leggere un PMU compromesso, a neutralizzare i viraggi cromatici e a progettare una copertura che nessuno riconosca come correzione. Protocolli AcademyS applicati su casi reali: grigio, arancio, rosso, migrazione. Non impari a correggere — impari a azzerare e ricostruire.',
+    description_en: 'The most requested course for working professionals. In two intensive days you learn to read a compromised PMU, neutralise colour shifts, and design a cover-up that no one will recognise as a correction. AcademyS protocols applied to real cases: grey, orange, red, migration. You do not learn to correct — you learn to reset and rebuild.',
     images: [
       // Add real image paths here when Art Director delivers
       // Example: '/courses/pigment-restauro-01.jpg'
@@ -126,8 +126,8 @@ export const COURSES: Course[] = [
     duration_en: '5 Days',
     duration_days: 5,
     participants: 4,
-    description_it: 'Il curriculum completo della dermopigmentazione: sopracciglia, labbra, eyeliner e correzione in 5 giorni intensivi con Mouna Chabbar.',
-    description_en: 'The complete dermopigmentation curriculum: brows, lips, eyeliner and correction in 5 intensive days with Mouna Chabbar.',
+    description_it: 'Il curriculum totale. Cinque giorni per padroneggiare l\'intera architettura della dermopigmentazione: sopracciglia, labbra ed eyeliner, dalla teoria del colore alla pratica su modella reale. Ogni giornata è strutturata come una residenza professionale — non un corso, un trasferimento di metodo. Per chi vuole costruire una carriera su basi solide, non su tutorial.',
+    description_en: 'The complete curriculum. Five days to master the full architecture of dermopigmentation: brows, lips, and eyeliner, from colour theory to live model practice. Every day is structured as a professional residency — not a course, a method transfer. For those who want to build a career on solid foundations, not tutorials.',
     images: [],
     days: [
       {
@@ -231,8 +231,8 @@ export const COURSES: Course[] = [
     duration_en: '3 Days',
     duration_days: 3,
     participants: 4,
-    description_it: 'Microblading freestyle su 14 livelli progressivi. Dalla direzione del pelo alla shading manuale, con applicazione su modella reale.',
-    description_en: 'Freestyle microblading across 14 progressive levels. From hair direction to manual shading, with live model application.',
+    description_it: 'Tre giorni per portare il microblading al livello successivo. Il programma copre 14 livelli progressivi: direzione del pelo, pressione blade, pigmentazione e shading manuale su pelli reali. La metodologia PhiBrows applicata con libertà compositiva — perché il microblading di precisione non è una formula, è una competenza. Applicazione finale su modella reale inclusa.',
+    description_en: 'Three days to take your microblading to the next level. The programme covers 14 progressive levels: hair direction, blade pressure, pigmentation, and manual shading on real skin. PhiBrows methodology applied with compositional freedom — because precision microblading is not a formula, it is a skill. Live model application included.',
     images: [],
     days: [
       {
@@ -304,8 +304,8 @@ export const COURSES: Course[] = [
     duration_en: '2 Days',
     duration_days: 2,
     participants: 4,
-    description_it: "Tecniche Ombre Lips e Full Lips: dalla teoria del colore alla simmetria anatomica, fino all'applicazione su modella reale.",
-    description_en: 'Ombre Lips and Full Lips techniques: from colour theory to anatomical symmetry, through to live model application.',
+    description_it: 'Labbra permanenti che sembrano naturali: questo è il risultato che il mercato chiede e che pochi sanno eseguire con coerenza. In due giorni affronti la teoria del colore applicata alle labbra, la neutralizzazione delle iperpigmentazioni, la simmetria anatomica e le tecniche Ombre Lips e Full Lips. Applicazione su modella reale nel secondo giorno. Esci con un metodo, non solo con una tecnica.',
+    description_en: 'Permanent lips that look natural: this is what the market demands and what few can deliver consistently. Over two days you cover colour theory applied to lips, dark lip neutralisation, anatomical symmetry, and both Ombre Lips and Full Lips techniques. Live model application on day two. You leave with a method, not just a technique.',
     images: [],
     days: [
       {
@@ -361,8 +361,8 @@ export const COURSES: Course[] = [
     duration_en: '1 Day',
     duration_days: 1,
     participants: 4,
-    description_it: 'Eyeliner infraciliare classico: design, movimenti della mano e pigmentazione in una giornata intensiva con pratica su modella.',
-    description_en: 'Classic infraciliary eyeliner: design, hand movements and pigmentation in one intensive day with live model practice.',
+    description_it: 'Una giornata dedicata interamente all\'eyeliner permanente infraciliare — il servizio più tecnico e meno insegnato della dermopigmentazione. Il programma copre design della linea, controllo della mano, scelta del pigmento e gestione delle pelli difficili. Pratica su modella reale inclusa. Per i professionisti che vogliono aggiungere un servizio ad alta domanda e alta marginalità al loro menu.',
+    description_en: 'One full day dedicated entirely to permanent infraciliary eyeliner — the most technical and least taught service in dermopigmentation. The programme covers line design, hand control, pigment selection, and managing difficult skin types. Live model practice included. For professionals who want to add a high-demand, high-margin service to their menu.',
     images: [],
     days: [
       {
@@ -402,8 +402,8 @@ export const COURSES: Course[] = [
     duration_en: '1 Day',
     duration_days: 1,
     participants: 4,
-    description_it: 'Masterclass di architettura sopraccigliare con compasso e filo. Mappatura avanzata e simmetria morfologica applicata al viso reale.',
-    description_en: 'Brow architecture masterclass with compass and thread. Advanced mapping and morphological symmetry applied to the real face.',
+    description_it: 'Prima del pigmento, c\'è la mappa. Il Brow Blueprint è una masterclass di architettura sopraccigliare pura: compasso, filo e Sezione Aurea applicati al volto reale. Impari a leggere la struttura ossea, la trazione muscolare e la geometria facciale per progettare un\'arcata che rimanga armoniosa in ogni espressione. Fondamentale per qualsiasi professionista PMU — indipendentemente dalla tecnica che usa.',
+    description_en: 'Before pigment, there is the map. The Brow Blueprint is a pure brow architecture masterclass: compass, thread, and the Golden Ratio applied to the real face. You learn to read bone structure, muscular pull, and facial geometry to design an arch that remains harmonious in every expression. Essential for any PMU professional — regardless of the technique they use.',
     images: [],
     days: [
       {
@@ -445,8 +445,8 @@ export const COURSES: Course[] = [
     duration_en: '1 Day',
     duration_days: 1,
     participants: 4,
-    description_it: 'Masterclass per la creazione di ventagli volume 2D-6D. Lash mapping personalizzato e tecniche di applicazione avanzata.',
-    description_en: 'Masterclass for creating 2D-6D volume fans. Personalised lash mapping and advanced application techniques.',
+    description_it: 'La masterclass per chi vuole padroneggiare le extension ciglia volume con precisione e velocità. Il programma copre la costruzione di ventagli 2D–6D, il lash mapping personalizzato per forma dell\'occhio e geometria facciale, e le tecniche di applicazione avanzata. Pratica intensiva su modella reale. Per i professionisti che vogliono offrire un risultato volume che sembri naturale — non artificioso.',
+    description_en: 'The masterclass for professionals who want to master volume lash extensions with precision and speed. The programme covers 2D–6D fan construction, personalised lash mapping for eye shape and facial geometry, and advanced application techniques. Intensive live model practice. For professionals who want to deliver volume results that look natural — never overdone.',
     images: [],
     days: [
       {
@@ -488,8 +488,8 @@ export const COURSES: Course[] = [
     duration_en: '1 Day',
     duration_days: 1,
     participants: 4,
-    description_it: 'Laminazione ciglia e sopracciglia con sistema professionale. Lifting avanzato, nutrimento e protocolli di sicurezza e aftercare.',
-    description_en: 'Lash and brow lamination with a professional system. Advanced lifting, nourishment, and safety and aftercare protocols.',
+    description_it: 'Il trattamento più richiesto nei centri estetici d\'élite, insegnato con la precisione di Belle Femme. In una giornata intensiva padroneggi la laminazione ciglia e sopracciglia con sistema professionale: lifting avanzato, nutrimento con cheratina e acido ialuronico, protocolli di sicurezza e aftercare. Un servizio ad alta rotazione clienti e alta redditività — eseguito al livello più alto.',
+    description_en: 'The most requested treatment in elite aesthetic centres, taught with Belle Femme precision. In one intensive day you master lash and brow lamination with a professional system: advanced lifting, keratin and hyaluronic acid nourishment, safety protocols and aftercare. A high-turnover, high-margin service — executed at the highest level.',
     images: [],
     days: [
       {
