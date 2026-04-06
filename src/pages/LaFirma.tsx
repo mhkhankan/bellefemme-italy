@@ -123,12 +123,47 @@ const LaFirma = () => {
       <section className="relative z-10 py-24 md:py-32">
         <div className="container mx-auto px-6 md:px-12 max-w-5xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24">
-            {/* Portrait */}
-            <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
+
+            {/* Portrait — gradient overlays blend white background into dark site */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="relative overflow-hidden"
+            >
               <img
                 src="/branding/mouna-la-firma.jpg"
                 alt="Mouna Chabbar — Fondatrice Belle Femme Atelier, Master Trainer PMU Varese"
                 className="w-full aspect-[3/4] object-cover object-top"
+              />
+              {/* Bottom fade */}
+              <div
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  background: 'linear-gradient(to bottom, transparent 55%, hsl(0 0% 0% / 0.85) 100%)',
+                }}
+              />
+              {/* Top fade */}
+              <div
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  background: 'linear-gradient(to top, transparent 75%, hsl(0 0% 0% / 0.4) 100%)',
+                }}
+              />
+              {/* Left fade */}
+              <div
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  background: 'linear-gradient(to left, transparent 75%, hsl(0 0% 0% / 0.4) 100%)',
+                }}
+              />
+              {/* Right fade — desktop only, blends into text column */}
+              <div
+                className="absolute inset-0 pointer-events-none hidden md:block"
+                style={{
+                  background: 'linear-gradient(to right, transparent 55%, hsl(0 0% 0% / 0.7) 100%)',
+                }}
               />
             </motion.div>
 
