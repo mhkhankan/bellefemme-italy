@@ -60,8 +60,8 @@ export const TreatmentArchitecture = () => {
   };
 
   const tickerText = language === 'it'
-    ? 'La Collezione — 7 Trattamenti Esclusivi'
-    : 'The Collection — 7 Exclusive Treatments';
+    ? 'La Collezione — 8 Trattamenti Esclusivi'
+    : 'The Collection — 8 Exclusive Treatments';
 
   const scrollToTreatment = (index: number) => {
     const el = document.getElementById(`treatment-${index}`);
@@ -105,7 +105,7 @@ export const TreatmentArchitecture = () => {
             className="text-center space-y-6"
           >
             <p className="text-[10px] tracking-[0.4em] uppercase text-primary/60">
-              The 7-Point Collection
+              The 8-Point Collection
             </p>
             <h2 className="font-cormorant text-3xl md:text-5xl font-light text-foreground tracking-[2px]">
               {t.nav.atelier}
