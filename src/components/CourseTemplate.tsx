@@ -31,6 +31,7 @@ export const CourseTemplate = ({ course }: CourseTemplateProps) => {
       <StructuredData
         path={course.slug}
         pageTitle={`${course.bf_name} — Belle Femme Academy`}
+        pageDescription={description}
       />
       <StickyHeader />
 

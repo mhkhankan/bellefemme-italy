@@ -71,19 +71,21 @@ export const AcademySection = () => {
     if (!name.trim() || !phone.trim() || !city.trim()) return;
     setSubmitting(true);
     try {
-      await supabase.from('academy_waitlist').insert({
+      const { error } = await supabase.from('academy_waitlist').insert({
         name: name.trim(),
         phone: phone.trim(),
         city: city.trim(),
         course: course || null,
       } as any);
+      if (error) throw error;
       setSubmitted(true);
       toast({ title: language === 'it' ? 'RICHIESTA PRESA IN CARICO' : 'REQUEST RECEIVED' });
     } catch {
-      toast({
-        title: language === 'it' ? 'Errore di connessione.' : 'Connection error.',
-        description: language === 'it' ? 'Scrivici su WhatsApp per iscriverti.' : 'Please contact us on WhatsApp to register.',
-      });
+      const msg = encodeURIComponent(
+        `Ciao, vorrei iscrivermi alla lista d'attesa Academy.\n\nNome: ${name.trim()}\nTelefono: ${phone.trim()}\nCittà: ${city.trim()}${course ? `\nCorso: ${course}` : ''}`
+      );
+      window.open(`https://wa.me/393516605507?text=${msg}`, '_blank');
+      setSubmitted(true);
     }
     setSubmitting(false);
   };
