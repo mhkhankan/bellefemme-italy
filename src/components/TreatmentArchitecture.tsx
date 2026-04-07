@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { LocationSheet } from './LocationSheet';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -12,7 +12,7 @@ const IMAGE_MAP: Record<string, string> = {
   'eye-engineering': '/treatments/05-lash-line-engineering.jpg',
   'lash-architecture': '/treatments/06-gaze-sculpting-ciglia.jpg',
   'brow-blueprint': '/treatments/07-brow-architecture-visagismo.jpg',
-  'lash-sculpting': '/treatments/08-lash-sculpting-volumetria.jpg',
+  'lash-sculpting': '/treatments/08-consultation.jpg',
 };
 
 const ALT_MAP: Record<string, string> = {
@@ -68,7 +68,7 @@ export const TreatmentArchitecture = () => {
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const TreatmentImage = ({ item, sizeClass, numberSize }: { item: TreatmentItem; sizeClass: string; numberSize: string }) => {
+  const TreatmentImage = ({ item, sizeClass, numberSize, imgStyle }: { item: TreatmentItem; sizeClass: string; numberSize: string; imgStyle?: React.CSSProperties }) => {
     const [imgFailed, setImgFailed] = useState(false);
     const imgPath = IMAGE_MAP[item.id];
     const altText = ALT_MAP[item.id] || item.title;
@@ -81,6 +81,7 @@ export const TreatmentArchitecture = () => {
             className={`${sizeClass} object-cover`}
             loading={item.number <= '02' ? 'eager' : 'lazy'}
             onError={() => setImgFailed(true)}
+            style={imgStyle}
           />
         ) : (
           <div className={`${sizeClass} shimmer-venetian flex items-center justify-center`}>
@@ -94,7 +95,6 @@ export const TreatmentArchitecture = () => {
   return (
     <>
       <section id="atelier" className="relative">
-        {/* Section header — desktop only */}
         <div className="hidden md:block py-24 md:py-32">
           <motion.div
             variants={fadeIn}
@@ -116,7 +116,6 @@ export const TreatmentArchitecture = () => {
           </motion.div>
         </div>
 
-        {/* Right-edge progress indicator (desktop only) */}
         <div className="hidden md:flex fixed right-6 top-1/2 -translate-y-1/2 z-40 flex-col gap-3">
           {treatments.map((item, i) => (
             <button
@@ -139,7 +138,6 @@ export const TreatmentArchitecture = () => {
           ))}
         </div>
 
-        {/* Mobile: snap-scroll stack */}
         <div
           className="md:hidden"
           style={{ scrollSnapType: 'y mandatory', height: '100svh', overflowY: 'scroll', overscrollBehavior: 'contain' }}
@@ -152,17 +150,16 @@ export const TreatmentArchitecture = () => {
               initial="hidden"
               whileInView="visible"
               onViewportEnter={() => setActiveIndex(index)}
+              onViewportLeave={() => setExpandedId(null)}
               viewport={{ once: false, margin: '-40%' }}
               transition={{ duration: 0.5, ease: 'easeInOut' }}
               className="flex flex-col justify-end px-6 pb-8 pt-16 border-t border-primary/10 relative"
               style={{ minHeight: '100svh', scrollSnapAlign: 'start' }}
             >
-              {/* Treatment image */}
-              <div className="flex-1 flex items-center justify-center mb-8">
-                <TreatmentImage item={item} sizeClass="w-full aspect-[4/5]" numberSize="text-6xl" />
+              <div className="flex-1 flex items-center justify-center mb-8" style={{ maxHeight: 'min(50vh, 320px)' }}>
+                <TreatmentImage item={item} sizeClass="w-full" numberSize="text-6xl" imgStyle={{ maxHeight: 'min(50vh, 320px)', width: '100%', objectFit: 'cover' }} />
               </div>
 
-              {/* Thumb zone — bottom 30% */}
               <div className="space-y-4">
                 <div className="flex items-baseline gap-4">
                   <span className="font-cormorant text-4xl font-light text-primary/20">{item.number}</span>
@@ -170,11 +167,10 @@ export const TreatmentArchitecture = () => {
                     <h3 className="font-inter font-bold text-[12px] tracking-[0.2em] uppercase text-foreground">
                       {item.title}
                     </h3>
-                    <p className="font-cormorant italic text-xl text-primary/80 mt-1">{item.subtitle}</p>
+                    <p className="font-cormorant italic text-xl mt-1" style={{ color: 'hsl(43 76% 52% / 0.90)' }}>{item.subtitle}</p>
                   </div>
                 </div>
 
-                {/* Technical detail toggle */}
                 <button
                   onClick={() => setExpandedId(expandedId === item.id ? null : item.id)}
                   className="text-[10px] tracking-[0.15em] uppercase text-primary/50 hover:text-primary transition-colors min-h-[44px] flex items-center"
@@ -184,23 +180,19 @@ export const TreatmentArchitecture = () => {
                     : (language === 'it' ? 'Dettagli Tecnici +' : 'Technical Details +')}
                 </button>
 
-                <AnimatePresence>
-                  {expandedId === item.id && (
-                    <motion.p
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: 'auto' }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="text-base text-foreground/60 leading-relaxed overflow-hidden"
-                    >
-                      {item.description}
-                    </motion.p>
-                  )}
-                </AnimatePresence>
+                <p
+                  className="text-base leading-relaxed overflow-hidden transition-all duration-300"
+                  style={{
+                    maxHeight: expandedId === item.id ? '20rem' : '0',
+                    opacity: expandedId === item.id ? 0.85 : 0,
+                  }}
+                >
+                  {item.description}
+                </p>
 
                 <button
                   onClick={() => openConsultation(item.title)}
-                  className="w-full font-inter font-bold text-[10px] tracking-[0.2em] uppercase bg-primary text-primary-foreground px-8 py-4 min-h-[48px] hover:bg-primary/90 transition-all duration-500 mt-4"
+                  className="w-full font-inter font-bold text-[11px] tracking-[0.22em] uppercase bg-primary text-primary-foreground px-8 py-4 min-h-[48px] hover:bg-primary/90 transition-all duration-500 mt-4"
                 >
                   {t.treatments.checkAvailability}
                 </button>
@@ -209,7 +201,6 @@ export const TreatmentArchitecture = () => {
           ))}
         </div>
 
-        {/* Mobile scroll dot indicator */}
         {inSection && (
           <div className="md:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-40 flex items-center gap-2">
             {treatments.map((_, i) => (
@@ -228,7 +219,6 @@ export const TreatmentArchitecture = () => {
           </div>
         )}
 
-        {/* Desktop: natural scroll */}
         <div className="hidden md:block">
           <div className="space-y-0 max-w-5xl mx-auto">
             {treatments.map((item, index) => (
@@ -245,12 +235,10 @@ export const TreatmentArchitecture = () => {
                 style={{ scrollSnapAlign: 'start' }}
               >
                 <div className="grid grid-cols-12 gap-16 items-center w-full py-16">
-                  {/* Image column */}
                   <div className={`col-span-5 ${index % 2 === 0 ? 'order-1' : 'order-2'}`}>
                     <TreatmentImage item={item} sizeClass="w-full aspect-[4/5]" numberSize="text-8xl" />
                   </div>
 
-                  {/* Text column */}
                   <div className={`col-span-7 space-y-6 ${index % 2 === 0 ? 'order-2' : 'order-1'}`}>
                     <span className="font-cormorant text-8xl font-light text-primary/10 block">{item.number}</span>
                     <h3 className="font-inter font-bold text-[12px] tracking-[0.25em] uppercase text-foreground">
@@ -267,19 +255,15 @@ export const TreatmentArchitecture = () => {
                         : (language === 'it' ? 'Dettagli Tecnici +' : 'Technical Details +')}
                     </button>
 
-                    <AnimatePresence>
-                      {expandedId === item.id && (
-                        <motion.p
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: 'auto' }}
-                          exit={{ opacity: 0, height: 0 }}
-                          transition={{ duration: 0.3 }}
-                          className="text-base text-foreground/60 leading-relaxed max-w-md overflow-hidden"
-                        >
-                          {item.description}
-                        </motion.p>
-                      )}
-                    </AnimatePresence>
+                    <p
+                      className="text-base leading-relaxed max-w-md overflow-hidden transition-all duration-300"
+                      style={{
+                        maxHeight: expandedId === item.id ? '20rem' : '0',
+                        opacity: expandedId === item.id ? 0.85 : 0,
+                      }}
+                    >
+                      {item.description}
+                    </p>
 
                     <button
                       onClick={() => openConsultation(item.title)}

@@ -52,10 +52,17 @@ export const StickyHeader = () => {
           <img
             src="/branding/BF_logo_wordmark_transparent.png"
             alt="Belle Femme Atelier"
-            className="h-10 md:h-12 w-auto"
+            className="h-12 md:h-14 w-auto"
             style={{ objectFit: 'contain' }}
           />
-          <span className="font-cormorant text-lg md:text-xl tracking-[0.12em] text-primary hidden sm:inline">
+          <span
+            className="font-cormorant text-lg md:text-xl tracking-[0.12em] hidden sm:inline"
+            style={{
+              background: 'linear-gradient(135deg, #F9EFA2, #EBCF73, #D4AC61, #BB9243, #89753D)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+            }}
+          >
             Belle Femme
           </span>
         </Link>
@@ -63,26 +70,26 @@ export const StickyHeader = () => {
         <nav className="hidden md:flex gap-10">
           <button
             onClick={() => scrollToSection('atelier')}
-            className="text-[11px] tracking-[0.25em] uppercase text-foreground/40 hover:text-primary transition-colors duration-500"
+            className="text-[11px] tracking-[0.25em] uppercase text-foreground/70 hover:text-primary transition-colors duration-500"
           >
             {t.nav.atelier}
           </button>
           <button
             onClick={() => scrollToSection('academy')}
-            className="text-[11px] tracking-[0.25em] uppercase text-foreground/40 hover:text-primary transition-colors duration-500"
+            className="text-[11px] tracking-[0.25em] uppercase text-foreground/70 hover:text-primary transition-colors duration-500"
           >
             {t.nav.academy}
           </button>
           <Link
             to="/la-firma"
-            className="text-[11px] tracking-[0.25em] uppercase text-foreground/40 hover:text-primary transition-colors duration-500"
+            className="text-[11px] tracking-[0.25em] uppercase text-foreground/70 hover:text-primary transition-colors duration-500"
           >
             {t.nav.firma}
           </Link>
         </nav>
 
         <div className="flex items-center gap-2">
-          <LanguageSwitcher />
+          <div className="hidden md:block"><LanguageSwitcher /></div>
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             className="md:hidden min-h-[44px] min-w-[44px] flex items-center justify-center text-foreground/60"
@@ -94,28 +101,70 @@ export const StickyHeader = () => {
 
       {menuOpen && (
         <nav
-          className="md:hidden border-t border-primary/10 px-6 py-6 flex flex-col gap-4"
-          style={{ backgroundColor: 'hsla(0, 0%, 0%, 0.95)' }}
+          className="md:hidden flex flex-col"
+          style={{
+            position: 'fixed',
+            inset: 0,
+            zIndex: 60,
+            backgroundColor: 'hsla(0, 0%, 2%, 0.98)',
+            overflowY: 'auto',
+          }}
         >
-          <button
-            onClick={() => scrollToSection('atelier')}
-            className="text-left text-[11px] tracking-[0.25em] uppercase text-foreground/50 hover:text-primary transition-colors min-h-[44px]"
-          >
-            {t.nav.atelier}
-          </button>
-          <button
-            onClick={() => scrollToSection('academy')}
-            className="text-left text-[11px] tracking-[0.25em] uppercase text-foreground/50 hover:text-primary transition-colors min-h-[44px]"
-          >
-            {t.nav.academy}
-          </button>
-          <Link
-            to="/la-firma"
-            onClick={() => setMenuOpen(false)}
-            className="text-[11px] tracking-[0.25em] uppercase text-foreground/50 hover:text-primary transition-colors min-h-[44px] flex items-center"
-          >
-            {t.nav.firma}
-          </Link>
+          <div className="flex flex-col items-center justify-center pt-16 pb-8">
+            <img
+              src="/branding/BF_logo_wordmark_transparent.png"
+              alt="Belle Femme Atelier e Accademia"
+              style={{ height: '80px', width: 'auto', objectFit: 'contain' }}
+            />
+            <p
+              className="font-cormorant text-xl tracking-[0.15em] mt-3"
+              style={{
+                background: 'linear-gradient(135deg, #F9EFA2, #EBCF73, #D4AC61, #BB9243, #89753D)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+              }}
+            >
+              Belle Femme
+            </p>
+            <p className="font-inter text-[9px] tracking-[0.2em] uppercase text-foreground/40 mt-1">
+              Atelier e Accademia
+            </p>
+          </div>
+
+          <div className="flex flex-col items-center gap-2 px-6 flex-1">
+            <button
+              onClick={() => scrollToSection('atelier')}
+              className="font-cormorant text-3xl font-light text-foreground/70 hover:text-primary transition-colors min-h-[56px] flex items-center justify-center tracking-[0.1em]"
+            >
+              {t.nav.atelier}
+            </button>
+            <button
+              onClick={() => scrollToSection('academy')}
+              className="font-cormorant text-3xl font-light text-foreground/70 hover:text-primary transition-colors min-h-[56px] flex items-center justify-center tracking-[0.1em]"
+            >
+              {t.nav.academy}
+            </button>
+            <Link
+              to="/la-firma"
+              onClick={() => setMenuOpen(false)}
+              className="font-cormorant text-3xl font-light text-foreground/70 hover:text-primary transition-colors min-h-[56px] flex items-center justify-center tracking-[0.1em]"
+            >
+              {t.nav.firma}
+            </Link>
+          </div>
+
+          <div className="px-6 pb-12 pt-6 flex flex-col items-center gap-6 border-t border-primary/10 mt-auto">
+            <a
+              href="https://wa.me/393516605507"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setMenuOpen(false)}
+              className="w-full font-inter font-bold text-[11px] tracking-[0.2em] uppercase bg-primary text-primary-foreground px-8 py-4 min-h-[48px] hover:bg-primary/90 transition-colors text-center"
+            >
+              PRENOTA UNA CONSULENZA
+            </a>
+            <LanguageSwitcher />
+          </div>
         </nav>
       )}
     </header>

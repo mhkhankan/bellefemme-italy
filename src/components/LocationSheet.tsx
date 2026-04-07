@@ -51,7 +51,7 @@ export const LocationSheet = ({ open, onOpenChange, treatmentName, mode = 'treat
   }, [open]);
 
   const handleSelect = (location: string) => {
-    const msg = `Buongiorno Mouna, vorrei verificare la disponibilità per ${treatmentName} presso l'Atelier di ${location}.`;
+    const msg = `Buongiorno Mouna, vorrei prenotare una consulenza per ${treatmentName} presso l'Atelier di ${location}.`;
     window.open(`${WHATSAPP_BASE}${encodeURIComponent(msg)}`, '_blank');
     onOpenChange(false);
   };
@@ -81,13 +81,12 @@ export const LocationSheet = ({ open, onOpenChange, treatmentName, mode = 'treat
 
   const drawerTitle = mode === 'course'
     ? (language === 'it' ? 'Seleziona la sede del corso' : 'Select course location')
-    : t.concierge.selectAtelier;
+    : (language === 'it' ? 'La tua Consulenza' : 'Your Consultation');
 
   const consultationNote = mode === 'course'
     ? (language === 'it' ? 'Ogni corso è preceduto da una consulenza personalizzata con Mouna Chabbar.' : 'Every course begins with a personalised consultation with Mouna Chabbar.')
     : (language === 'it' ? 'Ogni trattamento è preceduto da una consulenza personalizzata — in sede o via WhatsApp.' : 'Every treatment begins with a personalised consultation — in person or via WhatsApp.');
 
-  // Elite Atelier "ACCESSO RISERVATO" modal
   if (eliteModalCity && !submitted) {
     const modalContent = (
       <div className="space-y-6 py-4 px-2">
@@ -162,15 +161,14 @@ export const LocationSheet = ({ open, onOpenChange, treatmentName, mode = 'treat
     );
   }
 
-  // Confirmation after elite submit
   if (submitted) {
     const confirmContent = (
       <div className="py-8 px-4 text-center space-y-6">
         <p className="font-inter font-bold text-[11px] tracking-[0.2em] uppercase text-primary">
-          RICHIESTA PRESA IN CARICO
+          SEI NELLA NOSTRA LISTA PRIORITARIA
         </p>
         <p className="text-sm text-muted-foreground leading-relaxed max-w-xs mx-auto">
-          Il tuo profilo è ora in lista d'attesa prioritaria. Sarai ricontattata non appena si libererà uno slot o verranno pubblicate le nuove date.
+          Il tuo profilo è ora in lista prioritaria. Ti contatteremo non appena si apre un nuovo calendario.
         </p>
         <button
           onClick={() => onOpenChange(false)}
@@ -199,17 +197,15 @@ export const LocationSheet = ({ open, onOpenChange, treatmentName, mode = 'treat
     );
   }
 
-  // Main location selector
   const content = (
     <div className="space-y-4 py-4 px-2">
-      <p className="text-center text-sm text-muted-foreground">
-        {t.concierge.whereDesire}
-      </p>
       <p className="font-cormorant italic text-sm text-primary/70 text-center px-4 mb-4">
         {consultationNote}
       </p>
+      <p className="text-center text-sm text-muted-foreground">
+        {t.concierge.whereDesire}
+      </p>
       <div className="flex flex-col gap-1">
-        {/* Active Hubs */}
         {activeLocations.map((loc) => {
           const remaining = getSpots(loc);
           return (
@@ -230,7 +226,6 @@ export const LocationSheet = ({ open, onOpenChange, treatmentName, mode = 'treat
           );
         })}
 
-        {/* Elite Ateliers — Milano & Roma */}
         {eliteLocations.map((loc) => (
           <button
             key={loc}
@@ -251,7 +246,6 @@ export const LocationSheet = ({ open, onOpenChange, treatmentName, mode = 'treat
           </button>
         ))}
 
-        {/* Corso Privato — only in course mode */}
         {mode === 'course' && (
           <button
             onClick={() => {
