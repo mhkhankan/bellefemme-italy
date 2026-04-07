@@ -42,8 +42,8 @@ export const StickyHeader = () => {
         backgroundColor: 'hsla(0, 0%, 0%, 0.92)',
         backdropFilter: 'blur(12px)',
         WebkitBackdropFilter: 'blur(12px)',
-        opacity: visible ? 1 : 0,
-        pointerEvents: visible ? 'auto' : 'none',
+        opacity: (visible || menuOpen) ? 1 : 0,
+        pointerEvents: (visible || menuOpen) ? 'auto' : 'none',
         transition: 'opacity 0.6s ease',
       }}
     >
