@@ -10,8 +10,16 @@ const JURIST_CITIES = ['MILANO', 'DUBAI', 'VENEZIA', 'TURCHIA', 'ROMANIA'];
 const CREDENTIALS = {
   tier1: [
     {
-      title_it: 'Già Official Master Assistant — PhiBrows · PhiAcademy',
-      title_en: 'Formerly Official Master Assistant — PhiBrows · PhiAcademy',
+      title_it: 'Laurea in Belle Arti — Comunicazioni Visive e Graphic Design',
+      title_en: 'Bachelor of Fine Arts — Visual Communications & Graphic Design',
+      sub_it: '',
+      sub_en: '',
+    },
+  ],
+  tier2: [
+    {
+      title_it: 'Master Assistant — PhiAcademy',
+      title_en: 'Master Assistant — PhiAcademy',
       sub_it: 'Uno dei gradi istituzionali più alti assegnati a livello mondiale — autorizzata a fare da mentore, supervisionare e certificare la nuova generazione di artisti su scala globale.',
       sub_en: 'One of the highest institutional ranks assigned worldwide — authorised to mentor, supervise and certify the next generation of artists on a global scale.',
     },
@@ -22,14 +30,11 @@ const CREDENTIALS = {
       sub_en: 'Authorised international educator for the S-Brows technique — the global benchmark for high-definition pixelation and machine shading.',
     },
   ],
-  tier2: [
+  tier3: [
     { title_it: 'Royal Artist — PhiBrows · Branko Babić Microblading Academy', title_en: 'Royal Artist — PhiBrows · Branko Babić Microblading Academy' },
     { title_it: 'Master Long-Lasting Eyebrow Tattooing — BIOTEK Italy', title_en: 'Master Long-Lasting Eyebrow Tattooing — BIOTEK Italy' },
     { title_it: 'Già Master Instructor — Kerafill Italy', title_en: 'Formerly Master Instructor — Kerafill Italy' },
     { title_it: 'Specialista Rimozione Pigmenti — Protocolli Correttivi Avanzati AcademyS', title_en: 'Pigment Removal Specialist — AcademyS Advanced Corrective Protocols' },
-  ],
-  tier3: [
-    { title_it: 'Laurea in Belle Arti — Comunicazioni Visive e Graphic Design', title_en: 'Bachelor of Fine Arts — Visual Communications & Graphic Design' },
     { title_it: 'Operatore del Benessere EQF 3 — AFEA Formazione (accreditata Regione Piemonte)', title_en: 'Operatore del Benessere EQF 3 — AFEA Formazione (accredited by Regione Piemonte)' },
     { title_it: 'Attestato Tatuaggi & Piercing — Regione Lombardia', title_en: 'Tattoo & Piercing Licence — Regione Lombardia' },
     { title_it: 'Alumna BCM Milano — Trucco Semipermanente · 30/30', title_en: 'BCM Milan Alumna — Semi-Permanent Make-Up · 30/30' },
@@ -76,11 +81,10 @@ const LaFirma = () => {
       <StructuredData
         path="/la-firma"
         pageTitle="La Firma — Mouna Chabbar · Belle Femme Atelier"
-        pageDescription="Mouna Chabbar, già Official Master Assistant PhiAcademy e già Craft Master AcademyS. Giudice internazionale PMU. Fondatrice di Belle Femme Atelier, Varese."
+        pageDescription="Mouna Chabbar, Master Assistant PhiAcademy e già Craft Master AcademyS. Giudice internazionale PMU. Fondatrice di Belle Femme Atelier, Varese."
       />
       <StickyHeader />
 
-      {/* Blueprint background */}
       <div className="fixed inset-0 z-0 pointer-events-none" style={{ opacity: 0.03 }}>
         <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
           <defs>
@@ -99,7 +103,6 @@ const LaFirma = () => {
         </svg>
       </div>
 
-      {/* SECTION 1 — HERO */}
       <section className="relative z-10 min-h-screen flex items-center justify-center">
         <div className="container mx-auto px-6 md:px-12 max-w-4xl text-center">
           <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1.2 }}>
@@ -109,6 +112,12 @@ const LaFirma = () => {
             <h1 className="font-cormorant text-5xl md:text-7xl font-light text-foreground tracking-[4px] mb-6">
               Mouna Chabbar
             </h1>
+            <p
+              className="font-inter text-[10px] tracking-[0.25em] uppercase mb-4"
+              style={{ color: 'hsl(43 76% 52% / 0.70)' }}
+            >
+              {language === 'it' ? 'Craft Master · Giudice Internazionale' : 'Craft Master · International Judge'}
+            </p>
             <div className="h-px w-24 bg-primary/40 mx-auto mb-8" />
             <p className="font-cormorant italic text-xl md:text-2xl text-primary/80 tracking-wide max-w-xl mx-auto">
               {language === 'it'
@@ -119,12 +128,9 @@ const LaFirma = () => {
         </div>
       </section>
 
-      {/* SECTION 2 — PORTRAIT + BIO + CREDENTIALS */}
       <section className="relative z-10 py-24 md:py-32">
         <div className="container mx-auto px-6 md:px-12 max-w-5xl">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24">
-
-            {/* Portrait — gradient overlays blend white background into dark site */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -137,28 +143,24 @@ const LaFirma = () => {
                 alt="Mouna Chabbar — Fondatrice Belle Femme Atelier, Master Trainer PMU Varese"
                 className="w-full aspect-[3/4] object-cover object-top"
               />
-              {/* Bottom fade */}
               <div
                 className="absolute inset-0 pointer-events-none"
                 style={{
                   background: 'linear-gradient(to bottom, transparent 55%, hsl(0 0% 0% / 0.85) 100%)',
                 }}
               />
-              {/* Top fade */}
               <div
                 className="absolute inset-0 pointer-events-none"
                 style={{
                   background: 'linear-gradient(to top, transparent 75%, hsl(0 0% 0% / 0.4) 100%)',
                 }}
               />
-              {/* Left fade */}
               <div
                 className="absolute inset-0 pointer-events-none"
                 style={{
                   background: 'linear-gradient(to left, transparent 75%, hsl(0 0% 0% / 0.4) 100%)',
                 }}
               />
-              {/* Right fade — desktop only, blends into text column */}
               <div
                 className="absolute inset-0 pointer-events-none hidden md:block"
                 style={{
@@ -167,9 +169,7 @@ const LaFirma = () => {
               />
             </motion.div>
 
-            {/* Right column */}
             <div className="space-y-12">
-              {/* BIO */}
               <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
                 <h2 className="font-cormorant text-3xl md:text-4xl font-light text-foreground tracking-[2px] mb-6">
                   {language === 'it' ? "L'Architetto dello Sguardo" : 'The Architect of the Gaze'}
@@ -181,42 +181,47 @@ const LaFirma = () => {
                 </p>
                 <p className="text-sm text-muted-foreground leading-[2]">
                   {language === 'it'
-                    ? "Dal suo studio a Varese, forma la prossima generazione di artisti PMU con la stessa esigenza che ha definito la sua carriera internazionale: ogni tratto è calcolato, ogni risultato è progettato."
-                    : "From her studio in Varese, she trains the next generation of PMU artists with the same standard that defined her international career: every stroke is calculated, every result is engineered."}
+                    ? "Da Varese, forma la prossima generazione di artisti PMU con la stessa esigenza che ha definito la sua carriera internazionale: ogni tratto è calcolato, ogni risultato è progettato."
+                    : "From Varese, she trains the next generation of PMU artists with the same standard that defined her international career: every stroke is calculated, every result is engineered."}
                 </p>
               </motion.div>
 
-              {/* CREDENTIALS */}
               <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.2 }} className="space-y-8">
                 <p className="text-[10px] tracking-[0.3em] uppercase text-primary/60">
                   {language === 'it' ? 'Credenziali' : 'Credentials'}
                 </p>
 
-                {/* Tier 1 */}
                 <div className="space-y-6">
                   {CREDENTIALS.tier1.map((c, i) => (
                     <div key={i} className="space-y-2">
                       <p className="font-inter font-bold text-[11px] tracking-[0.15em] uppercase text-foreground">
                         {language === 'it' ? c.title_it : c.title_en}
                       </p>
-                      <p className="text-xs text-muted-foreground leading-relaxed">
-                        {language === 'it' ? c.sub_it : c.sub_en}
-                      </p>
+                      {(language === 'it' ? c.sub_it : c.sub_en) && (
+                        <p className="text-xs text-muted-foreground leading-relaxed">
+                          {language === 'it' ? c.sub_it : c.sub_en}
+                        </p>
+                      )}
                     </div>
                   ))}
                 </div>
 
-                {/* Tier 2 */}
-                <div className="space-y-2 pt-2 border-t border-primary/10">
+                <div className="space-y-6 pt-2 border-t border-primary/10">
                   {CREDENTIALS.tier2.map((c, i) => (
-                    <p key={i} className="text-[10px] tracking-[0.1em] uppercase text-foreground/70">
-                      {language === 'it' ? c.title_it : c.title_en}
-                    </p>
+                    <div key={i} className="space-y-2">
+                      <p className="font-inter font-bold text-[11px] tracking-[0.15em] uppercase text-foreground">
+                        {language === 'it' ? c.title_it : c.title_en}
+                      </p>
+                      {(language === 'it' ? c.sub_it : c.sub_en) && (
+                        <p className="text-xs text-muted-foreground leading-relaxed">
+                          {language === 'it' ? c.sub_it : c.sub_en}
+                        </p>
+                      )}
+                    </div>
                   ))}
                 </div>
 
-                {/* Tier 3 */}
-                <div className="space-y-2">
+                <div className="space-y-2 pt-2 border-t border-primary/10">
                   {CREDENTIALS.tier3.map((c, i) => (
                     <p key={i} className="text-[10px] tracking-[0.1em] text-muted-foreground">
                       {language === 'it' ? c.title_it : c.title_en}
@@ -229,7 +234,6 @@ const LaFirma = () => {
         </div>
       </section>
 
-      {/* SECTION 3 — CLIENT TESTIMONIALS */}
       <section className="relative z-10 py-24 md:py-32" style={{ background: 'linear-gradient(180deg, hsl(0 0% 0%) 0%, hsl(0 0% 4%) 50%, hsl(0 0% 0%) 100%)' }}>
         <div className="container mx-auto px-6 md:px-12 max-w-4xl">
           <h2 className="font-cormorant text-3xl md:text-4xl font-light text-foreground tracking-[2px] text-center mb-16">
@@ -259,13 +263,12 @@ const LaFirma = () => {
               rel="noopener noreferrer"
               className="text-[10px] tracking-[0.15em] uppercase text-primary/60 hover:text-primary transition-colors"
             >
-              {language === 'it' ? 'Leggi tutte le recensioni \u2192 Facebook' : 'Read all reviews \u2192 Facebook'}
+              {language === 'it' ? 'Leggi tutte le recensioni → Facebook' : 'Read all reviews → Facebook'}
             </a>
           </div>
         </div>
       </section>
 
-      {/* SECTION 4 — JURIST POWER-BAR */}
       <section className="relative z-10 py-16 border-y border-primary/10 overflow-hidden">
         <div className="container mx-auto px-6 md:px-12 max-w-4xl mb-6">
           <p className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground text-center">
@@ -295,14 +298,11 @@ const LaFirma = () => {
         </div>
       </section>
 
-      {/* SECTION 5 — STATS BAR PLACEHOLDER */}
       <section className="relative z-10 py-16">
         <div className="container mx-auto px-6 md:px-12 max-w-4xl">
-          {/* Stats bar will be added here when content is confirmed */}
         </div>
       </section>
 
-      {/* SECTION 6 — SIGNATURE CLIMAX */}
       <section className="relative z-10 py-24 md:py-32 text-center">
         <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1.2 }}>
           <div className="w-16 h-16 mx-auto mb-8 rounded-full border border-primary/30 flex items-center justify-center">
@@ -319,7 +319,6 @@ const LaFirma = () => {
         </motion.div>
       </section>
 
-      {/* SECTION 7 — FINAL CTA */}
       <section className="relative z-10 py-24 md:py-32 border-t border-primary/10">
         <div className="container mx-auto px-6 md:px-12 max-w-md text-center">
           <div className="space-y-4">

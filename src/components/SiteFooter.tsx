@@ -4,17 +4,23 @@ export const SiteFooter = () => {
   return (
     <footer className="border-t border-primary/10 py-16 md:py-24 bg-background">
       <div className="container mx-auto px-6 md:px-12 max-w-5xl">
-        {/* Top row — Logo + Wordmark + Tagline */}
         <div className="flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-8 mb-12">
           <div className="flex items-center gap-1">
             <img
               src="/branding/BF_logo_full_transparent.png"
-              alt="Belle Femme Logo"
+              alt="Belle Femme Atelier e Accademia"
               className="h-14 w-auto"
               style={{ objectFit: 'contain' }}
             />
             <div>
-              <p className="font-cormorant text-xl tracking-[0.15em] text-primary">
+              <p
+                className="font-cormorant text-xl tracking-[0.15em]"
+                style={{
+                  background: 'linear-gradient(135deg, #F9EFA2, #EBCF73, #D4AC61, #BB9243, #89753D)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                }}
+              >
                 Belle Femme
               </p>
               <p className="text-[10px] tracking-[0.2em] uppercase text-primary/60 mt-1">
@@ -24,21 +30,21 @@ export const SiteFooter = () => {
           </div>
         </div>
 
-        {/* Info grid */}
+        <div className="w-full h-px mb-12" style={{ background: 'linear-gradient(to right, transparent, hsl(43 76% 52% / 0.3), transparent)' }} />
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-          {/* Locations */}
           <div className="space-y-2">
             <p className="text-xs tracking-[0.2em] uppercase text-primary/50 mb-3">
-              Locations
+              Sedi
             </p>
-            <p className="text-sm text-foreground/70 tracking-wide">Varese · Milano</p>
-            <p className="text-xs text-foreground/40 tracking-wider mt-2">P.IVA 03794680128</p>
+            <p className="text-sm text-foreground/70 tracking-wide">Varese</p>
+            <p className="text-sm text-foreground/70 tracking-wide">Milano</p>
+            <p className="text-sm text-foreground/70 tracking-wide">Roma</p>
           </div>
 
-          {/* Contact */}
           <div className="space-y-2">
             <p className="text-xs tracking-[0.2em] uppercase text-primary/50 mb-3">
-              Contact
+              Contatti
             </p>
             <a
               href="https://wa.me/393516605507"
@@ -56,10 +62,9 @@ export const SiteFooter = () => {
             </a>
           </div>
 
-          {/* Legal */}
           <div className="space-y-2">
             <p className="text-xs tracking-[0.2em] uppercase text-primary/50 mb-3">
-              Legal
+              Legale
             </p>
             <Link
               to="/privacy"
@@ -70,13 +75,12 @@ export const SiteFooter = () => {
           </div>
         </div>
 
-        {/* Divider */}
         <div className="h-px w-full bg-primary/15 mb-6" />
 
-        {/* Copyright */}
-        <p className="text-[11px] text-foreground/30 tracking-[0.15em] text-center md:text-left">
-          © 2026 Belle Femme
-        </p>
+        <div className="flex flex-col md:flex-row md:justify-between items-center gap-2">
+          <p className="text-[11px] text-foreground/55 tracking-[0.15em]">© 2026 Belle Femme Atelier e Accademia</p>
+          <p className="text-[11px] text-foreground/55 tracking-[0.15em]">P.IVA 03794680128</p>
+        </div>
       </div>
     </footer>
   );
