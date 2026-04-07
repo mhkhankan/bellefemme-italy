@@ -293,7 +293,7 @@ export const AcademySection = () => {
                 onClick={() => setShowWaitlist(true)}
                 className="font-inter font-bold text-[11px] tracking-[0.2em] uppercase border border-primary/30 text-primary px-10 py-4 min-h-[48px] hover:bg-primary hover:text-primary-foreground transition-all duration-500"
               >
-                {language === 'it' ? "Lista d'Attesa Elite" : 'Elite Waitlist'}
+                {language === 'it' ? 'Entra in Lista Prioritaria' : 'Join Priority List'}
               </button>
             )}
 
