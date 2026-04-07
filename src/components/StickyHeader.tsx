@@ -110,6 +110,12 @@ export const StickyHeader = () => {
             overflowY: 'auto',
           }}
         >
+          <button
+            onClick={() => setMenuOpen(false)}
+            className="absolute top-4 right-4 min-h-[44px] min-w-[44px] flex items-center justify-center text-foreground/60 z-10"
+          >
+            <X className="w-6 h-6" />
+          </button>
           <div className="flex flex-col items-center justify-center pt-16 pb-8">
             <img
               src="/branding/BF_logo_wordmark_transparent.png"
