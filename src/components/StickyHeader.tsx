@@ -22,8 +22,12 @@ export const StickyHeader = () => {
   const scrollToSection = (id: string) => {
     setMenuOpen(false);
     if (isHome) {
-      const el = document.getElementById(id);
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
+      const snapContainer = document.querySelector('[style*="scroll-snap-type"]') as HTMLElement | null;
+      if (snapContainer) snapContainer.scrollTop = 0;
+      setTimeout(() => {
+        const el = document.getElementById(id);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
     } else {
       navigate('/', { state: { scrollTo: id } });
     }
