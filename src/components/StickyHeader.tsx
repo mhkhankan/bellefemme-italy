@@ -10,20 +10,14 @@ export const StickyHeader = () => {
   const navigate = useNavigate();
   const isHome = location.pathname === '/';
   const [menuOpen, setMenuOpen] = useState(false);
-  const [visible, setVisible] = useState(!isHome);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    if (!isHome) {
-      setVisible(true);
-      return;
-    }
-    const handleScroll = () => {
-      setVisible(window.scrollY > 80);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 80);
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [isHome]);
+  }, []);
 
   const scrollToSection = (id: string) => {
     setMenuOpen(false);
@@ -39,12 +33,10 @@ export const StickyHeader = () => {
     <header
       className="fixed top-0 w-full z-50 border-b border-primary/10"
       style={{
-        backgroundColor: 'hsla(0, 0%, 0%, 0.92)',
-        backdropFilter: 'blur(12px)',
-        WebkitBackdropFilter: 'blur(12px)',
-        opacity: (visible || menuOpen) ? 1 : 0,
-        pointerEvents: (visible || menuOpen) ? 'auto' : 'none',
-        transition: 'opacity 0.6s ease',
+        backgroundColor: scrolled ? 'hsla(0, 0%, 0%, 0.92)' : 'transparent',
+        backdropFilter: scrolled ? 'blur(12px)' : 'none',
+        WebkitBackdropFilter: scrolled ? 'blur(12px)' : 'none',
+        transition: 'background-color 0.6s ease, backdrop-filter 0.6s ease',
       }}
     >
       <div className="container mx-auto px-6 md:px-12 py-3 flex items-center justify-between">
@@ -93,6 +85,7 @@ export const StickyHeader = () => {
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             className="md:hidden min-h-[44px] min-w-[44px] flex items-center justify-center text-foreground/60"
+            style={{ zIndex: 70 }}
           >
             {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>

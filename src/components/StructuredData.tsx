@@ -14,11 +14,12 @@ const SERVICES = [
   { name: 'Lash-Line Engineering — Eyeliner Permanente', description: 'Linea ultra-sottile tra le ciglia per eleganza invisibile.' },
   { name: 'Gaze Sculpting — Design Ciglia su Misura', description: 'Estensione basata sulla biomeccanica dell\'occhio con mappature personalizzate.' },
   { name: 'Brow Architecture — Visagismo Analitico', description: 'Progetto totale del volto con la Sezione Aurea.' },
+  { name: 'Lash Sculpting — Volumetria Ciglia su Misura', description: 'Extension ciglia su misura progettate seguendo il lash mapping personalizzato per forma, peso e curvatura calibrati sulla geometria facciale.' },
 ];
 
 export const StructuredData = ({ path = '/', pageTitle, pageDescription }: StructuredDataProps) => {
   useEffect(() => {
-    const canonicalUrl = `https://bellefemme.it${path}`;
+    const canonicalUrl = `https://www.bellefemme.it${path}`;
 
     // Canonical
     let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
@@ -56,10 +57,10 @@ export const StructuredData = ({ path = '/', pageTitle, pageDescription }: Struc
     "@graph": [
       {
         "@type": "BeautySalon",
-        "@id": "https://bellefemme.it/#business",
+        "@id": "https://www.bellefemme.it/#business",
         "name": "Belle Femme Atelier",
         "description": "Dermopigmentazione e Microblading — Master Trainer Mouna Chabbar. Trattamenti esclusivi e formazione professionale · Varese · Milano.",
-        "url": "https://bellefemme.it",
+        "url": "https://www.bellefemme.it",
         "telephone": "+393516605507",
         "email": "info@bellefemme.it",
         "address": { "@type": "PostalAddress", "addressLocality": "Varese", "addressRegion": "Lombardia", "addressCountry": "IT" },
@@ -68,32 +69,32 @@ export const StructuredData = ({ path = '/', pageTitle, pageDescription }: Struc
       },
       {
         "@type": "Person",
-        "@id": "https://bellefemme.it/#mouna",
+        "@id": "https://www.bellefemme.it/#mouna",
         "name": "Mouna Chabbar",
         "jobTitle": "Master Trainer Dermopigmentazione",
         "description": "Master Trainer — già Master Assistant PhiAcademy · già Craft Master AcademyS. Giudice internazionale in Dubai, Milano, Venezia, Romania e Turchia.",
-        "worksFor": { "@id": "https://bellefemme.it/#business" },
+        "worksFor": { "@id": "https://www.bellefemme.it/#business" },
         "hasCredential": [
           "Official Master Assistant PhiBrows — PhiAcademy",
           "Craft Master MicrobladingS — AcademyS",
           "Master Tatuaggio Sopracciglia Lunga Durata — BIOTEK Italy",
           "Master Lash Lifting & Filler — Kerafill Italy",
           "Laurea in Graphic Design",
-          "Operatore del Benessere EQF 3 — Regione Piemonte",
+          "Operatore del Benessere — Regione Piemonte",
           "Attestato di Competenza Tatuaggi — Regione Lombardia"
         ]
       },
       {
         "@type": "EducationalOrganization",
-        "@id": "https://bellefemme.it/#academy",
+        "@id": "https://www.bellefemme.it/#academy",
         "name": "Belle Femme Academy",
         "description": "Formazione professionale in Dermopigmentazione e PMU. Corsi dal vivo con Master Trainer Mouna Chabbar a Varese, Milano e Roma.",
-        "url": "https://bellefemme.it/#academy",
+        "url": "https://www.bellefemme.it/#academy",
         "address": { "@type": "PostalAddress", "addressLocality": "Varese", "addressRegion": "Lombardia", "addressCountry": "IT" }
       },
       ...SERVICES.map(s => ({
         "@type": "Service",
-        "provider": { "@id": "https://bellefemme.it/#business" },
+        "provider": { "@id": "https://www.bellefemme.it/#business" },
         "name": s.name,
         "description": s.description,
         "areaServed": ["Varese", "Milano", "Roma"],
@@ -102,8 +103,8 @@ export const StructuredData = ({ path = '/', pageTitle, pageDescription }: Struc
         "@type": "Course",
         "name": pageTitle,
         "description": pageDescription,
-        "provider": { "@id": "https://bellefemme.it/#academy" },
-        "url": `https://bellefemme.it${path}`,
+        "provider": { "@id": "https://www.bellefemme.it/#academy" },
+        "url": `https://www.bellefemme.it${path}`,
       }] : []),
     ]
   };
