@@ -2,16 +2,28 @@ import { CinematicHero } from '@/components/CinematicHero';
 import { TreatmentArchitecture } from '@/components/TreatmentArchitecture';
 import { AcademySection } from '@/components/AcademySection';
 import { SiteFooter } from '@/components/SiteFooter';
-
 import { StickyHeader } from '@/components/StickyHeader';
 import { CookieConsent } from '@/components/CookieConsent';
 import { StructuredData } from '@/components/StructuredData';
+import { useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const Index = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    const scrollTo = (location.state as { scrollTo?: string })?.scrollTo;
+    if (scrollTo) {
+      setTimeout(() => {
+        const el = document.getElementById(scrollTo);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 300);
+    }
+  }, [location.state]);
+
   return (
     <div className="min-h-screen bg-background relative">
       <StructuredData />
-      {/* Phi Grid Blueprint — fixed at 3% opacity */}
       <div
         className="fixed inset-0 z-0 pointer-events-none"
         style={{
@@ -27,7 +39,6 @@ const Index = () => {
         <TreatmentArchitecture />
         <AcademySection />
         <SiteFooter />
-        
         <CookieConsent />
       </div>
     </div>
