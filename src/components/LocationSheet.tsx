@@ -43,8 +43,11 @@ export const LocationSheet = ({ open, onOpenChange, treatmentName, mode = 'treat
       supabase
         .from('spots_availability')
         .select('location, spots_remaining')
-        .then(({ data }) => {
-          if (data) setSpots(data);
+        .then(({ data, error }) => {
+          if (data && !error) setSpots(data);
+          setLoading(false);
+        })
+        .catch(() => {
           setLoading(false);
         });
     }
