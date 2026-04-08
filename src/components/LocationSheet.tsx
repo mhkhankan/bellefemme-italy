@@ -40,16 +40,16 @@ export const LocationSheet = ({ open, onOpenChange, treatmentName, mode = 'treat
       setSubmitted(false);
       setEliteModalCity('');
       setLoading(true);
-      supabase
-        .from('spots_availability')
-        .select('location, spots_remaining')
-        .then(({ data, error }) => {
-          if (data && !error) setSpots(data);
-          setLoading(false);
-        })
-        .catch(() => {
-          setLoading(false);
-        });
+      Promise.resolve(
+        supabase
+          .from('spots_availability')
+          .select('location, spots_remaining')
+      ).then(({ data, error }) => {
+        if (data && !error) setSpots(data);
+        setLoading(false);
+      }).catch(() => {
+        setLoading(false);
+      });
     }
   }, [open]);
 
