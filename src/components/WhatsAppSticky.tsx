@@ -8,7 +8,7 @@ export const WhatsAppSticky = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setVisible(window.scrollY >= window.innerHeight * 0.8);
+      setVisible(window.scrollY >= window.innerHeight * 1.2);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
