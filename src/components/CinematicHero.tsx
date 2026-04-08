@@ -1,10 +1,12 @@
 import { motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export const CinematicHero = () => {
   const [imgError, setImgError] = useState(false);
   const [showChevron, setShowChevron] = useState(true);
+  const { language } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,7 +21,11 @@ export const CinematicHero = () => {
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const waMsg = encodeURIComponent('Buongiorno Mouna, vorrei iniziare con una consulenza privata.');
+  const waMsg = encodeURIComponent(
+    language === 'it'
+      ? 'Buongiorno Mouna, vorrei iniziare con una consulenza privata.'
+      : 'Hello Mouna, I would like to start with a private consultation.'
+  );
 
   return (
     <section id="top" className="relative overflow-hidden" style={{ height: '100svh', backgroundColor: 'hsl(0 0% 4%)' }}>
@@ -76,7 +82,7 @@ export const CinematicHero = () => {
           className="font-cormorant text-4xl md:text-6xl font-light text-white tracking-[3px] mt-3"
           style={{ textShadow: '0 2px 12px hsla(0,0%,0%,0.6)' }}
         >
-          L'Architettura del Volto
+          {language === 'it' ? "L'Architettura del Volto" : 'The Architecture of the Face'}
         </motion.h1>
 
         <motion.p
@@ -86,7 +92,7 @@ export const CinematicHero = () => {
           className="font-cormorant italic text-lg md:text-xl mt-2"
           style={{ color: 'hsl(43 76% 52% / 0.8)', textShadow: '0 2px 12px hsla(0,0%,0%,0.6)' }}
         >
-          Dermopigmentazione di precisione. Architettura del volto.
+          {language === 'it' ? 'Dermopigmentazione di precisione. Architettura del volto.' : 'Precision dermopigmentation. Architecture of the face.'}
         </motion.p>
 
         <motion.p
@@ -96,7 +102,7 @@ export const CinematicHero = () => {
           className="font-inter text-[10px] tracking-[0.35em] uppercase mt-3"
           style={{ color: 'hsl(43 76% 52% / 0.70)' }}
         >
-          Craft Master Dermopigmentazione · Giudice Internazionale
+          {language === 'it' ? 'Craft Master Dermopigmentazione · Giudice Internazionale' : 'Craft Master Dermopigmentation · International Judge'}
         </motion.p>
 
         <motion.div
