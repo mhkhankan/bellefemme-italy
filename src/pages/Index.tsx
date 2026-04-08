@@ -8,6 +8,8 @@ import { StructuredData } from '@/components/StructuredData';
 import { useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 
+window.history.scrollRestoration = 'manual';
+
 const Index = () => {
   const location = useLocation();
 
