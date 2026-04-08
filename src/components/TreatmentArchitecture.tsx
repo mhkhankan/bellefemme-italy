@@ -31,6 +31,30 @@ const fadeIn = {
   visible: { opacity: 1, y: 0 },
 };
 
+const TreatmentImage = ({ item, sizeClass, numberSize, imgStyle }: { item: TreatmentItem; sizeClass: string; numberSize: string; imgStyle?: React.CSSProperties }) => {
+  const [imgFailed, setImgFailed] = useState(false);
+  const imgPath = IMAGE_MAP[item.id];
+  const altText = ALT_MAP[item.id] || item.title;
+  return (
+    <>
+      {imgPath && !imgFailed ? (
+        <img
+          src={imgPath}
+          alt={altText}
+          className={`${sizeClass} object-cover`}
+          loading={item.number <= '02' ? 'eager' : 'lazy'}
+          onError={() => setImgFailed(true)}
+          style={imgStyle}
+        />
+      ) : (
+        <div className={`${sizeClass} shimmer-venetian flex items-center justify-center`}>
+          <span className={`font-cormorant ${numberSize} font-light text-primary/20`}>{item.number}</span>
+        </div>
+      )}
+    </>
+  );
+};
+
 export const TreatmentArchitecture = () => {
   const [sheetOpen, setSheetOpen] = useState(false);
   const [selectedTreatment, setSelectedTreatment] = useState('');
@@ -66,30 +90,6 @@ export const TreatmentArchitecture = () => {
   const scrollToTreatment = (index: number) => {
     const el = document.getElementById(`treatment-${index}`);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  const TreatmentImage = ({ item, sizeClass, numberSize, imgStyle }: { item: TreatmentItem; sizeClass: string; numberSize: string; imgStyle?: React.CSSProperties }) => {
-    const [imgFailed, setImgFailed] = useState(false);
-    const imgPath = IMAGE_MAP[item.id];
-    const altText = ALT_MAP[item.id] || item.title;
-    return (
-      <>
-        {imgPath && !imgFailed ? (
-          <img
-            src={imgPath}
-            alt={altText}
-            className={`${sizeClass} object-cover`}
-            loading={item.number <= '02' ? 'eager' : 'lazy'}
-            onError={() => setImgFailed(true)}
-            style={imgStyle}
-          />
-        ) : (
-          <div className={`${sizeClass} shimmer-venetian flex items-center justify-center`}>
-            <span className={`font-cormorant ${numberSize} font-light text-primary/20`}>{item.number}</span>
-          </div>
-        )}
-      </>
-    );
   };
 
   return (
@@ -138,6 +138,7 @@ export const TreatmentArchitecture = () => {
           ))}
         </div>
 
+        {/* MOBILE SCROLL-SNAP */}
         <div
           className="md:hidden"
           style={{ scrollSnapType: 'y mandatory', height: '100svh', overflowY: 'scroll', overscrollBehavior: 'contain' }}
@@ -153,14 +154,15 @@ export const TreatmentArchitecture = () => {
               onViewportLeave={() => setExpandedId(null)}
               viewport={{ once: false, margin: '-40%' }}
               transition={{ duration: 0.5, ease: 'easeInOut' }}
-              className="flex flex-col justify-end px-6 pb-8 pt-16 border-t border-primary/10 relative"
+              className="flex flex-col px-0 pb-8 pt-16 border-t border-primary/10 relative"
               style={{ minHeight: '100svh', scrollSnapAlign: 'start' }}
             >
-              <div className="flex-1 flex items-center justify-center mb-8" style={{ maxHeight: 'min(50vh, 320px)' }}>
-                <TreatmentImage item={item} sizeClass="w-full" numberSize="text-6xl" imgStyle={{ maxHeight: 'min(50vh, 320px)', width: '100%', objectFit: 'cover' }} />
+              {/* T2: Full bleed image — no horizontal padding */}
+              <div className="flex-1 flex items-center justify-center mb-4" style={{ maxHeight: 'min(60vh, 420px)' }}>
+                <TreatmentImage item={item} sizeClass="w-full" numberSize="text-6xl" imgStyle={{ maxHeight: 'min(60vh, 420px)', width: '100%', objectFit: 'cover' }} />
               </div>
 
-              <div className="space-y-4">
+              <div className="space-y-4 px-6">
                 <div className="flex items-baseline gap-4">
                   <span className="font-cormorant text-4xl font-light text-primary/20">{item.number}</span>
                   <div>
@@ -197,28 +199,28 @@ export const TreatmentArchitecture = () => {
                   {t.treatments.checkAvailability}
                 </button>
               </div>
+
+              {/* T3: dot nav pushed to bottom via mt-auto */}
+              <div className="mt-auto flex items-center justify-center gap-2 pb-6">
+                {treatments.map((_, i) => (
+                  <div
+                    key={i}
+                    className="rounded-full transition-all duration-300"
+                    style={{
+                      width: activeIndex === i ? '8px' : '4px',
+                      height: activeIndex === i ? '8px' : '4px',
+                      backgroundColor: activeIndex === i
+                        ? 'hsl(43 76% 52%)'
+                        : 'hsl(43 76% 52% / 0.3)',
+                    }}
+                  />
+                ))}
+              </div>
             </motion.div>
           ))}
         </div>
 
-        {inSection && (
-          <div className="md:hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-40 flex items-center gap-2">
-            {treatments.map((_, i) => (
-              <div
-                key={i}
-                className="rounded-full transition-all duration-300"
-                style={{
-                  width: activeIndex === i ? '8px' : '4px',
-                  height: activeIndex === i ? '8px' : '4px',
-                  backgroundColor: activeIndex === i
-                    ? 'hsl(43 76% 52%)'
-                    : 'hsl(43 76% 52% / 0.3)',
-                }}
-              />
-            ))}
-          </div>
-        )}
-
+        {/* DESKTOP */}
         <div className="hidden md:block">
           <div className="space-y-0 max-w-5xl mx-auto">
             {treatments.map((item, index) => (
