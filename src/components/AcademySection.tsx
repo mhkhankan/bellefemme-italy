@@ -438,7 +438,7 @@ export const AcademySection = () => {
                   <p className="font-cormorant text-xl text-primary/90 tracking-[2px]">
                     {t.academy.waitlistTitle}
                   </p>
-                  <form onSubmit={(e) => { handleSubmit(e).then(() => { if (submitted) setShowWaitlist(false); }); }} className="space-y-4">
+                <form onSubmit={handleSubmit} className="space-y-4">
                     <input
                       type="text"
                       value={name}
