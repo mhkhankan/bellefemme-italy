@@ -24,7 +24,6 @@ export const StickyHeader = () => {
     if (isHome) {
       const snapContainer = document.querySelector('[style*="scroll-snap-type"]') as HTMLElement | null;
       if (snapContainer) snapContainer.scrollTop = 0;
-      window.scrollTo(0, 0);
       setTimeout(() => {
         const el = document.getElementById(id);
         if (el) el.scrollIntoView({ behavior: 'smooth' });
