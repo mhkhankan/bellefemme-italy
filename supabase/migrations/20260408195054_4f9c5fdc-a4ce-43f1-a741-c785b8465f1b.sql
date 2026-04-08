@@ -1,0 +1,1 @@
+ALTER TABLE public.academy_waitlist ADD COLUMN IF NOT EXISTS course TEXT;
