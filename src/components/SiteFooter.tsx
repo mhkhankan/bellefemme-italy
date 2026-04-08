@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export const SiteFooter = () => {
+  const { language } = useLanguage();
   return (
     <footer className="border-t border-primary/10 py-16 md:py-24 bg-background">
       <div className="container mx-auto px-6 md:px-12 max-w-5xl">
@@ -35,7 +37,7 @@ export const SiteFooter = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
           <div className="space-y-2">
             <p className="text-xs tracking-[0.2em] uppercase text-primary/50 mb-3">
-              Sedi
+              {language === 'it' ? 'Sedi' : 'Locations'}
             </p>
             <p className="text-sm text-foreground/70 tracking-wide">Varese</p>
             <p className="text-sm text-foreground/70 tracking-wide">Milano</p>
@@ -44,7 +46,7 @@ export const SiteFooter = () => {
 
           <div className="space-y-2">
             <p className="text-xs tracking-[0.2em] uppercase text-primary/50 mb-3">
-              Contatti
+              {language === 'it' ? 'Contatti' : 'Contact'}
             </p>
             <a
               href="https://wa.me/393516605507"
@@ -64,7 +66,7 @@ export const SiteFooter = () => {
 
           <div className="space-y-2">
             <p className="text-xs tracking-[0.2em] uppercase text-primary/50 mb-3">
-              Legale
+              {language === 'it' ? 'Legale' : 'Legal'}
             </p>
             <Link
               to="/privacy"
