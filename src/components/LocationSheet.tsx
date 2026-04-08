@@ -229,7 +229,7 @@ export const LocationSheet = ({ open, onOpenChange, treatmentName, mode = 'treat
             <button
               key={loc}
               onClick={() => handleSelect(loc)}
-              className="w-full text-left font-cormorant text-lg md:text-xl text-foreground/70 hover:text-primary px-6 py-4 min-h-[48px] border-b border-primary/10 last:border-b-0 hover:bg-primary/5 transition-all duration-300 flex items-center justify-between"
+              className={`w-full text-left font-cormorant text-lg md:text-xl hover:text-primary px-6 py-4 min-h-[48px] border-b border-primary/10 last:border-b-0 hover:bg-primary/5 transition-all duration-300 flex items-center justify-between ${loc === 'Varese' ? 'font-medium text-foreground' : 'text-foreground/70'}`}
             >
               <span>{loc}</span>
               <span className="text-[10px] font-inter tracking-[0.1em] uppercase text-primary/60">
