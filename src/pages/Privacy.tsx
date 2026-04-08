@@ -1,9 +1,11 @@
 import { StickyHeader } from '@/components/StickyHeader';
 import { SiteFooter } from '@/components/SiteFooter';
+import { StructuredData } from '@/components/StructuredData';
 import { Link } from 'react-router-dom';
 
 const Privacy = () => (
   <div className="min-h-screen bg-background">
+    <StructuredData path="/privacy" pageTitle="Privacy & GDPR · Belle Femme" pageDescription="Informativa sulla privacy e GDPR — Belle Femme Atelier e Accademia, Varese." />
     <StickyHeader />
     <div className="pt-32 pb-24">
       <div className="container mx-auto px-6 md:px-12 max-w-3xl space-y-12">

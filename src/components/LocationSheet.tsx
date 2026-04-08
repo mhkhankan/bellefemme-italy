@@ -120,7 +120,7 @@ export const LocationSheet = ({ open, onOpenChange, treatmentName, mode = 'treat
           />
           <button
             onClick={handleEliteSubmit}
-            disabled={submitting || !eliteName.trim() || !elitePhone.trim()}
+            disabled={submitting || !eliteName.trim() || !elitePhone.trim() || !/^[+\d\s\-().]{6,20}$/.test(elitePhone.trim())}
             className="w-full font-inter font-bold text-[10px] tracking-[0.15em] uppercase bg-primary text-primary-foreground px-4 py-4 min-h-[48px] hover:bg-primary/90 transition-colors disabled:opacity-50"
           >
             RICHIEDI ACCESSO PRIORITARIO

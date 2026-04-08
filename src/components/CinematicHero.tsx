@@ -10,7 +10,7 @@ export const CinematicHero = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setShowChevron(window.scrollY < 100);
+      setShowChevron(window.scrollY < 200);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
