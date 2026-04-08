@@ -469,7 +469,8 @@ export const AcademySection = () => {
                     <select
                       value={course}
                       onChange={(e) => setCourse(e.target.value)}
-                      className="w-full bg-transparent border border-primary/20 px-4 py-3 text-sm text-foreground min-h-[48px] focus:border-primary/50 outline-none transition-colors"
+                      className="w-full border border-primary/20 px-4 py-3 text-sm text-foreground min-h-[48px] focus:border-primary/50 outline-none transition-colors"
+                      style={{ backgroundColor: 'hsl(0 0% 4%)', WebkitAppearance: 'none', appearance: 'none' }}
                     >
                       <option value="">{language === 'it' ? 'Corso di interesse (opzionale)' : 'Course of interest (optional)'}</option>
                       {COURSES.map((c) => (
