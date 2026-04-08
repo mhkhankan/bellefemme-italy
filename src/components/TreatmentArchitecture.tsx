@@ -218,6 +218,8 @@ export const TreatmentArchitecture = () => {
               </div>
             </motion.div>
           ))}
+          {/* Scroll-snap escape sentinel — allows iOS to release scroll after last card */}
+          <div style={{ height: '1px', scrollSnapAlign: 'none', flexShrink: 0 }} />
         </div>
 
         {/* DESKTOP */}
