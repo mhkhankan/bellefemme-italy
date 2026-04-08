@@ -180,6 +180,14 @@ export const TreatmentArchitecture = () => {
                   </div>
                 </div>
 
+                {/* T1-01: CTA always visible, above details toggle */}
+                <button
+                  onClick={() => openConsultation(item.title)}
+                  className="w-full font-inter font-bold text-[11px] tracking-[0.22em] uppercase bg-primary text-primary-foreground px-8 py-4 min-h-[48px] hover:bg-primary/90 transition-all duration-500"
+                >
+                  {t.treatments.checkAvailability}
+                </button>
+
                 <button
                   onClick={() => setExpandedId(expandedId === item.id ? null : item.id)}
                   className="text-[10px] tracking-[0.15em] uppercase text-primary/50 hover:text-primary transition-colors min-h-[44px] flex items-center"
@@ -198,13 +206,6 @@ export const TreatmentArchitecture = () => {
                 >
                   {item.description}
                 </p>
-
-                <button
-                  onClick={() => openConsultation(item.title)}
-                  className="w-full font-inter font-bold text-[11px] tracking-[0.22em] uppercase bg-primary text-primary-foreground px-8 py-4 min-h-[48px] hover:bg-primary/90 transition-all duration-500 mt-4"
-                >
-                  {t.treatments.checkAvailability}
-                </button>
               </div>
 
               {/* Dot nav */}
@@ -276,9 +277,10 @@ export const TreatmentArchitecture = () => {
                       {item.description}
                     </p>
 
+                    {/* T1-03: Desktop CTA filled gold — not outlined */}
                     <button
                       onClick={() => openConsultation(item.title)}
-                      className="font-inter font-bold text-[10px] tracking-[0.2em] uppercase border border-primary/30 text-primary px-10 py-4 min-h-[48px] hover:bg-primary hover:text-primary-foreground transition-all duration-500"
+                      className="font-inter font-bold text-[10px] tracking-[0.2em] uppercase bg-primary text-primary-foreground px-10 py-4 min-h-[48px] hover:bg-primary/90 transition-all duration-500"
                     >
                       {t.treatments.checkAvailability}
                     </button>
