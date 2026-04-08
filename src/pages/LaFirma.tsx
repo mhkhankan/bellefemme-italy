@@ -298,7 +298,7 @@ const LaFirma = () => {
           </div>
 
           <div className="mt-12 text-center">
-            
+            <a
               href="https://www.facebook.com/bellefemme.varese/reviews"
               target="_blank"
               rel="noopener noreferrer"
@@ -328,7 +328,7 @@ const LaFirma = () => {
       <section style={{ backgroundColor: '#000000', padding: '64px 24px' }}>
         <div className="max-w-md mx-auto text-center space-y-4">
           <div className="flex flex-col md:flex-row gap-4">
-            
+            <a
               href={`https://wa.me/393516605507?text=${waMsg}`}
               target="_blank"
               rel="noopener noreferrer"
