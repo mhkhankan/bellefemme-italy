@@ -41,8 +41,8 @@ const CREDENTIALS = [
       {
         name_it: 'Royal Artist — PhiBrows',
         name_en: 'Royal Artist — PhiBrows',
-        desc_it: 'Competenze superiori nella tecnica PhiBrows di Branko Babić.',
-        desc_en: 'Superior skills in the PhiBrows technique by Branko Babić.',
+        desc_it: 'Competenze superiori nella tecnica PhiBrows di Branko Babic.',
+        desc_en: 'Superior skills in the PhiBrows technique by Branko Babic.',
       },
     ],
   },
@@ -144,7 +144,7 @@ const LaFirma = () => {
       />
       <StickyHeader />
 
-      {/* S1 — Hero */}
+      {/* S1 - Hero */}
       <section className="relative overflow-hidden" style={{ minHeight: '100svh', backgroundColor: 'hsl(0 0% 4%)' }}>
         <img
           src="/branding/mouna-la-firma.jpg"
@@ -197,7 +197,7 @@ const LaFirma = () => {
         </div>
       </section>
 
-      {/* S2 — Bio & Credentials */}
+      {/* S2 - Bio & Credentials */}
       <section style={{ backgroundColor: '#000000', padding: '48px 24px' }}>
         <div className="max-w-[680px] mx-auto space-y-8">
           <motion.div
@@ -214,7 +214,6 @@ const LaFirma = () => {
               {language === 'it' ? "L'Architetto dello Sguardo" : 'The Architect of the Gaze'}
             </h2>
             <div className="h-px w-12" style={{ backgroundColor: 'rgba(212, 175, 55, 0.5)' }} />
-
             <p className="text-[13px] leading-[1.7]" style={{ color: 'rgba(245, 245, 245, 0.7)' }}>
               {language === 'it'
                 ? "Una laurea in Belle Arti e Comunicazioni Visive. Un decennio di competizione internazionale. Mouna Chabbar ha costruito un metodo dove la bellezza è il risultato di una progettazione rigorosa — non di un'interpretazione."
@@ -227,7 +226,6 @@ const LaFirma = () => {
             </p>
           </motion.div>
 
-          {/* Credentials */}
           <div className="h-px w-full" style={{ backgroundColor: 'rgba(212, 175, 55, 0.2)' }} />
 
           {CREDENTIALS.map((group, gi) => (
@@ -264,7 +262,7 @@ const LaFirma = () => {
         </div>
       </section>
 
-      {/* S3 — Client Testimonials */}
+      {/* S3 - Client Testimonials */}
       <section className="py-24 md:py-32" style={{ background: 'linear-gradient(180deg, #000 0%, #0A0A0A 50%, #000 100%)' }}>
         <div className="max-w-4xl mx-auto px-6 md:px-12">
           <div className="text-center mb-16 space-y-4">
@@ -299,7 +297,7 @@ const LaFirma = () => {
           </div>
 
           <div className="mt-12 text-center">
-            
+            <a
               href="https://www.facebook.com/bellefemme.varese/reviews"
               target="_blank"
               rel="noopener noreferrer"
@@ -312,7 +310,7 @@ const LaFirma = () => {
         </div>
       </section>
 
-      {/* S4 — Judge Cities */}
+      {/* S4 - Judge Cities */}
       <section className="py-16" style={{ backgroundColor: '#000' }}>
         <div className="max-w-4xl mx-auto px-6 text-center space-y-6">
           <p className="font-inter text-[10px] tracking-[0.3em] uppercase" style={{ color: '#D4AF37' }}>
@@ -325,11 +323,11 @@ const LaFirma = () => {
         </div>
       </section>
 
-      {/* S6 — CTA */}
+      {/* S6 - CTA */}
       <section style={{ backgroundColor: '#000000', padding: '64px 24px' }}>
         <div className="max-w-md mx-auto text-center space-y-4">
           <div className="flex flex-col md:flex-row gap-4">
-            
+            <a
               href={`https://wa.me/393516605507?text=${waMsg}`}
               target="_blank"
               rel="noopener noreferrer"
@@ -338,7 +336,7 @@ const LaFirma = () => {
             >
               {language === 'it' ? 'PRENOTA UNA CONSULENZA PRIVATA' : 'BOOK A PRIVATE CONSULTATION'}
             </a>
-            
+            <a
               href="/#academy"
               className="flex-1 font-inter font-bold text-[10px] tracking-[0.2em] uppercase px-8 py-4 min-h-[48px] transition-all duration-500 text-center flex items-center justify-center"
               style={{ backgroundColor: 'transparent', border: '1px solid #D4AF37', color: '#D4AF37' }}
