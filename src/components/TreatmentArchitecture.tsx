@@ -138,10 +138,17 @@ export const TreatmentArchitecture = () => {
           ))}
         </div>
 
+        {/* MOBILE SECTION HEADER */}
+        <div className="md:hidden text-center py-12 px-6 space-y-3">
+          <p className="text-[10px] tracking-[0.4em] uppercase text-primary/60">The 8-Point Collection</p>
+          <h2 className="font-cormorant text-3xl font-light text-foreground tracking-[2px]">{t.nav.atelier}</h2>
+          <p className="text-[11px] tracking-[0.2em] uppercase text-primary/80 font-inter">{tickerText}</p>
+        </div>
+
         {/* MOBILE SCROLL-SNAP */}
         <div
           className="md:hidden"
-          style={{ scrollSnapType: 'y mandatory', height: '100svh', overflowY: 'scroll', overscrollBehavior: 'contain' }}
+          style={{ scrollSnapType: 'y mandatory', height: '100svh', overflowY: 'scroll', overscrollBehavior: 'auto' }}
         >
           {treatments.map((item, index) => (
             <motion.div
@@ -157,9 +164,9 @@ export const TreatmentArchitecture = () => {
               className="flex flex-col px-0 pb-8 pt-16 border-t border-primary/10 relative"
               style={{ minHeight: '100svh', scrollSnapAlign: 'start' }}
             >
-              {/* T2: Full bleed image — no horizontal padding */}
-              <div className="flex-1 flex items-center justify-center mb-4" style={{ maxHeight: 'min(60vh, 420px)' }}>
-                <TreatmentImage item={item} sizeClass="w-full" numberSize="text-6xl" imgStyle={{ maxHeight: 'min(60vh, 420px)', width: '100%', objectFit: 'cover' }} />
+              {/* Full bleed image */}
+              <div className="flex-1 flex items-center justify-center mb-4" style={{ maxHeight: 'min(50vh, 380px)' }}>
+                <TreatmentImage item={item} sizeClass="w-full" numberSize="text-6xl" imgStyle={{ maxHeight: 'min(50vh, 380px)', width: '100%', objectFit: 'cover' }} />
               </div>
 
               <div className="space-y-4 px-6">
@@ -178,7 +185,7 @@ export const TreatmentArchitecture = () => {
                   className="text-[10px] tracking-[0.15em] uppercase text-primary/50 hover:text-primary transition-colors min-h-[44px] flex items-center"
                 >
                   {expandedId === item.id
-                    ? (language === 'it' ? 'Chiudi −' : 'Close −')
+                    ? (language === 'it' ? 'Chiudi -' : 'Close -')
                     : (language === 'it' ? 'Dettagli Tecnici +' : 'Technical Details +')}
                 </button>
 
@@ -200,7 +207,7 @@ export const TreatmentArchitecture = () => {
                 </button>
               </div>
 
-              {/* T3: dot nav pushed to bottom via mt-auto */}
+              {/* Dot nav */}
               <div className="mt-auto flex items-center justify-center gap-2 pb-6">
                 {treatments.map((_, i) => (
                   <div
@@ -218,7 +225,7 @@ export const TreatmentArchitecture = () => {
               </div>
             </motion.div>
           ))}
-          {/* Scroll-snap escape sentinel — allows iOS to release scroll after last card */}
+          {/* Scroll-snap escape sentinel */}
           <div style={{ height: '1px', scrollSnapAlign: 'none', flexShrink: 0 }} />
         </div>
 
@@ -255,7 +262,7 @@ export const TreatmentArchitecture = () => {
                       className="text-[10px] tracking-[0.15em] uppercase text-primary/50 hover:text-primary transition-colors min-h-[48px] flex items-center"
                     >
                       {expandedId === item.id
-                        ? (language === 'it' ? 'Chiudi −' : 'Close −')
+                        ? (language === 'it' ? 'Chiudi -' : 'Close -')
                         : (language === 'it' ? 'Dettagli Tecnici +' : 'Technical Details +')}
                     </button>
 
