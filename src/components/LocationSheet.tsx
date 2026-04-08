@@ -54,7 +54,18 @@ export const LocationSheet = ({ open, onOpenChange, treatmentName, mode = 'treat
   }, [open]);
 
   const handleSelect = (location: string) => {
-    const msg = `Buongiorno Mouna, vorrei prenotare una consulenza per ${treatmentName} presso l'Atelier di ${location}.`;
+    const treatmentNameMap: Record<string, string> = {
+      'RAW STROKE': 'Microblading Iperrealismo',
+      'BROW ARCHITECTURE': 'Architettura Sopracciglia',
+      'SHADOW LAYER': 'Ombre Powder Brows',
+      'PIGMENT RESTAURO': 'Correzione PMU',
+      'NUDE-LIP INFUSION': 'Labbra Permanenti',
+      'LASH-LINE ENGINEERING': 'Eyeliner Permanente',
+      'GAZE SCULPTING': 'Laminazione Ciglia',
+      'LASH SCULPTING': 'Extension Ciglia',
+    };
+    const clientName = treatmentNameMap[treatmentName] || treatmentName;
+    const msg = `Buongiorno Mouna, vorrei prenotare una consulenza per ${clientName} presso l'Atelier di ${location}.`;
     window.open(`${WHATSAPP_BASE}${encodeURIComponent(msg)}`, '_blank');
     onOpenChange(false);
   };
@@ -205,6 +216,9 @@ export const LocationSheet = ({ open, onOpenChange, treatmentName, mode = 'treat
       <p className="font-cormorant italic text-sm text-primary/70 text-center px-4 mb-4">
         {consultationNote}
       </p>
+      <p className="text-center text-[10px] tracking-[0.15em] uppercase text-primary/60">
+        {language === 'it' ? 'Mouna risponde entro 24 ore' : 'Mouna replies within 24 hours'}
+      </p>
       <p className="text-center text-sm text-muted-foreground">
         {t.concierge.whereDesire}
       </p>
@@ -215,7 +229,7 @@ export const LocationSheet = ({ open, onOpenChange, treatmentName, mode = 'treat
             <button
               key={loc}
               onClick={() => handleSelect(loc)}
-              className="w-full text-left font-cormorant text-lg md:text-xl text-foreground/70 hover:text-primary px-6 py-4 min-h-[48px] border-b border-primary/10 last:border-b-0 hover:bg-primary/5 transition-all duration-300 flex items-center justify-between"
+              className={`w-full text-left font-cormorant text-lg md:text-xl hover:text-primary px-6 py-4 min-h-[48px] border-b border-primary/10 last:border-b-0 hover:bg-primary/5 transition-all duration-300 flex items-center justify-between ${loc === 'Varese' ? 'font-medium text-foreground' : 'text-foreground/70'}`}
             >
               <span>{loc}</span>
               <span className="text-[10px] font-inter tracking-[0.1em] uppercase text-primary/60">
