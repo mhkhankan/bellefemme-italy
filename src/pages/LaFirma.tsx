@@ -147,10 +147,10 @@ const LaFirma = () => {
       {/* S1 — Hero */}
       <section className="relative overflow-hidden" style={{ minHeight: '100svh', backgroundColor: 'hsl(0 0% 4%)' }}>
         <img
-          src="/branding/hero-mouna-architecture.jpg"
+          src="/branding/mouna-la-firma.jpg"
           alt="Mouna Chabbar — Fondatrice Belle Femme Atelier"
           className="absolute inset-0 w-full h-full object-cover"
-          style={{ objectPosition: 'top center' }}
+          style={{ objectPosition: '55% top' }}
           fetchPriority="high"
         />
         <div
@@ -299,7 +299,7 @@ const LaFirma = () => {
           </div>
 
           <div className="mt-12 text-center">
-            <a
+            
               href="https://www.facebook.com/bellefemme.varese/reviews"
               target="_blank"
               rel="noopener noreferrer"
@@ -329,7 +329,7 @@ const LaFirma = () => {
       <section style={{ backgroundColor: '#000000', padding: '64px 24px' }}>
         <div className="max-w-md mx-auto text-center space-y-4">
           <div className="flex flex-col md:flex-row gap-4">
-            <a
+            
               href={`https://wa.me/393516605507?text=${waMsg}`}
               target="_blank"
               rel="noopener noreferrer"
@@ -338,7 +338,7 @@ const LaFirma = () => {
             >
               {language === 'it' ? 'PRENOTA UNA CONSULENZA PRIVATA' : 'BOOK A PRIVATE CONSULTATION'}
             </a>
-            <a
+            
               href="/#academy"
               className="flex-1 font-inter font-bold text-[10px] tracking-[0.2em] uppercase px-8 py-4 min-h-[48px] transition-all duration-500 text-center flex items-center justify-center"
               style={{ backgroundColor: 'transparent', border: '1px solid #D4AF37', color: '#D4AF37' }}
