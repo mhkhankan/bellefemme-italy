@@ -205,6 +205,9 @@ export const LocationSheet = ({ open, onOpenChange, treatmentName, mode = 'treat
       <p className="font-cormorant italic text-sm text-primary/70 text-center px-4 mb-4">
         {consultationNote}
       </p>
+      <p className="text-center text-[10px] tracking-[0.15em] uppercase text-primary/60">
+        {language === 'it' ? 'Mouna risponde entro 24 ore' : 'Mouna replies within 24 hours'}
+      </p>
       <p className="text-center text-sm text-muted-foreground">
         {t.concierge.whereDesire}
       </p>
