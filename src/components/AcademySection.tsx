@@ -72,11 +72,14 @@ export const AcademySection = () => {
   const catalog = getCatalogCourses();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setShowChevron(window.scrollY < 100);
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    const el = document.getElementById('academy');
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setShowChevron(entry.isIntersecting),
+      { threshold: 0.1 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
   }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
