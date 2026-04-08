@@ -39,7 +39,7 @@ export const StickyHeader = () => {
 
   return (
     <header
-      className="fixed top-0 w-full z-50 border-b border-primary/10"
+      className="fixed top-0 w-full z-[70] border-b border-primary/10"
       style={{
         backgroundColor: scrolled ? 'hsla(0, 0%, 0%, 0.92)' : 'transparent',
         backdropFilter: scrolled ? 'blur(12px)' : 'none',
