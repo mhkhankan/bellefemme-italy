@@ -164,9 +164,9 @@ export const TreatmentArchitecture = () => {
               className="flex flex-col px-0 pb-8 pt-16 border-t border-primary/10 relative"
               style={{ minHeight: '100svh', scrollSnapAlign: 'start' }}
             >
-              {/* Full bleed image */}
-              <div className="flex-1 flex items-center justify-center mb-4" style={{ maxHeight: 'min(50vh, 380px)' }}>
-                <TreatmentImage item={item} sizeClass="w-full" numberSize="text-6xl" imgStyle={{ maxHeight: 'min(50vh, 380px)', width: '100%', objectFit: 'cover' }} />
+              {/* Full bleed image — reduced height to accommodate CTA above fold */}
+              <div className="flex items-center justify-center mb-4" style={{ height: 'min(40vh, 300px)', flexShrink: 0 }}>
+                <TreatmentImage item={item} sizeClass="w-full" numberSize="text-6xl" imgStyle={{ height: 'min(40vh, 300px)', width: '100%', objectFit: 'cover' }} />
               </div>
 
               <div className="space-y-4 px-6">
