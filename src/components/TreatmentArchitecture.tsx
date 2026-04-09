@@ -148,7 +148,7 @@ export const TreatmentArchitecture = () => {
         {/* MOBILE SCROLL-SNAP */}
         <div
           className="md:hidden"
-          style={{ scrollSnapType: 'y mandatory', height: '100svh', overflowY: 'scroll', overscrollBehavior: 'auto' }}
+          style={{ scrollSnapType: 'y proximity', height: '100svh', overflowY: 'scroll', overscrollBehavior: 'auto' }}
         >
           {treatments.map((item, index) => (
             <motion.div
@@ -161,7 +161,7 @@ export const TreatmentArchitecture = () => {
               onViewportLeave={() => setExpandedId(null)}
               viewport={{ once: false, margin: '-40%' }}
               transition={{ duration: 0.5, ease: 'easeInOut' }}
-              className="flex flex-col px-0 pb-8 pt-16 border-t border-primary/10 relative"
+              className="flex flex-col px-0 pb-8 pt-6 border-t border-primary/10 relative"
               style={{ minHeight: '100svh', scrollSnapAlign: 'start' }}
             >
               {/* Full bleed image — reduced height to accommodate CTA above fold */}

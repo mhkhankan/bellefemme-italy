@@ -69,7 +69,7 @@ export const AcademySection = () => {
   const [showChevron, setShowChevron] = useState(true);
 
   const featured = getFeaturedCourse();
-  const catalog = getCatalogCourses();
+  const catalog = getCatalogCourses().filter((c) => !c.featured);
 
   useEffect(() => {
     const el = document.getElementById('academy');

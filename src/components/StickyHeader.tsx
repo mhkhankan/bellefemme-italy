@@ -130,14 +130,14 @@ export const StickyHeader = () => {
       <header
         className="fixed top-0 w-full z-[70] border-b border-primary/10"
         style={{
-          backgroundColor: scrolled ? 'hsla(0, 0%, 0%, 0.92)' : 'transparent',
+          backgroundColor: scrolled ? 'hsla(0, 0%, 0%, 0.97)' : 'transparent',
           backdropFilter: scrolled ? 'blur(12px)' : 'none',
           WebkitBackdropFilter: scrolled ? 'blur(12px)' : 'none',
           transition: 'background-color 0.6s ease, backdrop-filter 0.6s ease',
         }}
       >
         <div className="container mx-auto px-6 md:px-12 py-3 flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-0.5">
+          <Link to="/" <Link to="/" className="flex items-center gap-0.5 ml-1 md:ml-0">>
             <img
               src="/branding/BF_logo_wordmark_transparent.png"
               alt="Belle Femme Atelier"
