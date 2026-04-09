@@ -92,7 +92,7 @@ export const CinematicHero = () => {
           className="font-cormorant italic text-lg md:text-xl mt-2"
           style={{ color: 'hsl(43 76% 52% / 0.8)', textShadow: '0 2px 12px hsla(0,0%,0%,0.6)' }}
         >
-          {language === 'it' ? 'Dermopigmentazione di precisione. Architettura del volto.' : 'Precision dermopigmentation. Architecture of the face.'}
+          {language === 'it' ? "L'armonia non si improvvisa. Si progetta." : 'Harmony is not improvised. It is designed.'}
         </motion.p>
 
         <motion.p
