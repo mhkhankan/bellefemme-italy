@@ -128,7 +128,7 @@ export const CinematicHero = () => {
           </a>
           <button
             onClick={() => scrollToSection('atelier')}
-            className="font-inter font-bold text-[11px] tracking-[0.25em] uppercase bg-transparent className="font-inter font-bold text-[11px] tracking-[0.25em] uppercase bg-transparent border border-primary/20 text-primary/60 px-8 py-4 min-h-[48px] hover:bg-primary hover:text-primary-foreground transition-all duration-500" min-h-[48px] hover:bg-primary hover:text-primary-foreground transition-all duration-500"
+            className="font-inter font-bold text-[11px] tracking-[0.25em] uppercase bg-transparent border border-primary/20 text-primary/60 px-8 py-4 min-h-[48px] hover:bg-primary hover:text-primary-foreground transition-all duration-500"
           >
             SCOPRI I TRATTAMENTI
           </button>
