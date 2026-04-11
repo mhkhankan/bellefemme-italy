@@ -148,7 +148,7 @@ export const TreatmentArchitecture = () => {
         {/* MOBILE SCROLL-SNAP */}
         <div
           className="md:hidden"
-          style={{ scrollSnapType: 'y proximity', height: '100svh', overflowY: 'scroll', overscrollBehavior: 'auto' }}
+          style={{ scrollSnapType: 'y mandatory', height: '100svh', overflowY: 'scroll', overscrollBehavior: 'contain' }}
         >
           {treatments.map((item, index) => (
             <motion.div
@@ -161,22 +161,22 @@ export const TreatmentArchitecture = () => {
               onViewportLeave={() => setExpandedId(null)}
               viewport={{ once: false, margin: '-40%' }}
               transition={{ duration: 0.5, ease: 'easeInOut' }}
-              className="flex flex-col px-0 pb-8 pt-6 border-t border-primary/10 relative"
+              className="flex flex-col px-0 pb-6 pt-4 border-t border-primary/10 relative"
               style={{ minHeight: '100svh', scrollSnapAlign: 'start' }}
             >
               {/* Full bleed image — reduced height to accommodate CTA above fold */}
-              <div className="flex items-center justify-center mb-4" style={{ height: 'min(40vh, 300px)', flexShrink: 0 }}>
-                <TreatmentImage item={item} sizeClass="w-full" numberSize="text-6xl" imgStyle={{ height: 'min(40vh, 300px)', width: '100%', objectFit: 'cover' }} />
+              <div className="flex items-center justify-center mb-4" style={{ height: 'min(38vh, 280px)', flexShrink: 0 }}>
+                <TreatmentImage item={item} sizeClass="w-full" numberSize="text-6xl" imgStyle={{ height: 'min(38vh, 280px)', width: '100%', objectFit: 'cover' }} />
               </div>
 
               <div className="space-y-4 px-6">
                 <div className="flex items-baseline gap-4">
                   <span className="font-cormorant text-4xl font-light text-primary/20">{item.number}</span>
                   <div>
-                    <h3 className="font-inter font-bold text-[12px] tracking-[0.2em] uppercase text-foreground">
+                    <h3 className="font-inter font-bold text-[14px] tracking-[0.15em] uppercase text-foreground">
                       {item.title}
                     </h3>
-                    <p className="font-cormorant italic text-xl mt-1" style={{ color: 'hsl(43 76% 52% / 0.90)' }}>{item.subtitle}</p>
+                    <p className="font-cormorant italic text-[22px] mt-1" style={{ color: 'hsl(43 76% 52% / 0.90)' }}>{item.subtitle}</p>
                   </div>
                 </div>
 
@@ -185,12 +185,12 @@ export const TreatmentArchitecture = () => {
                   onClick={() => openConsultation(item.title)}
                   className="w-full font-inter font-bold text-[11px] tracking-[0.22em] uppercase bg-primary text-primary-foreground px-8 py-4 min-h-[48px] hover:bg-primary/90 transition-all duration-500"
                 >
-                  {t.treatments.checkAvailability}
+                  {language === 'it' ? 'PRENOTA UNA CONSULENZA' : 'BOOK A CONSULTATION'}
                 </button>
 
                 <button
                   onClick={() => setExpandedId(expandedId === item.id ? null : item.id)}
-                  className="text-[10px] tracking-[0.15em] uppercase text-primary/50 hover:text-primary transition-colors min-h-[44px] flex items-center"
+                  className="text-[13px] tracking-[0.1em] uppercase text-primary/80 hover:text-primary transition-colors min-h-[44px] flex items-center"
                 >
                   {expandedId === item.id
                     ? (language === 'it' ? 'Chiudi -' : 'Close -')
@@ -198,7 +198,7 @@ export const TreatmentArchitecture = () => {
                 </button>
 
                 <p
-                  className="text-base leading-relaxed overflow-hidden transition-all duration-300"
+                  className="text-[16px] leading-relaxed overflow-hidden transition-all duration-300"
                   style={{
                     maxHeight: expandedId === item.id ? '20rem' : '0',
                     opacity: expandedId === item.id ? 0.85 : 0,
@@ -260,7 +260,7 @@ export const TreatmentArchitecture = () => {
 
                     <button
                       onClick={() => setExpandedId(expandedId === item.id ? null : item.id)}
-                      className="text-[10px] tracking-[0.15em] uppercase text-primary/50 hover:text-primary transition-colors min-h-[48px] flex items-center"
+                      className="text-[13px] tracking-[0.1em] uppercase text-primary/80 hover:text-primary transition-colors min-h-[48px] flex items-center"
                     >
                       {expandedId === item.id
                         ? (language === 'it' ? 'Chiudi -' : 'Close -')
@@ -268,7 +268,7 @@ export const TreatmentArchitecture = () => {
                     </button>
 
                     <p
-                      className="text-base leading-relaxed max-w-md overflow-hidden transition-all duration-300"
+                      className="text-[16px] leading-relaxed max-w-md overflow-hidden transition-all duration-300"
                       style={{
                         maxHeight: expandedId === item.id ? '20rem' : '0',
                         opacity: expandedId === item.id ? 0.85 : 0,
@@ -282,7 +282,7 @@ export const TreatmentArchitecture = () => {
                       onClick={() => openConsultation(item.title)}
                       className="font-inter font-bold text-[10px] tracking-[0.2em] uppercase bg-primary text-primary-foreground px-10 py-4 min-h-[48px] hover:bg-primary/90 transition-all duration-500"
                     >
-                      {t.treatments.checkAvailability}
+                      {language === 'it' ? 'PRENOTA UNA CONSULENZA' : 'BOOK A CONSULTATION'}
                     </button>
                   </div>
                 </div>

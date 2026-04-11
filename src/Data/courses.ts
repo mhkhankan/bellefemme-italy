@@ -499,7 +499,7 @@ export const getFeaturedCourse = (): Course =>
   COURSES.find((c) => c.featured) ?? COURSES[0];
 
 export const getCatalogCourses = (): Course[] =>
-  COURSES;
+  COURSES.filter((c) => !c.featured);
 
 export const getCourseBySlug = (slug: string): Course | undefined =>
   COURSES.find((c) => c.slug === slug);
