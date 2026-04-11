@@ -164,8 +164,8 @@ const MobileSwiper = ({ treatments, language, tickerText, t, onConsultation }: M
                   </div>
                 </div>
               </div>
-            );
-          })}
+          ))}
+
         </div>
       </div>
 
