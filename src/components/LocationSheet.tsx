@@ -98,7 +98,7 @@ export const LocationSheet = ({ open, onOpenChange, treatmentName, mode = 'treat
     : (language === 'it' ? 'La tua Consulenza' : 'Your Consultation');
 
   const consultationNote = mode === 'course'
-    ? (language === 'it' ? 'Ogni corso è preceduto da una consulenza personalizzata con Mouna Chabbar.' : 'Every course begins with a personalised consultation with Mouna Chabbar.')
+    ? (language === 'it' ? 'Ogni corso è preceduto da una consulenza personalizzata con Craft Master Mouna Chabbar.' : 'Every course begins with a personalised consultation with Craft Master Mouna Chabbar.')
     : (language === 'it' ? 'Ogni trattamento è preceduto da una consulenza personalizzata — in sede o via WhatsApp.' : 'Every treatment begins with a personalised consultation — in person or via WhatsApp.');
 
   if (eliteModalCity && !submitted) {
