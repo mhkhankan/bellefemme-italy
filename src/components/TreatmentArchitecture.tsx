@@ -142,7 +142,8 @@ const MobileSwiper = ({ treatments, language, tickerText, t, onConsultation }: M
 
   return (
     <div
-      className="md:hidden fixed inset-0 z-30 bg-background"
+      className="md:hidden relative"
+      style={{ height: '100svh', overflow: 'hidden', touchAction: 'none' }}
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
