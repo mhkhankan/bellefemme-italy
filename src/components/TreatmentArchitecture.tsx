@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { LocationSheet } from './LocationSheet';
 import { useLanguage } from '@/contexts/LanguageContext';
 import type { TreatmentItem } from '@/lib/translations';
@@ -31,7 +31,17 @@ const fadeIn = {
   visible: { opacity: 1, y: 0 },
 };
 
-const TreatmentImage = ({ item, sizeClass, numberSize, imgStyle }: { item: TreatmentItem; sizeClass: string; numberSize: string; imgStyle?: React.CSSProperties }) => {
+const TreatmentImage = ({
+  item,
+  sizeClass,
+  numberSize,
+  imgStyle,
+}: {
+  item: TreatmentItem;
+  sizeClass: string;
+  numberSize: string;
+  imgStyle?: React.CSSProperties;
+}) => {
   const [imgFailed, setImgFailed] = useState(false);
   const imgPath = IMAGE_MAP[item.id];
   const altText = ALT_MAP[item.id] || item.title;
@@ -48,10 +58,202 @@ const TreatmentImage = ({ item, sizeClass, numberSize, imgStyle }: { item: Treat
         />
       ) : (
         <div className={`${sizeClass} shimmer-venetian flex items-center justify-center`}>
-          <span className={`font-cormorant ${numberSize} font-light text-primary/20`}>{item.number}</span>
+          <span className={`font-cormorant ${numberSize} font-light text-primary/20`}>
+            {item.number}
+          </span>
         </div>
       )}
     </>
+  );
+};
+
+interface MobileSwiperProps {
+  treatments: TreatmentItem[];
+  language: string;
+  tickerText: string;
+  t: any;
+  onConsultation: (name: string) => void;
+}
+
+const MobileSwiper = ({ treatments, language, tickerText, t, onConsultation }: MobileSwiperProps) => {
+  const TOTAL = treatments.length + 1;
+
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [expandedId, setExpandedId] = useState<string | null>(null);
+  const [exited, setExited] = useState(false);
+
+  const touchStartY = useRef(0);
+  const touchStartX = useRef(0);
+  const isAnimating = useRef(false);
+
+  useEffect(() => {
+    if (exited) {
+      const academy = document.getElementById('academy');
+      if (academy) {
+        academy.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, [exited]);
+
+  const goTo = useCallback(
+    (index: number) => {
+      if (isAnimating.current) return;
+      if (index < 0) return;
+      if (index >= TOTAL) {
+        setExited(true);
+        return;
+      }
+      isAnimating.current = true;
+      setActiveIndex(index);
+      setExpandedId(null);
+      setTimeout(() => {
+        isAnimating.current = false;
+      }, 420);
+    },
+    [TOTAL]
+  );
+
+  const handleTouchStart = useCallback((e: React.TouchEvent) => {
+    touchStartY.current = e.touches[0].clientY;
+    touchStartX.current = e.touches[0].clientX;
+  }, []);
+
+  const handleTouchEnd = useCallback(
+    (e: React.TouchEvent) => {
+      const deltaY = touchStartY.current - e.changedTouches[0].clientY;
+      const deltaX = Math.abs(touchStartX.current - e.changedTouches[0].clientX);
+      if (deltaX > Math.abs(deltaY)) return;
+      if (Math.abs(deltaY) < 40) return;
+      if (expandedId !== null) return;
+      if (deltaY > 0) {
+        goTo(activeIndex + 1);
+      } else {
+        goTo(activeIndex - 1);
+      }
+    },
+    [activeIndex, expandedId, goTo]
+  );
+
+  const toggleExpanded = useCallback((id: string) => {
+    setExpandedId((prev) => (prev === id ? null : id));
+  }, []);
+
+  if (exited) return null;
+
+  return (
+    <div
+      className="md:hidden fixed inset-0 z-30 bg-background"
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+    >
+      <motion.div
+        className="h-full w-full"
+        animate={{ y: `-${activeIndex * 100}%` }}
+        transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+      >
+        {/* SLIDE 0 — Intro */}
+        <div className="h-screen w-full flex flex-col items-center justify-center text-center px-6 space-y-4">
+          <p className="text-[10px] tracking-[0.4em] uppercase text-primary/60">
+            The 8-Point Collection
+          </p>
+          <h2 className="font-cormorant text-3xl font-light text-foreground tracking-[2px]">
+            {t.nav.atelier}
+          </h2>
+          <div className="w-12 h-px bg-primary/30" />
+          <p className="text-[11px] tracking-[0.2em] uppercase text-primary/80 font-inter">
+            {tickerText}
+          </p>
+          <p className="text-[10px] tracking-[0.15em] uppercase text-primary/40 mt-8 animate-pulse">
+            {language === 'it' ? 'Scorri per esplorare ↓' : 'Swipe to explore ↓'}
+          </p>
+        </div>
+
+        {/* SLIDES 1–8 — Treatments */}
+        {treatments.map((item, index) => {
+          const isExpanded = expandedId === item.id;
+          return (
+            <div key={item.id} className="h-screen w-full flex flex-col">
+              {/* Image */}
+              <div className="flex-shrink-0" style={{ height: 'min(38vh, 280px)' }}>
+                <TreatmentImage
+                  item={item}
+                  sizeClass="w-full h-full"
+                  numberSize="text-6xl"
+                  imgStyle={{ height: '100%', width: '100%', objectFit: 'cover' }}
+                />
+              </div>
+
+              {/* Content */}
+              <div
+                className="flex-1 overflow-y-auto px-6 pt-4 pb-6 space-y-3"
+                onTouchStart={(e) => { if (isExpanded) e.stopPropagation(); }}
+                onTouchEnd={(e) => { if (isExpanded) e.stopPropagation(); }}
+              >
+                <div className="flex items-baseline gap-4">
+                  <span className="font-cormorant text-4xl font-light text-primary/20">
+                    {item.number}
+                  </span>
+                  <div>
+                    <h3 className="font-inter font-bold text-[14px] tracking-[0.15em] uppercase text-foreground">
+                      {item.title}
+                    </h3>
+                    <p className="font-cormorant italic text-[22px] mt-1 text-primary/90">
+                      {item.subtitle}
+                    </p>
+                  </div>
+                </div>
+
+                <button
+                  onClick={() => onConsultation(item.title)}
+                  className="w-full font-inter font-bold text-[11px] tracking-[0.22em] uppercase bg-primary text-primary-foreground px-8 py-4 min-h-[48px] hover:bg-primary/90 transition-all duration-300 mb-3"
+                >
+                  {t.treatments.checkAvailability}
+                </button>
+
+                <button
+                  onClick={() => toggleExpanded(item.id)}
+                  className="text-[10px] tracking-[0.15em] uppercase text-primary/50 hover:text-primary transition-colors min-h-[44px] flex items-center"
+                >
+                  {isExpanded
+                    ? (language === 'it' ? 'Chiudi —' : 'Close —')
+                    : (language === 'it' ? 'Dettagli Tecnici +' : 'Technical Details +')}
+                </button>
+
+                {isExpanded && (
+                  <p className="text-[15px] leading-relaxed text-foreground/80 pb-4">
+                    {item.description}
+                  </p>
+                )}
+
+                {!isExpanded && (
+                  <div className="flex items-center justify-center gap-2 pt-4">
+                    {treatments.map((_, i) => (
+                      <div
+                        key={i}
+                        className="rounded-full transition-all duration-300"
+                        style={{
+                          width: activeIndex === i + 1 ? '8px' : '4px',
+                          height: activeIndex === i + 1 ? '8px' : '4px',
+                          backgroundColor: activeIndex === i + 1
+                            ? 'hsl(43 76% 52%)'
+                            : 'hsl(43 76% 52% / 0.3)',
+                        }}
+                      />
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+          );
+        })}
+      </motion.div>
+
+      {activeIndex > 0 && (
+        <div className="fixed bottom-4 right-4 z-40 text-[10px] tracking-[0.15em] uppercase text-primary/40">
+          {activeIndex} / {treatments.length}
+        </div>
+      )}
+    </div>
   );
 };
 
@@ -61,31 +263,18 @@ export const TreatmentArchitecture = () => {
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const { t, language } = useLanguage();
   const [activeIndex, setActiveIndex] = useState(0);
-  const [inSection, setInSection] = useState(false);
 
   const treatments = t.treatments.items;
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const section = document.getElementById('atelier');
-      if (section) {
-        const rect = section.getBoundingClientRect();
-        setInSection(rect.top < window.innerHeight && rect.bottom > 0);
-      }
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const openConsultation = (treatmentName: string) => {
     setSelectedTreatment(treatmentName);
     setSheetOpen(true);
   };
 
-  const tickerText = language === 'it'
-    ? 'La Collezione — 8 Trattamenti Esclusivi'
-    : 'The Collection — 8 Exclusive Treatments';
+  const tickerText =
+    language === 'it'
+      ? 'La Collezione — 8 Trattamenti Esclusivi'
+      : 'The Collection — 8 Exclusive Treatments';
 
   const scrollToTreatment = (index: number) => {
     const el = document.getElementById(`treatment-${index}`);
@@ -117,7 +306,7 @@ export const TreatmentArchitecture = () => {
         </div>
 
         <div className="hidden md:flex fixed right-6 top-1/2 -translate-y-1/2 z-40 flex-col gap-3">
-          {treatments.map((item, i) => (
+          {treatments.map((item: TreatmentItem, i: number) => (
             <button
               key={item.id}
               onClick={() => scrollToTreatment(i)}
@@ -138,103 +327,17 @@ export const TreatmentArchitecture = () => {
           ))}
         </div>
 
-        {/* MOBILE SCROLL-SNAP */}
-        <div
-          className="md:hidden"
-          style={{ scrollSnapType: expandedId ? 'none' : 'y mandatory', height: '100svh', overflowY: 'scroll', overscrollBehavior: 'contain' }}
-        >
-          <div
-            style={{ height: '100svh', scrollSnapAlign: 'start', flexShrink: 0 }}
-            className="flex flex-col items-center justify-center text-center px-6 space-y-3"
-          >
-            <p className="text-[10px] tracking-[0.4em] uppercase text-primary/60">The 8-Point Collection</p>
-            <h2 className="font-cormorant text-3xl font-light text-foreground tracking-[2px]">{t.nav.atelier}</h2>
-            <p className="text-[11px] tracking-[0.2em] uppercase text-primary/80 font-inter">{tickerText}</p>
-          </div>
-          {treatments.map((item, index) => (
-            <motion.div
-              key={item.id}
-              id={`treatment-${index}`}
-              variants={fadeIn}
-              initial="hidden"
-              whileInView="visible"
-              onViewportEnter={() => setActiveIndex(index)}
-              onViewportLeave={() => { if (expandedId === item.id) setExpandedId(null); }}
-              viewport={{ once: false, margin: '-40%' }}
-              transition={{ duration: 0.5, ease: 'easeInOut' }}
-              className="flex flex-col px-0 pb-6 pt-4 border-t border-primary/10 relative"
-              style={{ minHeight: '100svh', scrollSnapAlign: 'start' }}
-            >
-              {/* Full bleed image — reduced height to accommodate CTA above fold */}
-              <div className="flex items-center justify-center mb-4" style={{ height: 'min(38vh, 280px)', flexShrink: 0 }}>
-                <TreatmentImage item={item} sizeClass="w-full" numberSize="text-6xl" imgStyle={{ height: 'min(38vh, 280px)', width: '100%', objectFit: 'cover' }} />
-              </div>
+        <MobileSwiper
+          treatments={treatments}
+          language={language}
+          tickerText={tickerText}
+          t={t}
+          onConsultation={openConsultation}
+        />
 
-              <div className="space-y-4 px-6">
-                <div className="flex items-baseline gap-4">
-                  <span className="font-cormorant text-4xl font-light text-primary/20">{item.number}</span>
-                  <div>
-                    <h3 className="font-inter font-bold text-[14px] tracking-[0.15em] uppercase text-foreground">
-                      {item.title}
-                    </h3>
-                    <p className="font-cormorant italic text-[22px] mt-1" style={{ color: 'hsl(43 76% 52% / 0.90)' }}>{item.subtitle}</p>
-                  </div>
-                </div>
-
-                {/* T1-01: CTA always visible, above details toggle */}
-                <button
-                  onClick={() => openConsultation(item.title)}
-                  className="w-full font-inter font-bold text-[11px] tracking-[0.22em] uppercase bg-primary text-primary-foreground px-8 py-4 min-h-[48px] hover:bg-primary/90 transition-all duration-500"
-                >
-                  {language === 'it' ? 'PRENOTA UNA CONSULENZA' : 'BOOK A CONSULTATION'}
-                </button>
-
-                <button
-                  onClick={() => setExpandedId(expandedId === item.id ? null : item.id)}
-                  className="text-[13px] tracking-[0.1em] uppercase text-primary/80 hover:text-primary transition-colors min-h-[44px] flex items-center"
-                >
-                  {expandedId === item.id
-                    ? (language === 'it' ? 'Chiudi -' : 'Close -')
-                    : (language === 'it' ? 'Dettagli Tecnici +' : 'Technical Details +')}
-                </button>
-
-                <p
-                  className="text-[16px] leading-relaxed overflow-hidden transition-all duration-300"
-                  style={{
-                    maxHeight: expandedId === item.id ? '20rem' : '0',
-                    opacity: expandedId === item.id ? 0.85 : 0,
-                  }}
-                >
-                  {item.description}
-                </p>
-              </div>
-
-              {/* Dot nav */}
-              <div className="mt-auto flex items-center justify-center gap-2 pb-6">
-                {treatments.map((_, i) => (
-                  <div
-                    key={i}
-                    className="rounded-full transition-all duration-300"
-                    style={{
-                      width: activeIndex === i ? '8px' : '4px',
-                      height: activeIndex === i ? '8px' : '4px',
-                      backgroundColor: activeIndex === i
-                        ? 'hsl(43 76% 52%)'
-                        : 'hsl(43 76% 52% / 0.3)',
-                    }}
-                  />
-                ))}
-              </div>
-            </motion.div>
-          ))}
-          {/* Scroll-snap escape sentinel */}
-          <div style={{ height: '100svh', scrollSnapAlign: 'start', flexShrink: 0 }} />
-        </div>
-
-        {/* DESKTOP */}
         <div className="hidden md:block">
           <div className="space-y-0 max-w-5xl mx-auto">
-            {treatments.map((item, index) => (
+            {treatments.map((item: TreatmentItem, index: number) => (
               <motion.div
                 key={item.id}
                 id={`treatment-${index}`}
@@ -251,23 +354,22 @@ export const TreatmentArchitecture = () => {
                   <div className={`col-span-5 ${index % 2 === 0 ? 'order-1' : 'order-2'}`}>
                     <TreatmentImage item={item} sizeClass="w-full aspect-[4/5]" numberSize="text-8xl" />
                   </div>
-
                   <div className={`col-span-7 space-y-6 ${index % 2 === 0 ? 'order-2' : 'order-1'}`}>
-                    <span className="font-cormorant text-8xl font-light text-primary/10 block">{item.number}</span>
+                    <span className="font-cormorant text-8xl font-light text-primary/10 block">
+                      {item.number}
+                    </span>
                     <h3 className="font-inter font-bold text-[12px] tracking-[0.25em] uppercase text-foreground">
                       {item.title}
                     </h3>
                     <p className="font-cormorant italic text-2xl text-primary/90">{item.subtitle}</p>
-
                     <button
                       onClick={() => setExpandedId(expandedId === item.id ? null : item.id)}
-                      className="text-[13px] tracking-[0.1em] uppercase text-primary/80 hover:text-primary transition-colors min-h-[48px] flex items-center"
+                      className="text-[10px] tracking-[0.15em] uppercase text-primary/50 hover:text-primary transition-colors min-h-[48px] flex items-center"
                     >
                       {expandedId === item.id
-                        ? (language === 'it' ? 'Chiudi -' : 'Close -')
+                        ? (language === 'it' ? 'Chiudi —' : 'Close —')
                         : (language === 'it' ? 'Dettagli Tecnici +' : 'Technical Details +')}
                     </button>
-
                     <p
                       className="text-[16px] leading-relaxed max-w-md overflow-hidden transition-all duration-300"
                       style={{
@@ -277,13 +379,11 @@ export const TreatmentArchitecture = () => {
                     >
                       {item.description}
                     </p>
-
-                    {/* T1-03: Desktop CTA filled gold — not outlined */}
                     <button
                       onClick={() => openConsultation(item.title)}
                       className="font-inter font-bold text-[10px] tracking-[0.2em] uppercase bg-primary text-primary-foreground px-10 py-4 min-h-[48px] hover:bg-primary/90 transition-all duration-500"
                     >
-                      {language === 'it' ? 'PRENOTA UNA CONSULENZA' : 'BOOK A CONSULTATION'}
+                      {t.treatments.checkAvailability}
                     </button>
                   </div>
                 </div>
