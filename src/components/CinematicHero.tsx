@@ -88,7 +88,7 @@ export const CinematicHero = () => {
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.85, duration: 0.8, ease: 'easeOut' }}
+          transition={{ delay: 1.25, duration: 0.8, ease: 'easeOut' }}
           className="font-inter text-[10px] tracking-[0.35em] uppercase mt-3"
           style={{ color: 'hsl(43 76% 52% / 0.70)' }}
         >
@@ -107,7 +107,7 @@ export const CinematicHero = () => {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.0, duration: 0.8 }}
-          className="flex items-center gap-4 mb-6 justify-center md:justify-start"
+          className="flex items-center gap-4 mb-6 justify-center md:justify-start flex-nowrap"
         >
           <span className="h-px w-8 bg-primary/40" />
           <span className="font-inter text-[9px] tracking-[0.3em] uppercase text-primary/60">

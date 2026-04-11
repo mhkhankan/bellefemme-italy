@@ -23,7 +23,7 @@ const Privacy = () => (
             <p className="text-sm text-muted-foreground leading-relaxed">
               Belle Femme PMU Atelier & Academy — Mouna Chabbar<br />
               P.IVA 03794680128 · Master Studio: Varese, Italy<br />
-              Contatto: tramite WhatsApp al +39 351 660 5507
+              Contatto: tramite WhatsApp al +39 392 448 7530
             </p>
           </div>
 
