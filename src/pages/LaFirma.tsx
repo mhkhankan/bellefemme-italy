@@ -199,7 +199,7 @@ const LaFirma = () => {
       </section>
 
       {/* S2 - Bio & Credentials */}
-      <section style={{ backgroundColor: '#000000', padding: '48px 24px' }}>
+      <section style={{ backgroundColor: '#000000', padding: '64px 24px' }}>
         <div className="max-w-[680px] mx-auto space-y-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -215,12 +215,12 @@ const LaFirma = () => {
               {language === 'it' ? "L'Architetto dello Sguardo" : 'The Architect of the Gaze'}
             </h2>
             <div className="h-px w-12" style={{ backgroundColor: 'rgba(212, 175, 55, 0.5)' }} />
-            <p className="text-[13px] leading-[1.7]" style={{ color: 'rgba(245, 245, 245, 0.7)' }}>
+            <p className="text-[16px] leading-[1.7]" style={{ color: 'rgba(245, 245, 245, 0.7)' }}>
               {language === 'it'
                 ? "Una laurea in Belle Arti e Comunicazioni Visive. Un decennio di competizione internazionale. Mouna Chabbar ha costruito un metodo dove la bellezza è il risultato di una progettazione rigorosa — non di un'interpretazione."
                 : "A degree in Fine Arts and Visual Communications. A decade of international competition. Mouna Chabbar built a method where beauty is the result of rigorous engineering — not interpretation."}
             </p>
-            <p className="text-[13px] leading-[1.7]" style={{ color: 'rgba(245, 245, 245, 0.7)' }}>
+            <p className="text-[16px] leading-[1.7]" style={{ color: 'rgba(245, 245, 245, 0.7)' }}>
               {language === 'it'
                 ? "Da Varese, forma la prossima generazione di artisti PMU con la stessa esigenza che ha definito la sua carriera: ogni tratto è calcolato, ogni risultato è progettato."
                 : "From Varese, she trains the next generation of PMU artists with the same standard that defined her career: every stroke is calculated, every result is engineered."}
@@ -238,17 +238,17 @@ const LaFirma = () => {
               transition={{ duration: 0.6, delay: gi * 0.1 }}
               className="space-y-4"
             >
-              <p className="font-inter text-[10px] tracking-[0.3em] uppercase" style={{ color: '#D4AF37' }}>
+              <p className="font-inter text-[11px] tracking-[0.25em] uppercase" style={{ color: '#D4AF37' }}>
                 {language === 'it' ? group.label_it : group.label_en}
               </p>
               <div className="space-y-0">
                 {group.items.map((item, ii) => (
                   <div key={ii}>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-1 md:gap-4 py-3">
-                      <p className="text-[11px] font-medium" style={{ color: '#F5F5F5' }}>
+                      <p className="text-[15px] font-medium leading-snug" style={{ color: '#F5F5F5' }}>
                         {language === 'it' ? item.name_it : item.name_en}
                       </p>
-                      <p className="font-cormorant italic text-[11px]" style={{ color: 'rgba(245, 245, 245, 0.45)' }}>
+                      <p className="font-cormorant italic text-[13px] leading-relaxed" style={{ color: 'rgba(245, 245, 245, 0.60)' }}>
                         {language === 'it' ? item.desc_it : item.desc_en}
                       </p>
                     </div>
@@ -290,10 +290,10 @@ const LaFirma = () => {
                 <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ backgroundColor: '#D4AF37' }}>
                   <span className="font-cormorant text-lg font-light" style={{ color: '#000' }}>{t.initial}</span>
                 </div>
-                <p className="font-cormorant italic text-base leading-relaxed" style={{ color: 'rgba(245, 245, 245, 0.8)' }}>
+                <p className="font-cormorant italic text-[17px] leading-relaxed" style={{ color: 'rgba(245, 245, 245, 0.8)' }}>
                   &ldquo;{language === 'it' ? t.quote_it : t.quote_en}&rdquo;
                 </p>
-                <p className="font-inter text-[10px] tracking-[0.15em] uppercase" style={{ color: '#D4AF37' }}>
+                <p className="font-inter text-[12px] tracking-[0.15em] uppercase" style={{ color: '#D4AF37' }}>
                   {t.name}
                 </p>
               </motion.div>
@@ -317,7 +317,7 @@ const LaFirma = () => {
       {/* S4 - Judge Cities */}
       <section className="py-8" style={{ backgroundColor: '#000' }}>
         <div className="max-w-4xl mx-auto px-6 text-center space-y-6">
-          <p className="font-inter text-[10px] tracking-[0.3em] uppercase" style={{ color: '#D4AF37' }}>
+          <p className="font-inter text-[12px] tracking-[0.25em] uppercase" style={{ color: '#D4AF37' }}>
             {language === 'it' ? 'GIUDICE INTERNAZIONALE' : 'INTERNATIONAL JUDGE'}
           </p>
           <div className="overflow-hidden">
