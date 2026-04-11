@@ -5,7 +5,7 @@ import { getCatalogCourses } from '@/Data/courses';
 import { CourseLocationSheet } from './CourseLocationSheet';
 import { Link } from 'react-router-dom';
 import { ChevronDown } from 'lucide-react';
-import type { Course } from '@/Data/courses';
+
 
 const TESTIMONIALS_ACADEMY = [
   {
