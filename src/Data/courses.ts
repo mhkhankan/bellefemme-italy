@@ -54,7 +54,7 @@ export const COURSES: Course[] = [
   {
     id: 'pigment-restauro',
     slug: '/corso-correzione-pmu',
-    featured: true,
+    featured: false,
     bf_name: 'PIGMENT RESTAURO',
     subtitle_it: 'Ombre Powder Brows · Cover Up · Camouflage',
     subtitle_en: 'Ombre Powder Brows · Cover Up · Camouflage',
