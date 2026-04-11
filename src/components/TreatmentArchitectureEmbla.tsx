@@ -112,68 +112,56 @@ const MobileSwiper = ({ treatments, language, tickerText, t, onConsultation }: M
       </div>
 
       {/* Horizontal carousel */}
-      <div className="overflow-hidden px-4" ref={emblaRef}>
-        <div className="flex gap-3">
-          {treatments.map((item, index) => (
-              <div
-                key={item.id}
-                className="flex-[0_0_85%] min-w-0"
-              >
-                <div className="bg-background overflow-hidden">
-                  {/* Image */}
-                  <div className="aspect-[4/3] w-full">
-                    <TreatmentImage
-                      item={item}
-                      sizeClass="h-full w-full"
-                      numberSize="text-6xl"
-                      imgStyle={{ height: '100%', width: '100%', objectFit: 'cover' }}
-                    />
-                  </div>
+      <div className="overflow-hidden" ref={emblaRef}>
+        <div className="flex">
+          {treatments.map((item) => (
+            <div
+              key={item.id}
+              className="flex-[0_0_100%] min-w-0"
+            >
+              <div className="bg-background overflow-hidden">
+                {/* Image */}
+                <div className="aspect-[4/3] w-full">
+                  <TreatmentImage
+                    item={item}
+                    sizeClass="h-full w-full"
+                    numberSize="text-6xl"
+                    imgStyle={{ height: '100%', width: '100%', objectFit: 'cover' }}
+                  />
+                </div>
 
-                  {/* Content */}
-                  <div className="px-5 py-5 space-y-3">
-                    <div className="flex items-baseline gap-3">
-                      <span className="font-cormorant text-3xl font-light text-primary/20">
-                        {item.number}
-                      </span>
-                      <div>
-                        <h3 className="font-inter text-[13px] font-bold uppercase tracking-[0.15em] text-foreground">
-                          {item.title}
-                        </h3>
-                        <p className="mt-1 font-cormorant text-[20px] italic text-primary/90">
-                          {item.subtitle}
-                        </p>
-                      </div>
+                {/* Content */}
+                <div className="px-5 py-5 space-y-3">
+                  <div className="flex items-baseline gap-3">
+                    <span className="font-cormorant text-3xl font-light text-primary/20">
+                      {item.number}
+                    </span>
+                    <div>
+                      <h3 className="font-inter text-[13px] font-bold uppercase tracking-[0.15em] text-foreground">
+                        {item.title}
+                      </h3>
+                      <p className="mt-1 font-cormorant text-[20px] italic text-primary/90">
+                        {item.subtitle}
+                      </p>
                     </div>
-
-                    <p className="text-[13px] leading-relaxed text-foreground/70">
-                      {item.description}
-                    </p>
-
-                    <button
-                      onClick={() => onConsultation(item.title)}
-                      className="w-full min-h-[48px] bg-primary px-8 py-3 font-inter text-[11px] font-bold uppercase tracking-[0.22em] text-primary-foreground transition-all duration-300 hover:bg-primary/90"
-                    >
-                      {t.treatments.checkAvailability}
-                    </button>
                   </div>
+
+                  <p className="text-[13px] leading-relaxed text-foreground/70">
+                    {item.description}
+                  </p>
+
+                  <button
+                    onClick={() => onConsultation(item.title)}
+                    className="w-full min-h-[48px] bg-primary px-8 py-3 font-inter text-[11px] font-bold uppercase tracking-[0.22em] text-primary-foreground transition-all duration-300 hover:bg-primary/90"
+                  >
+                    {t.treatments.checkAvailability}
+                  </button>
                 </div>
               </div>
+            </div>
           ))}
-
         </div>
       </div>
-
-      {/* Gesture hint — animated horizontal line */}
-      {selectedIndex === 0 && (
-        <motion.div
-          className="flex justify-center pt-4"
-          animate={{ x: [0, 20, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
-        >
-          <div className="h-px w-10 bg-primary/50" />
-        </motion.div>
-      )}
 
       {/* Dots — gold horizontal lines */}
       <div className="flex items-center justify-center gap-2 pt-4">
@@ -190,9 +178,6 @@ const MobileSwiper = ({ treatments, language, tickerText, t, onConsultation }: M
           </button>
         ))}
       </div>
-      <p className="text-center mt-2 text-[10px] uppercase tracking-[0.2em] text-primary/40">
-        {selectedIndex + 1} / {treatments.length}
-      </p>
     </div>
   );
 };
