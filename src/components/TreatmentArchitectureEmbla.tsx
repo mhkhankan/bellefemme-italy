@@ -98,13 +98,26 @@ const MobileSwiper = ({ treatments, language, tickerText, t, onConsultation }: M
 
   return (
     <div id="atelier" className="md:hidden">
+      {/* Section header — mobile */}
+      <div className="px-6 pt-12 pb-6 text-center space-y-3">
+        <p className="text-[10px] uppercase tracking-[0.4em] text-primary/60">
+          The 8-Point Collection
+        </p>
+        <h2 className="font-cormorant text-3xl font-light text-foreground tracking-[2px]">
+          {t.nav.atelier}
+        </h2>
+        <p className="font-inter text-[11px] uppercase tracking-[0.2em] text-primary/80">
+          {tickerText}
+        </p>
+      </div>
+
       {/* Horizontal carousel */}
-      <div className="overflow-hidden" ref={emblaRef}>
-        <div className="flex">
+      <div className="overflow-hidden px-4" ref={emblaRef}>
+        <div className="flex gap-3">
           {treatments.map((item, index) => (
               <div
                 key={item.id}
-                className="flex-[0_0_92%] min-w-0"
+                className="flex-[0_0_85%] min-w-0"
               >
                 <div className="bg-background overflow-hidden">
                   {/* Image */}
