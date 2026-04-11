@@ -78,11 +78,10 @@ const MobileSwiper = ({ treatments, language, tickerText, t, onConsultation }: M
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
   const [emblaRef, emblaApi] = useEmblaCarousel({
-    axis: 'y',
+    axis: 'x',
     loop: false,
     dragFree: false,
     containScroll: 'trimSnaps',
-    watchDrag: expandedId === null,
   });
 
   const onSelect = useCallback(() => {
@@ -95,72 +94,45 @@ const MobileSwiper = ({ treatments, language, tickerText, t, onConsultation }: M
     if (!emblaApi) return;
     emblaApi.on('select', onSelect);
     onSelect();
-    return () => {
-      emblaApi.off('select', onSelect);
-    };
+    return () => { emblaApi.off('select', onSelect); };
   }, [emblaApi, onSelect]);
 
-  useEffect(() => {
-    if (!emblaApi) return;
-    emblaApi.reInit({
-      axis: 'y',
-      loop: false,
-      dragFree: false,
-      containScroll: 'trimSnaps',
-      watchDrag: expandedId === null,
-    });
-  }, [emblaApi, expandedId]);
-
-  useEffect(() => {
-    if (!emblaApi) return;
-
-    const onSettle = () => {
-      if (emblaApi.selectedScrollSnap() === treatments.length) {
-        window.setTimeout(() => {
-          document.getElementById('academy')?.scrollIntoView({ behavior: 'smooth' });
-        }, 300);
-      }
-    };
-
-    emblaApi.on('settle', onSettle);
-    return () => {
-      emblaApi.off('settle', onSettle);
-    };
-  }, [emblaApi, treatments.length]);
+  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
+  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
 
   const toggleExpanded = (id: string) => {
     setExpandedId((prev) => (prev === id ? null : id));
   };
 
   return (
-    <div className="relative h-[100svh] overflow-hidden md:hidden">
-      <div className="h-full overflow-hidden" ref={emblaRef}>
-        <div className="flex h-full flex-col">
-          <div className="flex-[0_0_100%] min-h-0 bg-background px-6">
-            <div className="flex h-full flex-col items-center justify-center text-center">
-              <p className="text-[10px] tracking-[0.4em] uppercase text-primary/60">
-                The 8-Point Collection
-              </p>
-              <h2 className="mt-4 font-cormorant text-3xl font-light tracking-[2px] text-foreground">
-                {t.nav.atelier}
-              </h2>
-              <div className="mt-4 h-px w-12 bg-primary/30" />
-              <p className="mt-4 font-inter text-[11px] uppercase tracking-[0.2em] text-primary/80">
-                {tickerText}
-              </p>
-              <p className="mt-8 text-[10px] uppercase tracking-[0.15em] text-primary/40 animate-pulse">
-                {language === 'it' ? 'Scorri per esplorare ↓' : 'Swipe to explore ↓'}
-              </p>
-            </div>
-          </div>
+    <div className="md:hidden py-12">
+      {/* Section header */}
+      <div className="px-6 text-center mb-8">
+        <p className="text-[10px] tracking-[0.4em] uppercase text-primary/60">
+          The 8-Point Collection
+        </p>
+        <h2 className="mt-3 font-cormorant text-3xl font-light tracking-[2px] text-foreground">
+          {t.nav.atelier}
+        </h2>
+        <div className="mt-3 h-px w-12 mx-auto bg-primary/30" />
+        <p className="mt-3 font-inter text-[11px] uppercase tracking-[0.2em] text-primary/80">
+          {tickerText}
+        </p>
+      </div>
 
+      {/* Horizontal carousel */}
+      <div className="overflow-hidden" ref={emblaRef}>
+        <div className="flex">
           {treatments.map((item, index) => {
             const isExpanded = expandedId === item.id;
-
             return (
-              <div key={item.id} className="flex-[0_0_100%] min-h-0 bg-background">
-                <div className="flex h-full flex-col">
-                  <div className="flex-shrink-0" style={{ height: 'min(38svh, 280px)' }}>
+              <div
+                key={item.id}
+                className="flex-[0_0_85%] min-w-0 pl-4 first:pl-6 last:pr-6"
+              >
+                <div className="bg-background border border-primary/10 overflow-hidden">
+                  {/* Image */}
+                  <div className="aspect-[4/3] w-full">
                     <TreatmentImage
                       item={item}
                       sizeClass="h-full w-full"
@@ -169,16 +141,17 @@ const MobileSwiper = ({ treatments, language, tickerText, t, onConsultation }: M
                     />
                   </div>
 
-                  <div className="flex min-h-0 flex-1 flex-col overflow-y-auto px-6 pb-6 pt-4">
-                    <div className="flex items-baseline gap-4">
-                      <span className="font-cormorant text-4xl font-light text-primary/20">
+                  {/* Content */}
+                  <div className="px-5 py-5 space-y-3">
+                    <div className="flex items-baseline gap-3">
+                      <span className="font-cormorant text-3xl font-light text-primary/20">
                         {item.number}
                       </span>
                       <div>
-                        <h3 className="font-inter text-[14px] font-bold uppercase tracking-[0.15em] text-foreground">
+                        <h3 className="font-inter text-[13px] font-bold uppercase tracking-[0.15em] text-foreground">
                           {item.title}
                         </h3>
-                        <p className="mt-1 font-cormorant text-[22px] italic text-primary/90">
+                        <p className="mt-1 font-cormorant text-[20px] italic text-primary/90">
                           {item.subtitle}
                         </p>
                       </div>
@@ -186,14 +159,14 @@ const MobileSwiper = ({ treatments, language, tickerText, t, onConsultation }: M
 
                     <button
                       onClick={() => onConsultation(item.title)}
-                      className="mt-4 min-h-[48px] w-full bg-primary px-8 py-4 font-inter text-[11px] font-bold uppercase tracking-[0.22em] text-primary-foreground transition-all duration-300 hover:bg-primary/90"
+                      className="w-full min-h-[48px] bg-primary px-8 py-3 font-inter text-[11px] font-bold uppercase tracking-[0.22em] text-primary-foreground transition-all duration-300 hover:bg-primary/90"
                     >
                       {t.treatments.checkAvailability}
                     </button>
 
                     <button
                       onClick={() => toggleExpanded(item.id)}
-                      className="mt-3 flex min-h-[44px] items-center text-[10px] uppercase tracking-[0.15em] text-primary/50 transition-colors hover:text-primary"
+                      className="flex min-h-[40px] items-center text-[10px] uppercase tracking-[0.15em] text-primary/50 transition-colors hover:text-primary"
                     >
                       {isExpanded
                         ? (language === 'it' ? 'Chiudi —' : 'Close —')
@@ -201,27 +174,10 @@ const MobileSwiper = ({ treatments, language, tickerText, t, onConsultation }: M
                     </button>
 
                     {isExpanded && (
-                      <p className="pb-4 text-[15px] leading-relaxed text-foreground/80">
+                      <p className="pb-2 text-[14px] leading-relaxed text-foreground/80">
                         {item.description}
                       </p>
                     )}
-
-                    {!isExpanded && (
-                      <div className="flex items-center justify-center gap-2 pt-4">
-                        {treatments.map((_, i) => (
-                          <div
-                            key={i}
-                            className={`rounded-full transition-all duration-300 ${selectedIndex === i + 1 ? 'h-2 w-2 bg-primary' : 'h-1 w-1 bg-primary/30'}`}
-                          />
-                        ))}
-                      </div>
-                    )}
-
-                    <div className="mt-auto pt-4 text-center text-[10px] uppercase tracking-[0.15em] text-primary/40">
-                      {index === treatments.length - 1
-                        ? (language === 'it' ? 'Ultima carta — scorri ancora per proseguire' : 'Last card — swipe once more to continue')
-                        : (language === 'it' ? 'Scorri per il prossimo trattamento' : 'Swipe for the next treatment')}
-                    </div>
                   </div>
                 </div>
               </div>
@@ -230,11 +186,21 @@ const MobileSwiper = ({ treatments, language, tickerText, t, onConsultation }: M
         </div>
       </div>
 
-      {selectedIndex > 0 && (
-        <div className="pointer-events-none absolute right-4 top-4 text-[10px] uppercase tracking-[0.2em] text-primary/50">
-          {selectedIndex} / {treatments.length}
-        </div>
-      )}
+      {/* Dots + counter */}
+      <div className="flex items-center justify-center gap-2 pt-6">
+        {treatments.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => emblaApi?.scrollTo(i)}
+            className={`rounded-full transition-all duration-300 ${
+              selectedIndex === i ? 'h-2.5 w-2.5 bg-primary' : 'h-1.5 w-1.5 bg-primary/30'
+            }`}
+          />
+        ))}
+      </div>
+      <p className="text-center mt-2 text-[10px] uppercase tracking-[0.2em] text-primary/40">
+        {selectedIndex + 1} / {treatments.length}
+      </p>
     </div>
   );
 };
