@@ -75,7 +75,6 @@ interface MobileSwiperProps {
 
 const MobileSwiper = ({ treatments, language, tickerText, t, onConsultation }: MobileSwiperProps) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const [expandedId, setExpandedId] = useState<string | null>(null);
 
   const [emblaRef, emblaApi] = useEmblaCarousel({
     axis: 'x',
@@ -88,7 +87,6 @@ const MobileSwiper = ({ treatments, language, tickerText, t, onConsultation }: M
   const onSelect = useCallback(() => {
     if (!emblaApi) return;
     setSelectedIndex(emblaApi.selectedScrollSnap());
-    setExpandedId(null);
   }, [emblaApi]);
 
   useEffect(() => {
@@ -101,9 +99,6 @@ const MobileSwiper = ({ treatments, language, tickerText, t, onConsultation }: M
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
 
-  const toggleExpanded = (id: string) => {
-    setExpandedId((prev) => (prev === id ? null : id));
-  };
 
   return (
     <div className="md:hidden py-12">
@@ -124,9 +119,7 @@ const MobileSwiper = ({ treatments, language, tickerText, t, onConsultation }: M
       {/* Horizontal carousel */}
       <div className="overflow-hidden" ref={emblaRef}>
         <div className="flex">
-          {treatments.map((item, index) => {
-            const isExpanded = expandedId === item.id;
-            return (
+          {treatments.map((item, index) => (
               <div
                 key={item.id}
                 className="flex-[0_0_100%] min-w-0"
@@ -158,37 +151,41 @@ const MobileSwiper = ({ treatments, language, tickerText, t, onConsultation }: M
                       </div>
                     </div>
 
+                    <p className="text-[13px] leading-relaxed text-foreground/70 line-clamp-3">
+                      {item.description}
+                    </p>
+
                     <button
                       onClick={() => onConsultation(item.title)}
                       className="w-full min-h-[48px] bg-primary px-8 py-3 font-inter text-[11px] font-bold uppercase tracking-[0.22em] text-primary-foreground transition-all duration-300 hover:bg-primary/90"
                     >
                       {t.treatments.checkAvailability}
                     </button>
-
-                    <button
-                      onClick={() => toggleExpanded(item.id)}
-                      className="flex min-h-[40px] items-center text-[10px] uppercase tracking-[0.15em] text-primary/50 transition-colors hover:text-primary"
-                    >
-                      {isExpanded
-                        ? (language === 'it' ? 'Chiudi —' : 'Close —')
-                        : (language === 'it' ? 'Dettagli Tecnici +' : 'Technical Details +')}
-                    </button>
-
-                    {isExpanded && (
-                      <p className="pb-2 text-[14px] leading-relaxed text-foreground/80">
-                        {item.description}
-                      </p>
-                    )}
                   </div>
                 </div>
               </div>
-            );
-          })}
+          ))}
+
         </div>
       </div>
 
+      {/* Swipe hint — only on first card */}
+      {selectedIndex === 0 && (
+        <motion.div
+          className="flex items-center justify-center gap-2 pt-4"
+          initial={{ opacity: 1 }}
+          animate={{ opacity: [1, 0.4, 1] }}
+          transition={{ duration: 2, repeat: Infinity }}
+        >
+          <span className="text-[10px] uppercase tracking-[0.2em] text-primary/50">
+            {language === 'it' ? 'Scorri per scoprire' : 'Swipe to explore'}
+          </span>
+          <span className="text-primary/50">→</span>
+        </motion.div>
+      )}
+
       {/* Dots + counter */}
-      <div className="flex items-center justify-center gap-2 pt-6">
+      <div className="flex items-center justify-center gap-2 pt-4">
         {treatments.map((_, i) => (
           <button
             key={i}
