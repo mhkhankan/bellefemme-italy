@@ -114,7 +114,7 @@ const MobileSwiper = ({ treatments, language, tickerText, t, onConsultation, sec
 
   return (
     <div
-      className="md:hidden sticky top-0 w-full overflow-hidden"
+      className="w-full overflow-hidden"
       style={{ height: '100svh' }}
     >
       {/* Slide track — driven by activeIndex, animated with CSS transition */}
