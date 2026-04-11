@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { LocationSheet } from './LocationSheet';
 import { useLanguage } from '@/contexts/LanguageContext';
 import type { TreatmentItem } from '@/lib/translations';
@@ -67,89 +67,57 @@ const TreatmentImage = ({
   );
 };
 
+// ─── MOBILE STICKY SWIPER ─────────────────────────────────────────────────────
+// Architecture: section is TOTAL * 100svh tall.
+// Swiper is position:sticky top:0, height:100svh.
+// Page scroll drives the active index — no touch hijacking needed.
+
 interface MobileSwiperProps {
   treatments: TreatmentItem[];
   language: string;
   tickerText: string;
   t: any;
   onConsultation: (name: string) => void;
+  sectionRef: React.RefObject<HTMLElement | null>;
 }
 
-const MobileSwiper = ({ treatments, language, tickerText, t, onConsultation }: MobileSwiperProps) => {
-  const TOTAL = treatments.length + 1;
-
+const MobileSwiper = ({ treatments, language, tickerText, t, onConsultation, sectionRef }: MobileSwiperProps) => {
+  const TOTAL = treatments.length + 1; // slide 0 = intro, slides 1-8 = treatments
   const [activeIndex, setActiveIndex] = useState(0);
   const [expandedId, setExpandedId] = useState<string | null>(null);
-  const [exited, setExited] = useState(false);
 
-  const touchStartY = useRef(0);
-  const touchStartX = useRef(0);
-  const isAnimating = useRef(false);
-
+  // Drive active index from page scroll position
   useEffect(() => {
-    if (exited) {
-      const academy = document.getElementById('academy');
-      if (academy) {
-        academy.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
-  }, [exited]);
+    const handleScroll = () => {
+      const section = sectionRef.current;
+      if (!section) return;
+      const rect = section.getBoundingClientRect();
+      const scrolled = -rect.top; // how far user has scrolled into the section
+      const vh = window.innerHeight;
+      const index = Math.round(scrolled / vh);
+      const clamped = Math.max(0, Math.min(TOTAL - 1, index));
+      setActiveIndex(clamped);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [sectionRef, TOTAL]);
 
-  const goTo = useCallback(
-    (index: number) => {
-      if (isAnimating.current) return;
-      if (index < 0) return;
-      if (index >= TOTAL) {
-        setExited(true);
-        return;
-      }
-      isAnimating.current = true;
-      setActiveIndex(index);
-      setExpandedId(null);
-      setTimeout(() => {
-        isAnimating.current = false;
-      }, 500);
-    },
-    [TOTAL]
-  );
+  // Close drawer on slide change
+  useEffect(() => {
+    setExpandedId(null);
+  }, [activeIndex]);
 
-  const handleTouchStart = useCallback((e: React.TouchEvent) => {
-    touchStartY.current = e.touches[0].clientY;
-    touchStartX.current = e.touches[0].clientX;
-  }, []);
-
-  const handleTouchEnd = useCallback(
-    (e: React.TouchEvent) => {
-      if (isAnimating.current) return;
-      const deltaY = touchStartY.current - e.changedTouches[0].clientY;
-      const deltaX = Math.abs(touchStartX.current - e.changedTouches[0].clientX);
-      if (deltaX > Math.abs(deltaY)) return;
-      if (Math.abs(deltaY) < 80) return;
-      if (expandedId !== null) return;
-      if (deltaY > 0) {
-        goTo(activeIndex + 1);
-      } else {
-        goTo(activeIndex - 1);
-      }
-    },
-    [activeIndex, expandedId, goTo]
-  );
-
-  const toggleExpanded = useCallback((id: string) => {
+  const toggleExpanded = (id: string) => {
     setExpandedId((prev) => (prev === id ? null : id));
-  }, []);
-
-  if (exited) return null;
+  };
 
   return (
     <div
-      className="md:hidden relative"
-      style={{ height: '100svh', overflow: 'hidden', touchAction: 'none' }}
-      onTouchStart={handleTouchStart}
-      onTouchMove={(e) => { e.preventDefault(); }}
-      onTouchEnd={handleTouchEnd}
+      className="md:hidden sticky top-0 w-full overflow-hidden"
+      style={{ height: '100svh' }}
     >
-      {/* Slide track — moves by exact svh units */}
+      {/* Slide track — driven by activeIndex, animated with CSS transition */}
       <div
         className="flex flex-col w-full"
         style={{
@@ -159,7 +127,10 @@ const MobileSwiper = ({ treatments, language, tickerText, t, onConsultation }: M
         }}
       >
         {/* SLIDE 0 — Intro */}
-        <div className="w-full flex flex-col items-center justify-center text-center px-6 space-y-4" style={{ height: '100svh' }}>
+        <div
+          className="w-full flex flex-col items-center justify-center text-center px-6 space-y-4"
+          style={{ height: '100svh' }}
+        >
           <p className="text-[10px] tracking-[0.4em] uppercase text-primary/60">
             The 8-Point Collection
           </p>
@@ -176,11 +147,11 @@ const MobileSwiper = ({ treatments, language, tickerText, t, onConsultation }: M
         </div>
 
         {/* SLIDES 1–8 — Treatments */}
-        {treatments.map((item, index) => {
+        {treatments.map((item) => {
           const isExpanded = expandedId === item.id;
           return (
             <div key={item.id} className="w-full flex flex-col" style={{ height: '100svh' }}>
-              {/* Image — fixed height */}
+              {/* Image */}
               <div className="flex-shrink-0" style={{ height: 'min(38svh, 280px)' }}>
                 <TreatmentImage
                   item={item}
@@ -191,12 +162,8 @@ const MobileSwiper = ({ treatments, language, tickerText, t, onConsultation }: M
               </div>
 
               {/* Content */}
-              <div
-                className="flex-1 px-6 pt-4 pb-6 space-y-3"
-                style={{ overflowY: isExpanded ? 'auto' : 'hidden', WebkitOverflowScrolling: 'touch' }}
-                onTouchStart={(e) => { if (isExpanded) e.stopPropagation(); }}
-                onTouchEnd={(e) => { if (isExpanded) e.stopPropagation(); }}
-              >
+              <div className="flex-1 px-6 pt-4 pb-6 space-y-3 overflow-y-auto">
+                {/* Number + title + subtitle */}
                 <div className="flex items-baseline gap-4">
                   <span className="font-cormorant text-4xl font-light text-primary/20">
                     {item.number}
@@ -211,13 +178,15 @@ const MobileSwiper = ({ treatments, language, tickerText, t, onConsultation }: M
                   </div>
                 </div>
 
+                {/* CTA */}
                 <button
                   onClick={() => onConsultation(item.title)}
-                  className="w-full font-inter font-bold text-[11px] tracking-[0.22em] uppercase bg-primary text-primary-foreground px-8 py-4 min-h-[48px] hover:bg-primary/90 transition-all duration-300 mb-3"
+                  className="w-full font-inter font-bold text-[11px] tracking-[0.22em] uppercase bg-primary text-primary-foreground px-8 py-4 min-h-[48px] hover:bg-primary/90 transition-all duration-300"
                 >
                   {t.treatments.checkAvailability}
                 </button>
 
+                {/* Dettagli Tecnici */}
                 <button
                   onClick={() => toggleExpanded(item.id)}
                   className="text-[10px] tracking-[0.15em] uppercase text-primary/50 hover:text-primary transition-colors min-h-[44px] flex items-center"
@@ -227,12 +196,14 @@ const MobileSwiper = ({ treatments, language, tickerText, t, onConsultation }: M
                     : (language === 'it' ? 'Dettagli Tecnici +' : 'Technical Details +')}
                 </button>
 
+                {/* Description */}
                 {isExpanded && (
                   <p className="text-[15px] leading-relaxed text-foreground/80 pb-4">
                     {item.description}
                   </p>
                 )}
 
+                {/* Dot nav */}
                 {!isExpanded && (
                   <div className="flex items-center justify-center gap-2 pt-4">
                     {treatments.map((_, i) => (
@@ -256,8 +227,12 @@ const MobileSwiper = ({ treatments, language, tickerText, t, onConsultation }: M
         })}
       </div>
 
+      {/* Progress counter */}
       {activeIndex > 0 && (
-        <div className="absolute top-4 right-4 text-[10px] tracking-[0.2em] uppercase" style={{ color: 'hsl(43 76% 52% / 0.5)', pointerEvents: 'none' }}>
+        <div
+          className="absolute top-4 right-4 text-[10px] tracking-[0.2em] uppercase"
+          style={{ color: 'hsl(43 76% 52% / 0.5)', pointerEvents: 'none' }}
+        >
           {activeIndex} / {treatments.length}
         </div>
       )}
@@ -265,14 +240,18 @@ const MobileSwiper = ({ treatments, language, tickerText, t, onConsultation }: M
   );
 };
 
+// ─── MAIN COMPONENT ───────────────────────────────────────────────────────────
+
 export const TreatmentArchitecture = () => {
   const [sheetOpen, setSheetOpen] = useState(false);
   const [selectedTreatment, setSelectedTreatment] = useState('');
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const { t, language } = useLanguage();
   const [activeIndex, setActiveIndex] = useState(0);
+  const sectionRef = useRef<HTMLElement | null>(null);
 
   const treatments = t.treatments.items;
+  const TOTAL = treatments.length + 1; // 9 slides
 
   const openConsultation = (treatmentName: string) => {
     setSelectedTreatment(treatmentName);
@@ -291,7 +270,8 @@ export const TreatmentArchitecture = () => {
 
   return (
     <>
-      <section id="atelier" className="relative">
+      <section id="atelier" className="relative" ref={sectionRef}>
+        {/* Desktop header */}
         <div className="hidden md:block py-24 md:py-32">
           <motion.div
             variants={fadeIn}
@@ -313,6 +293,7 @@ export const TreatmentArchitecture = () => {
           </motion.div>
         </div>
 
+        {/* Desktop side nav */}
         <div className="hidden md:flex fixed right-6 top-1/2 -translate-y-1/2 z-40 flex-col gap-3">
           {treatments.map((item: TreatmentItem, i: number) => (
             <button
@@ -335,14 +316,19 @@ export const TreatmentArchitecture = () => {
           ))}
         </div>
 
-        <MobileSwiper
-          treatments={treatments}
-          language={language}
-          tickerText={tickerText}
-          t={t}
-          onConsultation={openConsultation}
-        />
+        {/* Mobile — spacer makes section tall enough for sticky scroll */}
+        <div className="md:hidden" style={{ height: `calc(${TOTAL} * 100svh)` }}>
+          <MobileSwiper
+            treatments={treatments}
+            language={language}
+            tickerText={tickerText}
+            t={t}
+            onConsultation={openConsultation}
+            sectionRef={sectionRef}
+          />
+        </div>
 
+        {/* Desktop layout */}
         <div className="hidden md:block">
           <div className="space-y-0 max-w-5xl mx-auto">
             {treatments.map((item: TreatmentItem, index: number) => (
