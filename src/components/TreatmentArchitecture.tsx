@@ -108,7 +108,7 @@ const MobileSwiper = ({ treatments, language, tickerText, t, onConsultation }: M
       setExpandedId(null);
       setTimeout(() => {
         isAnimating.current = false;
-      }, 450);
+      }, 500);
     },
     [TOTAL]
   );
@@ -146,6 +146,7 @@ const MobileSwiper = ({ treatments, language, tickerText, t, onConsultation }: M
       className="md:hidden relative"
       style={{ height: '100svh', overflow: 'hidden', touchAction: 'none' }}
       onTouchStart={handleTouchStart}
+      onTouchMove={(e) => { e.preventDefault(); }}
       onTouchEnd={handleTouchEnd}
     >
       {/* Slide track — moves by exact svh units */}
@@ -153,7 +154,7 @@ const MobileSwiper = ({ treatments, language, tickerText, t, onConsultation }: M
         className="flex flex-col w-full"
         style={{
           transform: `translateY(-${activeIndex * 100}svh)`,
-          transition: 'transform 0.45s cubic-bezier(0.22, 1, 0.36, 1)',
+          transition: 'transform 0.4s ease-out',
           willChange: 'transform',
         }}
       >
