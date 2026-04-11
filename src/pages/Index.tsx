@@ -1,5 +1,5 @@
 import { CinematicHero } from '@/components/CinematicHero';
-import { TreatmentArchitecture } from '@/components/TreatmentArchitecture';
+import { TreatmentArchitecture } from '@/components/TreatmentArchitectureEmbla';
 import { AcademySection } from '@/components/AcademySection';
 import { SiteFooter } from '@/components/SiteFooter';
 import { StickyHeader } from '@/components/StickyHeader';
