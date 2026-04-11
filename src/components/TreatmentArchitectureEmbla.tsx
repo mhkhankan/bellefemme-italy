@@ -75,7 +75,6 @@ interface MobileSwiperProps {
 
 const MobileSwiper = ({ treatments, language, tickerText, t, onConsultation }: MobileSwiperProps) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const [expandedId, setExpandedId] = useState<string | null>(null);
 
   const [emblaRef, emblaApi] = useEmblaCarousel({
     axis: 'x',
@@ -88,7 +87,6 @@ const MobileSwiper = ({ treatments, language, tickerText, t, onConsultation }: M
   const onSelect = useCallback(() => {
     if (!emblaApi) return;
     setSelectedIndex(emblaApi.selectedScrollSnap());
-    setExpandedId(null);
   }, [emblaApi]);
 
   useEffect(() => {
@@ -101,9 +99,6 @@ const MobileSwiper = ({ treatments, language, tickerText, t, onConsultation }: M
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
 
-  const toggleExpanded = (id: string) => {
-    setExpandedId((prev) => (prev === id ? null : id));
-  };
 
   return (
     <div className="md:hidden py-12">
