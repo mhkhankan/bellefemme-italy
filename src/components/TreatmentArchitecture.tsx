@@ -317,7 +317,21 @@ export const TreatmentArchitecture = () => {
         </div>
 
         {/* Mobile — spacer makes section tall enough for sticky scroll */}
-        <div className="md:hidden" style={{ height: `calc(${TOTAL} * 100svh)` }}>
+        <div className="md:hidden relative" style={{ height: `calc(${TOTAL} * 100svh)` }}>
+          {/* Invisible snap targets at each viewport boundary */}
+          {Array.from({ length: TOTAL }, (_, i) => (
+            <div
+              key={i}
+              aria-hidden="true"
+              className="absolute w-full"
+              style={{
+                top: `calc(${i} * 100svh)`,
+                height: '100svh',
+                scrollSnapAlign: 'start',
+                pointerEvents: 'none',
+              }}
+            />
+          ))}
           <MobileSwiper
             treatments={treatments}
             language={language}

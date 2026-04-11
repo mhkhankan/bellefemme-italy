@@ -99,6 +99,13 @@
   100% { transform: scale(1.0); }
 }
 
+/* Mobile scroll-snap for treatment swiper */
+@media (max-width: 767px) {
+  html {
+    scroll-snap-type: y proximity;
+  }
+}
+
 /* Ticker animation */
 @keyframes ticker {
   0% { transform: translateX(0); }
