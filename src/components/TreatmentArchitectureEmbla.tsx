@@ -119,9 +119,7 @@ const MobileSwiper = ({ treatments, language, tickerText, t, onConsultation }: M
       {/* Horizontal carousel */}
       <div className="overflow-hidden" ref={emblaRef}>
         <div className="flex">
-          {treatments.map((item, index) => {
-            const isExpanded = expandedId === item.id;
-            return (
+          {treatments.map((item, index) => (
               <div
                 key={item.id}
                 className="flex-[0_0_100%] min-w-0"
