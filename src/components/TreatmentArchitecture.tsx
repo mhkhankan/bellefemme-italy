@@ -92,15 +92,20 @@ const MobileSwiper = ({ treatments, language, tickerText, t, onConsultation, sec
       const section = sectionRef.current;
       if (!section) return;
       const rect = section.getBoundingClientRect();
-      const scrolled = -rect.top; // how far user has scrolled into the section
+      const scrolled = -rect.top;
       const vh = window.innerHeight;
       const index = Math.round(scrolled / vh);
       const clamped = Math.max(0, Math.min(TOTAL - 1, index));
       setActiveIndex(clamped);
     };
+    // Apply mandatory snap to html element so snap targets are recognised
+    document.documentElement.style.scrollSnapType = 'y mandatory';
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      document.documentElement.style.scrollSnapType = '';
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, [sectionRef, TOTAL]);
 
   // Close drawer on slide change
@@ -317,7 +322,7 @@ export const TreatmentArchitecture = () => {
         </div>
 
         {/* Mobile — normal-flow snap targets + sticky swiper overlay */}
-        <div className="md:hidden">
+        <div className="md:hidden" style={{ scrollSnapType: 'none' }}>
           {/* Normal-flow snap targets — visible to scroll-snap engine */}
           {Array.from({ length: TOTAL }, (_, i) => (
             <div
