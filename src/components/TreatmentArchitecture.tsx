@@ -148,7 +148,7 @@ export const TreatmentArchitecture = () => {
         {/* MOBILE SCROLL-SNAP */}
         <div
           className="md:hidden"
-          style={{ scrollSnapType: 'y mandatory', height: '100svh', overflowY: 'scroll', overscrollBehavior: 'contain' }}
+          style={{ scrollSnapType: expandedId ? 'none' : 'y proximity', height: '100svh', overflowY: 'scroll', overscrollBehavior: 'auto' }}
         >
           {treatments.map((item, index) => (
             <motion.div
@@ -158,7 +158,7 @@ export const TreatmentArchitecture = () => {
               initial="hidden"
               whileInView="visible"
               onViewportEnter={() => setActiveIndex(index)}
-              onViewportLeave={() => setExpandedId(null)}
+              onViewportLeave={() => { if (expandedId === item.id) setExpandedId(null); }}
               viewport={{ once: false, margin: '-40%' }}
               transition={{ duration: 0.5, ease: 'easeInOut' }}
               className="flex flex-col px-0 pb-6 pt-4 border-t border-primary/10 relative"
@@ -227,7 +227,7 @@ export const TreatmentArchitecture = () => {
             </motion.div>
           ))}
           {/* Scroll-snap escape sentinel */}
-          <div style={{ height: '1px', scrollSnapAlign: 'none', flexShrink: 0 }} />
+          <div style={{ height: '10vh', scrollSnapAlign: 'none', flexShrink: 0 }} />
         </div>
 
         {/* DESKTOP */}

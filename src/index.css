@@ -92,6 +92,13 @@
   animation: venetian-shimmer 2s ease-in-out infinite;
 }
 
+/* Ken Burns hero animation */
+@keyframes kenBurns {
+  0%   { transform: scale(1.0); }
+  50%  { transform: scale(1.04); }
+  100% { transform: scale(1.0); }
+}
+
 /* Ticker animation */
 @keyframes ticker {
   0% { transform: translateX(0); }
