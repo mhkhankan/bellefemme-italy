@@ -96,33 +96,15 @@ const MobileSwiper = ({ treatments, language, tickerText, t, onConsultation }: M
     return () => { emblaApi.off('select', onSelect); };
   }, [emblaApi, onSelect]);
 
-  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
-  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
-
-
   return (
     <div className="md:hidden py-12">
-      {/* Section header */}
-      <div className="px-6 text-center mb-8">
-        <p className="text-[10px] tracking-[0.4em] uppercase text-primary/60">
-          The 8-Point Collection
-        </p>
-        <h2 className="mt-3 font-cormorant text-3xl font-light tracking-[2px] text-foreground">
-          {t.nav.atelier}
-        </h2>
-        <div className="mt-3 h-px w-12 mx-auto bg-primary/30" />
-        <p className="mt-3 font-inter text-[11px] uppercase tracking-[0.2em] text-primary/80">
-          {tickerText}
-        </p>
-      </div>
-
       {/* Horizontal carousel */}
       <div className="overflow-hidden" ref={emblaRef}>
         <div className="flex">
           {treatments.map((item, index) => (
               <div
                 key={item.id}
-                className="flex-[0_0_100%] min-w-0"
+                className="flex-[0_0_92%] min-w-0"
               >
                 <div className="bg-background overflow-hidden">
                   {/* Image */}
@@ -151,7 +133,7 @@ const MobileSwiper = ({ treatments, language, tickerText, t, onConsultation }: M
                       </div>
                     </div>
 
-                    <p className="text-[13px] leading-relaxed text-foreground/70 line-clamp-3">
+                    <p className="text-[13px] leading-relaxed text-foreground/70">
                       {item.description}
                     </p>
 
@@ -169,31 +151,30 @@ const MobileSwiper = ({ treatments, language, tickerText, t, onConsultation }: M
         </div>
       </div>
 
-      {/* Swipe hint — only on first card */}
+      {/* Gesture hint — animated horizontal line */}
       {selectedIndex === 0 && (
         <motion.div
-          className="flex items-center justify-center gap-2 pt-4"
-          initial={{ opacity: 1 }}
-          animate={{ opacity: [1, 0.4, 1] }}
-          transition={{ duration: 2, repeat: Infinity }}
+          className="flex justify-center pt-4"
+          animate={{ x: [0, 20, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
         >
-          <span className="text-[10px] uppercase tracking-[0.2em] text-primary/50">
-            {language === 'it' ? 'Scorri per scoprire' : 'Swipe to explore'}
-          </span>
-          <span className="text-primary/50">→</span>
+          <div className="h-px w-10 bg-primary/50" />
         </motion.div>
       )}
 
-      {/* Dots + counter */}
+      {/* Dots — gold horizontal lines */}
       <div className="flex items-center justify-center gap-2 pt-4">
         {treatments.map((_, i) => (
           <button
             key={i}
             onClick={() => emblaApi?.scrollTo(i)}
-            className={`rounded-full transition-all duration-300 ${
-              selectedIndex === i ? 'h-2.5 w-2.5 bg-primary' : 'h-1.5 w-1.5 bg-primary/30'
-            }`}
-          />
+            className="py-3 px-1 flex items-center justify-center"
+            aria-label={`Go to treatment ${i + 1}`}
+          >
+            <div className={`h-px transition-all duration-300 ${
+              selectedIndex === i ? 'w-6 bg-primary' : 'w-3 bg-primary/30'
+            }`} />
+          </button>
         ))}
       </div>
       <p className="text-center mt-2 text-[10px] uppercase tracking-[0.2em] text-primary/40">
@@ -206,7 +187,6 @@ const MobileSwiper = ({ treatments, language, tickerText, t, onConsultation }: M
 export const TreatmentArchitecture = () => {
   const [sheetOpen, setSheetOpen] = useState(false);
   const [selectedTreatment, setSelectedTreatment] = useState('');
-  const [expandedId, setExpandedId] = useState<string | null>(null);
   const { t, language } = useLanguage();
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -300,21 +280,7 @@ export const TreatmentArchitecture = () => {
                       {item.title}
                     </h3>
                     <p className="font-cormorant text-2xl italic text-primary/90">{item.subtitle}</p>
-                    <button
-                      onClick={() => setExpandedId(expandedId === item.id ? null : item.id)}
-                      className="flex min-h-[48px] items-center text-[10px] uppercase tracking-[0.15em] text-primary/50 transition-colors hover:text-primary"
-                    >
-                      {expandedId === item.id
-                        ? (language === 'it' ? 'Chiudi —' : 'Close —')
-                        : (language === 'it' ? 'Dettagli Tecnici +' : 'Technical Details +')}
-                    </button>
-                    <p
-                      className="max-w-md overflow-hidden text-[16px] leading-relaxed text-foreground/80 transition-all duration-300"
-                      style={{
-                        maxHeight: expandedId === item.id ? '20rem' : '0',
-                        opacity: expandedId === item.id ? 0.85 : 0,
-                      }}
-                    >
+                    <p className="max-w-md text-[16px] leading-relaxed text-foreground/80">
                       {item.description}
                     </p>
                     <button
@@ -330,7 +296,7 @@ export const TreatmentArchitecture = () => {
           </div>
         </div>
 
-        <div className="mt-32 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+        <div className="mt-8 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
       </section>
 
       <LocationSheet

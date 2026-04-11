@@ -21,7 +21,7 @@ const LaFirmaTeaser = () => {
   };
 
   return (
-    <section className="py-24 md:py-32 relative" style={{ background: 'linear-gradient(180deg, hsl(0 0% 0%) 0%, hsl(0 0% 5%) 50%, hsl(0 0% 0%) 100%)' }}>
+    <section className="py-16 md:py-20 relative" style={{ background: 'linear-gradient(180deg, hsl(0 0% 0%) 0%, hsl(0 0% 5%) 50%, hsl(0 0% 0%) 100%)' }}>
       <div className="container mx-auto px-6 md:px-12 max-w-3xl text-center space-y-8">
         <p className="font-inter text-[10px] tracking-[0.4em] uppercase text-primary/60">
           {language === 'it' ? 'La Firma' : 'The Signature'}
@@ -50,12 +50,12 @@ const LaFirmaTeaser = () => {
         </div>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-          <button
-            onClick={() => scrollToSection('atelier')}
-            className="font-inter font-bold text-[10px] tracking-[0.2em] uppercase border border-primary/30 text-primary px-8 py-4 min-h-[48px] hover:bg-primary hover:text-primary-foreground transition-all duration-500"
+          <Link
+            to="/la-firma"
+            className="font-inter font-bold text-[10px] tracking-[0.2em] uppercase bg-primary text-primary-foreground px-8 py-4 min-h-[48px] hover:bg-primary/90 transition-all duration-500 text-center flex items-center justify-center"
           >
-            {language === 'it' ? 'Scopri i Trattamenti' : 'Discover Treatments'}
-          </button>
+            {language === 'it' ? 'LA FIRMA DI MOUNA →' : 'THE SIGNATURE →'}
+          </Link>
           <button
             onClick={() => scrollToSection('academy')}
             className="font-inter font-bold text-[10px] tracking-[0.2em] uppercase border border-primary/30 text-primary px-8 py-4 min-h-[48px] hover:bg-primary hover:text-primary-foreground transition-all duration-500"
