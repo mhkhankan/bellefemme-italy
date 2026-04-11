@@ -1,11 +1,11 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { COURSES, getFeaturedCourse, getCatalogCourses } from '@/Data/courses';
+import { getCatalogCourses, type Course } from '@/Data/courses';
 import { CourseLocationSheet } from './CourseLocationSheet';
 import { Link } from 'react-router-dom';
 import { ChevronDown } from 'lucide-react';
-import type { Course } from '@/Data/courses';
+
 
 const TESTIMONIALS_ACADEMY = [
   {
@@ -55,11 +55,10 @@ export const AcademySection = () => {
   const [expandedCourse, setExpandedCourse] = useState<string | null>(null);
   const [sheetOpen, setSheetOpen] = useState(false);
   const [selectedCourseName, setSelectedCourseName] = useState('');
-  const [privateCourseOpen, setPrivateCourseOpen] = useState(false);
+  
   const [showChevron, setShowChevron] = useState(true);
 
-  const featured = getFeaturedCourse();
-  const catalog = getCatalogCourses().filter((c) => !c.featured);
+  const catalog = getCatalogCourses();
 
   useEffect(() => {
     const el = document.getElementById('academy');
@@ -79,8 +78,8 @@ export const AcademySection = () => {
 
   const handlePrivateCourseWhatsApp = () => {
     const msg = language === 'it'
-      ? 'Buongiorno Mouna, sono interessata a un corso privato 1 su 1. Vorrei ricevere informazioni.'
-      : 'Hello Mouna, I am interested in a private 1-to-1 course. I would like more information.';
+      ? 'Buongiorno, sono interessata a un corso privato 1 su 1 con la Craft Master. Vorrei ricevere informazioni.'
+      : 'Hello, I am interested in a private 1-to-1 course with the Craft Master. I would like more information.';
     window.open(`https://wa.me/393924487530?text=${encodeURIComponent(msg)}`, '_blank');
   };
 
@@ -99,8 +98,8 @@ export const AcademySection = () => {
     : 'Not a mass course. A 1% mentorship model where every student receives individual attention from Craft Master Mouna Chabbar. Maximum 4 participants per session.';
 
   const privateCourseNote = language === 'it'
-    ? 'Ogni corso è disponibile anche in formato privato, 1 su 1 con Mouna. Su richiesta.'
-    : 'Every course is also available in private format, 1 to 1 with Mouna. On request.';
+    ? 'Ogni corso è disponibile anche in formato privato, 1 su 1 con la Craft Master. Su richiesta.'
+    : 'Every course is also available in private format, 1 to 1 with the Craft Master. On request.';
 
   return (
     <>
@@ -169,49 +168,54 @@ export const AcademySection = () => {
         >
           <div className="relative container mx-auto px-6 md:px-12 max-w-4xl">
 
-            {/* FEATURED COURSE BLOCK */}
+            {/* CORSO PRIVATO — Featured */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
               className="mb-24 border border-primary/20 p-6 md:p-10 space-y-6"
-              id={`course-${featured.id}`}
             >
               <p className="text-[10px] tracking-[0.4em] uppercase text-primary/60">
-                {language === 'it' ? 'Corso in Evidenza' : 'Featured Course'}
+                {language === 'it' ? 'Formato Esclusivo' : 'Exclusive Format'}
               </p>
-              <CourseImage course={featured} />
-              <h3 className="font-inter font-bold text-[12px] tracking-[0.25em] uppercase text-foreground">
-                {featured.bf_name}
-              </h3>
-              <p className="font-cormorant italic text-xl text-primary/90">
-                {language === 'it' ? featured.subtitle_it : featured.subtitle_en}
+
+              <div className="w-full flex items-center justify-center" style={{ height: '240px', background: '#1a1a1a' }}>
+                <span className="font-cormorant text-5xl font-light text-primary/20">1·1</span>
+              </div>
+
+              <div className="flex items-baseline gap-3">
+                <span className="font-inter text-[10px] tracking-[0.3em] uppercase text-primary/60">1 · 1</span>
+                <div>
+                  <h3 className="font-inter font-bold text-[12px] tracking-[0.25em] uppercase text-foreground">
+                    CORSO PRIVATO
+                  </h3>
+                  <p className="font-cormorant italic text-xl text-primary/90">
+                    {language === 'it' ? 'Con Craft Master Mouna Chabbar' : 'With Craft Master Mouna Chabbar'}
+                  </p>
+                </div>
+              </div>
+
+              <p className="text-[10px] tracking-[0.2em] uppercase text-primary/60">
+                {language === 'it' ? 'Su Richiesta · Solo tu + la Craft Master' : 'On Request · Just you + the Craft Master'}
               </p>
-              <div className="flex flex-wrap gap-4 text-xs tracking-[0.15em] uppercase text-foreground/50">
-                <span>{language === 'it' ? featured.duration_it : featured.duration_en}</span>
-                <span>·</span>
-                <span>Max {featured.participants} {language === 'it' ? 'partecipanti' : 'participants'}</span>
-              </div>
-              {(language === 'it' ? featured.description_it : featured.description_en) && (
-                <p className="text-sm text-foreground/60 leading-relaxed">
-                  {language === 'it' ? featured.description_it : featured.description_en}
-                </p>
-              )}
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <button
-                  onClick={() => openCourseSheet(featured.bf_name)}
-                  className="font-inter font-bold text-[10px] tracking-[0.2em] uppercase bg-primary text-primary-foreground px-8 py-4 min-h-[48px] hover:bg-primary/90 transition-colors"
-                >
-                  {language === 'it' ? 'Richiedi Informazioni' : 'Request Information'}
-                </button>
-                <Link
-                  to={featured.slug}
-                  className="font-inter font-bold text-[10px] tracking-[0.2em] uppercase border border-primary/30 text-primary px-8 py-4 min-h-[48px] hover:bg-primary hover:text-primary-foreground transition-all duration-500 text-center flex items-center justify-center"
-                >
-                  {language === 'it' ? 'Scopri il Corso' : 'Discover the Course'}
-                </Link>
-              </div>
+
+              <p className="text-sm text-foreground/60 leading-relaxed">
+                {language === 'it'
+                  ? 'Ogni corso del catalogo è disponibile in formato privato, 1 su 1 con la Craft Master. Attenzione totale. Nessun altro studente. Programma calibrato sul tuo livello.'
+                  : 'Every course in the catalogue is available in private format, 1 to 1 with the Craft Master. Total attention. No other students. Programme tailored to your level.'}
+              </p>
+
+              <p className="font-cormorant italic text-sm text-primary/70">
+                {language === 'it' ? 'Attenzione totale · Nessun altro studente' : 'Total attention · No other students'}
+              </p>
+
+              <button
+                onClick={handlePrivateCourseWhatsApp}
+                className="font-inter font-bold text-[10px] tracking-[0.2em] uppercase bg-primary text-primary-foreground px-8 py-4 min-h-[48px] hover:bg-primary/90 transition-colors"
+              >
+                {language === 'it' ? 'RICHIEDI INFORMAZIONI' : 'REQUEST INFORMATION'}
+              </button>
             </motion.div>
 
             {/* COURSE CATALOGUE — Accordion */}
@@ -301,85 +305,6 @@ export const AcademySection = () => {
               <div className="border-t border-primary/10" />
             </motion.div>
 
-            {/* A11: Diamond separator */}
-            <div className="flex items-center gap-4 my-16">
-              <div className="flex-1 h-px" style={{ backgroundColor: 'rgba(212, 175, 55, 0.3)' }} />
-              <div className="w-2 h-2 rotate-45" style={{ backgroundColor: '#D4AF37' }} />
-              <div className="flex-1 h-px" style={{ backgroundColor: 'rgba(212, 175, 55, 0.3)' }} />
-            </div>
-
-            {/* A11: Corso Privato card */}
-            <div className="mb-24" id="corso-privato">
-              <button
-                onClick={() => {
-                  setPrivateCourseOpen(!privateCourseOpen);
-                  if (!privateCourseOpen) {
-                    setTimeout(() => {
-                      document.getElementById('corso-privato')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }, 350);
-                  }
-                }}
-                className="w-full text-left py-6 px-6 flex items-center gap-4 min-h-[48px] transition-all duration-300"
-                style={{ backgroundColor: '#8B6914' }}
-              >
-                <div className="flex-1 min-w-0">
-                  <span className="font-inter text-[10px] tracking-[0.3em] uppercase text-white/60 block">1 · 1</span>
-                  <h4 className="font-inter font-bold text-[12px] tracking-[0.25em] uppercase text-white mt-1">
-                    CORSO PRIVATO
-                  </h4>
-                  <p className="font-cormorant italic text-base text-white/70 mt-1">Con Mouna Chabbar</p>
-                </div>
-                <div
-                  className="w-10 h-10 flex items-center justify-center shrink-0 border border-white/20"
-                >
-                  <span className="text-white/60 text-sm">{privateCourseOpen ? '−' : '+'}</span>
-                </div>
-              </button>
-
-              <AnimatePresence>
-                {privateCourseOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
-                    exit={{ opacity: 0, height: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="overflow-hidden"
-                    style={{ backgroundColor: '#8B6914' }}
-                  >
-                    <div className="pb-8 space-y-6">
-                      {/* Placeholder image */}
-                      <div className="w-full flex items-center justify-center" style={{ height: '240px', background: '#1a1a1a' }}>
-                        <span className="font-cormorant text-5xl font-light text-white/10">1·1</span>
-                      </div>
-
-                      <div className="px-6 space-y-4">
-                        <p className="text-[10px] tracking-[0.2em] uppercase" style={{ color: '#D4AF37' }}>
-                          {language === 'it' ? 'Su Richiesta · Solo tu + Mouna' : 'On Request · Just you + Mouna'}
-                        </p>
-
-                        <p className="text-sm text-white/80 leading-relaxed">
-                          {language === 'it'
-                            ? 'Ogni corso del catalogo è disponibile in formato privato, 1 su 1 con Mouna. Attenzione totale. Nessun altro studente. Programma calibrato sul tuo livello.'
-                            : 'Every course in the catalogue is available in private format, 1 to 1 with Mouna. Total attention. No other students. Programme tailored to your level.'}
-                        </p>
-
-                        <p className="font-cormorant italic text-sm" style={{ color: '#D4AF37' }}>
-                          {language === 'it' ? 'Attenzione totale · Nessun altro studente' : 'Total attention · No other students'}
-                        </p>
-
-                        <button
-                          onClick={handlePrivateCourseWhatsApp}
-                          className="w-full font-inter font-bold text-[10px] tracking-[0.2em] uppercase text-white px-8 py-4 min-h-[48px] transition-colors"
-                          style={{ backgroundColor: '#8B6914', border: '1px solid rgba(255,255,255,0.2)' }}
-                        >
-                          RICHIEDI INFORMAZIONI
-                        </button>
-                      </div>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
 
 
             {/* ACADEMY TESTIMONIALS */}

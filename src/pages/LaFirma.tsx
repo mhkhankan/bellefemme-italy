@@ -132,8 +132,8 @@ const LaFirma = () => {
 
   const waMsg = encodeURIComponent(
     language === 'it'
-      ? 'Buongiorno Mouna, vorrei prenotare una consulenza privata.'
-      : 'Hello Mouna, I would like to book a private consultation.'
+      ? 'Buongiorno, vorrei prenotare una consulenza privata.'
+      : 'Hello, I would like to book a private consultation.'
   );
 
   return (

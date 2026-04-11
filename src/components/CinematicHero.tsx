@@ -23,8 +23,8 @@ export const CinematicHero = () => {
 
   const waMsg = encodeURIComponent(
     language === 'it'
-      ? 'Buongiorno Mouna, vorrei iniziare con una consulenza privata.'
-      : 'Hello Mouna, I would like to start with a private consultation.'
+      ? 'Buongiorno, vorrei iniziare con una consulenza privata.'
+      : 'Hello, I would like to start with a private consultation.'
   );
 
   return (
@@ -34,7 +34,7 @@ export const CinematicHero = () => {
           src="/branding/hero-mouna-architecture.jpg"
           alt="Belle Femme Atelier — Master Trainer Mouna Chabbar"
           className="absolute inset-0 w-full h-full object-cover"
-          style={{ objectPosition: 'top center' }}
+          style={{ objectPosition: 'top center', animation: 'kenBurns 20s ease-in-out infinite' }}
           fetchPriority="high"
           onError={() => setImgError(true)}
         />
@@ -98,7 +98,7 @@ export const CinematicHero = () => {
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.85, duration: 0.8 }}
+          transition={{ delay: 0.85, duration: 0.8, ease: 'easeOut' }}
           className="font-inter text-[10px] tracking-[0.35em] uppercase mt-3"
           style={{ color: 'hsl(43 76% 52% / 0.70)' }}
         >
@@ -109,7 +109,7 @@ export const CinematicHero = () => {
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
           transition={{ delay: 0.9, duration: 0.6 }}
-          className="h-px w-12 bg-primary/40 mt-6 mb-8 origin-left md:mx-0 mx-auto"
+          className="h-px w-12 bg-primary/40 mt-6 mb-8 origin-left md:mx-0 mx-auto animate-pulse"
         />
 
         <motion.div

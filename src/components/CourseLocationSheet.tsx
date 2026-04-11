@@ -6,7 +6,7 @@ import { supabase } from '@/integrations/supabase/client';
 import { useState } from 'react';
 import { useToast } from '@/hooks/use-toast';
 
-const WHATSAPP_BASE = 'https://wa.me/393516605507?text=';
+const WHATSAPP_BASE = 'https://wa.me/393924487530?text=';
 const ACTIVE_LOCATIONS = ['Varese'];
 const ELITE_LOCATIONS = ['Milano', 'Roma'];
 
@@ -42,16 +42,16 @@ export const CourseLocationSheet = ({ open, onOpenChange, courseName }: CourseLo
 
   const handleActiveSelect = (location: string) => {
     const msg = language === 'it'
-      ? `Buongiorno Mouna, vorrei informazioni sul corso ${courseName} presso la sede di ${location}.`
-      : `Hello Mouna, I would like information about the course ${courseName} at the ${location} location.`;
+      ? `Buongiorno, vorrei informazioni sul corso ${courseName} presso la sede di ${location}.`
+      : `Hello, I would like information about the course ${courseName} at the ${location} location.`;
     window.open(`${WHATSAPP_BASE}${encodeURIComponent(msg)}`, '_blank');
     handleClose(false);
   };
 
   const handlePrivateCourse = () => {
     const msg = language === 'it'
-      ? `Buongiorno Mouna, sono interessata a un corso privato 1 su 1: ${courseName}. Vorrei ricevere informazioni.`
-      : `Hello Mouna, I am interested in a private 1-to-1 course: ${courseName}. I would like more information.`;
+      ? `Buongiorno, sono interessata a un corso privato 1 su 1 con la Craft Master: ${courseName}. Vorrei ricevere informazioni.`
+      : `Hello, I am interested in a private 1-to-1 course with the Craft Master: ${courseName}. I would like more information.`;
     window.open(`${WHATSAPP_BASE}${encodeURIComponent(msg)}`, '_blank');
     handleClose(false);
   };
@@ -69,9 +69,9 @@ export const CourseLocationSheet = ({ open, onOpenChange, courseName }: CourseLo
       setSubmitted(true);
     } catch {
       const msg = encodeURIComponent(
-        `Buongiorno Mouna, vorrei entrare in lista d'attesa corsi.\n\nNome: ${eliteName.trim()}\nTelefono: ${elitePhone.trim()}\nCittà: ${eliteCity}\nCorso: ${courseName}`
+        `Buongiorno, vorrei entrare in lista d'attesa corsi.\n\nNome: ${eliteName.trim()}\nTelefono: ${elitePhone.trim()}\nCittà: ${eliteCity}\nCorso: ${courseName}`
       );
-      window.open(`https://wa.me/393516605507?text=${msg}`, '_blank');
+      window.open(`https://wa.me/393924487530?text=${msg}`, '_blank');
       setSubmitted(true);
     }
     setSubmitting(false);
@@ -196,8 +196,8 @@ export const CourseLocationSheet = ({ open, onOpenChange, courseName }: CourseLo
       </p>
       <p className="font-cormorant italic text-sm text-primary/70 text-center px-4 mb-4">
         {language === 'it'
-          ? 'Ogni corso è preceduto da una consulenza personalizzata con Mouna Chabbar.'
-          : 'Every course begins with a personalised consultation with Mouna Chabbar.'}
+           ? 'Ogni corso è preceduto da una consulenza personalizzata con Craft Master Mouna Chabbar.'
+          : 'Every course begins with a personalised consultation with Craft Master Mouna Chabbar.'}
       </p>
       <div className="divide-y divide-primary/10">
         {ACTIVE_LOCATIONS.map((loc) => (
@@ -227,7 +227,7 @@ export const CourseLocationSheet = ({ open, onOpenChange, courseName }: CourseLo
         >
           <span>{language === 'it' ? 'Corso Privato' : 'Private Course'}</span>
           <span className="text-[9px] font-inter tracking-[0.15em] uppercase px-2 py-1" style={{ backgroundColor: 'hsl(43 76% 52% / 0.15)', border: '1px solid hsl(43 76% 52% / 0.4)', color: 'hsl(43 76% 52%)' }}>
-            {language === 'it' ? '1 su 1 con Mouna' : '1 to 1 with Mouna'}
+            {language === 'it' ? '1 su 1 con la Craft Master' : '1 to 1 with the Craft Master'}
           </span>
         </button>
       </div>

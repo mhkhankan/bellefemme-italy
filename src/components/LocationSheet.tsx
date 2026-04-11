@@ -65,7 +65,7 @@ export const LocationSheet = ({ open, onOpenChange, treatmentName, mode = 'treat
       'LASH SCULPTING': 'Extension Ciglia',
     };
     const clientName = treatmentNameMap[treatmentName] || treatmentName;
-    const msg = `Buongiorno Mouna, vorrei prenotare una consulenza per ${clientName} presso l'Atelier di ${location}.`;
+    const msg = `Buongiorno, vorrei prenotare una consulenza per ${clientName} presso l'Atelier di ${location}.`;
     window.open(`${WHATSAPP_BASE}${encodeURIComponent(msg)}`, '_blank');
     onOpenChange(false);
   };
@@ -83,7 +83,7 @@ export const LocationSheet = ({ open, onOpenChange, treatmentName, mode = 'treat
       setSubmitted(true);
     } catch {
       const msg = encodeURIComponent(
-        `Buongiorno Mouna, vorrei entrare in lista d'attesa.\n\nNome: ${eliteName.trim()}\nTelefono: ${elitePhone.trim()}\nCittà: ${eliteModalCity}\nTrattamento: ${treatmentName}`
+        `Buongiorno, vorrei entrare in lista d'attesa.\n\nNome: ${eliteName.trim()}\nTelefono: ${elitePhone.trim()}\nCittà: ${eliteModalCity}\nTrattamento: ${treatmentName}`
       );
       window.open(`https://wa.me/393924487530?text=${msg}`, '_blank');
       setSubmitted(true);
@@ -98,7 +98,7 @@ export const LocationSheet = ({ open, onOpenChange, treatmentName, mode = 'treat
     : (language === 'it' ? 'La tua Consulenza' : 'Your Consultation');
 
   const consultationNote = mode === 'course'
-    ? (language === 'it' ? 'Ogni corso è preceduto da una consulenza personalizzata con Mouna Chabbar.' : 'Every course begins with a personalised consultation with Mouna Chabbar.')
+    ? (language === 'it' ? 'Ogni corso è preceduto da una consulenza personalizzata con Craft Master Mouna Chabbar.' : 'Every course begins with a personalised consultation with Craft Master Mouna Chabbar.')
     : (language === 'it' ? 'Ogni trattamento è preceduto da una consulenza personalizzata — in sede o via WhatsApp.' : 'Every treatment begins with a personalised consultation — in person or via WhatsApp.');
 
   if (eliteModalCity && !submitted) {
@@ -217,7 +217,7 @@ export const LocationSheet = ({ open, onOpenChange, treatmentName, mode = 'treat
         {consultationNote}
       </p>
       <p className="text-center text-[10px] tracking-[0.15em] uppercase text-primary/60">
-        {language === 'it' ? 'Mouna risponde entro 24 ore' : 'Mouna replies within 24 hours'}
+        {language === 'it' ? 'La Craft Master risponde entro 24 ore' : 'The Craft Master replies within 24 hours'}
       </p>
       <p className="text-center text-sm text-muted-foreground">
         {t.concierge.whereDesire}
@@ -266,7 +266,7 @@ export const LocationSheet = ({ open, onOpenChange, treatmentName, mode = 'treat
         {mode === 'course' && (
           <button
             onClick={() => {
-              const msg = encodeURIComponent(`Buongiorno Mouna, sono interessata a un corso privato 1-to-1: ${treatmentName}. Vorrei ricevere informazioni.`);
+              const msg = encodeURIComponent(`Buongiorno, sono interessata a un corso privato 1 su 1 con la Craft Master: ${treatmentName}. Vorrei ricevere informazioni.`);
               window.open(`${WHATSAPP_BASE}${msg}`, '_blank');
               onOpenChange(false);
             }}
@@ -281,7 +281,7 @@ export const LocationSheet = ({ open, onOpenChange, treatmentName, mode = 'treat
                 color: 'hsl(43 76% 52%)',
               }}
             >
-              {language === 'it' ? '1 su 1 con Mouna' : '1 to 1 with Mouna'}
+              {language === 'it' ? '1 su 1 con la Craft Master' : '1 to 1 with the Craft Master'}
             </span>
           </button>
         )}
