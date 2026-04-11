@@ -108,7 +108,7 @@ const MobileSwiper = ({ treatments, language, tickerText, t, onConsultation }: M
       setExpandedId(null);
       setTimeout(() => {
         isAnimating.current = false;
-      }, 420);
+      }, 450);
     },
     [TOTAL]
   );
