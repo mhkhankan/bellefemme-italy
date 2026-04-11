@@ -54,15 +54,7 @@ const CourseImage = ({ course }: { course: Course }) => {
 
 export const AcademySection = () => {
   const { t, language } = useLanguage();
-  const { toast } = useToast();
-  const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
-  const [city, setCity] = useState('');
-  const [course, setCourse] = useState('');
-  const [submitting, setSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
   const [expandedCourse, setExpandedCourse] = useState<string | null>(null);
-  const [showWaitlist, setShowWaitlist] = useState(false);
   const [sheetOpen, setSheetOpen] = useState(false);
   const [selectedCourseName, setSelectedCourseName] = useState('');
   const [privateCourseOpen, setPrivateCourseOpen] = useState(false);
