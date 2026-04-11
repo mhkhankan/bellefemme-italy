@@ -64,7 +64,7 @@ export const AcademySection = () => {
     const el = document.getElementById('academy');
     if (!el) return;
     const observer = new IntersectionObserver(
-      ([entry]) => setShowChevron(entry.isIntersecting),
+      ([entry]) => setShowChevron(!entry.isIntersecting),
       { threshold: 0.1 }
     );
     observer.observe(el);

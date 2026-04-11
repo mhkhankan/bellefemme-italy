@@ -4,7 +4,6 @@ import { AcademySection } from '@/components/AcademySection';
 import { SiteFooter } from '@/components/SiteFooter';
 import { StickyHeader } from '@/components/StickyHeader';
 import { CookieConsent } from '@/components/CookieConsent';
-import { WhatsAppSticky } from '@/components/WhatsAppSticky';
 import { StructuredData } from '@/components/StructuredData';
 import { Link, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
@@ -15,13 +14,9 @@ window.history.scrollRestoration = 'manual';
 const LaFirmaTeaser = () => {
   const { language } = useLanguage();
 
-  const scrollToSection = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  };
 
   return (
-    <section className="py-16 md:py-20 relative" style={{ background: 'linear-gradient(180deg, hsl(0 0% 0%) 0%, hsl(0 0% 5%) 50%, hsl(0 0% 0%) 100%)' }}>
+    <section className="py-10 md:py-14 relative" style={{ background: 'linear-gradient(180deg, hsl(0 0% 0%) 0%, hsl(0 0% 5%) 50%, hsl(0 0% 0%) 100%)' }}>
       <div className="container mx-auto px-6 md:px-12 max-w-3xl text-center space-y-8">
         <p className="font-inter text-[10px] tracking-[0.4em] uppercase text-primary/60">
           {language === 'it' ? 'La Firma' : 'The Signature'}
@@ -57,7 +52,7 @@ const LaFirmaTeaser = () => {
             {language === 'it' ? 'LA FIRMA DI MOUNA →' : 'THE SIGNATURE →'}
           </Link>
           <button
-            onClick={() => scrollToSection('academy')}
+            onClick={() => { const el = document.getElementById('academy'); if (el) el.scrollIntoView({ behavior: 'smooth' }); }}
             className="font-inter font-bold text-[10px] tracking-[0.2em] uppercase border border-primary/30 text-primary px-8 py-4 min-h-[48px] hover:bg-primary hover:text-primary-foreground transition-all duration-500"
           >
             {language === 'it' ? "Scopri l'Accademia" : 'Discover the Academy'}
@@ -101,7 +96,7 @@ const Index = () => {
         <AcademySection />
         <SiteFooter />
         <CookieConsent />
-        <WhatsAppSticky />
+        
       </div>
     </div>
   );

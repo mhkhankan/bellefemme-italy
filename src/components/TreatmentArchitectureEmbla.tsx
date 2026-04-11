@@ -80,7 +80,7 @@ const MobileSwiper = ({ treatments, language, tickerText, t, onConsultation }: M
     axis: 'x',
     loop: false,
     dragFree: false,
-    align: 'center',
+    align: 'start',
     containScroll: 'trimSnaps',
   });
 
@@ -97,7 +97,7 @@ const MobileSwiper = ({ treatments, language, tickerText, t, onConsultation }: M
   }, [emblaApi, onSelect]);
 
   return (
-    <div className="md:hidden py-12">
+    <div id="atelier" className="md:hidden">
       {/* Horizontal carousel */}
       <div className="overflow-hidden" ref={emblaRef}>
         <div className="flex">
@@ -208,7 +208,7 @@ export const TreatmentArchitecture = () => {
 
   return (
     <>
-      <section id="atelier" className="relative">
+      <section className="relative">
         <div className="hidden py-24 md:block md:py-32">
           <motion.div
             variants={fadeIn}
@@ -296,7 +296,7 @@ export const TreatmentArchitecture = () => {
           </div>
         </div>
 
-        <div className="mt-8 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+        <div className="h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
       </section>
 
       <LocationSheet
