@@ -55,7 +55,7 @@ export const AcademySection = () => {
   const [expandedCourse, setExpandedCourse] = useState<string | null>(null);
   const [sheetOpen, setSheetOpen] = useState(false);
   const [selectedCourseName, setSelectedCourseName] = useState('');
-  const [privateCourseOpen, setPrivateCourseOpen] = useState(false);
+  
   const [showChevron, setShowChevron] = useState(true);
 
   const catalog = getCatalogCourses();
