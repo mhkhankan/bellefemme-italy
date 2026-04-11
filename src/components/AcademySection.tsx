@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { COURSES, getFeaturedCourse, getCatalogCourses } from '@/Data/courses';
+import { getCatalogCourses } from '@/Data/courses';
 import { CourseLocationSheet } from './CourseLocationSheet';
 import { Link } from 'react-router-dom';
 import { ChevronDown } from 'lucide-react';
@@ -58,8 +58,7 @@ export const AcademySection = () => {
   const [privateCourseOpen, setPrivateCourseOpen] = useState(false);
   const [showChevron, setShowChevron] = useState(true);
 
-  const featured = getFeaturedCourse();
-  const catalog = getCatalogCourses().filter((c) => !c.featured);
+  const catalog = getCatalogCourses();
 
   useEffect(() => {
     const el = document.getElementById('academy');
