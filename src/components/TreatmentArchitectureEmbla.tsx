@@ -81,6 +81,7 @@ const MobileSwiper = ({ treatments, language, tickerText, t, onConsultation }: M
     axis: 'x',
     loop: false,
     dragFree: false,
+    align: 'center',
     containScroll: 'trimSnaps',
   });
 
@@ -128,9 +129,9 @@ const MobileSwiper = ({ treatments, language, tickerText, t, onConsultation }: M
             return (
               <div
                 key={item.id}
-                className="flex-[0_0_85%] min-w-0 pl-4 first:pl-6 last:pr-6"
+                className="flex-[0_0_100%] min-w-0"
               >
-                <div className="bg-background border border-primary/10 overflow-hidden">
+                <div className="bg-background overflow-hidden">
                   {/* Image */}
                   <div className="aspect-[4/3] w-full">
                     <TreatmentImage
