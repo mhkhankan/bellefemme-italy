@@ -6,7 +6,7 @@ import { supabase } from '@/integrations/supabase/client';
 import { useEffect, useState } from 'react';
 import { useToast } from '@/hooks/use-toast';
 
-const WHATSAPP_BASE = 'https://wa.me/393516605507?text=';
+const WHATSAPP_BASE = 'https://wa.me/393924487530?text=';
 
 interface SpotData {
   location: string;
@@ -85,7 +85,7 @@ export const LocationSheet = ({ open, onOpenChange, treatmentName, mode = 'treat
       const msg = encodeURIComponent(
         `Buongiorno Mouna, vorrei entrare in lista d'attesa.\n\nNome: ${eliteName.trim()}\nTelefono: ${elitePhone.trim()}\nCittà: ${eliteModalCity}\nTrattamento: ${treatmentName}`
       );
-      window.open(`https://wa.me/393516605507?text=${msg}`, '_blank');
+      window.open(`https://wa.me/393924487530?text=${msg}`, '_blank');
       setSubmitted(true);
     }
     setSubmitting(false);

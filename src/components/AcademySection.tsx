@@ -1,8 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { supabase } from '@/integrations/supabase/client';
-import { useToast } from '@/hooks/use-toast';
 import { COURSES, getFeaturedCourse, getCatalogCourses } from '@/Data/courses';
 import { CourseLocationSheet } from './CourseLocationSheet';
 import { Link } from 'react-router-dom';
@@ -54,15 +52,7 @@ const CourseImage = ({ course }: { course: Course }) => {
 
 export const AcademySection = () => {
   const { t, language } = useLanguage();
-  const { toast } = useToast();
-  const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
-  const [city, setCity] = useState('');
-  const [course, setCourse] = useState('');
-  const [submitting, setSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
   const [expandedCourse, setExpandedCourse] = useState<string | null>(null);
-  const [showWaitlist, setShowWaitlist] = useState(false);
   const [sheetOpen, setSheetOpen] = useState(false);
   const [selectedCourseName, setSelectedCourseName] = useState('');
   const [privateCourseOpen, setPrivateCourseOpen] = useState(false);
@@ -82,30 +72,6 @@ export const AcademySection = () => {
     return () => observer.disconnect();
   }, []);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!name.trim() || !phone.trim() || !city.trim()) return;
-    setSubmitting(true);
-    try {
-      const { error } = await supabase.from('academy_waitlist').insert({
-        name: name.trim(),
-        phone: phone.trim(),
-        city: city.trim(),
-        course: course || null,
-      } as any);
-      if (error) throw error;
-      setSubmitted(true);
-      toast({ title: language === 'it' ? 'RICHIESTA PRESA IN CARICO' : 'REQUEST RECEIVED' });
-    } catch {
-      const msg = encodeURIComponent(
-        `Ciao, vorrei iscrivermi alla lista d'attesa Academy.\n\nNome: ${name.trim()}\nTelefono: ${phone.trim()}\nCittà: ${city.trim()}${course ? `\nCorso: ${course}` : ''}`
-      );
-      window.open(`https://wa.me/393516605507?text=${msg}`, '_blank');
-      setSubmitted(true);
-    }
-    setSubmitting(false);
-  };
-
   const openCourseSheet = (courseName: string) => {
     setSelectedCourseName(courseName);
     setSheetOpen(true);
@@ -115,7 +81,7 @@ export const AcademySection = () => {
     const msg = language === 'it'
       ? 'Buongiorno Mouna, sono interessata a un corso privato 1 su 1. Vorrei ricevere informazioni.'
       : 'Hello Mouna, I am interested in a private 1-to-1 course. I would like more information.';
-    window.open(`https://wa.me/393516605507?text=${encodeURIComponent(msg)}`, '_blank');
+    window.open(`https://wa.me/393924487530?text=${encodeURIComponent(msg)}`, '_blank');
   };
 
   const toggleAccordion = (courseId: string) => {
@@ -415,92 +381,6 @@ export const AcademySection = () => {
               </AnimatePresence>
             </div>
 
-            {/* WAITLIST TOGGLE + FORM */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="max-w-sm mx-auto text-center"
-              style={{ paddingBottom: 'env(safe-area-inset-bottom, 16px)' }}
-            >
-              {!showWaitlist && !submitted && (
-                <button
-                  onClick={() => setShowWaitlist(true)}
-                  className="font-inter font-bold text-[11px] tracking-[0.2em] uppercase border border-primary/30 text-primary px-10 py-4 min-h-[48px] hover:bg-primary hover:text-primary-foreground transition-all duration-500"
-                >
-                  {language === 'it' ? 'Entra in Lista Prioritaria' : 'Join Priority List'}
-                </button>
-              )}
-
-              {showWaitlist && !submitted && (
-                <div className="space-y-6">
-                  <p className="font-cormorant text-xl text-primary/90 tracking-[2px]">
-                    {t.academy.waitlistTitle}
-                  </p>
-                <form onSubmit={handleSubmit} className="space-y-4">
-                    <input
-                      type="text"
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                      placeholder={language === 'it' ? 'Nome e Cognome' : 'Full Name'}
-                      required
-                      maxLength={100}
-                      className="w-full bg-transparent border border-primary/20 px-4 py-3 text-sm text-foreground placeholder:text-foreground/30 min-h-[48px] focus:border-primary/50 outline-none transition-colors"
-                    />
-                    <input
-                      type="tel"
-                      value={phone}
-                      onChange={(e) => setPhone(e.target.value)}
-                      placeholder={language === 'it' ? 'WhatsApp / Telefono' : 'WhatsApp / Phone'}
-                      required
-                      maxLength={20}
-                      className="w-full bg-transparent border border-primary/20 px-4 py-3 text-sm text-foreground placeholder:text-foreground/30 min-h-[48px] focus:border-primary/50 outline-none transition-colors"
-                    />
-                    <input
-                      type="text"
-                      value={city}
-                      onChange={(e) => setCity(e.target.value)}
-                      placeholder={language === 'it' ? 'Città e Paese' : 'City and Country'}
-                      required
-                      maxLength={100}
-                      className="w-full bg-transparent border border-primary/20 px-4 py-3 text-sm text-foreground placeholder:text-foreground/30 min-h-[48px] focus:border-primary/50 outline-none transition-colors"
-                    />
-                    <select
-                      value={course}
-                      onChange={(e) => setCourse(e.target.value)}
-                      className="w-full border border-primary/20 px-4 py-3 text-sm text-foreground min-h-[48px] focus:border-primary/50 outline-none transition-colors"
-                      style={{ backgroundColor: 'hsl(0 0% 4%)', WebkitAppearance: 'none', appearance: 'none' }}
-                    >
-                      <option value="">{language === 'it' ? 'Corso di interesse (opzionale)' : 'Course of interest (optional)'}</option>
-                      {COURSES.map((c) => (
-                        <option key={c.id} value={c.bf_name}>{c.bf_name}</option>
-                      ))}
-                    </select>
-                    <button
-                      type="submit"
-                      disabled={submitting}
-                      className="w-full font-inter font-bold text-[11px] tracking-[0.2em] uppercase bg-primary text-primary-foreground px-8 py-4 min-h-[48px] hover:bg-primary/90 transition-all duration-500 disabled:opacity-50"
-                    >
-                      {t.academy.waitlistCta}
-                    </button>
-                  </form>
-                </div>
-              )}
-
-              {submitted && (
-                <div className="py-8 space-y-4">
-                  <p className="font-inter font-bold text-[11px] tracking-[0.2em] uppercase text-primary">
-                    {language === 'it' ? 'RICHIESTA PRESA IN CARICO' : 'REQUEST RECEIVED'}
-                  </p>
-                  <p className="text-base text-foreground/60 leading-relaxed">
-                    {language === 'it'
-                      ? "Il tuo profilo è ora in lista d'attesa prioritaria."
-                      : 'Your profile is now on the priority waitlist.'}
-                  </p>
-                </div>
-              )}
-            </motion.div>
 
             {/* ACADEMY TESTIMONIALS */}
             <div className="mt-24 text-center space-y-12">

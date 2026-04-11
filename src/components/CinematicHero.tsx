@@ -119,7 +119,7 @@ export const CinematicHero = () => {
           className="flex gap-4 mt-2 flex-col sm:flex-row justify-center md:justify-start"
         >
           <a
-            href={`https://wa.me/393516605507?text=${waMsg}`}
+            href={`https://wa.me/393924487530?text=${waMsg}`}
             target="_blank"
             rel="noopener noreferrer"
             className="font-inter font-bold text-[11px] tracking-[0.25em] uppercase bg-primary text-primary-foreground px-8 py-4 min-h-[48px] hover:bg-primary/90 transition-colors text-center"

@@ -264,7 +264,10 @@ const LaFirma = () => {
       </section>
 
       {/* S3 - Client Testimonials */}
-      <section className="py-24 md:py-32" style={{ background: 'linear-gradient(180deg, #000 0%, #0A0A0A 50%, #000 100%)' }}>
+      {/* Treatment testimonials — placeholder pending GDPR consent */}
+      {/* Erika B., Sonia M., Carmen M. — do not publish until WhatsApp consent confirmed */}
+
+      <section className="py-12 md:py-16" style={{ background: 'linear-gradient(180deg, #000 0%, #0A0A0A 50%, #000 100%)' }}>
         <div className="max-w-4xl mx-auto px-6 md:px-12">
           <div className="text-center mb-16 space-y-4">
             <h2 className="font-cormorant text-3xl md:text-4xl font-light" style={{ color: '#F5F5F5' }}>
@@ -312,14 +315,16 @@ const LaFirma = () => {
       </section>
 
       {/* S4 - Judge Cities */}
-      <section className="py-16" style={{ backgroundColor: '#000' }}>
+      <section className="py-8" style={{ backgroundColor: '#000' }}>
         <div className="max-w-4xl mx-auto px-6 text-center space-y-6">
           <p className="font-inter text-[10px] tracking-[0.3em] uppercase" style={{ color: '#D4AF37' }}>
             {language === 'it' ? 'GIUDICE INTERNAZIONALE' : 'INTERNATIONAL JUDGE'}
           </p>
-          <p className="font-cormorant text-2xl md:text-4xl font-light" style={{ color: '#F5F5F5' }}>
-            {JURIST_CITIES.join(' · ')}
-          </p>
+          <div className="overflow-hidden">
+            <p className="font-cormorant text-2xl md:text-4xl font-light" style={{ color: '#F5F5F5' }}>
+              {JURIST_CITIES.join(' · ')}
+            </p>
+          </div>
           <div className="h-px w-12 mx-auto" style={{ backgroundColor: 'rgba(212, 175, 55, 0.5)' }} />
         </div>
       </section>
@@ -329,7 +334,7 @@ const LaFirma = () => {
         <div className="max-w-md mx-auto text-center space-y-4">
           <div className="flex flex-col md:flex-row gap-4">
             <a
-              href={`https://wa.me/393516605507?text=${waMsg}`}
+              href={`https://wa.me/393924487530?text=${waMsg}`}
               target="_blank"
               rel="noopener noreferrer"
               className="flex-1 font-inter font-bold text-[10px] tracking-[0.2em] uppercase px-8 py-4 min-h-[48px] transition-colors text-center flex items-center justify-center"
