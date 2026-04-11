@@ -1,20 +1,10 @@
 import { motion } from 'framer-motion';
-import { ChevronDown } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 export const CinematicHero = () => {
   const [imgError, setImgError] = useState(false);
-  const [showChevron, setShowChevron] = useState(true);
   const { language } = useLanguage();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setShowChevron(window.scrollY < 200);
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
@@ -112,6 +102,20 @@ export const CinematicHero = () => {
           className="h-px w-12 bg-primary/40 mt-6 mb-8 origin-left md:mx-0 mx-auto animate-pulse"
         />
 
+        {/* Collection discovery line */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.0, duration: 0.8 }}
+          className="flex items-center gap-4 mb-6 justify-center md:justify-start"
+        >
+          <span className="h-px w-8 bg-primary/40" />
+          <span className="font-inter text-[9px] tracking-[0.3em] uppercase text-primary/60">
+            {language === 'it' ? 'Scopri la Collezione in 8 Punti' : 'Discover the 8-Point Collection'}
+          </span>
+          <span className="h-px w-8 bg-primary/40" />
+        </motion.div>
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -133,28 +137,7 @@ export const CinematicHero = () => {
             SCOPRI I TRATTAMENTI
           </button>
         </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.3, duration: 0.8 }}
-          className="flex items-center gap-4 mt-6 justify-center md:justify-start"
-        >
-          <span className="font-inter text-[9px] tracking-[0.2em] uppercase text-foreground/40">8 Trattamenti Esclusivi</span>
-          <span className="text-primary/20">·</span>
-          <span className="font-inter text-[9px] tracking-[0.2em] uppercase text-foreground/40">Max 4 Corsisti per Sessione</span>
-        </motion.div>
       </div>
-
-      {showChevron && (
-        <motion.div
-          className="absolute bottom-6 left-1/2 -translate-x-1/2"
-          animate={{ y: [0, 6, 0] }}
-          transition={{ repeat: Infinity, duration: 1.5 }}
-        >
-          <ChevronDown className="w-5 h-5" style={{ color: 'hsl(43 76% 52% / 0.5)' }} />
-        </motion.div>
-      )}
     </section>
   );
 };
