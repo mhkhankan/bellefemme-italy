@@ -120,10 +120,11 @@ const MobileSwiper = ({ treatments, language, tickerText, t, onConsultation }: M
 
   const handleTouchEnd = useCallback(
     (e: React.TouchEvent) => {
+      if (isAnimating.current) return;
       const deltaY = touchStartY.current - e.changedTouches[0].clientY;
       const deltaX = Math.abs(touchStartX.current - e.changedTouches[0].clientX);
       if (deltaX > Math.abs(deltaY)) return;
-      if (Math.abs(deltaY) < 40) return;
+      if (Math.abs(deltaY) < 80) return;
       if (expandedId !== null) return;
       if (deltaY > 0) {
         goTo(activeIndex + 1);
