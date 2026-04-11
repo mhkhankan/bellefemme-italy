@@ -1,8 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { supabase } from '@/integrations/supabase/client';
-import { useToast } from '@/hooks/use-toast';
+import { COURSES, getFeaturedCourse, getCatalogCourses } from '@/Data/courses';
 import { COURSES, getFeaturedCourse, getCatalogCourses } from '@/Data/courses';
 import { CourseLocationSheet } from './CourseLocationSheet';
 import { Link } from 'react-router-dom';
@@ -73,30 +72,6 @@ export const AcademySection = () => {
     observer.observe(el);
     return () => observer.disconnect();
   }, []);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!name.trim() || !phone.trim() || !city.trim()) return;
-    setSubmitting(true);
-    try {
-      const { error } = await supabase.from('academy_waitlist').insert({
-        name: name.trim(),
-        phone: phone.trim(),
-        city: city.trim(),
-        course: course || null,
-      } as any);
-      if (error) throw error;
-      setSubmitted(true);
-      toast({ title: language === 'it' ? 'RICHIESTA PRESA IN CARICO' : 'REQUEST RECEIVED' });
-    } catch {
-      const msg = encodeURIComponent(
-        `Ciao, vorrei iscrivermi alla lista d'attesa Academy.\n\nNome: ${name.trim()}\nTelefono: ${phone.trim()}\nCittà: ${city.trim()}${course ? `\nCorso: ${course}` : ''}`
-      );
-      window.open(`https://wa.me/393924487530?text=${msg}`, '_blank');
-      setSubmitted(true);
-    }
-    setSubmitting(false);
-  };
 
   const openCourseSheet = (courseName: string) => {
     setSelectedCourseName(courseName);
