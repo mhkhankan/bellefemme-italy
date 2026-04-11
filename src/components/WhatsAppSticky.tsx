@@ -23,7 +23,7 @@ export const WhatsAppSticky = () => {
 
   return (
     <a
-      href={`https://wa.me/393516605507?text=${encodeURIComponent(msg)}`}
+      href={`https://wa.me/393924487530?text=${encodeURIComponent(msg)}`}
       target="_blank"
       rel="noopener noreferrer"
       className="fixed right-4 z-50 flex items-center gap-2 group border border-primary/30 bg-background/90 backdrop-blur-sm px-4 py-3 min-h-[44px] hover:bg-primary hover:border-primary transition-all duration-500"

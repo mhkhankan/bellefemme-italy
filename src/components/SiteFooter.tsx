@@ -11,6 +11,8 @@ export const SiteFooter = () => {
             <img
               src="/branding/BF_logo_full_transparent.png"
               alt="Belle Femme Atelier e Accademia"
+              width={56}
+              height={56}
               className="h-14 w-auto"
               style={{ objectFit: 'contain' }}
             />
@@ -49,12 +51,12 @@ export const SiteFooter = () => {
               {language === 'it' ? 'Contatti' : 'Contact'}
             </p>
             <a
-              href="https://wa.me/393516605507"
+              href="https://wa.me/393924487530"
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm text-foreground/70 hover:text-primary transition-colors tracking-wide block"
             >
-              +39 351 660 5507
+              +39 392 448 7530
             </a>
             <a
               href="mailto:info@bellefemme.it"

@@ -110,7 +110,7 @@ export const StickyHeader = () => {
 
           <div className="px-6 pb-12 pt-6 flex flex-col items-center gap-6 border-t border-primary/10 mt-auto">
             <a
-              href="https://wa.me/393516605507"
+              href="https://wa.me/393924487530"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setMenuOpen(false)}
@@ -141,6 +141,8 @@ export const StickyHeader = () => {
             <img
               src="/branding/BF_logo_wordmark_transparent.png"
               alt="Belle Femme Atelier"
+              width={56}
+              height={56}
               className="h-12 md:h-14 w-auto"
               style={{ objectFit: 'contain' }}
             />
@@ -181,6 +183,7 @@ export const StickyHeader = () => {
             <div className="hidden md:block"><LanguageSwitcher /></div>
             <button
               onClick={() => setMenuOpen(!menuOpen)}
+              aria-label={menuOpen ? 'Chiudi menu' : 'Apri menu'}
               className="md:hidden min-h-[44px] min-w-[44px] flex items-center justify-center text-foreground/60"
               style={{ position: 'relative', zIndex: 10000 }}
             >
