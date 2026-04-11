@@ -114,7 +114,7 @@ const MobileSwiper = ({ treatments, language, tickerText, t, onConsultation, sec
 
   return (
     <div
-      className="md:hidden sticky top-0 w-full overflow-hidden"
+      className="w-full overflow-hidden"
       style={{ height: '100svh' }}
     >
       {/* Slide track — driven by activeIndex, animated with CSS transition */}
@@ -316,30 +316,30 @@ export const TreatmentArchitecture = () => {
           ))}
         </div>
 
-        {/* Mobile — spacer makes section tall enough for sticky scroll */}
-        <div className="md:hidden relative" style={{ height: `calc(${TOTAL} * 100svh)` }}>
-          {/* Invisible snap targets at each viewport boundary */}
+        {/* Mobile — normal-flow snap targets + sticky swiper overlay */}
+        <div className="md:hidden">
+          {/* Normal-flow snap targets — visible to scroll-snap engine */}
           {Array.from({ length: TOTAL }, (_, i) => (
             <div
               key={i}
               aria-hidden="true"
-              className="absolute w-full"
-              style={{
-                top: `calc(${i} * 100svh)`,
-                height: '100svh',
-                scrollSnapAlign: 'start',
-                pointerEvents: 'none',
-              }}
+              style={{ height: '100svh', scrollSnapAlign: 'start' }}
             />
           ))}
-          <MobileSwiper
-            treatments={treatments}
-            language={language}
-            tickerText={tickerText}
-            t={t}
-            onConsultation={openConsultation}
-            sectionRef={sectionRef}
-          />
+          {/* Sticky swiper pulls back up over snap targets */}
+          <div
+            className="sticky top-0"
+            style={{ marginTop: `calc(-${TOTAL} * 100svh)`, height: '100svh' }}
+          >
+            <MobileSwiper
+              treatments={treatments}
+              language={language}
+              tickerText={tickerText}
+              t={t}
+              onConsultation={openConsultation}
+              sectionRef={sectionRef}
+            />
+          </div>
         </div>
 
         {/* Desktop layout */}
