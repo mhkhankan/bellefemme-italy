@@ -158,27 +158,16 @@ const MobileSwiper = ({ treatments, language, tickerText, t, onConsultation }: M
                       </div>
                     </div>
 
+                    <p className="text-[13px] leading-relaxed text-foreground/70 line-clamp-3">
+                      {item.description}
+                    </p>
+
                     <button
                       onClick={() => onConsultation(item.title)}
                       className="w-full min-h-[48px] bg-primary px-8 py-3 font-inter text-[11px] font-bold uppercase tracking-[0.22em] text-primary-foreground transition-all duration-300 hover:bg-primary/90"
                     >
                       {t.treatments.checkAvailability}
                     </button>
-
-                    <button
-                      onClick={() => toggleExpanded(item.id)}
-                      className="flex min-h-[40px] items-center text-[10px] uppercase tracking-[0.15em] text-primary/50 transition-colors hover:text-primary"
-                    >
-                      {isExpanded
-                        ? (language === 'it' ? 'Chiudi —' : 'Close —')
-                        : (language === 'it' ? 'Dettagli Tecnici +' : 'Technical Details +')}
-                    </button>
-
-                    {isExpanded && (
-                      <p className="pb-2 text-[14px] leading-relaxed text-foreground/80">
-                        {item.description}
-                      </p>
-                    )}
                   </div>
                 </div>
               </div>
@@ -187,8 +176,23 @@ const MobileSwiper = ({ treatments, language, tickerText, t, onConsultation }: M
         </div>
       </div>
 
+      {/* Swipe hint — only on first card */}
+      {selectedIndex === 0 && (
+        <motion.div
+          className="flex items-center justify-center gap-2 pt-4"
+          initial={{ opacity: 1 }}
+          animate={{ opacity: [1, 0.4, 1] }}
+          transition={{ duration: 2, repeat: Infinity }}
+        >
+          <span className="text-[10px] uppercase tracking-[0.2em] text-primary/50">
+            {language === 'it' ? 'Scorri per scoprire' : 'Swipe to explore'}
+          </span>
+          <span className="text-primary/50">→</span>
+        </motion.div>
+      )}
+
       {/* Dots + counter */}
-      <div className="flex items-center justify-center gap-2 pt-6">
+      <div className="flex items-center justify-center gap-2 pt-4">
         {treatments.map((_, i) => (
           <button
             key={i}
