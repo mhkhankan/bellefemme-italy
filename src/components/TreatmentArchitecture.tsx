@@ -138,18 +138,19 @@ export const TreatmentArchitecture = () => {
           ))}
         </div>
 
-        {/* MOBILE SECTION HEADER */}
-        <div className="md:hidden text-center py-12 px-6 space-y-3">
-          <p className="text-[10px] tracking-[0.4em] uppercase text-primary/60">The 8-Point Collection</p>
-          <h2 className="font-cormorant text-3xl font-light text-foreground tracking-[2px]">{t.nav.atelier}</h2>
-          <p className="text-[11px] tracking-[0.2em] uppercase text-primary/80 font-inter">{tickerText}</p>
-        </div>
-
         {/* MOBILE SCROLL-SNAP */}
         <div
           className="md:hidden"
-          style={{ scrollSnapType: expandedId ? 'none' : 'y proximity', height: '100svh', overflowY: 'scroll', overscrollBehavior: 'auto' }}
+          style={{ scrollSnapType: expandedId ? 'none' : 'y mandatory', height: '100svh', overflowY: 'scroll', overscrollBehavior: 'contain' }}
         >
+          <div
+            style={{ height: '100svh', scrollSnapAlign: 'start', flexShrink: 0 }}
+            className="flex flex-col items-center justify-center text-center px-6 space-y-3"
+          >
+            <p className="text-[10px] tracking-[0.4em] uppercase text-primary/60">The 8-Point Collection</p>
+            <h2 className="font-cormorant text-3xl font-light text-foreground tracking-[2px]">{t.nav.atelier}</h2>
+            <p className="text-[11px] tracking-[0.2em] uppercase text-primary/80 font-inter">{tickerText}</p>
+          </div>
           {treatments.map((item, index) => (
             <motion.div
               key={item.id}
@@ -227,7 +228,7 @@ export const TreatmentArchitecture = () => {
             </motion.div>
           ))}
           {/* Scroll-snap escape sentinel */}
-          <div style={{ height: '10vh', scrollSnapAlign: 'none', flexShrink: 0 }} />
+          <div style={{ height: '100svh', scrollSnapAlign: 'start', flexShrink: 0 }} />
         </div>
 
         {/* DESKTOP */}
