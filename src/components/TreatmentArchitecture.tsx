@@ -147,13 +147,17 @@ const MobileSwiper = ({ treatments, language, tickerText, t, onConsultation }: M
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
-      <motion.div
-        className="h-full w-full"
-        animate={{ y: `-${activeIndex * 100}%` }}
-        transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+      {/* Slide track — moves by exact svh units */}
+      <div
+        className="flex flex-col w-full"
+        style={{
+          transform: `translateY(-${activeIndex * 100}svh)`,
+          transition: 'transform 0.45s cubic-bezier(0.22, 1, 0.36, 1)',
+          willChange: 'transform',
+        }}
       >
         {/* SLIDE 0 — Intro */}
-        <div className="h-screen w-full flex flex-col items-center justify-center text-center px-6 space-y-4">
+        <div className="w-full flex flex-col items-center justify-center text-center px-6 space-y-4" style={{ height: '100svh' }}>
           <p className="text-[10px] tracking-[0.4em] uppercase text-primary/60">
             The 8-Point Collection
           </p>
@@ -173,9 +177,9 @@ const MobileSwiper = ({ treatments, language, tickerText, t, onConsultation }: M
         {treatments.map((item, index) => {
           const isExpanded = expandedId === item.id;
           return (
-            <div key={item.id} className="h-screen w-full flex flex-col">
-              {/* Image */}
-              <div className="flex-shrink-0" style={{ height: 'min(38vh, 280px)' }}>
+            <div key={item.id} className="w-full flex flex-col" style={{ height: '100svh' }}>
+              {/* Image — fixed height */}
+              <div className="flex-shrink-0" style={{ height: 'min(38svh, 280px)' }}>
                 <TreatmentImage
                   item={item}
                   sizeClass="w-full h-full"
@@ -248,7 +252,7 @@ const MobileSwiper = ({ treatments, language, tickerText, t, onConsultation }: M
             </div>
           );
         })}
-      </motion.div>
+      </div>
 
       {activeIndex > 0 && (
         <div className="absolute top-4 right-4 text-[10px] tracking-[0.2em] uppercase" style={{ color: 'hsl(43 76% 52% / 0.5)', pointerEvents: 'none' }}>
