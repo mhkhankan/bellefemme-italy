@@ -5,7 +5,6 @@ import { SiteFooter } from '@/components/SiteFooter';
 import { StickyHeader } from '@/components/StickyHeader';
 import { CookieConsent } from '@/components/CookieConsent';
 import { StructuredData } from '@/components/StructuredData';
-import { StructuredData } from '@/components/StructuredData';
 import { Link, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -101,7 +100,7 @@ const Index = () => {
         <AcademySection />
         <SiteFooter />
         <CookieConsent />
-        <WhatsAppSticky />
+        
       </div>
     </div>
   );
