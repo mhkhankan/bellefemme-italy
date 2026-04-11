@@ -2,7 +2,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { COURSES, getFeaturedCourse, getCatalogCourses } from '@/Data/courses';
-import { COURSES, getFeaturedCourse, getCatalogCourses } from '@/Data/courses';
 import { CourseLocationSheet } from './CourseLocationSheet';
 import { Link } from 'react-router-dom';
 import { ChevronDown } from 'lucide-react';
