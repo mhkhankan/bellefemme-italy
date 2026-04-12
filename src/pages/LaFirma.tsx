@@ -99,22 +99,22 @@ const CREDENTIALS = [
 
 const TESTIMONIALS_CLIENT = [
   {
-    quote_it: "Ci ho pensato 3 lunghi anni. Avevo sempre paura di farmi toccare. Mouna mi ha subito trasmesso fiducia e ha realizzato il mio sogno.",
-    quote_en: "I thought about it for 3 long years. I was always afraid. Mouna immediately gave me confidence and made my dream come true.",
-    name: 'Erika B.',
-    initial: 'E',
+    quote_it: 'Mouna è una vera professionista, onesta e disponibile. Davanti alla mia indecisione non ha insistito, dicendo che avevo tutto il tempo per decidere. Alla fine mi sono fidata e non me ne sono pentita.',
+    quote_en: 'Mouna is a true professional, honest and helpful. Faced with my indecision she did not push, saying I had all the time to decide. In the end I trusted her and I have no regrets.',
+    name: 'Giorgia M.',
+    initial: 'G',
   },
   {
-    quote_it: "Nonostante un vecchio microblading, hai eseguito un lavoro di copertura e correzione fantastico. Mi hai cambiato il viso in meglio.",
-    quote_en: "Despite old microblading, you performed a fantastic cover and correction job. You changed my face for the better.",
-    name: 'Sonia M.',
+    quote_it: 'Dopo 2 anni di indecisione se fare o meno questo trattamento, per caso ho conosciuto Mouna. Subito mi ha messa a mio agio, spiegandomi tutto con calma e professionalità.',
+    quote_en: 'After 2 years of indecision about whether to have this treatment, I met Mouna by chance. She immediately put me at ease, explaining everything calmly and professionally.',
+    name: 'Stefania R.',
     initial: 'S',
   },
   {
-    quote_it: "Precisa, molto attenta all'igiene. Mi ha spiegato tutto nei dettagli. Mi sveglio ogni giorno con le sopracciglia perfette.",
-    quote_en: "Precise, very attentive to hygiene. She explained everything in detail. I wake up every day with perfect eyebrows.",
-    name: 'Carmen M.',
-    initial: 'C',
+    quote_it: 'Ho fatto una vita con delle sopracciglia disastrose, fini e senza una forma ma per paura non mi sono mai decisa. Poi ho conosciuto Mouna e ho capito che era la persona giusta.',
+    quote_en: 'I spent my life with disastrous eyebrows, thin and shapeless, but out of fear I never made up my mind. Then I met Mouna and I understood she was the right person.',
+    name: 'Amanda C.',
+    initial: 'A',
   },
 ];
 

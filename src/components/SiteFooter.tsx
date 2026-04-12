@@ -38,12 +38,12 @@ export const SiteFooter = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
           <div className="space-y-2">
-            <p className="text-xs tracking-[0.2em] uppercase text-primary/50 mb-3">
+            <a href="#atelier-in-residenza" className="text-xs tracking-[0.2em] uppercase text-primary/50 mb-3 hover:text-primary transition-colors block">
               {language === 'it' ? 'Sedi' : 'Locations'}
+            </a>
+            <p className="text-sm text-foreground/70 tracking-wide">
+              Provincia di Varese · Lombardia
             </p>
-            <p className="text-sm text-foreground/70 tracking-wide">Varese</p>
-            <p className="text-sm text-foreground/70 tracking-wide">Milano</p>
-            <p className="text-sm text-foreground/70 tracking-wide">Roma</p>
           </div>
 
           <div className="space-y-2">

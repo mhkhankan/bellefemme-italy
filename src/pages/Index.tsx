@@ -1,6 +1,7 @@
 import { CinematicHero } from '@/components/CinematicHero';
 import { TreatmentArchitecture } from '@/components/TreatmentArchitectureEmbla';
 import { AcademySection } from '@/components/AcademySection';
+import { DoveOperiamo } from '@/components/DoveOperiamo';
 import { SiteFooter } from '@/components/SiteFooter';
 import { StickyHeader } from '@/components/StickyHeader';
 import { CookieConsent } from '@/components/CookieConsent';
@@ -93,6 +94,7 @@ const Index = () => {
         <CinematicHero />
         <TreatmentArchitecture />
         <LaFirmaTeaser />
+        <DoveOperiamo />
         <AcademySection />
         <SiteFooter />
         <CookieConsent />
