@@ -2,25 +2,25 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { getCatalogCourses, type Course } from '@/Data/courses';
-import { CourseLocationSheet } from './CourseLocationSheet';
+import { BookingSheet } from './BookingSheet';
 import { Link } from 'react-router-dom';
 import { ChevronDown } from 'lucide-react';
 
 
 const TESTIMONIALS_ACADEMY = [
   {
-    quote_it: 'Mi hai da subito trasmesso sicurezza nel lavoro che stavo eseguendo. In 5 giorni mi sono portata a casa un percorso completo.',
-    quote_en: 'You immediately gave me confidence in the work I was doing. In 5 days I brought home a complete course.',
-    name: 'Giorgia C.',
-    role_it: 'Corsista — Master Blueprint',
-    role_en: 'Student — Master Blueprint',
+    quote_it: 'Concluso corso di Microblading e Microshading. Mouna è molto preparata, seria, attenta, paziente, precisa. Avevo già fatto altri corsi ma questo è stato il migliore in assoluto.',
+    quote_en: 'Completed Microblading and Microshading course. Mouna is very well-prepared, serious, attentive, patient, precise. I had done other courses before but this was the best by far.',
+    name: 'Caterina M.',
+    role_it: 'Corsista — Raw Stroke Master',
+    role_en: 'Student — Raw Stroke Master',
   },
   {
-    quote_it: 'Ottima insegnante, molto attenta e presente anche dopo il corso. Sempre disponibile.',
-    quote_en: 'Excellent teacher, very attentive and present even after the course. Always available.',
-    name: 'Tatiana S.',
-    role_it: 'Corsista — Pigment Restauro',
-    role_en: 'Student — Pigment Restauro',
+    quote_it: '',
+    quote_en: '',
+    name: '',
+    role_it: '',
+    role_en: '',
   },
 ];
 
@@ -313,7 +313,7 @@ export const AcademySection = () => {
                 {language === 'it' ? 'Voci delle Corsiste' : 'Student Voices'}
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {TESTIMONIALS_ACADEMY.map((testimonial, i) => (
+                {TESTIMONIALS_ACADEMY.filter(testimonial => testimonial.quote_it !== '').map((testimonial, i) => (
                   <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: i * 0.15 }} className="space-y-4 text-left">
                     <p className="font-cormorant italic text-base text-foreground/80 leading-relaxed">
                       "{language === 'it' ? testimonial.quote_it : testimonial.quote_en}"
@@ -344,10 +344,11 @@ export const AcademySection = () => {
         </div>
       </section>
 
-      <CourseLocationSheet
+      <BookingSheet
         open={sheetOpen}
         onOpenChange={setSheetOpen}
-        courseName={selectedCourseName}
+        mode="course"
+        itemName={selectedCourseName}
       />
     </>
   );

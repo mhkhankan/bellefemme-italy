@@ -4,7 +4,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { ArrowLeft } from 'lucide-react';
 import { useState } from 'react';
 import type { Course } from '@/Data/courses';
-import { CourseLocationSheet } from './CourseLocationSheet';
+import { BookingSheet } from './BookingSheet';
 import { StickyHeader } from './StickyHeader';
 import { SiteFooter } from './SiteFooter';
 
@@ -100,7 +100,7 @@ export const CourseTemplate = ({ course }: CourseTemplateProps) => {
         </div>
       </div>
 
-      <CourseLocationSheet open={sheetOpen} onOpenChange={setSheetOpen} courseName={course.bf_name} />
+      <BookingSheet open={sheetOpen} onOpenChange={setSheetOpen} mode="course" itemName={course.bf_name} />
       <SiteFooter />
       
     </div>
