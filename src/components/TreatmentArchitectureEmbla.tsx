@@ -1,9 +1,10 @@
 import { motion } from 'framer-motion';
 import { useCallback, useEffect, useState } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
-import { LocationSheet } from './LocationSheet';
+import { BookingSheet } from './BookingSheet';
 import { useLanguage } from '@/contexts/LanguageContext';
 import type { TreatmentItem } from '@/lib/translations';
+import { ChevronRight } from 'lucide-react';
 
 const IMAGE_MAP: Record<string, string> = {
   'raw-stroke': '/treatments/01-tratto-grezzo-sopracciglia.jpg',
@@ -26,6 +27,27 @@ const ALT_MAP: Record<string, string> = {
   'brow-blueprint': 'Architettura sopracciglia Varese — Brow Architecture Sezione Aurea',
   'lash-sculpting': 'Extension ciglia su misura Varese — Lash Sculpting volumetria',
 };
+
+const TREATMENT_TESTIMONIALS = [
+  { quote_it: 'Ho fatto il tatuaggio alle sopracciglia e alle labbra e sono super soddisfatta! Mouna è un\'artista, è brava, precisa, professionale e soprattutto una persona fantastica. Non potevo scegliere meglio!',
+    name: 'Carmen M.', treatment_it: 'Raw Stroke · Nude-Lip Infusion', featured: true },
+  { quote_it: 'Mouna è una vera professionista, onesta e disponibile. Davanti alla mia indecisione non ha insistito, dicendo che avevo tutto il tempo per decidere. Alla fine mi sono fidata e non me ne sono pentita.',
+    name: 'Giorgia M.', treatment_it: 'Raw Stroke', featured: true },
+  { quote_it: 'Dopo 2 anni di indecisione se fare o meno questo trattamento, per caso ho conosciuto Mouna. Subito mi ha messa a mio agio, spiegandomi tutto con calma e professionalità.',
+    name: 'Stefania R.', treatment_it: 'Raw Stroke', featured: false },
+  { quote_it: 'Sono qui in Italia da 7 anni, e volevo davvero farmi le sopracciglia, ma non riuscivo a trovare qualcuno di cui mi fidassi veramente. Poi ho incontrato Mouna, e da quel giorno non ho avuto più dubbi.',
+    name: 'Nilda M.', treatment_it: 'Raw Stroke', featured: false },
+  { quote_it: 'Quando passione e competenza lavorano insieme, ci si aspetta un capolavoro... ed è esattamente quello che ho ottenuto. Sopracciglia perfette, risultato naturale e una professionista eccezionale.',
+    name: 'Laura L.', treatment_it: 'Raw Stroke', featured: false },
+  { quote_it: 'Mouna non è soltanto una professionista, è anche una persona empatica, sa mettersi nei panni dei clienti e cerca di capire cosa vogliono veramente.',
+    name: 'Ketty F.', treatment_it: 'Pigment Restauro', featured: false },
+  { quote_it: 'Grazie Mouna per la gentilezza e la professionalità. Con la tua abilità mi hai ridato le sopracciglia che avevo perso. Sono molto soddisfatta del risultato.',
+    name: 'Leila M.', treatment_it: 'Pigment Restauro', featured: false },
+  { quote_it: 'Professionalità, efficienza, precisione, bravissima Mouna, super risultato sia per il microblading che per l\'eyeliner permanente. La consiglio vivamente.',
+    name: 'Sonia M.', treatment_it: 'Raw Stroke · Lash-Line Engineering', featured: false },
+  { quote_it: 'Ho fatto una vita con delle sopracciglia disastrose, fini e senza una forma ma per paura non mi sono mai decisa. Poi ho conosciuto Mouna e ho capito che era la persona giusta.',
+    name: 'Amanda C.', treatment_it: 'Raw Stroke', featured: false },
+];
 
 const fadeIn = {
   hidden: { opacity: 0, y: 30 },
@@ -65,6 +87,57 @@ const TreatmentImage = ({
   );
 };
 
+const TestimonialBlock = ({ language }: { language: string }) => {
+  const featured = TREATMENT_TESTIMONIALS.filter(t => t.featured);
+  const secondary = TREATMENT_TESTIMONIALS.filter(t => !t.featured);
+
+  return (
+    <div className="py-16 md:py-24 px-6 md:px-12 max-w-5xl mx-auto space-y-12">
+      <h3 className="font-cormorant text-2xl md:text-3xl font-light text-foreground tracking-[2px] text-center">
+        {language === 'it' ? 'Voci delle Clienti' : 'Client Voices'}
+      </h3>
+
+      {/* Featured */}
+      <div className="space-y-10">
+        {featured.map((t, i) => (
+          <div key={i} className="text-center space-y-3 max-w-2xl mx-auto">
+            <p className="font-cormorant italic text-xl md:text-2xl text-foreground/80 leading-relaxed">
+              &ldquo;{t.quote_it}&rdquo;
+            </p>
+            <p className="font-inter font-bold text-[11px] tracking-[0.15em] uppercase" style={{ color: '#D4AF37' }}>
+              {t.name}
+            </p>
+            <p className="font-inter text-[10px] tracking-[0.1em] uppercase text-foreground/40">
+              {t.treatment_it}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      {/* Secondary grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {secondary.map((t, i) => (
+          <div
+            key={i}
+            className="p-6 space-y-3"
+            style={{ backgroundColor: '#000', border: '1px solid rgba(212,175,55,0.2)' }}
+          >
+            <p className="font-cormorant italic text-base text-foreground/80 leading-relaxed">
+              &ldquo;{t.quote_it}&rdquo;
+            </p>
+            <p className="font-inter font-bold text-[10px] tracking-[0.15em] uppercase" style={{ color: '#D4AF37' }}>
+              {t.name}
+            </p>
+            <p className="font-inter text-[10px] tracking-[0.1em] uppercase text-foreground/40">
+              {t.treatment_it}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
 interface MobileSwiperProps {
   treatments: TreatmentItem[];
   language: string;
@@ -98,30 +171,26 @@ const MobileSwiper = ({ treatments, language, tickerText, t, onConsultation }: M
 
   return (
     <div id="atelier" className="md:hidden">
-      {/* Section header — mobile */}
-      <div className="px-6 pt-12 pb-6 text-center space-y-3">
-        <p className="text-[10px] uppercase tracking-[0.4em] text-primary/60">
-          The 8-Point Collection
-        </p>
-        <h2 className="font-cormorant text-3xl font-light text-foreground tracking-[2px]">
-          {t.nav.atelier}
-        </h2>
-        <p className="font-inter text-[11px] uppercase tracking-[0.2em] text-primary/80">
-          {tickerText}
-        </p>
-      </div>
-
       {/* Horizontal carousel */}
-      <div className="overflow-hidden" ref={emblaRef}>
-        <div className="flex">
-          {treatments.map((item) => (
-            <div
-              key={item.id}
-              className="flex-[0_0_100%] min-w-0"
-            >
-              <div className="bg-background overflow-hidden">
-                {/* Image */}
-                <div className="aspect-[4/3] w-full">
+      <div className="relative">
+        <div className="overflow-hidden" ref={emblaRef}>
+          <div className="flex">
+            {treatments.map((item) => (
+              <div
+                key={item.id}
+                className="flex-[0_0_100%] min-w-0 h-svh flex flex-col"
+              >
+                {/* Header inside each slide */}
+                <div className="flex-shrink-0 px-6 pt-8 pb-4 text-center space-y-2">
+                  <h2 className="font-cormorant text-3xl font-light text-foreground tracking-[2px]">
+                    {t.nav.atelier}
+                  </h2>
+                  <p className="font-inter text-[11px] uppercase tracking-[0.2em] text-primary/80">
+                    {tickerText}
+                  </p>
+                </div>
+
+                <div className="flex-1 w-full min-h-0 relative overflow-hidden">
                   <TreatmentImage
                     item={item}
                     sizeClass="h-full w-full"
@@ -131,7 +200,7 @@ const MobileSwiper = ({ treatments, language, tickerText, t, onConsultation }: M
                 </div>
 
                 {/* Content */}
-                <div className="px-5 py-5 space-y-3">
+                <div className="flex-shrink-0 px-5 py-5 space-y-3">
                   <div className="flex items-baseline gap-3">
                     <span className="font-cormorant text-3xl font-light text-primary/20">
                       {item.number}
@@ -158,9 +227,16 @@ const MobileSwiper = ({ treatments, language, tickerText, t, onConsultation }: M
                   </button>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
+
+        {/* Arrow hint — only on first slide */}
+        {selectedIndex === 0 && (
+          <div className="absolute right-4 top-1/2 -translate-y-1/2 z-10 animate-nudge">
+            <ChevronRight className="w-8 h-8 text-primary/60" />
+          </div>
+        )}
       </div>
 
       {/* Dots — gold horizontal lines */}
@@ -178,6 +254,9 @@ const MobileSwiper = ({ treatments, language, tickerText, t, onConsultation }: M
           </button>
         ))}
       </div>
+
+      {/* Mobile testimonials */}
+      <TestimonialBlock language={language} />
     </div>
   );
 };
@@ -207,7 +286,7 @@ export const TreatmentArchitecture = () => {
   return (
     <>
       <section className="relative">
-        <div className="hidden py-24 md:block md:py-32">
+        <div className="hidden py-16 md:block md:py-20">
           <motion.div
             variants={fadeIn}
             initial="hidden"
@@ -216,9 +295,6 @@ export const TreatmentArchitecture = () => {
             transition={{ duration: 0.5 }}
             className="space-y-6 text-center"
           >
-            <p className="text-[10px] uppercase tracking-[0.4em] text-primary/60">
-              The 8-Point Collection
-            </p>
             <h2 className="font-cormorant text-3xl font-light tracking-[2px] text-foreground md:text-5xl">
               {t.nav.atelier}
             </h2>
@@ -292,15 +368,20 @@ export const TreatmentArchitecture = () => {
               </motion.div>
             ))}
           </div>
+
+          {/* Desktop testimonials */}
+          <TestimonialBlock language={language} />
         </div>
 
         <div className="h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
       </section>
 
-      <LocationSheet
+      <BookingSheet
         open={sheetOpen}
         onOpenChange={setSheetOpen}
-        treatmentName={selectedTreatment}
+        mode="treatment"
+        itemName={selectedTreatment}
+        itemNameIT={selectedTreatment}
       />
     </>
   );
