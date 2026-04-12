@@ -53,7 +53,7 @@ export const BookingSheet = ({ open, onOpenChange, mode, itemName = '', itemName
           if (data) setSpots(data);
           setSpotsLoaded(true);
         })
-        .catch(() => setSpotsLoaded(true));
+        .then(undefined, () => setSpotsLoaded(true));
     }
   }, [open]);
 
