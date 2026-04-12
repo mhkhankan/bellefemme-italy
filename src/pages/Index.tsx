@@ -94,8 +94,8 @@ const Index = () => {
         <CinematicHero />
         <TreatmentArchitecture />
         <LaFirmaTeaser />
-        <DoveOperiamo />
         <AcademySection />
+        <DoveOperiamo />
         <SiteFooter />
         <CookieConsent />
         
