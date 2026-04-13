@@ -7,6 +7,7 @@ import { StickyHeader } from '@/components/StickyHeader';
 import { SiteFooter } from '@/components/SiteFooter';
 import { CookieConsent } from '@/components/CookieConsent';
 import { StructuredData } from '@/components/StructuredData';
+import { WhatsAppSticky } from '@/components/WhatsAppSticky';
 
 const JURIST_CITIES = ['Milano', 'Dubai', 'Venezia', 'Turchia', 'Romania'];
 
@@ -363,7 +364,7 @@ const LaFirma = () => {
         <SiteFooter />
       </div>
       <CookieConsent />
-    </div>
+      <WhatsAppSticky />
   );
 };
 

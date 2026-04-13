@@ -6,15 +6,16 @@ import { SiteFooter } from '@/components/SiteFooter';
 import { StickyHeader } from '@/components/StickyHeader';
 import { CookieConsent } from '@/components/CookieConsent';
 import { StructuredData } from '@/components/StructuredData';
+import { WhatsAppSticky } from '@/components/WhatsAppSticky';
 import { Link, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { motion } from 'framer-motion';
 
 window.history.scrollRestoration = 'manual';
 
 const LaFirmaTeaser = () => {
   const { language } = useLanguage();
-
 
   return (
     <section className="py-10 md:py-14 relative" style={{ background: 'linear-gradient(180deg, hsl(0 0% 0%) 0%, hsl(0 0% 5%) 50%, hsl(0 0% 0%) 100%)' }}>
@@ -44,6 +45,30 @@ const LaFirmaTeaser = () => {
           <p>Già Craft Master — AcademyS</p>
           <p>Master Assistant — PhiAcademy</p>
         </div>
+
+        {/* Giorgia M. pull-quote */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="max-w-xl mx-auto space-y-3 pt-4"
+        >
+          <p className="font-cormorant italic text-lg text-foreground/70 leading-relaxed">
+            "{language === 'it'
+              ? 'Mouna è una vera professionista, onesta e disponibile. Davanti alla mia indecisione non ha insistito, dicendomi di valutare bene perché ovviamente interventi sul volto sono molto importanti. Il risultato è stato ECCEZIONALE!'
+              : 'Mouna is a true professional, honest and available. Faced with my indecision she did not insist, telling me to think it over carefully because facial treatments are obviously very important. The result was EXCEPTIONAL!'
+            }"
+          </p>
+          <p className="font-inter font-bold text-[10px] tracking-[0.15em] uppercase" style={{ color: '#D4AF37' }}>
+            Giorgia M.
+          </p>
+          <p className="font-inter text-[9px] tracking-[0.1em] uppercase text-foreground/40">
+            {language === 'it'
+              ? 'Fonte: Recensione Facebook · 4 di 39'
+              : 'Source: Facebook Review · 4 of 39'}
+          </p>
+        </motion.div>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
           <Link
@@ -98,7 +123,7 @@ const Index = () => {
         <DoveOperiamo />
         <SiteFooter />
         <CookieConsent />
-        
+        <WhatsAppSticky />
       </div>
     </div>
   );
