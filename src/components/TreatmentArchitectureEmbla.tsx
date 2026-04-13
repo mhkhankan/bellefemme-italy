@@ -278,7 +278,7 @@ const MobileSwiper = ({ treatments, treatmentsIT, language, tickerText, t, onCon
       </div>
 
       {/* Mobile testimonials */}
-      <TestimonialBlock language={language} />
+      <TreatmentTestimonialsEOS language={language} />
     </div>
   );
 };
@@ -399,7 +399,7 @@ export const TreatmentArchitecture = () => {
           </div>
 
           {/* Desktop testimonials */}
-          <TestimonialBlock language={language} />
+          <TreatmentTestimonialsEOS language={language} />
         </div>
 
         <div className="h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
