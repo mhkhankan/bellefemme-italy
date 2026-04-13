@@ -62,15 +62,12 @@ export const CinematicHero = () => {
             BELLE FEMME ATELIER E ACCADEMIA
           </motion.p>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.8 }}
+          <h1
             className="font-cormorant text-4xl md:text-6xl font-light text-white tracking-[3px] mt-3"
             style={{ textShadow: '0 2px 12px hsla(0,0%,0%,0.6)' }}
           >
             {language === 'it' ? "L'Architettura del Volto" : 'The Architecture of the Face'}
-          </motion.h1>
+          </h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}

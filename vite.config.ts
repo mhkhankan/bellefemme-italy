@@ -18,4 +18,18 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vendor-motion': ['framer-motion'],
+          'vendor-embla': ['embla-carousel-react'],
+          'vendor-radix': [
+            '@radix-ui/react-dialog',
+            '@radix-ui/react-slot',
+          ],
+        },
+      },
+    },
+  },
 }));
