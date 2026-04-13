@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useLanguage } from '@/contexts/LanguageContext';
 import { BookingSheet } from './BookingSheet';
 
 const CENTRES = [
@@ -7,6 +8,7 @@ const CENTRES = [
 ];
 
 export const DoveOperiamo = () => {
+  const { language } = useLanguage();
   const [sheetOpen, setSheetOpen] = useState(false);
 
   return (
@@ -19,11 +21,13 @@ export const DoveOperiamo = () => {
         <div className="max-w-3xl mx-auto px-6 md:px-12 text-center space-y-10">
           <div className="space-y-4">
             <h2 className="font-cormorant text-3xl md:text-4xl font-light tracking-[2px]" style={{ color: '#F5F5F5' }}>
-              Atelier in Residenza
+              {language === 'it' ? 'Atelier in Residenza' : 'Atelier in Residence'}
             </h2>
             <div className="h-px w-12 mx-auto" style={{ backgroundColor: 'rgba(212,175,55,0.5)' }} />
             <p className="text-sm leading-relaxed max-w-lg mx-auto" style={{ color: 'rgba(245,245,245,0.6)' }}>
-              Trattamenti su appuntamento in centri selezionati per standard clinici, ambiente e riservatezza — Provincia di Varese.
+              {language === 'it'
+                ? 'Trattamenti su appuntamento in centri selezionati per standard clinici, ambiente e riservatezza — Provincia di Varese.'
+                : 'Treatments by appointment at selected centres for clinical standards, environment and privacy — Province of Varese.'}
             </p>
           </div>
 
@@ -45,11 +49,13 @@ export const DoveOperiamo = () => {
             className="font-inter font-bold text-[10px] tracking-[0.2em] uppercase px-10 py-4 min-h-[48px] transition-colors"
             style={{ backgroundColor: '#D4AF37', color: '#000' }}
           >
-            Prenota la Consulenza →
+            {language === 'it' ? 'Prenota la Consulenza →' : 'Book a Consultation →'}
           </button>
 
           <p className="font-cormorant italic text-sm" style={{ color: '#D4AF37' }}>
-            Prenotazione esclusivamente tramite Belle Femme
+            {language === 'it'
+              ? 'Prenotazione esclusivamente tramite Belle Femme'
+              : 'Booking exclusively through Belle Femme'}
           </p>
         </div>
       </section>

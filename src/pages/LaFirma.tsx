@@ -11,7 +11,22 @@ import { StructuredData } from '@/components/StructuredData';
 
 const JURIST_CITIES = ['Milano', 'Dubai', 'Venezia', 'Turchia', 'Romania'];
 
-const CREDENTIALS = [
+interface CredentialItem {
+  name_it: string;
+  name_en: string;
+  desc_it: string;
+  desc_en: string;
+  logo?: string;
+  logoFilter?: string;
+}
+
+interface CredentialGroup {
+  label_it: string;
+  label_en: string;
+  items: CredentialItem[];
+}
+
+const CREDENTIALS: CredentialGroup[] = [
   {
     label_it: 'Formazione Accademica',
     label_en: 'Academic Training',
@@ -29,22 +44,27 @@ const CREDENTIALS = [
     label_en: 'Institutional Rank',
     items: [
       {
-        name_it: 'Master Assistant — PhiAcademy',
-        name_en: 'Master Assistant — PhiAcademy',
-        desc_it: 'Autorizzata a formare e certificare artisti a livello globale.',
-        desc_en: 'Authorised to train and certify artists globally.',
-      },
-      {
         name_it: 'Già Craft Master — AcademyS',
         name_en: 'Formerly Craft Master — AcademyS',
         desc_it: 'PMU · Microblading · Removal — educatrice internazionale S-Brows.',
         desc_en: 'PMU · Microblading · Removal — international S-Brows educator.',
+        logo: '/branding/AcademyS_Craft_Master.png',
+      },
+      {
+        name_it: 'Master Assistant — PhiAcademy',
+        name_en: 'Master Assistant — PhiAcademy',
+        desc_it: 'Autorizzata a formare e certificare artisti a livello globale.',
+        desc_en: 'Authorised to train and certify artists globally.',
+        logo: '/branding/PhiBrows_Master_Assistant.png',
+        logoFilter: 'invert(1) brightness(0.85) sepia(1) hue-rotate(5deg) saturate(3)',
       },
       {
         name_it: 'Royal Artist — PhiBrows',
         name_en: 'Royal Artist — PhiBrows',
         desc_it: 'Competenze superiori nella tecnica PhiBrows di Branko Babic.',
         desc_en: 'Superior skills in the PhiBrows technique by Branko Babic.',
+        logo: '/branding/PhiBrows_Royal_Artist.jpeg',
+        logoFilter: 'invert(1) brightness(0.85) sepia(1) hue-rotate(5deg) saturate(3)',
       },
     ],
   },
@@ -53,20 +73,21 @@ const CREDENTIALS = [
     label_en: 'Technical Pedigree',
     items: [
       {
-        name_it: 'Master — BIOTEK Italy',
-        name_en: 'Master — BIOTEK Italy',
-        desc_it: 'Long-Lasting Eyebrow Tattooing · International PMU Academy, Milano.',
-        desc_en: 'Long-Lasting Eyebrow Tattooing · International PMU Academy, Milan.',
-      },
-      {
-        name_it: 'Già Master Instructor — Kerafill Italy',
-        name_en: 'Formerly Master Instructor — Kerafill Italy',
+        name_it: 'Master Instructor — Kerafill Italy',
+        name_en: 'Master Instructor — Kerafill Italy',
         desc_it: 'Istruttrice certificata protocolli Kerafill.',
         desc_en: 'Certified Kerafill protocols instructor.',
+        logo: '/branding/Kerafill_Stamp_Master.png',
       },
       {
-        name_it: 'Specialista Rimozione Pigmenti',
-        name_en: 'Pigment Removal Specialist',
+        name_it: 'Master: Long-Lasting Eyebrows — BIOTEK Italy',
+        name_en: 'Master: Long-Lasting Eyebrows — BIOTEK Italy',
+        desc_it: 'International PMU Academy, Milano · dal 1987.',
+        desc_en: 'International PMU Academy, Milan · since 1987.',
+      },
+      {
+        name_it: 'Specialista Rimozione Pigmenti — AcademyS',
+        name_en: 'Pigment Removal Specialist — AcademyS',
         desc_it: 'Protocolli Correttivi Avanzati AcademyS.',
         desc_en: 'AcademyS Advanced Corrective Protocols.',
       },
@@ -83,16 +104,18 @@ const CREDENTIALS = [
         desc_en: 'Accredited by Regione Piemonte.',
       },
       {
-        name_it: 'Attestato Tatuaggi & Piercing',
-        name_en: 'Tattoo & Piercing Licence',
+        name_it: 'Tatuaggi & Piercing',
+        name_en: 'Tattoo & Piercing',
         desc_it: 'Regione Lombardia — L.R. 19/07.',
         desc_en: 'Regione Lombardia — L.R. 19/07.',
       },
       {
         name_it: 'BCM Milano',
         name_en: 'BCM Milan',
-        desc_it: 'Trucco Cromatico Semipermanente e Trucco Correttivo.',
-        desc_en: 'Chromatic Semi-Permanent and Corrective Make-Up.',
+        desc_it: 'Trucco Cromatico Semipermanente e Trucco Correttivo · Valutazione 30/30.',
+        desc_en: 'Semi-Permanent and Corrective Make-Up · Grade 30/30.',
+        logo: '/branding/BCM_Beauty_Centre_Milan.png',
+        logoFilter: 'brightness(3)',
       },
     ],
   },
@@ -235,20 +258,48 @@ const LaFirma = () => {
               transition={{ duration: 0.6, delay: gi * 0.1 }}
               className="space-y-4"
             >
+              {gi > 0 && (
+                <div className="h-px w-full" style={{ backgroundColor: 'rgba(212, 175, 55, 0.15)' }} />
+              )}
               <p className="font-inter text-[11px] tracking-[0.25em] uppercase" style={{ color: '#D4AF37' }}>
                 {language === 'it' ? group.label_it : group.label_en}
               </p>
+
               <div className="space-y-0">
                 {group.items.map((item, ii) => (
                   <div key={ii}>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-1 md:gap-4 py-3">
-                      <p className="text-[15px] font-medium leading-snug" style={{ color: '#F5F5F5' }}>
-                        {language === 'it' ? item.name_it : item.name_en}
-                      </p>
-                      <p className="font-cormorant italic text-[13px] leading-relaxed" style={{ color: 'rgba(245, 245, 245, 0.60)' }}>
-                        {language === 'it' ? item.desc_it : item.desc_en}
-                      </p>
-                    </div>
+                    {item.logo ? (
+                      <div className="flex items-start gap-4 py-3">
+                        <div
+                          className="w-12 h-12 flex-shrink-0 flex items-center justify-center"
+                          style={{ border: '1px solid rgba(212,175,55,0.25)', backgroundColor: '#111' }}
+                        >
+                          <img
+                            src={item.logo}
+                            alt={language === 'it' ? item.name_it : item.name_en}
+                            className="max-w-[40px] max-h-[40px] object-contain"
+                            style={item.logoFilter ? { filter: item.logoFilter } : {}}
+                          />
+                        </div>
+                        <div>
+                          <p className="text-[15px] font-medium leading-snug" style={{ color: '#F5F5F5' }}>
+                            {language === 'it' ? item.name_it : item.name_en}
+                          </p>
+                          <p className="font-cormorant italic text-[13px] leading-relaxed" style={{ color: 'rgba(245, 245, 245, 0.60)' }}>
+                            {language === 'it' ? item.desc_it : item.desc_en}
+                          </p>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-1 md:gap-4 py-3">
+                        <p className="text-[15px] font-medium leading-snug" style={{ color: '#F5F5F5' }}>
+                          {language === 'it' ? item.name_it : item.name_en}
+                        </p>
+                        <p className="font-cormorant italic text-[13px] leading-relaxed" style={{ color: 'rgba(245, 245, 245, 0.60)' }}>
+                          {language === 'it' ? item.desc_it : item.desc_en}
+                        </p>
+                      </div>
+                    )}
                     {ii < group.items.length - 1 && (
                       <div className="h-px" style={{ backgroundColor: 'rgba(212, 175, 55, 0.1)' }} />
                     )}
@@ -257,100 +308,6 @@ const LaFirma = () => {
               </div>
             </motion.div>
           ))}
-
-          {/* S2 Logo credential block */}
-          <div className="space-y-8 mt-12">
-            <div className="h-px w-full" style={{ backgroundColor: 'rgba(212, 175, 55, 0.2)' }} />
-
-            <p className="font-inter text-[11px] tracking-[0.25em] uppercase" style={{ color: '#D4AF37' }}>
-              {language === 'it' ? 'Rango Istituzionale' : 'Institutional Rank'}
-            </p>
-
-            <div className="space-y-6">
-              {[
-                {
-                  logo: '/branding/PhiBrows_Master_Assistant.png',
-                  name: 'Master Assistant — PhiAcademy',
-                  desc_it: 'Autorizzata a formare e certificare artisti a livello globale.',
-                  desc_en: 'Authorised to train and certify artists globally.',
-                  invert: false,
-                },
-                {
-                  logo: '/branding/AcademyS_Craft_Master.png',
-                  name: 'Già Craft Master — AcademyS',
-                  desc_it: 'PMU · Microblading · Removal — educatrice internazionale S-Brows.',
-                  desc_en: 'PMU · Microblading · Removal — international S-Brows educator.',
-                  invert: false,
-                },
-                {
-                  logo: '/branding/PhiBrows_Royal_Artist.jpeg',
-                  name: 'Royal Artist — PhiBrows',
-                  desc_it: 'Competenze superiori nella tecnica PhiBrows di Branko Babic.',
-                  desc_en: 'Superior skills in the PhiBrows technique by Branko Babic.',
-                  invert: true,
-                },
-              ].map((item, i) => (
-                <div key={i} className="flex items-start gap-4">
-                  <div className="w-16 h-16 flex-shrink-0 flex items-center justify-center" style={{ backgroundColor: '#1a1a1a' }}>
-                    <img
-                      src={item.logo}
-                      alt={item.name}
-                      className="max-w-[48px] max-h-[48px] object-contain"
-                      style={item.invert ? { filter: 'invert(1)' } : {}}
-                    />
-                  </div>
-                  <div>
-                    <p className="text-[14px] font-medium" style={{ color: '#F5F5F5' }}>{item.name}</p>
-                    <p className="font-cormorant italic text-[13px]" style={{ color: 'rgba(245, 245, 245, 0.60)' }}>
-                      {language === 'it' ? item.desc_it : item.desc_en}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="h-px w-full" style={{ backgroundColor: 'rgba(212, 175, 55, 0.2)' }} />
-
-            <p className="font-inter text-[11px] tracking-[0.25em] uppercase" style={{ color: '#D4AF37' }}>
-              {language === 'it' ? 'Pedigree Tecnico' : 'Technical Pedigree'}
-            </p>
-
-            <div className="space-y-6">
-              {[
-                {
-                  logo: '/branding/Kerafill_Stamp_Master.png',
-                  name: 'Già Master Instructor — Kerafill Italy',
-                  desc_it: 'Istruttrice certificata protocolli Kerafill.',
-                  desc_en: 'Certified Kerafill protocols instructor.',
-                  invert: false,
-                },
-                {
-                  logo: '/branding/BCM_Beauty_Centre_Milan.png',
-                  name: 'BCM Beauty Centre of Milan',
-                  desc_it: 'Trucco Cromatico Semipermanente e Trucco Correttivo · Valutazione 30/30.',
-                  desc_en: 'Semi-Permanent and Corrective Make-Up · Grade 30/30.',
-                  invert: false,
-                },
-              ].map((item, i) => (
-                <div key={i} className="flex items-start gap-4">
-                  <div className="w-16 h-16 flex-shrink-0 flex items-center justify-center" style={{ backgroundColor: '#1a1a1a' }}>
-                    <img
-                      src={item.logo}
-                      alt={item.name}
-                      className="max-w-[48px] max-h-[48px] object-contain"
-                      style={item.invert ? { filter: 'invert(1)' } : {}}
-                    />
-                  </div>
-                  <div>
-                    <p className="text-[14px] font-medium" style={{ color: '#F5F5F5' }}>{item.name}</p>
-                    <p className="font-cormorant italic text-[13px]" style={{ color: 'rgba(245, 245, 245, 0.60)' }}>
-                      {language === 'it' ? item.desc_it : item.desc_en}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
       </section>
 
