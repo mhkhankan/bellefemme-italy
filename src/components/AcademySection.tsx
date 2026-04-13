@@ -226,9 +226,16 @@ export const AcademySection = () => {
             </motion.div>
 
             {/* Academy proof block */}
-            <div className="mb-16 text-center space-y-4">
+            <div className="mb-16 space-y-6">
+              <img
+                src="/branding/academy-environment.jpg"
+                alt="Belle Femme Academy — ambiente formativo"
+                className="w-full object-cover"
+                style={{ height: '320px' }}
+                loading="lazy"
+              />
               <div className="h-px w-12 mx-auto" style={{ backgroundColor: 'rgba(212,175,55,0.4)' }} />
-              <p className="font-cormorant italic text-xl text-primary/90 max-w-lg mx-auto">
+              <p className="font-cormorant italic text-xl text-primary/90 max-w-lg mx-auto text-center">
                 Ogni corsista esce con un metodo — non solo una tecnica.
               </p>
             </div>
