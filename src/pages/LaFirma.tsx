@@ -100,22 +100,18 @@ const CREDENTIALS = [
 
 const TESTIMONIALS_CLIENT = [
   {
-    quote_it: 'Mouna è una vera professionista, onesta e disponibile. Davanti alla mia indecisione non ha insistito, dicendo che avevo tutto il tempo per decidere. Alla fine mi sono fidata e non me ne sono pentita.',
-    quote_en: 'Mouna is a true professional, honest and helpful. Faced with my indecision she did not push, saying I had all the time to decide. In the end I trusted her and I have no regrets.',
-    name: 'Giorgia M.',
-    initial: 'G',
-  },
-  {
-    quote_it: 'Dopo 2 anni di indecisione se fare o meno questo trattamento, per caso ho conosciuto Mouna. Subito mi ha messa a mio agio, spiegandomi tutto con calma e professionalità.',
-    quote_en: 'After 2 years of indecision about whether to have this treatment, I met Mouna by chance. She immediately put me at ease, explaining everything calmly and professionally.',
+    quote_it: 'dopo 2 anni di indecisione se fare o meno questo trattamento...per caso ho conosciuto Mouna....che dire oltre ad essere una persona splendida e dolcissima..super professionale su di me ha fatto un capolavoro...le mie sopracciglia sono perfette...se volete fare questo trattamento senza dubbio affidatevi a lei una vera professionista',
+    quote_en: 'after 2 years of indecision about whether to have this treatment...I met Mouna by chance...what can I say, besides being a wonderful and very sweet person...super professional, on me she worked a masterpiece...my eyebrows are perfect...if you want this treatment without doubt trust her, a true professional',
     name: 'Stefania R.',
-    initial: 'S',
+    source_it: 'Fonte: Recensione Facebook · 8 di 39',
+    source_en: 'Source: Facebook Review · 8 of 39',
   },
   {
-    quote_it: 'Ho fatto una vita con delle sopracciglia disastrose, fini e senza una forma ma per paura non mi sono mai decisa. Poi ho conosciuto Mouna e ho capito che era la persona giusta.',
-    quote_en: 'I spent my life with disastrous eyebrows, thin and shapeless, but out of fear I never made up my mind. Then I met Mouna and I understood she was the right person.',
-    name: 'Amanda C.',
-    initial: 'A',
+    quote_it: 'Grazie Mouna per la gentilezza e la professionalità. Con la tua abilità mi hai risolto un problema estetico importante.',
+    quote_en: 'Thank you Mouna for your kindness and professionalism. With your skill you resolved an important aesthetic problem for me.',
+    name: 'Leila M.',
+    source_it: 'Fonte: Recensione Facebook · 9 di 39',
+    source_en: 'Source: Facebook Review · 9 of 39',
   },
 ];
 
@@ -269,15 +265,20 @@ const LaFirma = () => {
       {/* Erika B., Sonia M., Carmen M. — do not publish until WhatsApp consent confirmed */}
 
       <section className="py-12 md:py-16" style={{ background: 'linear-gradient(180deg, #000 0%, #0A0A0A 50%, #000 100%)' }}>
-        <div className="max-w-4xl mx-auto px-6 md:px-12">
-          <div className="text-center mb-16 space-y-4">
-            <h2 className="font-cormorant text-3xl md:text-4xl font-light" style={{ color: '#F5F5F5' }}>
-              {language === 'it' ? 'Voci delle Clienti' : 'Client Voices'}
+        <div className="max-w-5xl mx-auto px-6 md:px-12">
+          <div className="text-center space-y-4 mb-12">
+            <p className="font-inter text-[10px] tracking-[0.4em] uppercase" style={{ color: 'rgba(212,175,55,0.6)' }}>
+              Belle Femme · Atelier
+            </p>
+            <h2 className="font-cormorant text-2xl md:text-3xl font-light tracking-[2px]" style={{ color: '#F5F5F5' }}>
+              {language === 'it'
+                ? 'Hanno Esitato. Poi Hanno Prenotato.'
+                : 'They Hesitated. Then They Booked.'}
             </h2>
-            <div className="h-px w-12 mx-auto" style={{ backgroundColor: 'rgba(212, 175, 55, 0.5)' }} />
+            <div className="h-px w-12 mx-auto" style={{ backgroundColor: 'rgba(212,175,55,0.4)' }} />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="space-y-8">
             {TESTIMONIALS_CLIENT.map((t, i) => (
               <motion.div
                 key={i}
@@ -285,18 +286,27 @@ const LaFirma = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: i * 0.15 }}
-                className="p-6 space-y-4"
-                style={{ backgroundColor: '#0A0A0A', border: '1px solid rgba(212, 175, 55, 0.2)' }}
+                className="relative p-6 md:p-8"
+                style={{ backgroundColor: '#0A0A0A', borderLeft: '3px solid #D4AF37', border: '1px solid rgba(212,175,55,0.12)', borderLeftWidth: '3px', borderLeftColor: '#D4AF37' }}
               >
-                <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ backgroundColor: '#D4AF37' }}>
-                  <span className="font-cormorant text-lg font-light" style={{ color: '#000' }}>{t.initial}</span>
+                <span className="absolute font-cormorant pointer-events-none" style={{ fontSize: '56px', color: 'rgba(212,175,55,0.08)', top: '12px', left: '20px' }}>"</span>
+                <p className="font-cormorant italic" style={{ fontSize: '17px', color: 'rgba(245,245,245,0.85)', lineHeight: 1.75, marginTop: '28px' }}>
+                  {language === 'it' ? t.quote_it : t.quote_en}
+                </p>
+                <div style={{ borderTop: '1px solid rgba(212,175,55,0.1)', marginTop: '18px', paddingTop: '14px' }}>
+                  <p className="font-inter font-semibold text-[11px] uppercase" style={{ letterSpacing: '0.18em', color: '#D4AF37' }}>
+                    {t.name}
+                  </p>
+                  <a
+                    href="https://www.facebook.com/bellefemme.varese/reviews"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-inter uppercase hover:opacity-80 transition-opacity"
+                    style={{ fontSize: '9px', letterSpacing: '0.2em', color: 'rgba(212,175,55,0.45)' }}
+                  >
+                    {language === 'it' ? t.source_it : t.source_en}
+                  </a>
                 </div>
-                <p className="font-cormorant italic text-[17px] leading-relaxed" style={{ color: 'rgba(245, 245, 245, 0.8)' }}>
-                  &ldquo;{language === 'it' ? t.quote_it : t.quote_en}&rdquo;
-                </p>
-                <p className="font-inter text-[12px] tracking-[0.15em] uppercase" style={{ color: '#D4AF37' }}>
-                  {t.name}
-                </p>
               </motion.div>
             ))}
           </div>
@@ -306,10 +316,12 @@ const LaFirma = () => {
               href="https://www.facebook.com/bellefemme.varese/reviews"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[10px] tracking-[0.15em] uppercase transition-colors hover:opacity-80"
-              style={{ color: '#D4AF37' }}
+              className="font-inter uppercase hover:opacity-80 transition-opacity"
+              style={{ fontSize: '10px', letterSpacing: '0.15em', color: 'rgba(212,175,55,0.6)' }}
             >
-              {language === 'it' ? 'Leggi le recensioni su Facebook →' : 'Read reviews on Facebook →'}
+              {language === 'it'
+                ? 'Leggi le recensioni su Facebook →'
+                : 'Read reviews on Facebook →'}
             </a>
           </div>
         </div>

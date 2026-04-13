@@ -28,26 +28,76 @@ const ALT_MAP: Record<string, string> = {
   'lash-sculpting': 'Extension ciglia su misura Varese — Lash Sculpting volumetria',
 };
 
-const TREATMENT_TESTIMONIALS = [
-  { quote_it: 'Ho fatto il tatuaggio alle sopracciglia e alle labbra e sono super soddisfatta! Mouna è un\'artista, è brava, precisa, professionale e soprattutto una persona fantastica. Non potevo scegliere meglio!',
-    name: 'Carmen M.', treatment_it: 'Raw Stroke · Nude-Lip Infusion', featured: true },
-  { quote_it: 'Mouna è una vera professionista, onesta e disponibile. Davanti alla mia indecisione non ha insistito, dicendo che avevo tutto il tempo per decidere. Alla fine mi sono fidata e non me ne sono pentita.',
-    name: 'Giorgia M.', treatment_it: 'Raw Stroke', featured: true },
-  { quote_it: 'Dopo 2 anni di indecisione se fare o meno questo trattamento, per caso ho conosciuto Mouna. Subito mi ha messa a mio agio, spiegandomi tutto con calma e professionalità.',
-    name: 'Stefania R.', treatment_it: 'Raw Stroke', featured: false },
-  { quote_it: 'Sono qui in Italia da 7 anni, e volevo davvero farmi le sopracciglia, ma non riuscivo a trovare qualcuno di cui mi fidassi veramente. Poi ho incontrato Mouna, e da quel giorno non ho avuto più dubbi.',
-    name: 'Nilda M.', treatment_it: 'Raw Stroke', featured: false },
-  { quote_it: 'Quando passione e competenza lavorano insieme, ci si aspetta un capolavoro... ed è esattamente quello che ho ottenuto. Sopracciglia perfette, risultato naturale e una professionista eccezionale.',
-    name: 'Laura L.', treatment_it: 'Raw Stroke', featured: false },
-  { quote_it: 'Mouna non è soltanto una professionista, è anche una persona empatica, sa mettersi nei panni dei clienti e cerca di capire cosa vogliono veramente.',
-    name: 'Ketty F.', treatment_it: 'Pigment Restauro', featured: false },
-  { quote_it: 'Grazie Mouna per la gentilezza e la professionalità. Con la tua abilità mi hai ridato le sopracciglia che avevo perso. Sono molto soddisfatta del risultato.',
-    name: 'Leila M.', treatment_it: 'Pigment Restauro', featured: false },
-  { quote_it: 'Professionalità, efficienza, precisione, bravissima Mouna, super risultato sia per il microblading che per l\'eyeliner permanente. La consiglio vivamente.',
-    name: 'Sonia M.', treatment_it: 'Raw Stroke · Lash-Line Engineering', featured: false },
-  { quote_it: 'Ho fatto una vita con delle sopracciglia disastrose, fini e senza una forma ma per paura non mi sono mai decisa. Poi ho conosciuto Mouna e ho capito che era la persona giusta.',
-    name: 'Amanda C.', treatment_it: 'Raw Stroke', featured: false },
+const TREATMENT_EOS_TESTIMONIALS = [
+  {
+    quote_it: 'Ho fatto il tatuaggio alle sopracciglia e alle labbra e sono super soddisfatta! Mouna è gentile, precisa e molto attenta all\'igiene. Mi ha spiegato tutto nei dettagli e mi ha aiutato a scegliere una forma naturale e adatta al mio viso. Dopo il secondo ritocco, il colore si è stabilizzato benissimo e adesso mi sveglio ogni giorno con le sopracciglia perfette! Consiglio vivamente a chi vuole un risultato elegante e duraturo. Ho fatto poi il tatuaggio labbra effetto naturale e ne sono davvero felice! Il colore è molto naturale, le labbra sono più piene e definite, senza dover usare il rossetto ogni giorno. Mouna è disponibile anche nel post, rispondendo a tutte le mie domande. Contentissima e soddisfatta del percorso fatto!!!',
+    quote_en: 'I had my eyebrows and lips tattooed and I am absolutely thrilled! Mouna is kind, precise and very attentive to hygiene. She explained everything in detail and helped me choose a natural shape suited to my face. After the second touch-up, the colour settled beautifully and now I wake up every day with perfect brows! Highly recommend to anyone wanting an elegant, lasting result. I also had the natural-effect lip tattoo and I am truly happy! The colour is very natural, my lips are fuller and more defined without having to wear lipstick every day. Mouna is available even afterwards, answering all my questions. Delighted and satisfied with the whole journey!!!',
+    name: 'Carmen M.',
+    source_it: 'Fonte: Recensione Facebook · 1 di 39',
+    source_en: 'Source: Facebook Review · 1 of 39',
+  },
+  {
+    quote_it: 'Mouna non è soltanto una professionista, è anche una persona empatica, sa metterti a proprio agio, comprende le tue esigenze e trova la soluzione adatta al tuo specifico problema o desiderio. Io l\'ho trovata per caso e sono stata davvero fortunata, la consiglio in quanto per quanto riguarda la mia esperienza ha saputo fare un Miracolo, avevo già presenti vecchi lavori e lei mi ha donato un viso nuovo, non affidatevi a chiunque!! Realista, precisa, meticolosa, delicata, ha un senso estetico perfetto, questa è Mouna.',
+    quote_en: 'Mouna is not just a professional, she is also an empathetic person who knows how to put you at ease, understands your needs and finds the right solution for your specific problem or desire. I found her by chance and I was truly lucky — for my experience she worked a Miracle. I already had old work done and she gave me a new face. Do not trust just anyone!! Realistic, precise, meticulous, delicate, with a perfect aesthetic sense — this is Mouna.',
+    name: 'Ketty F.',
+    source_it: 'Fonte: Recensione Facebook · 2 di 39',
+    source_en: 'Source: Facebook Review · 2 of 39',
+  },
+  {
+    quote_it: 'Quando passione e competenza lavorano insieme, ci si aspetta un capolavoro... ed è proprio quello che ho ottenuto con la tecnica Microblanding realizzata da Mouna. Una vera professionista, una maestra sul suo campo, persona onesta e disponibile anche solo per una consulenza. Lavoro realizzato in mattinata, è stata messa a dura prova su un vecchio tatuaggio ormai sbiadito e storto che mi chiudeva lo sguardo. Eccellente. Mani d\'oro. Sono contentissima del risultato, non potevo aspettarmi di meglio. TOP!',
+    quote_en: 'When passion and competence work together, you expect a masterpiece... and that is exactly what I got with the Microblanding technique by Mouna. A true professional, a master in her field, honest and available even just for a consultation. Work completed in the morning — she was put to the test on an old faded and crooked tattoo that was closing off my gaze. Excellent. Golden hands. I am absolutely thrilled with the result, I could not have hoped for better. TOP!',
+    name: 'Laura L.',
+    source_it: 'Fonte: Recensione Facebook · 3 di 39',
+    source_en: 'Source: Facebook Review · 3 of 39',
+  },
 ];
+
+const TreatmentTestimonialsEOS = ({ language }: { language: string }) => (
+  <div style={{ backgroundColor: '#0A0A0A' }} className="py-16 md:py-24 px-6 md:px-12 max-w-5xl mx-auto">
+    <div className="text-center space-y-4 mb-12">
+      <p className="font-inter text-[10px] tracking-[0.4em] uppercase" style={{ color: 'rgba(212,175,55,0.6)' }}>
+        Belle Femme · Atelier
+      </p>
+      <h3 className="font-cormorant text-2xl md:text-3xl font-light tracking-[2px]" style={{ color: '#F5F5F5' }}>
+        {language === 'it' ? 'Esperienze Dirette' : 'Direct Experiences'}
+      </h3>
+      <div className="h-px w-12 mx-auto" style={{ backgroundColor: 'rgba(212,175,55,0.4)' }} />
+    </div>
+
+    <div className="space-y-8">
+      {TREATMENT_EOS_TESTIMONIALS.map((t, i) => (
+        <motion.div
+          key={i}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: i * 0.15 }}
+          className="relative p-6 md:p-8"
+          style={{ backgroundColor: '#0A0A0A', borderLeft: '3px solid #D4AF37', border: '1px solid rgba(212,175,55,0.12)', borderLeftWidth: '3px', borderLeftColor: '#D4AF37' }}
+        >
+          <span className="absolute font-cormorant pointer-events-none" style={{ fontSize: '56px', color: 'rgba(212,175,55,0.08)', top: '12px', left: '20px' }}>"</span>
+          <p className="font-cormorant italic" style={{ fontSize: '17px', color: 'rgba(245,245,245,0.85)', lineHeight: 1.75, marginTop: '28px' }}>
+            {language === 'it' ? t.quote_it : t.quote_en}
+          </p>
+          <div style={{ borderTop: '1px solid rgba(212,175,55,0.1)', marginTop: '18px', paddingTop: '14px' }}>
+            <p className="font-inter font-semibold text-[11px] uppercase" style={{ letterSpacing: '0.18em', color: '#D4AF37' }}>
+              {t.name}
+            </p>
+            <a
+              href="https://www.facebook.com/bellefemme.varese/reviews"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-inter uppercase hover:opacity-80 transition-opacity"
+              style={{ fontSize: '9px', letterSpacing: '0.2em', color: 'rgba(212,175,55,0.45)' }}
+            >
+              {language === 'it' ? t.source_it : t.source_en}
+            </a>
+          </div>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+);
 
 const fadeIn = {
   hidden: { opacity: 0, y: 30 },
@@ -83,57 +133,6 @@ const TreatmentImage = ({
       <span className={`font-cormorant ${numberSize} font-light text-primary/20`}>
         {item.number}
       </span>
-    </div>
-  );
-};
-
-const TestimonialBlock = ({ language }: { language: string }) => {
-  const featured = TREATMENT_TESTIMONIALS.filter(t => t.featured);
-  const secondary = TREATMENT_TESTIMONIALS.filter(t => !t.featured);
-
-  return (
-    <div className="py-16 md:py-24 px-6 md:px-12 max-w-5xl mx-auto space-y-12">
-      <h3 className="font-cormorant text-2xl md:text-3xl font-light text-foreground tracking-[2px] text-center">
-        {language === 'it' ? 'Voci delle Clienti' : 'Client Voices'}
-      </h3>
-
-      {/* Featured */}
-      <div className="space-y-10">
-        {featured.map((t, i) => (
-          <div key={i} className="text-center space-y-3 max-w-2xl mx-auto">
-            <p className="font-cormorant italic text-xl md:text-2xl text-foreground/80 leading-relaxed">
-              &ldquo;{t.quote_it}&rdquo;
-            </p>
-            <p className="font-inter font-bold text-[11px] tracking-[0.15em] uppercase" style={{ color: '#D4AF37' }}>
-              {t.name}
-            </p>
-            <p className="font-inter text-[10px] tracking-[0.1em] uppercase text-foreground/40">
-              {t.treatment_it}
-            </p>
-          </div>
-        ))}
-      </div>
-
-      {/* Secondary grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {secondary.map((t, i) => (
-          <div
-            key={i}
-            className="p-6 space-y-3"
-            style={{ backgroundColor: '#000', border: '1px solid rgba(212,175,55,0.2)' }}
-          >
-            <p className="font-cormorant italic text-base text-foreground/80 leading-relaxed">
-              &ldquo;{t.quote_it}&rdquo;
-            </p>
-            <p className="font-inter font-bold text-[10px] tracking-[0.15em] uppercase" style={{ color: '#D4AF37' }}>
-              {t.name}
-            </p>
-            <p className="font-inter text-[10px] tracking-[0.1em] uppercase text-foreground/40">
-              {t.treatment_it}
-            </p>
-          </div>
-        ))}
-      </div>
     </div>
   );
 };
@@ -279,7 +278,7 @@ const MobileSwiper = ({ treatments, treatmentsIT, language, tickerText, t, onCon
       </div>
 
       {/* Mobile testimonials */}
-      <TestimonialBlock language={language} />
+      <TreatmentTestimonialsEOS language={language} />
     </div>
   );
 };
@@ -400,7 +399,7 @@ export const TreatmentArchitecture = () => {
           </div>
 
           {/* Desktop testimonials */}
-          <TestimonialBlock language={language} />
+          <TreatmentTestimonialsEOS language={language} />
         </div>
 
         <div className="h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
