@@ -318,7 +318,7 @@ const LaFirma = () => {
       <section className="py-12 md:py-16" style={{ background: 'linear-gradient(180deg, #000 0%, #0A0A0A 50%, #000 100%)' }}>
         <div className="max-w-5xl mx-auto px-6 md:px-12">
           <div className="text-center space-y-4 mb-12">
-            <p className="font-inter text-[10px] tracking-[0.4em] uppercase" style={{ color: 'rgba(212,175,55,0.6)' }}>
+            <p className="font-inter text-[10px] tracking-[0.4em] uppercase" style={{ color: 'rgba(212,175,55,0.75)' }}>
               Belle Femme · Atelier
             </p>
             <h2 className="font-cormorant text-2xl md:text-3xl font-light tracking-[2px]" style={{ color: '#F5F5F5' }}>
@@ -368,7 +368,7 @@ const LaFirma = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="font-inter uppercase hover:opacity-80 transition-opacity"
-              style={{ fontSize: '10px', letterSpacing: '0.15em', color: 'rgba(212,175,55,0.6)' }}
+              style={{ fontSize: '10px', letterSpacing: '0.15em', color: 'rgba(212,175,55,0.75)' }}
             >
               {language === 'it'
                 ? 'Leggi le recensioni su Facebook →'

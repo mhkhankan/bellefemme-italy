@@ -124,7 +124,7 @@ export const BookingSheet = ({ open, onOpenChange, mode, itemName = '', itemName
         <button
           onClick={() => onOpenChange(false)}
           className="font-inter text-[10px] tracking-[0.15em] uppercase transition-colors min-h-[44px]"
-          style={{ color: 'rgba(212,175,55,0.6)' }}
+          style={{ color: 'rgba(212,175,55,0.75)' }}
         >
           Chiudi
         </button>
@@ -150,7 +150,7 @@ export const BookingSheet = ({ open, onOpenChange, mode, itemName = '', itemName
     const eliteContent = (
       <div className="space-y-6 py-4 px-4">
         <div className="text-center space-y-4">
-          <p className="font-inter text-[10px] tracking-[0.2em] uppercase" style={{ color: 'rgba(212,175,55,0.6)' }}>
+          <p className="font-inter text-[10px] tracking-[0.2em] uppercase" style={{ color: 'rgba(212,175,55,0.75)' }}>
             ACCESSO RISERVATO — MILANO
           </p>
           <p className="text-sm leading-relaxed" style={{ color: 'rgba(245,245,245,0.6)' }}>
@@ -251,7 +251,7 @@ export const BookingSheet = ({ open, onOpenChange, mode, itemName = '', itemName
             </div>
             <div className="flex items-center gap-2">
               {false && (
-                <span className="font-inter text-[10px] tracking-[0.1em] uppercase" style={{ color: 'rgba(212,175,55,0.6)' }}>
+                <span className="font-inter text-[10px] tracking-[0.1em] uppercase" style={{ color: 'rgba(212,175,55,0.75)' }}>
                 </span>
               )}
               <ChevronRight className="w-4 h-4" style={{ color: 'rgba(212,175,55,0.4)' }} />

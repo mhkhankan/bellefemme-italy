@@ -23,18 +23,6 @@ interface ScenaCard {
 
 const SCENA_CARDS: ScenaCard[] = [
   {
-    id: 'phi-master-2026',
-    date: '2026',
-    tag: 'certificazioni',
-    geo: 'Internazionale',
-    title_it: 'Master Assistant — PhiAcademy',
-    title_en: 'Master Assistant — PhiAcademy',
-    desc_it: 'Conferma del titolo attivo di Master Assistant PhiAcademy. Autorizzata a formare e certificare artisti a livello mondiale.',
-    desc_en: 'Confirmation of active Master Assistant title — PhiAcademy. Authorised to train and certify artists globally.',
-    image: '/branding/PhiBrows_Master_Assistant.png',
-    alt: 'PhiAcademy Master Assistant — Mouna Chabbar',
-  },
-  {
     id: 'dubai-judge-2024',
     date: '2024',
     tag: 'congressi',
@@ -43,7 +31,7 @@ const SCENA_CARDS: ScenaCard[] = [
     title_en: 'International Judge — Dubai',
     desc_it: 'Membro di giuria nella competizione tecnica internazionale di dermopigmentazione a Dubai. Standard di eccellenza valutati su scala globale.',
     desc_en: 'Member of the jury at the international PMU technical competition in Dubai. Excellence standards assessed on a global scale.',
-    image: '/branding/mouna-la-firma.jpg',
+    image: '/branding/bf-placeholder.jpg',
     alt: 'Mouna Chabbar — Giudice Internazionale Dubai',
   },
   {
@@ -55,7 +43,7 @@ const SCENA_CARDS: ScenaCard[] = [
     title_en: 'International Judge — Milan',
     desc_it: 'Giudice ufficiale nella competizione internazionale PMU a Milano. Quando il settore misura l\'eccellenza, chiama Mouna Chabbar.',
     desc_en: 'Official judge at the international PMU competition in Milan. When the industry measures excellence, it calls Mouna Chabbar.',
-    image: '/branding/mouna-la-firma.jpg',
+    image: '/branding/bf-placeholder.jpg',
     alt: 'Mouna Chabbar — Giudice Internazionale Milano',
   },
   {
@@ -67,7 +55,7 @@ const SCENA_CARDS: ScenaCard[] = [
     title_en: 'International Judge — Venice',
     desc_it: 'Giudice tecnico nella competizione internazionale di Venezia. Presenza costante nei palcoscenici più prestigiosi del settore PMU europeo.',
     desc_en: 'Technical judge at the international competition in Venice. Consistent presence on the most prestigious stages of European PMU.',
-    image: '/branding/mouna-la-firma.jpg',
+    image: '/branding/bf-placeholder.jpg',
     alt: 'Mouna Chabbar — Giudice Internazionale Venezia',
   },
   {
@@ -79,7 +67,7 @@ const SCENA_CARDS: ScenaCard[] = [
     title_en: 'International Judge — Romania',
     desc_it: 'Membro di giuria alla competizione tecnica internazionale in Romania. Standard di valutazione portati dalla Lombardia all\'Europa dell\'Est.',
     desc_en: 'Jury member at the international technical competition in Romania. Evaluation standards brought from Lombardy to Eastern Europe.',
-    image: '/branding/mouna-la-firma.jpg',
+    image: '/branding/bf-placeholder.jpg',
     alt: 'Mouna Chabbar — Giudice Internazionale Romania',
   },
   {
@@ -91,20 +79,8 @@ const SCENA_CARDS: ScenaCard[] = [
     title_en: 'International Judge — Turkey',
     desc_it: 'Giudice ufficiale nella competizione internazionale PMU in Turchia. Cinque paesi. Un metodo. Una firma riconosciuta ovunque.',
     desc_en: 'Official judge at the international PMU competition in Turkey. Five countries. One method. A signature recognised everywhere.',
-    image: '/branding/mouna-la-firma.jpg',
+    image: '/branding/bf-placeholder.jpg',
     alt: 'Mouna Chabbar — Giudice Internazionale Turchia',
-  },
-  {
-    id: 'academys-craftmaster',
-    date: '2020',
-    tag: 'certificazioni',
-    geo: 'Internazionale',
-    title_it: 'Craft Master — AcademyS',
-    title_en: 'Craft Master — AcademyS',
-    desc_it: 'Titolo di Craft Master ufficiale AcademyS per PMU, Microblading e Removal. Autorizzata per contratto a formare e certificare artisti a livello internazionale.',
-    desc_en: 'Official AcademyS Craft Master title for PMU, Microblading and Removal. Contractually authorised to train and certify artists internationally.',
-    image: '/branding/AcademyS_Craft_Master.png',
-    alt: 'AcademyS Craft Master — Mouna Chabbar',
   },
   {
     id: 'horus-torino',
@@ -115,7 +91,7 @@ const SCENA_CARDS: ScenaCard[] = [
     title_en: 'Training Residency — Turin',
     desc_it: 'Sessione di formazione professionale avanzata a Torino. Trasmissione diretta del metodo Belle Femme a una nuova generazione di artisti PMU.',
     desc_en: 'Advanced professional training session in Turin. Direct transmission of the Belle Femme method to a new generation of PMU artists.',
-    image: '/branding/academy-environment.jpg',
+    image: '/branding/bf-placeholder.jpg',
     alt: 'Belle Femme formazione Torino — Horus',
   },
 ];
@@ -154,7 +130,7 @@ const LaScena = () => {
             transition={{ duration: 1.2 }}
             className="space-y-5"
           >
-            <p className="font-inter text-[10px] tracking-[0.4em] uppercase" style={{ color: 'rgba(212,175,55,0.6)' }}>
+            <p className="font-inter text-[10px] tracking-[0.4em] uppercase" style={{ color: 'rgba(212,175,55,0.75)' }}>
               Belle Femme · Moments
             </p>
             <h1 className="font-cormorant text-5xl md:text-7xl font-light tracking-[4px]" style={{ color: '#F5F5F5' }}>
@@ -222,7 +198,7 @@ const LaScena = () => {
 
                   {/* Year */}
                   <div className="absolute top-4 right-4">
-                    <span className="font-cormorant text-2xl font-light" style={{ color: 'rgba(212,175,55,0.6)' }}>
+                    <span className="font-cormorant text-2xl font-light" style={{ color: 'rgba(212,175,55,0.75)' }}>
                       {card.date}
                     </span>
                   </div>
