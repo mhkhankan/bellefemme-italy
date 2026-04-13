@@ -332,7 +332,7 @@ export const AcademySection = () => {
             {/* ACADEMY TESTIMONIALS */}
             <div className="mt-24" style={{ backgroundColor: '#0A0A0A' }}>
               <div className="text-center space-y-4 mb-12">
-                <p className="font-inter text-[10px] tracking-[0.4em] uppercase" style={{ color: 'rgba(212,175,55,0.6)' }}>
+                <p className="font-inter text-[10px] tracking-[0.4em] uppercase" style={{ color: 'rgba(212,175,55,0.75)' }}>
                   Belle Femme · Academy
                 </p>
                 <h3 className="font-cormorant text-2xl md:text-3xl font-light tracking-[2px]" style={{ color: '#F5F5F5' }}>
@@ -389,7 +389,7 @@ export const AcademySection = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="font-inter uppercase hover:opacity-80 transition-opacity"
-                  style={{ fontSize: '10px', letterSpacing: '0.15em', color: 'rgba(212,175,55,0.6)' }}
+                  style={{ fontSize: '10px', letterSpacing: '0.15em', color: 'rgba(212,175,55,0.75)' }}
                 >
                   {language === 'it'
                     ? 'Leggi tutte le recensioni → Instagram'

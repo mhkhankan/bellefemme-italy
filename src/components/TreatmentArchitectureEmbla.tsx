@@ -55,7 +55,7 @@ const TREATMENT_EOS_TESTIMONIALS = [
 const TreatmentTestimonialsEOS = ({ language }: { language: string }) => (
   <div style={{ backgroundColor: '#0A0A0A' }} className="py-16 md:py-24 px-6 md:px-12 max-w-5xl mx-auto">
     <div className="text-center space-y-4 mb-12">
-      <p className="font-inter text-[10px] tracking-[0.4em] uppercase" style={{ color: 'rgba(212,175,55,0.6)' }}>
+      <p className="font-inter text-[10px] tracking-[0.4em] uppercase" style={{ color: 'rgba(212,175,55,0.75)' }}>
         Belle Femme · Atelier
       </p>
       <h3 className="font-cormorant text-2xl md:text-3xl font-light tracking-[2px]" style={{ color: '#F5F5F5' }}>

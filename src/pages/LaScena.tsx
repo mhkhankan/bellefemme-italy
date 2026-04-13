@@ -130,7 +130,7 @@ const LaScena = () => {
             transition={{ duration: 1.2 }}
             className="space-y-5"
           >
-            <p className="font-inter text-[10px] tracking-[0.4em] uppercase" style={{ color: 'rgba(212,175,55,0.6)' }}>
+            <p className="font-inter text-[10px] tracking-[0.4em] uppercase" style={{ color: 'rgba(212,175,55,0.75)' }}>
               Belle Femme · Moments
             </p>
             <h1 className="font-cormorant text-5xl md:text-7xl font-light tracking-[4px]" style={{ color: '#F5F5F5' }}>
@@ -198,7 +198,7 @@ const LaScena = () => {
 
                   {/* Year */}
                   <div className="absolute top-4 right-4">
-                    <span className="font-cormorant text-2xl font-light" style={{ color: 'rgba(212,175,55,0.6)' }}>
+                    <span className="font-cormorant text-2xl font-light" style={{ color: 'rgba(212,175,55,0.75)' }}>
                       {card.date}
                     </span>
                   </div>
