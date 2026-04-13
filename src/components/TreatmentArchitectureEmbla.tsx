@@ -99,6 +99,44 @@ const TreatmentTestimonialsEOS = ({ language }: { language: string }) => (
   </div>
 );
 
+const fadeIn = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0 },
+};
+
+const TreatmentImage = ({
+  item,
+  sizeClass,
+  numberSize,
+  imgStyle,
+}: {
+  item: TreatmentItem;
+  sizeClass: string;
+  numberSize: string;
+  imgStyle?: React.CSSProperties;
+}) => {
+  const [imgFailed, setImgFailed] = useState(false);
+  const imgPath = IMAGE_MAP[item.id];
+  const altText = ALT_MAP[item.id] || item.title;
+
+  return imgPath && !imgFailed ? (
+    <img
+      src={imgPath}
+      alt={altText}
+      className={`${sizeClass} object-cover`}
+      loading={item.number <= '02' ? 'eager' : 'lazy'}
+      onError={() => setImgFailed(true)}
+      style={imgStyle}
+    />
+  ) : (
+    <div className={`${sizeClass} shimmer-venetian flex items-center justify-center`}>
+      <span className={`font-cormorant ${numberSize} font-light text-primary/20`}>
+        {item.number}
+      </span>
+    </div>
+  );
+};
+
 /* SwipePill — self-contained CSS animation, no Tailwind keyframes needed */
 const swipePillKeyframes = `
   @keyframes slideDot {
