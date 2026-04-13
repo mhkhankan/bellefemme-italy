@@ -6,6 +6,7 @@ import { LanguageProvider } from "@/contexts/LanguageContext";
 import { useEffect } from "react";
 import Index from "./pages/Index";
 import LaFirma from "./pages/LaFirma";
+import LaScena from "./pages/LaScena";
 import Privacy from "./pages/Privacy";
 import NotFound from "./pages/NotFound";
 import CoursePMU from "./pages/CoursePMU";
@@ -37,6 +38,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/la-firma" element={<LaFirma />} />
+          <Route path="/la-scena" element={<LaScena />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/corso-pmu-completo" element={<CoursePMU />} />
           <Route path="/corso-microblading" element={<CourseMicroblading />} />
