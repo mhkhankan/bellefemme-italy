@@ -123,13 +123,13 @@ export const CinematicHero = () => {
               onClick={() => setSheetOpen(true)}
               className="font-inter font-bold text-[11px] tracking-[0.25em] uppercase bg-primary text-primary-foreground px-8 py-4 min-h-[48px] hover:bg-primary/90 transition-colors text-center"
             >
-              Richiedi la tua Consulenza →
+              {language === 'it' ? 'Richiedi la tua Consulenza →' : 'Book Your Consultation →'}
             </button>
             <button
               onClick={() => scrollToSection('atelier')}
               className="font-inter font-bold text-[11px] tracking-[0.25em] uppercase bg-transparent border border-primary/20 text-primary/60 px-8 py-4 min-h-[48px] hover:bg-primary hover:text-primary-foreground transition-all duration-500"
             >
-              SCOPRI I TRATTAMENTI
+              {language === 'it' ? 'SCOPRI I TRATTAMENTI' : 'DISCOVER TREATMENTS'}
             </button>
           </motion.div>
         </div>

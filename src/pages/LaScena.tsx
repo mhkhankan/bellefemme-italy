@@ -234,7 +234,7 @@ const LaScena = () => {
                   <h3 className="font-cormorant text-xl font-light" style={{ color: '#F5F5F5' }}>
                     {language === 'it' ? card.title_it : card.title_en}
                   </h3>
-                  <p className="text-sm leading-relaxed" style={{ color: 'rgba(245,245,245,0.6)' }}>
+                  <p className="font-cormorant italic text-sm leading-relaxed" style={{ color: 'rgba(245,245,245,0.6)' }}>
                     {language === 'it' ? card.desc_it : card.desc_en}
                   </p>
                 </div>
