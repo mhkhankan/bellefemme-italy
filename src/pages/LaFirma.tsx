@@ -100,22 +100,18 @@ const CREDENTIALS = [
 
 const TESTIMONIALS_CLIENT = [
   {
-    quote_it: 'Mouna è una vera professionista, onesta e disponibile. Davanti alla mia indecisione non ha insistito, dicendo che avevo tutto il tempo per decidere. Alla fine mi sono fidata e non me ne sono pentita.',
-    quote_en: 'Mouna is a true professional, honest and helpful. Faced with my indecision she did not push, saying I had all the time to decide. In the end I trusted her and I have no regrets.',
-    name: 'Giorgia M.',
-    initial: 'G',
-  },
-  {
-    quote_it: 'Dopo 2 anni di indecisione se fare o meno questo trattamento, per caso ho conosciuto Mouna. Subito mi ha messa a mio agio, spiegandomi tutto con calma e professionalità.',
-    quote_en: 'After 2 years of indecision about whether to have this treatment, I met Mouna by chance. She immediately put me at ease, explaining everything calmly and professionally.',
+    quote_it: 'dopo 2 anni di indecisione se fare o meno questo trattamento...per caso ho conosciuto Mouna....che dire oltre ad essere una persona splendida e dolcissima..super professionale su di me ha fatto un capolavoro...le mie sopracciglia sono perfette...se volete fare questo trattamento senza dubbio affidatevi a lei una vera professionista',
+    quote_en: 'after 2 years of indecision about whether to have this treatment...I met Mouna by chance...what can I say, besides being a wonderful and very sweet person...super professional, on me she worked a masterpiece...my eyebrows are perfect...if you want this treatment without doubt trust her, a true professional',
     name: 'Stefania R.',
-    initial: 'S',
+    source_it: 'Fonte: Recensione Facebook · 8 di 39',
+    source_en: 'Source: Facebook Review · 8 of 39',
   },
   {
-    quote_it: 'Ho fatto una vita con delle sopracciglia disastrose, fini e senza una forma ma per paura non mi sono mai decisa. Poi ho conosciuto Mouna e ho capito che era la persona giusta.',
-    quote_en: 'I spent my life with disastrous eyebrows, thin and shapeless, but out of fear I never made up my mind. Then I met Mouna and I understood she was the right person.',
-    name: 'Amanda C.',
-    initial: 'A',
+    quote_it: 'Grazie Mouna per la gentilezza e la professionalità. Con la tua abilità mi hai risolto un problema estetico importante.',
+    quote_en: 'Thank you Mouna for your kindness and professionalism. With your skill you resolved an important aesthetic problem for me.',
+    name: 'Leila M.',
+    source_it: 'Fonte: Recensione Facebook · 9 di 39',
+    source_en: 'Source: Facebook Review · 9 of 39',
   },
 ];
 

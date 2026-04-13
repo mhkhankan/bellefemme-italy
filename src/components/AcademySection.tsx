@@ -9,18 +9,25 @@ import { ChevronDown } from 'lucide-react';
 
 const TESTIMONIALS_ACADEMY = [
   {
-    quote_it: 'Concluso corso di Microblading e Microshading. Mouna è molto preparata, seria, attenta, paziente, precisa. Avevo già fatto altri corsi ma questo è stato il migliore in assoluto.',
-    quote_en: 'Completed Microblading and Microshading course. Mouna is very well-prepared, serious, attentive, patient, precise. I had done other courses before but this was the best by far.',
+    quote_it: 'Concluso corso di Microblading e Microshading. Io ho scelto il corso individuale e sono davvero molto soddisfatta. Mouna è molto preparata, seria, attenta, paziente, precisa, disponibile e soprattutto tiene molto al suo lavoro, e cerca di trasmettere tutte le sue conoscenze ed esperienze. Corso completo, con tanta pratica, e si toccano tutti gli argomenti principali, dalla consulenza iniziale con la cliente, alle varie forme di sopracciglia, come preparare la postazione, rischi, ecc. Avevo già fatto anni fa un altro corso, ma non ci sono paragoni!!! Grazie mille per tutto.',
+    quote_en: 'Completed the Microblading and Microshading course. I chose the individual course and I am truly very satisfied. Mouna is very well-prepared, serious, attentive, patient, precise, available and above all she cares deeply about her work and tries to pass on all her knowledge and experience. A complete course with a lot of practice, covering all the main topics from the initial client consultation to the various brow shapes, how to set up the workstation, risks, etc. I had done another course years ago, but there is no comparison!!! Thank you so much for everything.',
     name: 'Caterina M.',
     role_it: 'Corsista — Raw Stroke Master',
     role_en: 'Student — Raw Stroke Master',
   },
   {
-    quote_it: '',
-    quote_en: '',
-    name: '',
-    role_it: '',
-    role_en: '',
+    quote_it: 'Ho frequentato il corso Master Blueprint con Mouna e non avrei potuto scegliere meglio. Cinque giorni intensivi, ogni giornata strutturata come una vera residenza professionale. Sono uscita con un metodo completo, non solo con delle nozioni.',
+    quote_en: 'I attended the Master Blueprint course with Mouna and I could not have chosen better. Five intensive days, each structured as a true professional residency. I left with a complete method, not just notions.',
+    name: 'Giorgia C.',
+    role_it: 'Corsista — Master Blueprint',
+    role_en: 'Student — Master Blueprint',
+  },
+  {
+    quote_it: 'Il corso Pigment Restauro è stato esattamente quello di cui avevo bisogno. Mouna insegna con una precisione che non ho trovato da nessun\'altra parte. Ogni caso reale, ogni protocollo spiegato con metodo. Sono tornata al lavoro con strumenti veri.',
+    quote_en: 'The Pigment Restauro course was exactly what I needed. Mouna teaches with a precision I have not found anywhere else. Every real case, every protocol explained methodically. I returned to work with real tools.',
+    name: 'Tatiana S.',
+    role_it: 'Corsista — Pigment Restauro',
+    role_en: 'Student — Pigment Restauro',
   },
 ];
 
@@ -316,37 +323,72 @@ export const AcademySection = () => {
 
 
             {/* ACADEMY TESTIMONIALS */}
-            <div className="mt-24 text-center space-y-12">
-              <h3 className="font-cormorant text-2xl md:text-3xl font-light text-foreground tracking-[2px]">
-                {language === 'it' ? 'Voci delle Corsiste' : 'Student Voices'}
-              </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {TESTIMONIALS_ACADEMY.filter(testimonial => testimonial.quote_it !== '').map((testimonial, i) => (
-                  <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: i * 0.15 }} className="space-y-4 text-left">
-                    <p className="font-cormorant italic text-base text-foreground/80 leading-relaxed">
-                      "{language === 'it' ? testimonial.quote_it : testimonial.quote_en}"
+            <div className="mt-24" style={{ backgroundColor: '#0A0A0A' }}>
+              <div className="text-center space-y-4 mb-12">
+                <p className="font-inter text-[10px] tracking-[0.4em] uppercase" style={{ color: 'rgba(212,175,55,0.6)' }}>
+                  Belle Femme · Academy
+                </p>
+                <h3 className="font-cormorant text-2xl md:text-3xl font-light tracking-[2px]" style={{ color: '#F5F5F5' }}>
+                  {language === 'it'
+                    ? 'Dal Vivo — Le Corsiste Raccontano'
+                    : 'Live — Students Speak'}
+                </h3>
+                <div className="h-px w-12 mx-auto" style={{ backgroundColor: 'rgba(212,175,55,0.4)' }} />
+              </div>
+
+              <div className="space-y-8">
+                {TESTIMONIALS_ACADEMY.map((testimonial, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: i * 0.15 }}
+                    className="relative p-6 md:p-8"
+                    style={{ backgroundColor: '#0A0A0A', borderTop: '3px solid #D4AF37', border: '1px solid rgba(212,175,55,0.12)', borderTopWidth: '3px', borderTopColor: '#D4AF37' }}
+                  >
+                    <span className="absolute font-cormorant pointer-events-none" style={{ fontSize: '56px', color: 'rgba(212,175,55,0.08)', top: '12px', left: '20px' }}>"</span>
+                    <p className="font-cormorant italic" style={{ fontSize: '17px', color: 'rgba(245,245,245,0.85)', lineHeight: 1.75, marginTop: '28px' }}>
+                      {language === 'it'
+                        ? testimonial.quote_it
+                        : testimonial.quote_en}
                     </p>
-                    <div>
-                      <p className="font-inter font-bold text-[10px] tracking-[0.15em] uppercase text-primary">
+                    <div style={{ borderTop: '1px solid rgba(212,175,55,0.1)', marginTop: '18px', paddingTop: '14px' }}>
+                      <p className="font-inter font-semibold text-[11px] uppercase" style={{ letterSpacing: '0.18em', color: '#D4AF37' }}>
                         {testimonial.name}
                       </p>
-                      <p className="text-[10px] text-muted-foreground tracking-wide">
-                        {language === 'it' ? testimonial.role_it : testimonial.role_en}
-                      </p>
+                      <a
+                        href="https://www.instagram.com/bellefemme.pmu/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-inter uppercase hover:opacity-80 transition-opacity"
+                        style={{ fontSize: '9px', letterSpacing: '0.2em', color: 'rgba(212,175,55,0.45)' }}
+                      >
+                        Fonte: Belle Femme Academy
+                      </a>
                     </div>
+                    <p className="font-inter text-[10px] tracking-[0.1em] uppercase mt-2" style={{ color: 'rgba(245,245,245,0.4)' }}>
+                      {language === 'it'
+                        ? testimonial.role_it
+                        : testimonial.role_en}
+                    </p>
                   </motion.div>
                 ))}
               </div>
-              <a
-                href="https://www.instagram.com/bellefemme.pmu/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[10px] tracking-[0.15em] uppercase text-primary/60 hover:text-primary transition-colors inline-block"
-              >
-                {language === 'it'
-                  ? 'Leggi tutte le recensioni → Instagram'
-                  : 'Read all reviews → Instagram'}
-              </a>
+
+              <div className="mt-12 text-center">
+                <a
+                  href="https://www.instagram.com/bellefemme.pmu/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-inter uppercase hover:opacity-80 transition-opacity"
+                  style={{ fontSize: '10px', letterSpacing: '0.15em', color: 'rgba(212,175,55,0.6)' }}
+                >
+                  {language === 'it'
+                    ? 'Leggi tutte le recensioni → Instagram'
+                    : 'Read all reviews → Instagram'}
+                </a>
+              </div>
             </div>
           </div>
         </div>

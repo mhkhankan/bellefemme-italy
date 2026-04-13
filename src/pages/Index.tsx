@@ -14,6 +14,94 @@ import { motion } from 'framer-motion';
 
 window.history.scrollRestoration = 'manual';
 
+const HOME_CLOSING_TESTIMONIALS = [
+  {
+    quote_it: 'Ho fatto una vita con delle sopracciglia disastrose, fini e senza una forma ma poi, per caso, ho trovato Mouna e anche se un po\' incerta (vista la mia inesperienza nel settore), ho voluto provare a fare una consulenza. Lei è stata gentilissima e molto professionale. Mi ha trasmesso subito fiducia e ha saputo darmi ciò che chiedevo. Sopracciglia perfette. Una mano delicata ma molto precisa. Sono molto soddisfatta del suo lavoro. È una persona eccezionale e non solo professionalmente. La consiglio vivamente!',
+    quote_en: 'I spent my whole life with disastrous eyebrows, thin and shapeless, but then by chance I found Mouna and even though I was a little uncertain (given my inexperience in the field), I decided to try a consultation. She was extremely kind and very professional. She immediately inspired confidence and gave me exactly what I asked for. Perfect brows. A delicate but very precise touch. I am very satisfied with her work. She is an exceptional person, not only professionally. Highly recommended!',
+    name: 'Amanda C.',
+    source_it: 'Fonte: Recensione Facebook · 5 di 39',
+    source_en: 'Source: Facebook Review · 5 of 39',
+  },
+  {
+    quote_it: 'Sono qui in Italia da 7 anni, e volevo davvero farmi le sopracciglia, ma non riuscivo a trovare un professionista che soddisfacesse le mie aspettative. Quando ho trovato Mouna, ho pensato subito di sì. Mouna ha conquistato la mia fiducia, il suo lavoro è perfetto, è bravissima e gentile, è molto precisa e attenta. Sono davvero felice con il risultato. Grazie Mouna',
+    quote_en: 'I have been here in Italy for 7 years, and I really wanted to have my eyebrows done, but I could not find a professional who met my expectations. When I found Mouna, I immediately thought yes. Mouna earned my trust, her work is perfect, she is very skilled and kind, very precise and attentive. I am truly happy with the result. Thank you Mouna',
+    name: 'Nilda M.',
+    source_it: 'Fonte: Recensione Facebook · 6 di 39',
+    source_en: 'Source: Facebook Review · 6 of 39',
+  },
+  {
+    quote_it: 'Professionalità, efficienza, precisione, bravissima Mouna, super risultato sia con microblading sopracciglia che con eyeliner semipermanente occhi, risultato eccellente.',
+    quote_en: 'Professionalism, efficiency, precision — excellent Mouna, superb result both with eyebrow microblading and permanent eyeliner, excellent outcome.',
+    name: 'Sonia M.',
+    source_it: 'Fonte: Recensione Facebook · 7 di 39',
+    source_en: 'Source: Facebook Review · 7 of 39',
+  },
+];
+
+const HomeClosingTestimonials = () => {
+  const { language } = useLanguage();
+  return (
+    <section style={{ backgroundColor: '#0A0A0A' }} className="py-16 md:py-24">
+      <div className="max-w-5xl mx-auto px-6 md:px-12">
+        <div className="text-center space-y-4 mb-12">
+          <p className="font-inter text-[10px] tracking-[0.4em] uppercase" style={{ color: 'rgba(212,175,55,0.6)' }}>
+            Belle Femme · Atelier
+          </p>
+          <h3 className="font-cormorant text-2xl md:text-3xl font-light tracking-[2px]" style={{ color: '#F5F5F5' }}>
+            {language === 'it' ? 'Le Loro Parole' : 'Their Words'}
+          </h3>
+          <div className="h-px w-12 mx-auto" style={{ backgroundColor: 'rgba(212,175,55,0.4)' }} />
+        </div>
+        <div className="space-y-8">
+          {HOME_CLOSING_TESTIMONIALS.map((t, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: i * 0.15 }}
+              className="relative p-6 md:p-8"
+              style={{ backgroundColor: '#0A0A0A', borderLeft: '3px solid #D4AF37', border: '1px solid rgba(212,175,55,0.12)', borderLeftWidth: '3px', borderLeftColor: '#D4AF37' }}
+            >
+              <span className="absolute font-cormorant pointer-events-none" style={{ fontSize: '56px', color: 'rgba(212,175,55,0.08)', top: '12px', left: '20px' }}>"</span>
+              <p className="font-cormorant italic" style={{ fontSize: '17px', color: 'rgba(245,245,245,0.85)', lineHeight: 1.75, marginTop: '28px' }}>
+                {language === 'it' ? t.quote_it : t.quote_en}
+              </p>
+              <div style={{ borderTop: '1px solid rgba(212,175,55,0.1)', marginTop: '18px', paddingTop: '14px' }}>
+                <p className="font-inter font-semibold text-[11px] uppercase" style={{ letterSpacing: '0.18em', color: '#D4AF37' }}>
+                  {t.name}
+                </p>
+                <a
+                  href="https://www.facebook.com/bellefemme.varese/reviews"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-inter uppercase hover:opacity-80 transition-opacity"
+                  style={{ fontSize: '9px', letterSpacing: '0.2em', color: 'rgba(212,175,55,0.45)' }}
+                >
+                  {language === 'it' ? t.source_it : t.source_en}
+                </a>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+        <div className="mt-12 text-center">
+          <a
+            href="https://www.facebook.com/bellefemme.varese/reviews"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-inter uppercase hover:opacity-80 transition-opacity"
+            style={{ fontSize: '10px', letterSpacing: '0.15em', color: 'rgba(212,175,55,0.6)' }}
+          >
+            {language === 'it'
+              ? 'Leggi tutte le recensioni su Facebook →'
+              : 'Read all reviews on Facebook →'}
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 const LaFirmaTeaser = () => {
   const { language } = useLanguage();
 
@@ -120,6 +208,7 @@ const Index = () => {
         <TreatmentArchitecture />
         <LaFirmaTeaser />
         <AcademySection />
+        <HomeClosingTestimonials />
         <DoveOperiamo />
         <SiteFooter />
         <CookieConsent />
