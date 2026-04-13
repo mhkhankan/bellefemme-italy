@@ -365,6 +365,7 @@ const LaFirma = () => {
       </div>
       <CookieConsent />
       <WhatsAppSticky />
+    </div>
   );
 };
 
