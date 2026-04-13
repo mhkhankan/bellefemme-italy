@@ -1,0 +1,259 @@
+import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { StickyHeader } from '@/components/StickyHeader';
+import { SiteFooter } from '@/components/SiteFooter';
+import { CookieConsent } from '@/components/CookieConsent';
+import { StructuredData } from '@/components/StructuredData';
+
+type FilterTab = 'tutti' | 'congressi' | 'formazione' | 'certificazioni' | 'eventi';
+
+interface ScenaCard {
+  id: string;
+  date: string;
+  tag: FilterTab;
+  geo: string;
+  title_it: string;
+  title_en: string;
+  desc_it: string;
+  desc_en: string;
+  image: string;
+  alt: string;
+}
+
+const SCENA_CARDS: ScenaCard[] = [
+  {
+    id: 'phi-master-2026',
+    date: '2026',
+    tag: 'certificazioni',
+    geo: 'Internazionale',
+    title_it: 'Master Assistant — PhiAcademy',
+    title_en: 'Master Assistant — PhiAcademy',
+    desc_it: 'Conferma del titolo attivo di Master Assistant PhiAcademy. Autorizzata a formare e certificare artisti a livello mondiale.',
+    desc_en: 'Confirmation of active Master Assistant title — PhiAcademy. Authorised to train and certify artists globally.',
+    image: '/branding/PhiBrows_Master_Assistant.png',
+    alt: 'PhiAcademy Master Assistant — Mouna Chabbar',
+  },
+  {
+    id: 'dubai-judge-2024',
+    date: '2024',
+    tag: 'congressi',
+    geo: 'Dubai',
+    title_it: 'Giudice Internazionale — Dubai',
+    title_en: 'International Judge — Dubai',
+    desc_it: 'Membro di giuria nella competizione tecnica internazionale di dermopigmentazione a Dubai. Standard di eccellenza valutati su scala globale.',
+    desc_en: 'Member of the jury at the international PMU technical competition in Dubai. Excellence standards assessed on a global scale.',
+    image: '/branding/mouna-la-firma.jpg',
+    alt: 'Mouna Chabbar — Giudice Internazionale Dubai',
+  },
+  {
+    id: 'milano-judge-2023',
+    date: '2023',
+    tag: 'congressi',
+    geo: 'Milano',
+    title_it: 'Giudice Internazionale — Milano',
+    title_en: 'International Judge — Milan',
+    desc_it: 'Giudice ufficiale nella competizione internazionale PMU a Milano. Quando il settore misura l\'eccellenza, chiama Mouna Chabbar.',
+    desc_en: 'Official judge at the international PMU competition in Milan. When the industry measures excellence, it calls Mouna Chabbar.',
+    image: '/branding/mouna-la-firma.jpg',
+    alt: 'Mouna Chabbar — Giudice Internazionale Milano',
+  },
+  {
+    id: 'venezia-judge',
+    date: '2022',
+    tag: 'congressi',
+    geo: 'Venezia',
+    title_it: 'Giudice Internazionale — Venezia',
+    title_en: 'International Judge — Venice',
+    desc_it: 'Giudice tecnico nella competizione internazionale di Venezia. Presenza costante nei palcoscenici più prestigiosi del settore PMU europeo.',
+    desc_en: 'Technical judge at the international competition in Venice. Consistent presence on the most prestigious stages of European PMU.',
+    image: '/branding/mouna-la-firma.jpg',
+    alt: 'Mouna Chabbar — Giudice Internazionale Venezia',
+  },
+  {
+    id: 'romania-judge',
+    date: '2022',
+    tag: 'congressi',
+    geo: 'Romania',
+    title_it: 'Giudice Internazionale — Romania',
+    title_en: 'International Judge — Romania',
+    desc_it: 'Membro di giuria alla competizione tecnica internazionale in Romania. Standard di valutazione portati dalla Lombardia all\'Europa dell\'Est.',
+    desc_en: 'Jury member at the international technical competition in Romania. Evaluation standards brought from Lombardy to Eastern Europe.',
+    image: '/branding/mouna-la-firma.jpg',
+    alt: 'Mouna Chabbar — Giudice Internazionale Romania',
+  },
+  {
+    id: 'turchia-judge',
+    date: '2021',
+    tag: 'congressi',
+    geo: 'Turchia',
+    title_it: 'Giudice Internazionale — Turchia',
+    title_en: 'International Judge — Turkey',
+    desc_it: 'Giudice ufficiale nella competizione internazionale PMU in Turchia. Cinque paesi. Un metodo. Una firma riconosciuta ovunque.',
+    desc_en: 'Official judge at the international PMU competition in Turkey. Five countries. One method. A signature recognised everywhere.',
+    image: '/branding/mouna-la-firma.jpg',
+    alt: 'Mouna Chabbar — Giudice Internazionale Turchia',
+  },
+  {
+    id: 'academys-craftmaster',
+    date: '2020',
+    tag: 'certificazioni',
+    geo: 'Internazionale',
+    title_it: 'Craft Master — AcademyS',
+    title_en: 'Craft Master — AcademyS',
+    desc_it: 'Titolo di Craft Master ufficiale AcademyS per PMU, Microblading e Removal. Autorizzata per contratto a formare e certificare artisti a livello internazionale.',
+    desc_en: 'Official AcademyS Craft Master title for PMU, Microblading and Removal. Contractually authorised to train and certify artists internationally.',
+    image: '/branding/AcademyS_Craft_Master.png',
+    alt: 'AcademyS Craft Master — Mouna Chabbar',
+  },
+  {
+    id: 'horus-torino',
+    date: '2024',
+    tag: 'formazione',
+    geo: 'Torino',
+    title_it: 'Residenza Formativa — Torino',
+    title_en: 'Training Residency — Turin',
+    desc_it: 'Sessione di formazione professionale avanzata a Torino. Trasmissione diretta del metodo Belle Femme a una nuova generazione di artisti PMU.',
+    desc_en: 'Advanced professional training session in Turin. Direct transmission of the Belle Femme method to a new generation of PMU artists.',
+    image: '/branding/academy-environment.jpg',
+    alt: 'Belle Femme formazione Torino — Horus',
+  },
+];
+
+const FILTERS: { key: FilterTab; label_it: string; label_en: string }[] = [
+  { key: 'tutti', label_it: 'Tutti', label_en: 'All' },
+  { key: 'congressi', label_it: 'Congressi', label_en: 'Congresses' },
+  { key: 'formazione', label_it: 'Formazione', label_en: 'Training' },
+  { key: 'certificazioni', label_it: 'Certificazioni', label_en: 'Certifications' },
+  { key: 'eventi', label_it: 'Eventi', label_en: 'Events' },
+];
+
+const LaScena = () => {
+  const { language } = useLanguage();
+  const [activeFilter, setActiveFilter] = useState<FilterTab>('tutti');
+
+  const filtered = activeFilter === 'tutti'
+    ? SCENA_CARDS
+    : SCENA_CARDS.filter(c => c.tag === activeFilter);
+
+  return (
+    <div className="min-h-screen bg-background relative overflow-x-hidden">
+      <StructuredData
+        path="/la-scena"
+        pageTitle="La Scena — Belle Femme · Congressi, Formazione, Certificazioni"
+        pageDescription="La cronaca del metodo Belle Femme — congressi internazionali, residenze formative, certificazioni. Mouna Chabbar, giudice internazionale PMU."
+      />
+      <StickyHeader />
+
+      {/* Hero */}
+      <section className="relative" style={{ minHeight: '60svh', backgroundColor: 'hsl(0 0% 4%)' }}>
+        <div className="relative z-10 flex flex-col justify-center items-center text-center px-6" style={{ minHeight: '60svh' }}>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2 }}
+            className="space-y-5"
+          >
+            <p className="font-inter text-[10px] tracking-[0.4em] uppercase" style={{ color: 'rgba(212,175,55,0.6)' }}>
+              Belle Femme · Moments
+            </p>
+            <h1 className="font-cormorant text-5xl md:text-7xl font-light tracking-[4px]" style={{ color: '#F5F5F5' }}>
+              {language === 'it' ? 'La Scena' : 'The Scene'}
+            </h1>
+            <div className="h-px w-12 mx-auto" style={{ backgroundColor: 'rgba(212,175,55,0.5)' }} />
+            <p className="font-cormorant italic text-xl md:text-2xl max-w-xl mx-auto" style={{ color: 'rgba(245,245,245,0.7)' }}>
+              {language === 'it'
+                ? 'La cronaca di un metodo che si misura sul campo — nei congressi internazionali, nelle residenze formative, nel momento in cui un attestato cambia mani.'
+                : 'The chronicle of a method measured in the field — at international congresses, in training residencies, in the moment a certification changes hands.'}
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Filter tabs */}
+      <section style={{ backgroundColor: '#000' }} className="py-6">
+        <div className="max-w-5xl mx-auto px-6 flex gap-3 overflow-x-auto pb-2 justify-center flex-wrap">
+          {FILTERS.map(f => (
+            <button
+              key={f.key}
+              onClick={() => setActiveFilter(f.key)}
+              className="flex-shrink-0 font-inter text-[10px] tracking-[0.2em] uppercase px-4 py-2 transition-all duration-300"
+              style={{
+                color: activeFilter === f.key ? '#000' : 'rgba(212,175,55,0.6)',
+                backgroundColor: activeFilter === f.key ? '#D4AF37' : 'transparent',
+                border: '1px solid rgba(212,175,55,0.3)',
+              }}
+            >
+              {language === 'it' ? f.label_it : f.label_en}
+            </button>
+          ))}
+        </div>
+      </section>
+
+      {/* Cards feed */}
+      <section style={{ backgroundColor: '#000' }} className="py-12 md:py-20">
+        <div className="max-w-4xl mx-auto px-6 md:px-12">
+          <div className="space-y-12">
+            {filtered.map((card, i) => (
+              <motion.div
+                key={card.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: i * 0.1 }}
+                style={{ border: '1px solid rgba(212,175,55,0.12)' }}
+              >
+                {/* Image with tag + geo overlay */}
+                <div className="relative" style={{ height: '280px' }}>
+                  <img src={card.image} alt={card.alt} className="w-full h-full object-cover" loading="lazy" />
+                  <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.7) 100%)' }} />
+
+                  {/* Tag + geo */}
+                  <div className="absolute bottom-4 left-4 flex items-center gap-3">
+                    <span className="font-inter text-[9px] tracking-[0.2em] uppercase px-2 py-1" style={{ backgroundColor: 'rgba(212,175,55,0.9)', color: '#000' }}>
+                      {language === 'it'
+                        ? FILTERS.find(f => f.key === card.tag)?.label_it
+                        : FILTERS.find(f => f.key === card.tag)?.label_en}
+                    </span>
+                    <span className="font-inter text-[9px] tracking-[0.15em] uppercase" style={{ color: 'rgba(245,245,245,0.7)' }}>
+                      {card.geo}
+                    </span>
+                  </div>
+
+                  {/* Year */}
+                  <div className="absolute top-4 right-4">
+                    <span className="font-cormorant text-2xl font-light" style={{ color: 'rgba(212,175,55,0.6)' }}>
+                      {card.date}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="p-6 space-y-3" style={{ backgroundColor: '#0A0A0A' }}>
+                  <div className="h-px w-8" style={{ backgroundColor: 'rgba(212,175,55,0.3)' }} />
+                  <h3 className="font-cormorant text-xl font-light" style={{ color: '#F5F5F5' }}>
+                    {language === 'it' ? card.title_it : card.title_en}
+                  </h3>
+                  <p className="text-sm leading-relaxed" style={{ color: 'rgba(245,245,245,0.6)' }}>
+                    {language === 'it' ? card.desc_it : card.desc_en}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+
+            {filtered.length === 0 && (
+              <p className="text-center font-cormorant italic text-lg" style={{ color: 'rgba(245,245,245,0.5)' }}>
+                {language === 'it' ? 'Nessun contenuto in questa categoria.' : 'No content in this category.'}
+              </p>
+            )}
+          </div>
+        </div>
+      </section>
+
+      <SiteFooter />
+      <CookieConsent />
+    </div>
+  );
+};
+
+export default LaScena;

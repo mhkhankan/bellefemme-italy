@@ -6,7 +6,6 @@ import { SiteFooter } from '@/components/SiteFooter';
 import { StickyHeader } from '@/components/StickyHeader';
 import { CookieConsent } from '@/components/CookieConsent';
 import { StructuredData } from '@/components/StructuredData';
-import { WhatsAppSticky } from '@/components/WhatsAppSticky';
 import { Link, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -208,11 +207,10 @@ const Index = () => {
         <TreatmentArchitecture />
         <LaFirmaTeaser />
         <AcademySection />
-        <HomeClosingTestimonials />
         <DoveOperiamo />
+        <HomeClosingTestimonials />
         <SiteFooter />
         <CookieConsent />
-        <WhatsAppSticky />
       </div>
     </div>
   );

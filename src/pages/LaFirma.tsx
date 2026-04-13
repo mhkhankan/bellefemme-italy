@@ -7,7 +7,7 @@ import { StickyHeader } from '@/components/StickyHeader';
 import { SiteFooter } from '@/components/SiteFooter';
 import { CookieConsent } from '@/components/CookieConsent';
 import { StructuredData } from '@/components/StructuredData';
-import { WhatsAppSticky } from '@/components/WhatsAppSticky';
+
 
 const JURIST_CITIES = ['Milano', 'Dubai', 'Venezia', 'Turchia', 'Romania'];
 
@@ -257,6 +257,100 @@ const LaFirma = () => {
               </div>
             </motion.div>
           ))}
+
+          {/* S2 Logo credential block */}
+          <div className="space-y-8 mt-12">
+            <div className="h-px w-full" style={{ backgroundColor: 'rgba(212, 175, 55, 0.2)' }} />
+
+            <p className="font-inter text-[11px] tracking-[0.25em] uppercase" style={{ color: '#D4AF37' }}>
+              {language === 'it' ? 'Rango Istituzionale' : 'Institutional Rank'}
+            </p>
+
+            <div className="space-y-6">
+              {[
+                {
+                  logo: '/branding/PhiBrows_Master_Assistant.png',
+                  name: 'Master Assistant — PhiAcademy',
+                  desc_it: 'Autorizzata a formare e certificare artisti a livello globale.',
+                  desc_en: 'Authorised to train and certify artists globally.',
+                  invert: false,
+                },
+                {
+                  logo: '/branding/AcademyS_Craft_Master.png',
+                  name: 'Già Craft Master — AcademyS',
+                  desc_it: 'PMU · Microblading · Removal — educatrice internazionale S-Brows.',
+                  desc_en: 'PMU · Microblading · Removal — international S-Brows educator.',
+                  invert: false,
+                },
+                {
+                  logo: '/branding/PhiBrows_Royal_Artist.jpeg',
+                  name: 'Royal Artist — PhiBrows',
+                  desc_it: 'Competenze superiori nella tecnica PhiBrows di Branko Babic.',
+                  desc_en: 'Superior skills in the PhiBrows technique by Branko Babic.',
+                  invert: true,
+                },
+              ].map((item, i) => (
+                <div key={i} className="flex items-start gap-4">
+                  <div className="w-16 h-16 flex-shrink-0 flex items-center justify-center" style={{ backgroundColor: '#1a1a1a' }}>
+                    <img
+                      src={item.logo}
+                      alt={item.name}
+                      className="max-w-[48px] max-h-[48px] object-contain"
+                      style={item.invert ? { filter: 'invert(1)' } : {}}
+                    />
+                  </div>
+                  <div>
+                    <p className="text-[14px] font-medium" style={{ color: '#F5F5F5' }}>{item.name}</p>
+                    <p className="font-cormorant italic text-[13px]" style={{ color: 'rgba(245, 245, 245, 0.60)' }}>
+                      {language === 'it' ? item.desc_it : item.desc_en}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="h-px w-full" style={{ backgroundColor: 'rgba(212, 175, 55, 0.2)' }} />
+
+            <p className="font-inter text-[11px] tracking-[0.25em] uppercase" style={{ color: '#D4AF37' }}>
+              {language === 'it' ? 'Pedigree Tecnico' : 'Technical Pedigree'}
+            </p>
+
+            <div className="space-y-6">
+              {[
+                {
+                  logo: '/branding/Kerafill_Stamp_Master.png',
+                  name: 'Già Master Instructor — Kerafill Italy',
+                  desc_it: 'Istruttrice certificata protocolli Kerafill.',
+                  desc_en: 'Certified Kerafill protocols instructor.',
+                  invert: false,
+                },
+                {
+                  logo: '/branding/BCM_Beauty_Centre_Milan.png',
+                  name: 'BCM Beauty Centre of Milan',
+                  desc_it: 'Trucco Cromatico Semipermanente e Trucco Correttivo · Valutazione 30/30.',
+                  desc_en: 'Semi-Permanent and Corrective Make-Up · Grade 30/30.',
+                  invert: false,
+                },
+              ].map((item, i) => (
+                <div key={i} className="flex items-start gap-4">
+                  <div className="w-16 h-16 flex-shrink-0 flex items-center justify-center" style={{ backgroundColor: '#1a1a1a' }}>
+                    <img
+                      src={item.logo}
+                      alt={item.name}
+                      className="max-w-[48px] max-h-[48px] object-contain"
+                      style={item.invert ? { filter: 'invert(1)' } : {}}
+                    />
+                  </div>
+                  <div>
+                    <p className="text-[14px] font-medium" style={{ color: '#F5F5F5' }}>{item.name}</p>
+                    <p className="font-cormorant italic text-[13px]" style={{ color: 'rgba(245, 245, 245, 0.60)' }}>
+                      {language === 'it' ? item.desc_it : item.desc_en}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
@@ -376,7 +470,6 @@ const LaFirma = () => {
         <SiteFooter />
       </div>
       <CookieConsent />
-      <WhatsAppSticky />
     </div>
   );
 };
