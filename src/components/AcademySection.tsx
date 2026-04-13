@@ -187,9 +187,13 @@ export const AcademySection = () => {
                 {language === 'it' ? 'Formato Esclusivo' : 'Exclusive Format'}
               </p>
 
-              <div className="w-full flex items-center justify-center" style={{ height: '240px', background: '#1a1a1a' }}>
-                <span className="font-cormorant text-5xl font-light text-primary/20">1·1</span>
-              </div>
+              <img
+                src="/branding/formazione-corso-privato-academys-calabria-2020.jpg"
+                alt="Corso Privato 1 su 1 — Belle Femme Academy"
+                className="w-full object-cover"
+                style={{ height: '240px' }}
+                loading="lazy"
+              />
 
               <div className="flex items-baseline gap-3">
                 <span className="font-inter text-[10px] tracking-[0.3em] uppercase text-primary/60">1 · 1</span>
