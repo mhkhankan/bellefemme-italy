@@ -57,12 +57,6 @@ export const BookingSheet = ({ open, onOpenChange, mode, itemName = '', itemName
     }
   }, [open]);
 
-  const getSpotLabel = (city: string) => {
-    if (!spotsLoaded) return '';
-    const s = spots.find(sp => sp.location === city);
-    return s ? `${s.spots_remaining} posti` : 'Disponibilità su richiesta';
-  };
-
   const openWhatsApp = (msg: string) => {
     window.open(`${WHATSAPP_BASE}${encodeURIComponent(msg)}`, '_blank');
     onOpenChange(false);
@@ -76,7 +70,7 @@ export const BookingSheet = ({ open, onOpenChange, mode, itemName = '', itemName
         : `Salve, vorrei prenotare una consulenza per ${itemNameIT} a ${centre.city}.`;
       openWhatsApp(msg);
     } else if (mode === 'course') {
-      openWhatsApp(`Salve, vorrei informazioni sul corso ${itemName} a Varese.`);
+      openWhatsApp(`Salve, vorrei informazioni sul corso ${itemName} a ${centre.city}.`);
     } else {
       const msg = isNamed
         ? `Salve, vorrei prenotare una consulenza presso ${centre.name} a ${centre.city}.`
@@ -114,8 +108,8 @@ export const BookingSheet = ({ open, onOpenChange, mode, itemName = '', itemName
   };
 
   const drawerTitle = mode === 'course'
-    ? 'Seleziona la sede del corso'
-    : 'La tua Consulenza';
+    ? 'La tua Residenza Formativa'
+    : 'Dove incontrarci';
 
   // Submitted confirmation
   if (submitted) {
@@ -227,18 +221,10 @@ export const BookingSheet = ({ open, onOpenChange, mode, itemName = '', itemName
   }
 
   // Main location selector
-  const locations = mode === 'course'
-    ? CENTRES.filter(c => c.forCourses)
-    : CENTRES;
+  const locations = CENTRES;
 
   const content = (
     <div className="space-y-4 py-4 px-2">
-      {mode === 'course' && (
-        <p className="font-cormorant italic text-sm text-center px-4 mb-4" style={{ color: '#D4AF37' }}>
-          La formazione Belle Femme si svolge attualmente presso centri selezionati a Varese.
-        </p>
-      )}
-
       <div className="flex flex-col gap-0">
         {locations.map((centre) => (
           <button
@@ -248,7 +234,11 @@ export const BookingSheet = ({ open, onOpenChange, mode, itemName = '', itemName
             style={{ borderBottom: '1px solid rgba(212,175,55,0.1)' }}
           >
             <div>
-              {centre.addr ? (
+              {(mode === 'course' || !centre.addr) ? (
+                <p className="font-cormorant text-lg" style={{ color: 'rgba(245,245,245,0.7)' }}>
+                  {centre.city}
+                </p>
+              ) : (
                 <>
                   <p className="font-inter font-bold text-[13px] uppercase tracking-[0.1em]" style={{ color: '#F5F5F5' }}>
                     {centre.name}
@@ -257,16 +247,13 @@ export const BookingSheet = ({ open, onOpenChange, mode, itemName = '', itemName
                     {centre.addr}
                   </p>
                 </>
-              ) : (
-                <p className="font-cormorant text-lg" style={{ color: 'rgba(245,245,245,0.7)' }}>
-                  {centre.city}
-                </p>
               )}
             </div>
             <div className="flex items-center gap-2">
-              <span className="font-inter text-[10px] tracking-[0.1em] uppercase" style={{ color: 'rgba(212,175,55,0.6)' }}>
-                {getSpotLabel(centre.city)}
-              </span>
+              {false && (
+                <span className="font-inter text-[10px] tracking-[0.1em] uppercase" style={{ color: 'rgba(212,175,55,0.6)' }}>
+                </span>
+              )}
               <ChevronRight className="w-4 h-4" style={{ color: 'rgba(212,175,55,0.4)' }} />
             </div>
           </button>

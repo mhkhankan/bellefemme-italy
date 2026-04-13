@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { Menu, X } from 'lucide-react';
+import { BookingSheet } from './BookingSheet';
 
 export const StickyHeader = () => {
   const { t } = useLanguage();
@@ -12,13 +13,12 @@ export const StickyHeader = () => {
   const isHome = location.pathname === '/';
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [bookingOpen, setBookingOpen] = useState(false);
 
-  // Close menu on route change
   useEffect(() => {
     setMenuOpen(false);
   }, [location.pathname]);
 
-  // Lock body scroll when menu is open
   useEffect(() => {
     if (menuOpen) {
       document.body.style.overflow = 'hidden';
@@ -109,15 +109,12 @@ export const StickyHeader = () => {
           </div>
 
           <div className="px-6 pb-12 pt-6 flex flex-col items-center gap-6 border-t border-primary/10 mt-auto">
-            <a
-              href="https://wa.me/393924487530"
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => setMenuOpen(false)}
+            <button
+              onClick={() => { setMenuOpen(false); setBookingOpen(true); }}
               className="w-full font-inter font-bold text-[11px] tracking-[0.2em] uppercase bg-primary text-primary-foreground px-8 py-4 min-h-[48px] hover:bg-primary/90 transition-colors text-center"
             >
-              PRENOTA UNA CONSULENZA
-            </a>
+              {t.treatments.checkAvailability}
+            </button>
             <LanguageSwitcher />
           </div>
         </nav>,
@@ -193,6 +190,7 @@ export const StickyHeader = () => {
         </div>
       </header>
       {mobileOverlay}
+      <BookingSheet open={bookingOpen} onOpenChange={setBookingOpen} mode="hero" />
     </>
   );
 };

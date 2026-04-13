@@ -4,7 +4,7 @@ import useEmblaCarousel from 'embla-carousel-react';
 import { BookingSheet } from './BookingSheet';
 import { useLanguage } from '@/contexts/LanguageContext';
 import type { TreatmentItem } from '@/lib/translations';
-import { ChevronRight } from 'lucide-react';
+import { translations } from '@/lib/translations';
 
 const IMAGE_MAP: Record<string, string> = {
   'raw-stroke': '/treatments/01-tratto-grezzo-sopracciglia.jpg',
@@ -138,15 +138,39 @@ const TestimonialBlock = ({ language }: { language: string }) => {
   );
 };
 
+/* SwipePill — self-contained CSS animation, no Tailwind keyframes needed */
+const swipePillKeyframes = `
+  @keyframes slideDot {
+    0%   { transform: translateX(0); opacity: 1; }
+    45%  { transform: translateX(9px); opacity: 1; }
+    46%  { transform: translateX(0); opacity: 0; }
+    47%  { opacity: 1; }
+    100% { transform: translateX(0); opacity: 1; }
+  }
+`;
+
+const SwipePill = () => (
+  <>
+    <style>{swipePillKeyframes}</style>
+    <div className="absolute bottom-4 right-4 z-10 flex items-center gap-1.5 rounded-full px-3 py-1.5" style={{ backgroundColor: 'rgba(0,0,0,0.55)', backdropFilter: 'blur(4px)' }}>
+      <span className="font-inter text-[9px] tracking-[0.15em] uppercase" style={{ color: 'rgba(212,175,55,0.8)' }}>
+        Scorri
+      </span>
+      <div className="w-1 h-1 rounded-full" style={{ backgroundColor: '#D4AF37', animation: 'slideDot 1.8s ease-in-out 3' }} />
+    </div>
+  </>
+);
+
 interface MobileSwiperProps {
   treatments: TreatmentItem[];
+  treatmentsIT: TreatmentItem[];
   language: string;
   tickerText: string;
   t: ReturnType<typeof useLanguage>['t'];
-  onConsultation: (name: string) => void;
+  onConsultation: (name: string, nameIT: string) => void;
 }
 
-const MobileSwiper = ({ treatments, language, tickerText, t, onConsultation }: MobileSwiperProps) => {
+const MobileSwiper = ({ treatments, treatmentsIT, language, tickerText, t, onConsultation }: MobileSwiperProps) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   const [emblaRef, emblaApi] = useEmblaCarousel({
@@ -170,12 +194,12 @@ const MobileSwiper = ({ treatments, language, tickerText, t, onConsultation }: M
   }, [emblaApi, onSelect]);
 
   return (
-    <div id="atelier" className="md:hidden">
+    <div className="md:hidden">
       {/* Horizontal carousel */}
       <div className="relative">
         <div className="overflow-hidden" ref={emblaRef}>
           <div className="flex">
-            {treatments.map((item) => (
+            {treatments.map((item, idx) => (
               <div
                 key={item.id}
                 className="flex-[0_0_100%] min-w-0 h-svh flex flex-col"
@@ -197,6 +221,9 @@ const MobileSwiper = ({ treatments, language, tickerText, t, onConsultation }: M
                     numberSize="text-6xl"
                     imgStyle={{ height: '100%', width: '100%', objectFit: 'cover' }}
                   />
+                  {selectedIndex === 0 && idx === 0 && (
+                    <SwipePill />
+                  )}
                 </div>
 
                 {/* Content */}
@@ -220,7 +247,10 @@ const MobileSwiper = ({ treatments, language, tickerText, t, onConsultation }: M
                   </p>
 
                   <button
-                    onClick={() => onConsultation(item.title)}
+                    onClick={() => onConsultation(
+                      item.title,
+                      treatmentsIT.find(ti => ti.id === item.id)?.title ?? item.title
+                    )}
                     className="w-full min-h-[48px] bg-primary px-8 py-3 font-inter text-[11px] font-bold uppercase tracking-[0.22em] text-primary-foreground transition-all duration-300 hover:bg-primary/90"
                   >
                     {t.treatments.checkAvailability}
@@ -230,13 +260,6 @@ const MobileSwiper = ({ treatments, language, tickerText, t, onConsultation }: M
             ))}
           </div>
         </div>
-
-        {/* Arrow hint — only on first slide */}
-        {selectedIndex === 0 && (
-          <div className="absolute right-4 top-1/2 -translate-y-1/2 z-10 animate-nudge">
-            <ChevronRight className="w-8 h-8 text-primary/60" />
-          </div>
-        )}
       </div>
 
       {/* Dots — gold horizontal lines */}
@@ -264,13 +287,16 @@ const MobileSwiper = ({ treatments, language, tickerText, t, onConsultation }: M
 export const TreatmentArchitecture = () => {
   const [sheetOpen, setSheetOpen] = useState(false);
   const [selectedTreatment, setSelectedTreatment] = useState('');
+  const [selectedTreatmentIT, setSelectedTreatmentIT] = useState('');
   const { t, language } = useLanguage();
   const [activeIndex, setActiveIndex] = useState(0);
 
   const treatments = t.treatments.items;
+  const treatmentsIT = translations.it.treatments.items;
 
-  const openConsultation = (treatmentName: string) => {
+  const openConsultation = (treatmentName: string, treatmentNameIT: string) => {
     setSelectedTreatment(treatmentName);
+    setSelectedTreatmentIT(treatmentNameIT);
     setSheetOpen(true);
   };
 
@@ -285,7 +311,7 @@ export const TreatmentArchitecture = () => {
 
   return (
     <>
-      <section className="relative">
+      <section id="atelier" className="relative">
         <div className="hidden py-16 md:block md:py-20">
           <motion.div
             variants={fadeIn}
@@ -321,6 +347,7 @@ export const TreatmentArchitecture = () => {
 
         <MobileSwiper
           treatments={treatments}
+          treatmentsIT={treatmentsIT}
           language={language}
           tickerText={tickerText}
           t={t}
@@ -358,7 +385,10 @@ export const TreatmentArchitecture = () => {
                       {item.description}
                     </p>
                     <button
-                      onClick={() => openConsultation(item.title)}
+                      onClick={() => openConsultation(
+                        item.title,
+                        treatmentsIT.find(ti => ti.id === item.id)?.title ?? item.title
+                      )}
                       className="min-h-[48px] bg-primary px-10 py-4 font-inter text-[10px] font-bold uppercase tracking-[0.2em] text-primary-foreground transition-all duration-500 hover:bg-primary/90"
                     >
                       {t.treatments.checkAvailability}
@@ -381,7 +411,7 @@ export const TreatmentArchitecture = () => {
         onOpenChange={setSheetOpen}
         mode="treatment"
         itemName={selectedTreatment}
-        itemNameIT={selectedTreatment}
+        itemNameIT={selectedTreatmentIT}
       />
     </>
   );

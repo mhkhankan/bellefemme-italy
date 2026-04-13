@@ -7,6 +7,7 @@ import { StickyHeader } from '@/components/StickyHeader';
 import { SiteFooter } from '@/components/SiteFooter';
 import { CookieConsent } from '@/components/CookieConsent';
 import { StructuredData } from '@/components/StructuredData';
+import { WhatsAppSticky } from '@/components/WhatsAppSticky';
 
 const JURIST_CITIES = ['Milano', 'Dubai', 'Venezia', 'Turchia', 'Romania'];
 
@@ -132,7 +133,7 @@ const LaFirma = () => {
 
   const waMsg = encodeURIComponent(
     language === 'it'
-      ? 'Buongiorno, vorrei prenotare una consulenza privata.'
+      ? 'Salve, vorrei prenotare una consulenza privata.'
       : 'Hello, I would like to book a private consultation.'
   );
 
@@ -363,6 +364,7 @@ const LaFirma = () => {
         <SiteFooter />
       </div>
       <CookieConsent />
+      <WhatsAppSticky />
     </div>
   );
 };

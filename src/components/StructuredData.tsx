@@ -64,7 +64,7 @@ export const StructuredData = ({ path = '/', pageTitle, pageDescription }: Struc
         "telephone": "+393924487530",
         "email": "info@bellefemme.it",
         "address": { "@type": "PostalAddress", "addressLocality": "Varese", "addressRegion": "Lombardia", "addressCountry": "IT" },
-        "areaServed": ["Varese", "Milano", "Roma"],
+        "areaServed": ["Varese", "Milano"],
         "priceRange": "€€€€"
       },
       {
@@ -88,7 +88,7 @@ export const StructuredData = ({ path = '/', pageTitle, pageDescription }: Struc
         "@type": "EducationalOrganization",
         "@id": "https://www.bellefemme.it/#academy",
         "name": "Belle Femme Academy",
-        "description": "Formazione professionale in Dermopigmentazione e PMU. Corsi dal vivo con Master Trainer Mouna Chabbar a Varese, Milano e Roma.",
+        "description": "Formazione professionale in Dermopigmentazione e PMU. Corsi dal vivo con Master Trainer Mouna Chabbar a Varese e Milano.",
         "url": "https://www.bellefemme.it/#academy",
         "address": { "@type": "PostalAddress", "addressLocality": "Varese", "addressRegion": "Lombardia", "addressCountry": "IT" }
       },
@@ -97,7 +97,7 @@ export const StructuredData = ({ path = '/', pageTitle, pageDescription }: Struc
         "provider": { "@id": "https://www.bellefemme.it/#business" },
         "name": s.name,
         "description": s.description,
-        "areaServed": ["Varese", "Milano", "Roma"],
+        "areaServed": ["Varese", "Milano"],
       })),
       ...(path !== '/' && pageTitle && pageDescription ? [{
         "@type": "Course",

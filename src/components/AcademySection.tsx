@@ -78,7 +78,7 @@ export const AcademySection = () => {
 
   const handlePrivateCourseWhatsApp = () => {
     const msg = language === 'it'
-      ? 'Buongiorno, sono interessata a un corso privato 1 su 1 con la Craft Master. Vorrei ricevere informazioni.'
+      ? 'Salve, sono interessata a un corso privato 1 su 1 con la Craft Master. Vorrei ricevere informazioni.'
       : 'Hello, I am interested in a private 1-to-1 course with the Craft Master. I would like more information.';
     window.open(`https://wa.me/393924487530?text=${encodeURIComponent(msg)}`, '_blank');
   };
@@ -217,6 +217,14 @@ export const AcademySection = () => {
                 {language === 'it' ? 'RICHIEDI INFORMAZIONI' : 'REQUEST INFORMATION'}
               </button>
             </motion.div>
+
+            {/* Academy proof block */}
+            <div className="mb-16 text-center space-y-4">
+              <div className="h-px w-12 mx-auto" style={{ backgroundColor: 'rgba(212,175,55,0.4)' }} />
+              <p className="font-cormorant italic text-xl text-primary/90 max-w-lg mx-auto">
+                Ogni corsista esce con un metodo — non solo una tecnica.
+              </p>
+            </div>
 
             {/* COURSE CATALOGUE — Accordion */}
             <motion.div
