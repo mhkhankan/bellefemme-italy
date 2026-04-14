@@ -360,11 +360,13 @@ export const AcademySection = () => {
                     style={{ backgroundColor: '#0A0A0A', borderTop: '3px solid #D4AF37', border: '1px solid rgba(212,175,55,0.12)', borderTopWidth: '3px', borderTopColor: '#D4AF37' }}
                   >
                     <span className="absolute font-cormorant pointer-events-none" style={{ fontSize: '56px', color: 'rgba(212,175,55,0.08)', top: '12px', left: '20px' }}>"</span>
-                    <p className="font-cormorant italic" style={{ fontSize: '17px', color: 'rgba(245,245,245,0.85)', lineHeight: 1.75, marginTop: '28px' }}>
-                      {language === 'it'
+                    <TruncatedQuote
+                      text={language === 'it'
                         ? testimonial.quote_it
                         : testimonial.quote_en}
-                    </p>
+                      maxLines={5}
+                      language={language}
+                    />
                     <div style={{ borderTop: '1px solid rgba(212,175,55,0.1)', marginTop: '18px', paddingTop: '14px' }}>
                       <p className="font-inter font-semibold text-[11px] uppercase" style={{ letterSpacing: '0.18em', color: '#D4AF37' }}>
                         {testimonial.name}
