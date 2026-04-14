@@ -5,6 +5,7 @@ import { getCatalogCourses, type Course } from '@/Data/courses';
 import { BookingSheet } from './BookingSheet';
 import { Link } from 'react-router-dom';
 import { ChevronDown } from 'lucide-react';
+import TruncatedQuote from './TruncatedQuote';
 
 
 const TESTIMONIALS_ACADEMY = [

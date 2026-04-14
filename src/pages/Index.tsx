@@ -10,6 +10,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { motion } from 'framer-motion';
+import TruncatedQuote from '@/components/TruncatedQuote';
 
 window.history.scrollRestoration = 'manual';
 
