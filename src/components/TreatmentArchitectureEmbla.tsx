@@ -231,16 +231,6 @@ const MobileSwiper = ({ treatments, treatmentsIT, language, tickerText, t, onCon
                     numberSize="text-6xl"
                     imgStyle={{ height: '100%', width: '100%', objectFit: 'cover' }}
                   />
-                  {/* Gold line sweep on first card */}
-                  {selectedIndex === 0 && idx === 0 && (
-                    <motion.div
-                      className="absolute bottom-0 left-0 h-px"
-                      style={{ backgroundColor: '#D4AF37' }}
-                      initial={{ width: '0%' }}
-                      animate={{ width: '100%' }}
-                      transition={{ duration: 1.5, delay: 1.0, ease: 'easeInOut' }}
-                    />
-                  )}
                 </div>
 
                 {/* Content */}

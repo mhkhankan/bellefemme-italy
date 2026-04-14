@@ -11,14 +11,17 @@ const TruncatedQuote = ({ text, maxLines, language }: TruncatedQuoteProps) => {
   const [expanded, setExpanded] = useState(false);
   const [needsTruncation, setNeedsTruncation] = useState(false);
   const textRef = useRef<HTMLParagraphElement>(null);
+  const MARGIN_TOP = 28;
 
   useEffect(() => {
     if (textRef.current) {
       const lineHeight = parseFloat(getComputedStyle(textRef.current).lineHeight);
-      const maxHeight = lineHeight * maxLines;
+      const maxHeight = lineHeight * maxLines + MARGIN_TOP;
       setNeedsTruncation(textRef.current.scrollHeight > maxHeight + 2);
     }
   }, [text, maxLines]);
+
+  const collapsedMaxHeight = `calc(${maxLines} * 1.75 * 17px + ${MARGIN_TOP}px)`;
 
   return (
     <div className="relative">
@@ -28,13 +31,13 @@ const TruncatedQuote = ({ text, maxLines, language }: TruncatedQuoteProps) => {
           transition={{ duration: 0.4, ease: 'easeInOut' }}
           className="overflow-hidden relative"
           style={!expanded && needsTruncation ? {
-            maxHeight: `calc(${maxLines} * 1.75 * 17px)`,
+            maxHeight: collapsedMaxHeight,
           } : undefined}
         >
           <p
             ref={textRef}
             className="font-cormorant italic"
-            style={{ fontSize: '17px', color: 'rgba(245,245,245,0.85)', lineHeight: 1.75, marginTop: '28px' }}
+            style={{ fontSize: '17px', color: 'rgba(245,245,245,0.85)', lineHeight: 1.75, marginTop: `${MARGIN_TOP}px` }}
           >
             {text}
           </p>
