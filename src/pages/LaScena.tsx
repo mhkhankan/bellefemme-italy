@@ -23,76 +23,16 @@ interface ScenaCard {
 
 const SCENA_CARDS: ScenaCard[] = [
   {
-    id: 'dubai-judge-2024',
-    date: '2024',
-    tag: 'congressi',
-    geo: 'Dubai',
-    title_it: 'Giudice Internazionale — Dubai',
-    title_en: 'International Judge — Dubai',
-    desc_it: 'Membro di giuria nella competizione tecnica internazionale di dermopigmentazione a Dubai. Standard di eccellenza valutati su scala globale.',
-    desc_en: 'Member of the jury at the international PMU technical competition in Dubai. Excellence standards assessed on a global scale.',
-    image: '/branding/bf-placeholder.jpg',
-    alt: 'Mouna Chabbar — Giudice Internazionale Dubai',
-  },
-  {
-    id: 'horus-torino',
-    date: '2024',
-    tag: 'formazione',
-    geo: 'Torino',
-    title_it: 'Residenza Formativa — Torino',
-    title_en: 'Training Residency — Turin',
-    desc_it: 'Sessione di formazione professionale avanzata a Torino. Trasmissione diretta del metodo Belle Femme a una nuova generazione di artisti PMU.',
-    desc_en: 'Advanced professional training session in Turin. Direct transmission of the Belle Femme method to a new generation of PMU artists.',
-    image: '/branding/bf-placeholder.jpg',
-    alt: 'Belle Femme formazione Torino — Horus',
-  },
-  {
-    id: 'milano-judge-2023',
-    date: '2023',
-    tag: 'congressi',
-    geo: 'Milano',
-    title_it: 'Giudice Internazionale — Milano',
-    title_en: 'International Judge — Milan',
-    desc_it: 'Giudice ufficiale nella competizione internazionale PMU a Milano. Quando il settore misura l\'eccellenza, chiama Mouna Chabbar.',
-    desc_en: 'Official judge at the international PMU competition in Milan. When the industry measures excellence, it calls Mouna Chabbar.',
-    image: '/branding/bf-placeholder.jpg',
-    alt: 'Mouna Chabbar — Giudice Internazionale Milano',
-  },
-  {
-    id: 'venezia-judge',
-    date: '2022',
+    id: 'venezia-wlc-2021',
+    date: '2021',
     tag: 'congressi',
     geo: 'Venezia',
-    title_it: 'Giudice Internazionale — Venezia',
-    title_en: 'International Judge — Venice',
-    desc_it: 'Giudice tecnico nella competizione internazionale di Venezia. Presenza costante nei palcoscenici più prestigiosi del settore PMU europeo.',
-    desc_en: 'Technical judge at the international competition in Venice. Consistent presence on the most prestigious stages of European PMU.',
-    image: '/la-scena/giudice-internazionale-pmu-venezia-architettura-volto.jpg',
-    alt: 'Mouna Chabbar — Giudice Internazionale Venezia',
-  },
-  {
-    id: 'romania-judge',
-    date: '2022',
-    tag: 'congressi',
-    geo: 'Romania',
-    title_it: 'Giudice Internazionale — Romania',
-    title_en: 'International Judge — Romania',
-    desc_it: 'Membro di giuria alla competizione tecnica internazionale in Romania. Standard di valutazione portati dalla Lombardia all\'Europa dell\'Est.',
-    desc_en: 'Jury member at the international technical competition in Romania. Evaluation standards brought from Lombardy to Eastern Europe.',
-    image: '/la-scena/giudice-internazionale-pmu-romania-dimostrazione-live.jpg',
-    alt: 'Mouna Chabbar — Giudice Internazionale Romania',
-  },
-  {
-    id: 'torino-setup-2022',
-    date: '2022',
-    tag: 'formazione',
-    geo: 'Torino',
-    title_it: 'Residenza Formativa — Torino',
-    title_en: 'Training Residency — Turin',
-    desc_it: 'Allestimento della residenza formativa Horus Academy a Torino. Postazioni individuali, kit personalizzati, massimo 4 corsiste. Il metodo Belle Femme nel dettaglio.',
-    desc_en: 'Training residency setup at Horus Academy Turin. Individual workstations, personalised kits, maximum 4 students. The Belle Femme method in detail.',
-    image: '/la-scena/residenza-formativa-horus-academy-torino-2022.jpg',
-    alt: 'Residenza formativa Belle Femme — Horus Academy Torino 2022',
+    title_it: 'Giudice PMU — World Lash Championship Venezia',
+    title_en: 'PMU Judge — World Lash Championship Venice',
+    desc_it: '2021 — Giudice ufficiale PMU al World Lash Championship Venice 2021 — Online Edition. Presenza internazionale nella competizione più importante del settore ciglia e dermopigmentazione.',
+    desc_en: '2021 — Official PMU judge at the World Lash Championship Venice 2021 — Online Edition. International presence at the most important lash and PMU competition.',
+    image: '/la-scena/giudice-internazionale-world-lash-championship-venezia-2021.jpg',
+    alt: 'Mouna Chabbar — PMU Judge World Lash Championship Venezia 2021',
   },
   {
     id: 'turchia-judge',
@@ -101,22 +41,34 @@ const SCENA_CARDS: ScenaCard[] = [
     geo: 'Turchia',
     title_it: 'Giudice Internazionale — Turchia',
     title_en: 'International Judge — Turkey',
-    desc_it: 'Giudice ufficiale nella competizione internazionale PMU in Turchia. Cinque paesi. Un metodo. Una firma riconosciuta ovunque.',
-    desc_en: 'Official judge at the international PMU competition in Turkey. Five countries. One method. A signature recognised everywhere.',
+    desc_it: '2021 — Giudice ufficiale nella competizione internazionale PMU in Turchia. Cinque paesi. Un metodo. Una firma riconosciuta ovunque.',
+    desc_en: '2021 — Official judge at the international PMU competition in Turkey. Five countries. One method. A signature recognised everywhere.',
     image: '/la-scena/giudice-internazionale-pmu-turchia-cappadocia-2022.JPG',
     alt: 'Mouna Chabbar — Giudice Internazionale Turchia',
   },
   {
-    id: 'venezia-wlc-2021',
-    date: '2021',
+    id: 'romania-judge',
+    date: '2022',
+    tag: 'congressi',
+    geo: 'Romania',
+    title_it: 'Giudice Internazionale — Romania',
+    title_en: 'International Judge — Romania',
+    desc_it: '2022 — Membro di giuria alla competizione tecnica internazionale in Romania. Standard di valutazione portati dalla Lombardia all\'Europa dell\'Est.',
+    desc_en: '2022 — Jury member at the international technical competition in Romania. Evaluation standards brought from Lombardy to Eastern Europe.',
+    image: '/la-scena/giudice-internazionale-pmu-romania-dimostrazione-live.jpg',
+    alt: 'Mouna Chabbar — Giudice Internazionale Romania',
+  },
+  {
+    id: 'venezia-judge',
+    date: '2022',
     tag: 'congressi',
     geo: 'Venezia',
-    title_it: 'Giudice PMU — World Lash Championship Venezia',
-    title_en: 'PMU Judge — World Lash Championship Venice',
-    desc_it: 'Giudice ufficiale PMU al World Lash Championship Venice 2021 — Online Edition. Presenza internazionale nella competizione più importante del settore ciglia e dermopigmentazione.',
-    desc_en: 'Official PMU judge at the World Lash Championship Venice 2021 — Online Edition. International presence at the most important lash and PMU competition.',
-    image: '/la-scena/giudice-internazionale-world-lash-championship-venezia-2021.jpg',
-    alt: 'Mouna Chabbar — PMU Judge World Lash Championship Venezia 2021',
+    title_it: 'Giudice Internazionale — Venezia',
+    title_en: 'International Judge — Venice',
+    desc_it: '2022 — Giudice tecnico nella competizione internazionale di Venezia. Presenza costante nei palcoscenici più prestigiosi del settore PMU europeo.',
+    desc_en: '2022 — Technical judge at the international competition in Venice. Consistent presence on the most prestigious stages of European PMU.',
+    image: '/la-scena/giudice-internazionale-pmu-venezia-architettura-volto.jpg',
+    alt: 'Mouna Chabbar — Giudice Internazionale Venezia',
   },
   {
     id: 'pmu-masters-2021',
@@ -125,10 +77,34 @@ const SCENA_CARDS: ScenaCard[] = [
     geo: 'Internazionale',
     title_it: 'PMU Masters — Feature Mouna Chabbar',
     title_en: 'PMU Masters — Mouna Chabbar Feature',
-    desc_it: 'Mouna Chabbar protagonista su PMU Masters con il format "Why Microblading?" — riconoscimento internazionale del suo metodo e della sua visione tecnica.',
-    desc_en: 'Mouna Chabbar featured on PMU Masters with the "Why Microblading?" format — international recognition of her method and technical vision.',
+    desc_it: '2021 — Mouna Chabbar protagonista su PMU Masters con il format "Why Microblading?" — riconoscimento internazionale del suo metodo e della sua visione tecnica.',
+    desc_en: '2021 — Mouna Chabbar featured on PMU Masters with the "Why Microblading?" format — international recognition of her method and technical vision.',
     image: '/la-scena/pmu-masters-feature-mouna-chabbar-microblading-2021.jpg',
     alt: 'Mouna Chabbar — PMU Masters Feature Microblading 2021',
+  },
+  {
+    id: 'torino-setup-2022',
+    date: '2022',
+    tag: 'formazione',
+    geo: 'Torino',
+    title_it: 'Residenza Formativa — Torino',
+    title_en: 'Training Residency — Turin',
+    desc_it: '2022 — Allestimento della residenza formativa Horus Academy a Torino. Postazioni individuali, kit personalizzati, massimo 4 corsiste. Il metodo Belle Femme nel dettaglio.',
+    desc_en: '2022 — Training residency setup at Horus Academy Turin. Individual workstations, personalised kits, maximum 4 students. The Belle Femme method in detail.',
+    image: '/la-scena/residenza-formativa-horus-academy-torino-2022.jpg',
+    alt: 'Residenza formativa Belle Femme — Horus Academy Torino 2022',
+  },
+  {
+    id: 'horus-torino',
+    date: '2024',
+    tag: 'formazione',
+    geo: 'Torino',
+    title_it: 'Residenza Formativa — Torino',
+    title_en: 'Training Residency — Turin',
+    desc_it: '2024 — Sessione di formazione professionale avanzata a Torino. Trasmissione diretta del metodo Belle Femme a una nuova generazione di artisti PMU.',
+    desc_en: '2024 — Advanced professional training session in Turin. Direct transmission of the Belle Femme method to a new generation of PMU artists.',
+    image: '/branding/bf-placeholder.jpg',
+    alt: 'Belle Femme formazione Torino — Horus',
   },
   {
     id: 'calabria-corso-privato-2020',
@@ -137,8 +113,8 @@ const SCENA_CARDS: ScenaCard[] = [
     geo: 'Calabria',
     title_it: 'Corso Privato — Calabria',
     title_en: 'Private Course — Calabria',
-    desc_it: 'Sessione di mentorship privata in Calabria. Supervisione diretta della tecnica blade su pelle sintetica — il trasferimento del metodo AcademyS nella sua forma più pura.',
-    desc_en: 'Private mentorship session in Calabria. Direct supervision of blade technique on synthetic skin — the transfer of the AcademyS method in its purest form.',
+    desc_it: '2020 — Sessione di mentorship privata in Calabria. Supervisione diretta della tecnica blade su pelle sintetica — il trasferimento del metodo AcademyS nella sua forma più pura.',
+    desc_en: '2020 — Private mentorship session in Calabria. Direct supervision of blade technique on synthetic skin — the transfer of the AcademyS method in its purest form.',
     image: '/la-scena/formazione-corso-privato-academys-calabria-2020.jpg',
     alt: 'Corso privato Belle Femme Academy — Calabria 2020',
   },
@@ -228,7 +204,7 @@ const LaScena = () => {
                 style={{ border: '1px solid rgba(212,175,55,0.12)' }}
               >
                 {/* Image with tag + geo overlay */}
-                <div className="relative" style={{ height: '280px' }}>
+                <div className="relative" style={{ aspectRatio: '16/9' }}>
                   <img src={card.image} alt={card.alt} className="w-full h-full object-cover" loading="lazy" />
                   <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.7) 100%)' }} />
 
@@ -241,13 +217,6 @@ const LaScena = () => {
                     </span>
                     <span className="font-inter text-[9px] tracking-[0.15em] uppercase" style={{ color: 'rgba(245,245,245,0.7)' }}>
                       {card.geo}
-                    </span>
-                  </div>
-
-                  {/* Year */}
-                  <div className="absolute top-4 right-4">
-                    <span className="font-cormorant text-2xl font-light" style={{ color: 'rgba(212,175,55,0.75)' }}>
-                      {card.date}
                     </span>
                   </div>
                 </div>
