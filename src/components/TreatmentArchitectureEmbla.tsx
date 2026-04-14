@@ -1,10 +1,11 @@
 import { motion } from 'framer-motion';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState, useRef } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { BookingSheet } from './BookingSheet';
 import { useLanguage } from '@/contexts/LanguageContext';
 import type { TreatmentItem } from '@/lib/translations';
 import { translations } from '@/lib/translations';
+import TruncatedQuote from './TruncatedQuote';
 
 const IMAGE_MAP: Record<string, string> = {
   'raw-stroke': '/treatments/01-tratto-grezzo-sopracciglia.jpg',
@@ -26,6 +27,17 @@ const ALT_MAP: Record<string, string> = {
   'lash-architecture': 'Laminazione ciglia Varese — Gaze Sculpting Kerafill',
   'brow-blueprint': 'Architettura sopracciglia Varese — Brow Architecture Sezione Aurea',
   'lash-sculpting': 'Extension ciglia su misura Varese — Lash Sculpting volumetria',
+};
+
+const POSITION_MAP: Record<string, string> = {
+  'raw-stroke': 'center 30%',
+  'pigment-restauro': 'center center',
+  'shadow-layer': 'center center',
+  'lip-vitality': 'center 40%',
+  'eye-engineering': 'center center',
+  'lash-architecture': 'center center',
+  'brow-blueprint': 'center 30%',
+  'lash-sculpting': 'center center',
 };
 
 const TREATMENT_EOS_TESTIMONIALS = [
@@ -76,9 +88,11 @@ const TreatmentTestimonialsEOS = ({ language }: { language: string }) => (
           style={{ backgroundColor: '#0A0A0A', borderLeft: '3px solid #D4AF37', border: '1px solid rgba(212,175,55,0.12)', borderLeftWidth: '3px', borderLeftColor: '#D4AF37' }}
         >
           <span className="absolute font-cormorant pointer-events-none" style={{ fontSize: '56px', color: 'rgba(212,175,55,0.08)', top: '12px', left: '20px' }}>"</span>
-          <p className="font-cormorant italic" style={{ fontSize: '17px', color: 'rgba(245,245,245,0.85)', lineHeight: 1.75, marginTop: '28px' }}>
-            {language === 'it' ? t.quote_it : t.quote_en}
-          </p>
+          <TruncatedQuote
+            text={language === 'it' ? t.quote_it : t.quote_en}
+            maxLines={3}
+            language={language}
+          />
           <div style={{ borderTop: '1px solid rgba(212,175,55,0.1)', marginTop: '18px', paddingTop: '14px' }}>
             <p className="font-inter font-semibold text-[11px] uppercase" style={{ letterSpacing: '0.18em', color: '#D4AF37' }}>
               {t.name}
@@ -126,7 +140,7 @@ const TreatmentImage = ({
       className={`${sizeClass} object-cover`}
       loading={item.number <= '02' ? 'eager' : 'lazy'}
       onError={() => setImgFailed(true)}
-      style={imgStyle}
+      style={{ ...imgStyle, objectPosition: POSITION_MAP[item.id] || 'center center' }}
     />
   ) : (
     <div className={`${sizeClass} shimmer-venetian flex items-center justify-center`}>
@@ -136,29 +150,6 @@ const TreatmentImage = ({
     </div>
   );
 };
-
-/* SwipePill — self-contained CSS animation, no Tailwind keyframes needed */
-const swipePillKeyframes = `
-  @keyframes slideDot {
-    0%   { transform: translateX(0); opacity: 1; }
-    45%  { transform: translateX(9px); opacity: 1; }
-    46%  { transform: translateX(0); opacity: 0; }
-    47%  { opacity: 1; }
-    100% { transform: translateX(0); opacity: 1; }
-  }
-`;
-
-const SwipePill = () => (
-  <>
-    <style>{swipePillKeyframes}</style>
-    <div className="absolute bottom-4 right-4 z-10 flex items-center gap-1.5 rounded-full px-3 py-1.5" style={{ backgroundColor: 'rgba(0,0,0,0.55)', backdropFilter: 'blur(4px)' }}>
-      <span className="font-inter text-[9px] tracking-[0.15em] uppercase" style={{ color: 'rgba(212,175,55,0.8)' }}>
-        Scorri
-      </span>
-      <div className="w-1 h-1 rounded-full" style={{ backgroundColor: '#D4AF37', animation: 'slideDot 1.8s ease-in-out 3' }} />
-    </div>
-  </>
-);
 
 interface MobileSwiperProps {
   treatments: TreatmentItem[];
@@ -192,6 +183,25 @@ const MobileSwiper = ({ treatments, treatmentsIT, language, tickerText, t, onCon
     return () => { emblaApi.off('select', onSelect); };
   }, [emblaApi, onSelect]);
 
+  // Peek animation: briefly offset to reveal edge of card 2
+  useEffect(() => {
+    if (!emblaApi) return;
+    const timer = setTimeout(() => {
+      const container = emblaApi.containerNode();
+      if (container) {
+        container.style.transition = 'transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+        container.style.transform = 'translateX(-40px)';
+        setTimeout(() => {
+          container.style.transform = 'translateX(0)';
+          setTimeout(() => {
+            container.style.transition = '';
+          }, 600);
+        }, 800);
+      }
+    }, 1200);
+    return () => clearTimeout(timer);
+  }, [emblaApi]);
+
   return (
     <div className="md:hidden">
       {/* Horizontal carousel */}
@@ -201,7 +211,8 @@ const MobileSwiper = ({ treatments, treatmentsIT, language, tickerText, t, onCon
             {treatments.map((item, idx) => (
               <div
                 key={item.id}
-                className="flex-[0_0_100%] min-w-0 h-svh flex flex-col"
+                className="flex-[0_0_100%] min-w-0 flex flex-col"
+                style={{ height: 'calc(100svh - 60px)', marginTop: '60px' }}
               >
                 {/* Header inside each slide */}
                 <div className="flex-shrink-0 px-6 pt-8 pb-4 text-center space-y-2">
@@ -220,8 +231,15 @@ const MobileSwiper = ({ treatments, treatmentsIT, language, tickerText, t, onCon
                     numberSize="text-6xl"
                     imgStyle={{ height: '100%', width: '100%', objectFit: 'cover' }}
                   />
+                  {/* Gold line sweep on first card */}
                   {selectedIndex === 0 && idx === 0 && (
-                    <SwipePill />
+                    <motion.div
+                      className="absolute bottom-0 left-0 h-px"
+                      style={{ backgroundColor: '#D4AF37' }}
+                      initial={{ width: '0%' }}
+                      animate={{ width: '100%' }}
+                      transition={{ duration: 1.5, delay: 1.0, ease: 'easeInOut' }}
+                    />
                   )}
                 </div>
 
@@ -259,22 +277,6 @@ const MobileSwiper = ({ treatments, treatmentsIT, language, tickerText, t, onCon
             ))}
           </div>
         </div>
-      </div>
-
-      {/* Dots — gold horizontal lines */}
-      <div className="flex items-center justify-center gap-2 pt-4">
-        {treatments.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => emblaApi?.scrollTo(i)}
-            className="py-3 px-1 flex items-center justify-center"
-            aria-label={`Go to treatment ${i + 1}`}
-          >
-            <div className={`h-px transition-all duration-300 ${
-              selectedIndex === i ? 'w-6 bg-primary' : 'w-3 bg-primary/30'
-            }`} />
-          </button>
-        ))}
       </div>
 
       {/* Mobile testimonials */}
