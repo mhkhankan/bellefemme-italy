@@ -363,19 +363,13 @@ export const CourseTemplate = ({ course }: CourseTemplateProps) => {
                   : 'Full programme, details, teacher and conditions. Leave your name and WhatsApp — receive the PDF instantly.'}
               </p>
               <div className="flex items-center gap-5">
-                {QRCodeSVG ? (
-                  <QRCodeSVG
-                    value={`https://bellefemme.it/brochure/${course.slug.replace('/', '')}`}
-                    size={72}
-                    bgColor="transparent"
-                    fgColor="#D4AF37"
-                    style={{ opacity: 0.7 }}
-                  />
-                ) : (
-                  <div className="w-[72px] h-[72px] flex items-center justify-center" style={{ border: '1px solid rgba(212,175,55,0.3)' }}>
-                    <span className="font-inter text-[10px] text-primary/50">QR</span>
-                  </div>
-                )}
+                <QRCodeSVG
+                  value={`https://bellefemme.it/brochure/${course.slug.replace('/', '')}`}
+                  size={72}
+                  bgColor="transparent"
+                  fgColor="#D4AF37"
+                  style={{ opacity: 0.7 }}
+                />
                 <div className="flex flex-col gap-2">
                   <span className="font-inter text-[9px] tracking-[0.15em] uppercase" style={{ color: 'rgba(245,245,245,0.25)' }}>
                     {language === 'it' ? 'Scansiona · oppure' : 'Scan · or'}
