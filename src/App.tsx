@@ -17,6 +17,7 @@ import CourseEyeliner from "./pages/CourseEyeliner";
 import CourseMasterclassBrows from "./pages/CourseMasterclassBrows";
 import CourseMasterclassLashes from "./pages/CourseMasterclassLashes";
 import CourseMasterclassLamination from "./pages/CourseMasterclassLamination";
+import BrochureGatePage from "./pages/BrochureGatePage";
 
 const queryClient = new QueryClient();
 
@@ -48,6 +49,7 @@ const App = () => (
           <Route path="/masterclass-architettura-sopracciglia" element={<CourseMasterclassBrows />} />
           <Route path="/masterclass-extension-ciglia" element={<CourseMasterclassLashes />} />
           <Route path="/masterclass-laminazione-ciglia" element={<CourseMasterclassLamination />} />
+          <Route path="/brochure/:courseSlug" element={<BrochureGatePage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

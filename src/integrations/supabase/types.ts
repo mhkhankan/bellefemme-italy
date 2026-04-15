@@ -41,6 +41,33 @@ export type Database = {
         }
         Relationships: []
       }
+      brochure_leads: {
+        Row: {
+          course_slug: string
+          created_at: string
+          download_token: string | null
+          id: string
+          name: string
+          whatsapp: string
+        }
+        Insert: {
+          course_slug: string
+          created_at?: string
+          download_token?: string | null
+          id?: string
+          name: string
+          whatsapp: string
+        }
+        Update: {
+          course_slug?: string
+          created_at?: string
+          download_token?: string | null
+          id?: string
+          name?: string
+          whatsapp?: string
+        }
+        Relationships: []
+      }
       spots_availability: {
         Row: {
           created_at: string
