@@ -96,7 +96,11 @@ export const AcademySection = () => {
     setExpandedCourse(next);
     if (next) {
       setTimeout(() => {
-        document.getElementById('course-' + courseId)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const el = document.getElementById('course-' + courseId);
+        if (el) {
+          const top = el.getBoundingClientRect().top + window.scrollY - 60;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
       }, 350);
     }
   };
@@ -292,7 +296,7 @@ export const AcademySection = () => {
                           transition={{ duration: 0.3 }}
                           className="overflow-hidden"
                         >
-                          <div className="pb-8 space-y-6">
+                          <div className="pb-8 space-y-6" style={{ maxHeight: 'calc(100svh - 60px)', overflowY: 'auto', WebkitOverflowScrolling: 'touch' }}>
                             {/* A9: Full bleed image */}
                             <CourseImage course={c} />
 
