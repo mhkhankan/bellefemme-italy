@@ -9,12 +9,7 @@ import { StickyHeader } from './StickyHeader';
 import { SiteFooter } from './SiteFooter';
 import { StructuredData } from './StructuredData';
 
-let QRCodeSVG: React.ComponentType<any> | null = null;
-try {
-  QRCodeSVG = require('qrcode.react').QRCodeSVG;
-} catch {
-  // fallback handled in render
-}
+import { QRCodeSVG } from 'qrcode.react';
 
 interface CourseTemplateProps {
   course: Course;

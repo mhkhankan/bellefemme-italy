@@ -49,6 +49,7 @@ const App = () => (
           <Route path="/masterclass-architettura-sopracciglia" element={<CourseMasterclassBrows />} />
           <Route path="/masterclass-extension-ciglia" element={<CourseMasterclassLashes />} />
           <Route path="/masterclass-laminazione-ciglia" element={<CourseMasterclassLamination />} />
+          <Route path="/brochure/:courseSlug" element={<BrochureGatePage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
