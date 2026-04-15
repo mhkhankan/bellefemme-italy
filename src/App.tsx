@@ -17,6 +17,7 @@ import CourseEyeliner from "./pages/CourseEyeliner";
 import CourseMasterclassBrows from "./pages/CourseMasterclassBrows";
 import CourseMasterclassLashes from "./pages/CourseMasterclassLashes";
 import CourseMasterclassLamination from "./pages/CourseMasterclassLamination";
+import BrochureGatePage from "./pages/BrochureGatePage";
 
 const queryClient = new QueryClient();
 
