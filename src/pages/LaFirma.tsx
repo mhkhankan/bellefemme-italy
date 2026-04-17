@@ -9,7 +9,7 @@ import { CookieConsent } from '@/components/CookieConsent';
 import { StructuredData } from '@/components/StructuredData';
 
 
-const JURIST_CITIES = ['Milano', 'Dubai', 'Venezia', 'Turchia', 'Romania'];
+const JURIST_CITIES = ['Venezia', 'Turchia', 'Romania'];
 
 interface CredentialItem {
   name_it: string;
@@ -46,15 +46,15 @@ const CREDENTIALS: CredentialGroup[] = [
       {
         name_it: 'Già Craft Master — AcademyS',
         name_en: 'Formerly Craft Master — AcademyS',
-        desc_it: 'PMU · Microblading · Removal — educatrice internazionale S-Brows.',
-        desc_en: 'PMU · Microblading · Removal — international S-Brows educator.',
+        desc_it: 'Microblading Basic & Master Class — educatrice internazionale.',
+        desc_en: 'Microblading Basic & Master Class — international educator.',
         logo: '/branding/AcademyS_Craft_Master.png',
       },
       {
         name_it: 'Master Assistant — PhiAcademy',
         name_en: 'Master Assistant — PhiAcademy',
-        desc_it: 'Autorizzata a formare e certificare artisti a livello globale.',
-        desc_en: 'Authorised to train and certify artists globally.',
+        desc_it: 'Assistente ufficiale ai PhiBrows Masters — PhiAcademy.',
+        desc_en: 'Official assistant to PhiBrows Masters — PhiAcademy.',
         logo: '/branding/PhiBrows_Master_Assistant.png',
         logoFilter: 'invert(1) brightness(0.85) sepia(1) hue-rotate(5deg) saturate(3)',
       },
@@ -73,23 +73,31 @@ const CREDENTIALS: CredentialGroup[] = [
     label_en: 'Technical Pedigree',
     items: [
       {
-        name_it: 'Master Instructor — Kerafill Italy',
-        name_en: 'Master Instructor — Kerafill Italy',
-        desc_it: 'Istruttrice certificata protocolli Kerafill.',
-        desc_en: 'Certified Kerafill protocols instructor.',
+        name_it: 'MasterClass Permanent Makeup',
+        name_en: 'MasterClass Permanent Makeup',
+        desc_it: 'Sopracciglia · Occhi · Labbra — AcademyS.',
+        desc_en: 'Brows · Eyes · Lips — AcademyS.',
+        logo: '/branding/AcademyS_Craft_Master.png',
+      },
+      {
+        name_it: 'Sistema Kerafill Ciglia & Sopracciglia Master Instructor',
+        name_en: 'Kerafill Lashes & Brows System Master Instructor',
+        desc_it: 'Istruttrice certificata.',
+        desc_en: 'Certified instructor.',
         logo: '/branding/Kerafill_Stamp_Master.png',
       },
       {
-        name_it: 'Master: Long-Lasting Eyebrows — BIOTEK Italy',
-        name_en: 'Master: Long-Lasting Eyebrows — BIOTEK Italy',
+        name_it: 'MasterClass Long-Lasting Eyebrows — BIOTEK Italy',
+        name_en: 'MasterClass Long-Lasting Eyebrows — BIOTEK Italy',
         desc_it: 'International PMU Academy, Milano · dal 1987.',
         desc_en: 'International PMU Academy, Milan · since 1987.',
       },
       {
         name_it: 'Specialista Rimozione Pigmenti — AcademyS',
         name_en: 'Pigment Removal Specialist — AcademyS',
-        desc_it: 'Protocolli Correttivi Avanzati AcademyS.',
-        desc_en: 'AcademyS Advanced Corrective Protocols.',
+        desc_it: 'Protocolli Correttivi Avanzati.',
+        desc_en: 'Advanced Corrective Protocols.',
+        logo: '/branding/AcademyS_Craft_Master.png',
       },
     ],
   },
@@ -112,8 +120,8 @@ const CREDENTIALS: CredentialGroup[] = [
       {
         name_it: 'BCM Milano',
         name_en: 'BCM Milan',
-        desc_it: 'Trucco Cromatico Semipermanente e Trucco Correttivo · Valutazione 30/30.',
-        desc_en: 'Semi-Permanent and Corrective Make-Up · Grade 30/30.',
+        desc_it: 'Trucco Cromatico Semipermanente e Trucco Correttivo.',
+        desc_en: 'Semi-Permanent and Corrective Make-Up.',
         logo: '/branding/BCM_Beauty_Centre_Milan.png',
         logoFilter: 'brightness(3)',
       },

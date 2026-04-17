@@ -424,8 +424,8 @@ export const CourseTemplate = ({ course }: CourseTemplateProps) => {
           </p>
           <p className="font-inter text-[11px] leading-[1.7] mb-3" style={{ color: 'rgba(245,245,245,0.42)' }}>
             {language === 'it'
-              ? 'Dermopigmentista clinica con oltre un decennio di pratica sull\'area perioculare. Insegna la laminazione con la stessa profondità anatomica con cui lavora ogni giorno sulle sopracciglia dei suoi clienti.'
-              : 'Clinical dermopigmentation specialist with over a decade of periocular practice. She teaches lamination with the same anatomical depth she brings to her daily client work.'}
+              ? 'Dermopigmentista clinica con anni di pratica specializzata sull\'area perioculare. Insegna la laminazione con la stessa profondità anatomica con cui lavora ogni giorno sulle sopracciglia dei suoi clienti.'
+              : 'Clinical dermopigmentation specialist with years of specialized periocular practice. She teaches lamination with the same anatomical depth she brings to her daily client work.'}
           </p>
           <Link
             to="/la-firma"
