@@ -81,9 +81,10 @@ export const SiteFooter = () => {
 
         <div className="h-px w-full bg-primary/15 mb-6" />
 
-        <div className="flex flex-col md:flex-row md:justify-between items-center gap-2">
-          <p className="text-[11px] text-foreground/55 tracking-[0.15em]">© 2026 Belle Femme Atelier e Accademia</p>
-          <p className="text-[11px] text-foreground/55 tracking-[0.15em]">P.IVA 03794680128</p>
+        <div className="flex flex-col items-center gap-1.5 md:gap-2 md:flex-row md:justify-between md:items-start">
+          <p className="text-[11px] text-foreground/55 tracking-[0.15em] text-center md:text-left">© 2026 Belle Femme Atelier e Accademia</p>
+          <p className="text-[11px] text-foreground/55 tracking-[0.15em] text-center">Belle Femme di Chabbar Mouna</p>
+          <p className="text-[11px] text-foreground/55 tracking-[0.15em] text-center md:text-right">Sede Legale: Contrada Mulini 8, 21034 Cocquio-Trevisago (VA) · P.IVA 03794680128</p>
         </div>
       </div>
     </footer>
