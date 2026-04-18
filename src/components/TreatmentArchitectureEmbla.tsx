@@ -192,16 +192,13 @@ const MobileSwiper = ({ treatments, treatmentsIT, language, tickerText, t, onCon
             {treatments.map((item, idx) => (
               <div
                 key={item.id}
-                className="flex-[0_0_90%] min-w-0 flex flex-col"
-                style={{ height: 'calc(100svh - 60px)', marginTop: '60px' }}
+                className="flex-[0_0_88%] min-w-0 flex flex-col"
+                style={{ height: 'calc(100svh - 60px)', marginTop: '60px', marginRight: '3%' }}
               >
-                {/* Header inside each slide */}
-                <div className="flex-shrink-0 px-6 pt-3 pb-2 text-center space-y-2">
-                  <h2 className="font-cormorant text-3xl font-light text-foreground tracking-[2px]">
-                    {t.nav.atelier}
-                  </h2>
-                  <p className="font-inter text-[11px] uppercase tracking-[0.2em] text-primary/80">
-                    {tickerText}
+                {/* Subtitle ticker inside each slide — mobile only */}
+                <div className="flex-shrink-0 px-4 pt-4 pb-2 text-center">
+                  <p className="font-inter text-[11px] uppercase tracking-[0.2em] text-primary/80 whitespace-nowrap">
+                    {language === 'it' ? 'La Collezione — Trattamenti' : 'The Collection — Treatments'}
                   </p>
                 </div>
 
@@ -215,7 +212,7 @@ const MobileSwiper = ({ treatments, treatmentsIT, language, tickerText, t, onCon
                 </div>
 
                 {/* Content */}
-                <div className="flex-shrink-0 px-5 py-3 space-y-2.5">
+                <div className="flex-shrink-0 px-5 pt-2 pb-1.5 space-y-2">
                   <div className="flex items-baseline gap-3">
                     <span className="font-cormorant text-3xl font-light text-primary/20">
                       {item.number}
