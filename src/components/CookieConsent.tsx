@@ -7,18 +7,29 @@ export const CookieConsent = () => {
   const [showCustomise, setShowCustomise] = useState(false);
 
   useEffect(() => {
-    const consent = localStorage.getItem('bf_cookie_consent');
-    if (!consent) setVisible(true);
+    const raw = localStorage.getItem('bf_cookie_consent');
+    if (!raw) { setVisible(true); return; }
+    try {
+      const stored = JSON.parse(raw);
+      const SIX_MONTHS = 15_778_800_000;
+      if (!stored.ts || Date.now() - stored.ts > SIX_MONTHS) {
+        localStorage.removeItem('bf_cookie_consent');
+        setVisible(true);
+      }
+    } catch {
+      localStorage.removeItem('bf_cookie_consent');
+      setVisible(true);
+    }
   }, []);
 
   const handleAccept = () => {
-    localStorage.setItem('bf_cookie_consent', 'accepted');
+    localStorage.setItem('bf_cookie_consent', JSON.stringify({ status: 'accepted', ts: Date.now() }));
     setShowCustomise(false);
     setVisible(false);
   };
 
   const handleReject = () => {
-    localStorage.setItem('bf_cookie_consent', 'rejected');
+    localStorage.setItem('bf_cookie_consent', JSON.stringify({ status: 'rejected', ts: Date.now() }));
     setVisible(false);
   };
 
