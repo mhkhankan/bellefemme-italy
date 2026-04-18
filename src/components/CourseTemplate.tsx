@@ -127,7 +127,7 @@ export const CourseTemplate = ({ course }: CourseTemplateProps) => {
         {heroImage && !imgFailed ? (
           <img src={heroImage} alt={course.bf_name} className="w-full h-full object-cover" onError={() => setImgFailed(true)} />
         ) : (
-          <div className="w-full h-full shimmer-venetian" />
+          <img src="/branding/bf-placeholder.jpg" alt={course.bf_name} className="w-full h-full object-cover" />
         )}
         <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, #000000 0%, transparent 100%)' }} />
         <div className="absolute bottom-0 left-0 right-0 px-6 pb-6">
@@ -293,7 +293,7 @@ export const CourseTemplate = ({ course }: CourseTemplateProps) => {
         {comparison && (
           <motion.div {...reveal} className="mt-8 pt-6" style={{ borderTop: '1px solid rgba(212,175,55,0.10)' }}>
             <SectionLabel>
-              {language === 'it' ? 'Velvet Lift vs Corsi Tipici a Varese' : 'Velvet Lift vs Typical Courses in Varese'}
+              {language === 'it' ? `${course.bf_name} vs Corsi Tipici a Varese` : `${course.bf_name} vs Typical Courses in Varese`}
             </SectionLabel>
             <table className="w-full border-collapse table-fixed mt-4">
               <thead>
@@ -303,7 +303,7 @@ export const CourseTemplate = ({ course }: CourseTemplateProps) => {
                     {language === 'it' ? 'Mercato' : 'Market'}
                   </th>
                   <th className="font-inter text-[9px] tracking-[0.15em] uppercase text-right pb-2" style={{ color: 'rgba(212,175,55,0.55)', borderBottom: '1px solid rgba(212,175,55,0.15)' }}>
-                    Velvet Lift
+                    {course.bf_name}
                   </th>
                 </tr>
               </thead>
@@ -323,7 +323,7 @@ export const CourseTemplate = ({ course }: CourseTemplateProps) => {
         {/* F7. Details */}
         {details && (
           <motion.div {...reveal} className="mt-8 pt-6" style={{ borderTop: '1px solid rgba(212,175,55,0.10)' }}>
-            <GhostNumber n="06" />
+            <GhostNumber n={nextSection()} />
             <SectionLabel>{language === 'it' ? 'Dettagli' : 'Details'}</SectionLabel>
             {details.map((row, i) => (
               <div key={i} className="flex justify-between items-baseline py-[11px]" style={{ borderBottom: '1px solid rgba(245,245,245,0.05)' }}>
@@ -416,7 +416,7 @@ export const CourseTemplate = ({ course }: CourseTemplateProps) => {
 
         {/* F10. La Docente */}
         <motion.div {...reveal} className="mt-8 pt-6" style={{ borderTop: '1px solid rgba(212,175,55,0.10)' }}>
-          <GhostNumber n="07" />
+          <GhostNumber n={nextSection()} />
           <SectionLabel>{language === 'it' ? 'La Docente' : 'The Teacher'}</SectionLabel>
           <p className="font-cormorant italic text-[28px] font-light text-foreground mb-1">Mouna Chabbar</p>
           <p className="font-inter text-[9px] tracking-[0.28em] uppercase mb-3" style={{ color: 'rgba(212,175,55,0.55)' }}>
@@ -439,7 +439,7 @@ export const CourseTemplate = ({ course }: CourseTemplateProps) => {
         {/* F11. Dopo il Corso */}
         {afterCourse && (
           <motion.div {...reveal} className="mt-8 pt-6" style={{ borderTop: '1px solid rgba(212,175,55,0.10)' }}>
-            <GhostNumber n="08" />
+            <GhostNumber n={nextSection()} />
             <SectionLabel>{language === 'it' ? 'Dopo il Corso' : 'After the Course'}</SectionLabel>
             {afterCourse.map((item, i) => (
               <div key={i} className="flex items-start gap-3 mb-4">
