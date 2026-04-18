@@ -212,7 +212,7 @@ const MobileSwiper = ({ treatments, treatmentsIT, language, tickerText, t, onCon
                 </div>
 
                 {/* Content */}
-                <div className="flex-shrink-0 px-5 pt-2 pb-1.5 space-y-2" style={{ height: '240px' }}>
+                <div className="flex-shrink-0 px-5 pt-2 pb-1.5 space-y-2">
                   <div className="flex items-baseline gap-3">
                     <span className="font-cormorant text-3xl font-light text-primary/20">
                       {item.number}
@@ -227,14 +227,7 @@ const MobileSwiper = ({ treatments, treatmentsIT, language, tickerText, t, onCon
                     </div>
                   </div>
 
-                  <p
-                    className="text-[13px] leading-relaxed text-foreground/70 overflow-hidden"
-                    style={{
-                      display: '-webkit-box',
-                      WebkitLineClamp: 4,
-                      WebkitBoxOrient: 'vertical',
-                    }}
-                  >
+                  <p className="text-[13px] leading-relaxed text-foreground/70">
                     {item.description}
                   </p>
 
