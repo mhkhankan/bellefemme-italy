@@ -193,7 +193,7 @@ export const AcademySection = () => {
               </p>
 
               <img
-                src="/branding/formazione-corso-privato-academys-calabria-2020.jpg"
+                src="/branding/formazione-corso-privato-academys-calabria-2020.jpeg"
                 alt="Corso Privato 1 su 1 — Belle Femme Academy"
                 className="w-full object-cover"
                 style={{ height: '240px' }}
@@ -316,7 +316,7 @@ export const AcademySection = () => {
                                 to={c.slug}
                                 className="font-inter font-bold text-[10px] tracking-[0.2em] uppercase text-primary hover:text-primary/80 transition-colors inline-block min-h-[44px] flex items-center"
                               >
-                                {language === 'it' ? 'Scopri il Corso →' : 'Discover the Course →'}
+                                {language === 'it' ? 'Scopri il Corso' : 'Discover the Course'}
                               </Link>
 
                               <button

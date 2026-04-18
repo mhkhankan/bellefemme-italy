@@ -44,7 +44,7 @@ export const translations = {
       microblading: 'Microblading',
       lipBlush: 'Lip Blush',
       plasmaPen: 'Plasma Pen Skin Lifting',
-      checkAvailability: 'Richiedi la tua Consulenza →',
+      checkAvailability: 'Richiedi la tua Consulenza',
       spotsRemaining: 'posti disponibili',
       soldOut: 'Sold Out',
       waitlistOnly: 'Solo Lista d\'Attesa',

@@ -49,7 +49,7 @@ export const DoveOperiamo = () => {
             className="font-inter font-bold text-[10px] tracking-[0.2em] uppercase px-10 py-4 min-h-[48px] transition-colors"
             style={{ backgroundColor: '#D4AF37', color: '#000' }}
           >
-            {language === 'it' ? 'Prenota la Consulenza →' : 'Book a Consultation →'}
+            {language === 'it' ? 'Prenota la Consulenza' : 'Book a Consultation'}
           </button>
 
           <p className="font-cormorant italic text-sm" style={{ color: '#D4AF37' }}>
