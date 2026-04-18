@@ -320,8 +320,7 @@ const LaFirma = () => {
       </section>
 
       {/* S3 - Client Testimonials */}
-      {/* Treatment testimonials — placeholder pending GDPR consent */}
-      {/* Erika B., Sonia M., Carmen M. — do not publish until WhatsApp consent confirmed */}
+      {/* Stefania R. + Leila M. — GDPR consent archived, published Apr 17 2026 */}
 
       <section className="py-12 md:py-16" style={{ background: 'linear-gradient(180deg, #000 0%, #0A0A0A 50%, #000 100%)' }}>
         <div className="max-w-5xl mx-auto px-6 md:px-12">
