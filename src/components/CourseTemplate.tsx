@@ -303,7 +303,7 @@ export const CourseTemplate = ({ course }: CourseTemplateProps) => {
                     {language === 'it' ? 'Mercato' : 'Market'}
                   </th>
                   <th className="font-inter text-[9px] tracking-[0.15em] uppercase text-right pb-2" style={{ color: 'rgba(212,175,55,0.55)', borderBottom: '1px solid rgba(212,175,55,0.15)' }}>
-                    Velvet Lift
+                    {course.bf_name}
                   </th>
                 </tr>
               </thead>
