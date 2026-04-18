@@ -165,7 +165,7 @@ const LaFirmaTeaser = () => {
             to="/la-firma"
             className="font-inter font-bold text-[10px] tracking-[0.2em] uppercase bg-primary text-primary-foreground px-8 py-4 min-h-[48px] hover:bg-primary/90 transition-all duration-500 text-center flex items-center justify-center"
           >
-            {language === 'it' ? 'LA FIRMA DI MOUNA →' : 'THE SIGNATURE →'}
+            {language === 'it' ? 'LA FIRMA DI MOUNA' : 'THE SIGNATURE'}
           </Link>
           <button
             onClick={() => { const el = document.getElementById('academy'); if (el) el.scrollIntoView({ behavior: 'smooth' }); }}

@@ -409,7 +409,7 @@ export const CourseTemplate = ({ course }: CourseTemplateProps) => {
               className="font-inter font-bold text-[9px] tracking-[0.2em] uppercase inline-flex items-center min-h-[44px] px-4 py-[11px] transition-colors"
               style={{ color: 'rgba(212,175,55,0.80)', border: '1px solid rgba(212,175,55,0.25)' }}
             >
-              {language === 'it' ? 'Scopri il Sigillo Digitale →' : 'Discover the Digital Seal →'}
+              {language === 'it' ? 'Scopri il Sigillo Digitale' : 'Discover the Digital Seal'}
             </Link>
           </motion.div>
         )}
@@ -432,7 +432,7 @@ export const CourseTemplate = ({ course }: CourseTemplateProps) => {
             className="font-inter font-bold text-[9px] tracking-[0.2em] uppercase inline-flex items-center min-h-[44px] px-[14px] py-[10px] transition-colors"
             style={{ color: 'rgba(212,175,55,0.75)', border: '1px solid rgba(212,175,55,0.22)' }}
           >
-            {language === 'it' ? 'Scopri la Docente → La Firma' : 'Meet the Teacher → La Firma'}
+            {language === 'it' ? 'Scopri la Docente · La Firma' : 'Meet the Teacher · La Firma'}
           </Link>
         </motion.div>
 
