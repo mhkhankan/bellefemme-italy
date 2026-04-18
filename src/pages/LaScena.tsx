@@ -43,7 +43,7 @@ const SCENA_CARDS: ScenaCard[] = [
     title_en: 'International Judge — Turkey',
     desc_it: '2021 — Giudice ufficiale nella competizione internazionale PMU in Turchia. Cinque paesi. Un metodo. Una firma riconosciuta ovunque.',
     desc_en: '2021 — Official judge at the international PMU competition in Turkey. Five countries. One method. A signature recognised everywhere.',
-    image: '/la-scena/giudice-internazionale-pmu-turchia-cappadocia-2022.JPG',
+    image: '/la-scena/giudice-internazionale-pmu-turchia-cappadocia-2022.jpg',
     alt: 'Mouna Chabbar — Giudice Internazionale Turchia',
   },
   {
