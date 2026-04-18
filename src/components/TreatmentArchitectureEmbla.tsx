@@ -21,7 +21,7 @@ const IMAGE_MAP: Record<string, string> = {
 const ALT_MAP: Record<string, string> = {
   'raw-stroke': 'Microblading iperrealismo Varese — Raw Stroke PhiBrows',
   'pigment-restauro': 'Correzione PMU Varese — Pigment Restauro AcademyS',
-  'shadow-layer': 'Ombre powder brows Milano — Shadow Layer pixelation',
+  'shadow-layer': 'Ombre powder brows Varese — Shadow Layer pixelation',
   'lip-vitality': 'PMU labbra Varese — Nude-Lip Infusion acquerello',
   'eye-engineering': 'Eyeliner permanente Varese — Lash-Line Engineering',
   'lash-architecture': 'Laminazione ciglia Varese — Gaze Sculpting Kerafill',
