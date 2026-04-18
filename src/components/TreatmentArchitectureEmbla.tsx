@@ -202,7 +202,7 @@ const MobileSwiper = ({ treatments, treatmentsIT, language, tickerText, t, onCon
                   </p>
                 </div>
 
-                <div className="w-full relative overflow-hidden" style={{ height: '55svh', flexShrink: 0 }}>
+                <div className="flex-1 w-full min-h-0 relative overflow-hidden">
                   <TreatmentImage
                     item={item}
                     sizeClass="h-full w-full"
@@ -212,7 +212,7 @@ const MobileSwiper = ({ treatments, treatmentsIT, language, tickerText, t, onCon
                 </div>
 
                 {/* Content */}
-                <div className="flex-shrink-0 px-5 pt-2 pb-1.5 space-y-2">
+                <div className="flex-shrink-0 px-5 pt-2 pb-1.5 space-y-2" style={{ height: '240px' }}>
                   <div className="flex items-baseline gap-3">
                     <span className="font-cormorant text-3xl font-light text-primary/20">
                       {item.number}
