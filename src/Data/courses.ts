@@ -1,7 +1,7 @@
 /**
  * BELLE FEMME ACADEMY — COURSE DATA FILE
  * ─────────────────────────────────────────────────────────────────
- * Location in repo: src/data/courses.ts
+ * Location in repo: src/Data/courses.ts
  *
  * HOW TO EDIT:
  * Edit this file directly in GitHub (or any text editor).
@@ -190,13 +190,13 @@ export const COURSES: Course[] = [
         title_it: 'Giorno 04 — Live Demo & Modella',
         title_en: 'Day 04 — Live Demo & Model',
         items_it: [
-          'Demo dal vivo della Master Trainer',
+          'Demo dal vivo della Craft Master',
           'Applicazione su prima modella reale',
           'Gestione del comfort e del dolore',
           'Protocollo post-trattamento',
         ],
         items_en: [
-          'Live demonstration by Master Trainer',
+          'Live demonstration by Craft Master',
           'Application on first live model',
           'Comfort and pain management',
           'Post-treatment protocol',
@@ -476,8 +476,8 @@ export const COURSES: Course[] = [
     duration_en: '1 Day',
     duration_days: 1,
     participants: 2,
-    description_it: "Velvet Lift è il corso intensivo di Belle Femme Accademia per padroneggiare la laminazione professionale di ciglia e sopracciglia in una singola giornata. Due corsiste. Una docente. Nove ore di lavoro insieme. Mouna Chabbar non insegna solo laminazione — lavora quotidianamente sulla dermopigmentazione dello sguardo con oltre un decennio di esperienza clinica sull'area perioculare. Non impari una procedura da ripetere su tutti. Impari a leggere le ciglia di ogni cliente e ad adattare il trattamento di conseguenza.",
-    description_en: "Velvet Lift is Belle Femme Accademia's intensive course for mastering professional lash and brow lamination in a single day. Two students. One teacher. Nine hours of work together. Mouna Chabbar does not just teach lamination — she works daily on eye area dermopigmentation with over a decade of periocular clinical experience. You do not learn a procedure to repeat on everyone. You learn to read every client's lashes and adapt the treatment accordingly.",
+    description_it: "Velvet Lift è il corso intensivo di Belle Femme Accademia per padroneggiare la laminazione professionale di ciglia e sopracciglia in una singola giornata. Due corsiste. Una docente. Nove ore di lavoro insieme. Mouna Chabbar non insegna solo laminazione — lavora quotidianamente sulla dermopigmentazione dello sguardo con anni di pratica specializzata sull'area perioculare. Non impari una procedura da ripetere su tutti. Impari a leggere le ciglia di ogni cliente e ad adattare il trattamento di conseguenza.",
+    description_en: "Velvet Lift is Belle Femme Accademia's intensive course for mastering professional lash and brow lamination in a single day. Two students. One teacher. Nine hours of work together. Mouna Chabbar does not just teach lamination — she works daily on eye area dermopigmentation with years of specialised practice on the periocular area. You do not learn a procedure to repeat on everyone. You learn to read every client's lashes and adapt the treatment accordingly.",
     images: ['/courses/velvet-lift.jpg'],
     days: [
       {
