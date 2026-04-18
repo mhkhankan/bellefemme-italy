@@ -42,7 +42,7 @@ const CourseImage = ({ course }: { course: Course }) => {
         src={course.images[0]}
         alt={course.bf_name}
         className="w-full object-cover"
-        style={{ height: '240px' }}
+        style={{ height: '50svh' }}
         loading="lazy"
         onError={() => setFailed(true)}
       />
@@ -50,7 +50,7 @@ const CourseImage = ({ course }: { course: Course }) => {
   }
 
   return (
-    <div className="w-full flex items-center justify-center" style={{ height: '240px', background: '#1a1a1a' }}>
+    <div className="w-full flex items-center justify-center" style={{ height: '50svh', background: '#1a1a1a' }}>
       <span className="font-cormorant text-4xl font-light text-primary/20">
         {course.id.charAt(0).toUpperCase()}
       </span>
@@ -94,15 +94,13 @@ export const AcademySection = () => {
   const toggleAccordion = (courseId: string) => {
     const next = expandedCourse === courseId ? null : courseId;
     setExpandedCourse(next);
-    if (next) {
-      setTimeout(() => {
-        const el = document.getElementById('course-' + courseId);
-        if (el) {
-          const top = el.getBoundingClientRect().top + window.scrollY - 60;
-          window.scrollTo({ top, behavior: 'smooth' });
-        }
-      }, 350);
-    }
+    setTimeout(() => {
+      const el = document.getElementById('course-' + courseId);
+      if (el) {
+        const top = el.getBoundingClientRect().top + window.scrollY - 60;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    }, 350);
   };
 
   const mentorshipCopy = language === 'it'
@@ -269,7 +267,7 @@ export const AcademySection = () => {
                   <div key={c.id} className="border-t border-primary/10" id={`course-${c.id}`}>
                     <button
                       onClick={() => toggleAccordion(c.id)}
-                      className="w-full text-left py-6 px-4 flex items-center gap-4 md:gap-6 min-h-[48px] hover:bg-primary/5 transition-all duration-300"
+                      className="w-full text-left py-4 px-4 flex items-center gap-4 md:gap-6 min-h-[48px] hover:bg-primary/5 transition-all duration-300"
                     >
                       <span className="font-cormorant text-2xl font-light text-primary/20 w-8 shrink-0">{number}</span>
                       <div className="flex-1 min-w-0">
@@ -296,11 +294,11 @@ export const AcademySection = () => {
                           transition={{ duration: 0.3 }}
                           className="overflow-hidden"
                         >
-                          <div className="pb-8 space-y-6" style={{ maxHeight: 'calc(100svh - 60px)', overflowY: 'auto', WebkitOverflowScrolling: 'touch' }}>
+                          <div className="pb-4 space-y-4" style={{ maxHeight: 'calc(100svh - 60px)', overflowY: 'auto', WebkitOverflowScrolling: 'touch' }}>
                             {/* A9: Full bleed image */}
                             <CourseImage course={c} />
 
-                            <div className="space-y-4 px-4">
+                            <div className="space-y-3 px-4">
                               <div className="sm:hidden flex items-center gap-4 text-[10px] tracking-[0.1em] uppercase text-foreground/50">
                                 <span>{language === 'it' ? c.duration_it : c.duration_en}</span>
                                 <span>Max {c.participants}</span>
@@ -309,15 +307,15 @@ export const AcademySection = () => {
                               {(language === 'it' ? c.description_it : c.description_en) && (
                                 <p className="text-sm text-foreground/60 leading-relaxed">
                                   {language === 'it' ? c.description_it : c.description_en}
+                                  {' '}
+                                  <Link
+                                    to={c.slug}
+                                    className="font-inter font-bold text-[10px] tracking-[0.2em] uppercase text-primary hover:text-primary/80 transition-colors py-2 ml-1"
+                                  >
+                                    {language === 'it' ? '— Scopri il Corso' : '— Discover the Course'}
+                                  </Link>
                                 </p>
                               )}
-
-                              <Link
-                                to={c.slug}
-                                className="font-inter font-bold text-[10px] tracking-[0.2em] uppercase text-primary hover:text-primary/80 transition-colors inline-block min-h-[44px] flex items-center"
-                              >
-                                {language === 'it' ? 'Scopri il Corso' : 'Discover the Course'}
-                              </Link>
 
                               <button
                                 onClick={() => openCourseSheet(c.bf_name)}
