@@ -251,6 +251,11 @@ export const translations = {
       text: 'Questo sito utilizza Google Fonts per migliorare la tipografia. Accettando, consenti il caricamento dei font da server Google. Nessun cookie di profilazione.',
       accept: 'Accetta',
       reject: 'Rifiuta',
+      customise: 'Personalizza',
+      customiseTitle: 'Gestione Cookie',
+      necessaryLabel: 'Cookie Tecnici Necessari',
+      necessaryDesc: 'Essenziali per il funzionamento del sito. Non possono essere disattivati.',
+      savePrefs: 'Salva Preferenze',
     },
   },
   en: {
@@ -478,6 +483,11 @@ export const translations = {
       text: 'This site uses Google Fonts to enhance typography. By accepting, you allow fonts to load from Google servers. No profiling cookies.',
       accept: 'Accept',
       reject: 'Reject',
+      customise: 'Customise',
+      customiseTitle: 'Cookie Settings',
+      necessaryLabel: 'Strictly Necessary',
+      necessaryDesc: 'Essential for the site to function. Cannot be disabled.',
+      savePrefs: 'Save Preferences',
     },
   },
   ar: {
@@ -521,7 +531,7 @@ export const translations = {
     },
     academy: { title: '', subtitle: '', description: '', waitlistTitle: '', waitlistCta: '', namePlaceholder: '', phonePlaceholder: '', cityPlaceholder: '', successMessage: '' },
     concierge: { selectAtelier: '', whereDesire: '', phantomLabel: '', phonePlaceholder: '', joinWaitlist: '', waitlistSuccess: '' },
-    cookie: { text: '', accept: '', reject: '' },
+    cookie: { text: '', accept: '', reject: '', customise: 'تخصيص', customiseTitle: 'إعدادات ملفات تعريف الارتباط', necessaryLabel: 'ملفات تعريف الارتباط الضرورية', necessaryDesc: 'ضرورية لعمل الموقع. لا يمكن تعطيلها.', savePrefs: 'حفظ التفضيلات' },
   },
 };
 
