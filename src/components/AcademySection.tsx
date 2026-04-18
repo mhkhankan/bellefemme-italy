@@ -191,7 +191,7 @@ export const AcademySection = () => {
               </p>
 
               <img
-                src="/branding/formazione-corso-privato-academys-calabria-2020.jpeg"
+                src="/branding/formazione-corso-privato-academys-calabria-2020.jpg"
                 alt="Corso Privato 1 su 1 — Belle Femme Academy"
                 className="w-full object-cover"
                 style={{ height: '240px' }}
