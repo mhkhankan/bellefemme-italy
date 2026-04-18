@@ -256,6 +256,7 @@ export const translations = {
       necessaryLabel: 'Cookie Tecnici Necessari',
       necessaryDesc: 'Essenziali per il funzionamento del sito. Non possono essere disattivati.',
       savePrefs: 'Salva Preferenze',
+      manageLabel: 'Gestisci Cookie',
     },
     cookiePolicy: {
       title: 'Cookie Policy',
@@ -510,6 +511,7 @@ export const translations = {
       necessaryLabel: 'Strictly Necessary',
       necessaryDesc: 'Essential for the site to function. Cannot be disabled.',
       savePrefs: 'Save Preferences',
+      manageLabel: 'Manage Cookies',
     },
     cookiePolicy: {
       title: 'Cookie Policy',
@@ -575,7 +577,7 @@ export const translations = {
     },
     academy: { title: '', subtitle: '', description: '', waitlistTitle: '', waitlistCta: '', namePlaceholder: '', phonePlaceholder: '', cityPlaceholder: '', successMessage: '' },
     concierge: { selectAtelier: '', whereDesire: '', phantomLabel: '', phonePlaceholder: '', joinWaitlist: '', waitlistSuccess: '' },
-    cookie: { text: '', accept: '', reject: '', customise: 'تخصيص', customiseTitle: 'إعدادات ملفات تعريف الارتباط', necessaryLabel: 'ملفات تعريف الارتباط الضرورية', necessaryDesc: 'ضرورية لعمل الموقع. لا يمكن تعطيلها.', savePrefs: 'حفظ التفضيلات' },
+    cookie: { text: '', accept: '', reject: '', customise: 'تخصيص', customiseTitle: 'إعدادات ملفات تعريف الارتباط', necessaryLabel: 'ملفات تعريف الارتباط الضرورية', necessaryDesc: 'ضرورية لعمل الموقع. لا يمكن تعطيلها.', savePrefs: 'حفظ التفضيلات', manageLabel: 'إدارة ملفات تعريف الارتباط' },
     cookiePolicy: { title: 'Cookie Policy', subtitle: 'Belle Femme di Chabbar Mouna · P.IVA 03794680128', noTracking: 'Assenza di Cookie di Profilazione', noTrackingBody: 'Il sito bellefemme.it non fa uso di cookie di profilazione, marketing o tracciamento. Non sono presenti Google Analytics, Meta Pixel, o strumenti di sessione.', necessary: 'Cookie Tecnici Necessari', tableName: 'Nome', tableType: 'Tipo', tablePurpose: 'Finalità', tableDuration: 'Durata', consentPurpose: 'Preferenze cookie', consentDuration: '6 mesi', authPurpose: 'Sessione form', authDuration: 'Sessione', fonts: 'Risorse Tipografiche', fontsBody: 'I font utilizzati sono ospitati interamente in locale. La navigazione non genera chiamate verso server Google Fonts.', security: 'Sicurezza Anti-Bot', securityBody: 'Per proteggere i moduli da abusi automatizzati, il sito utilizza Cloudflare Turnstile. Opera senza cookie di tracciamento e non profila la navigazione.', contact: 'Contatti', contactBody: 'Per richieste relative ai cookie e alla privacy, scrivere a', back: '← Torna al Sito' },
   },
 };
