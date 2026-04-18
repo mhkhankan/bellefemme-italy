@@ -76,6 +76,21 @@ export const SiteFooter = () => {
             >
               Privacy · GDPR
             </Link>
+            <Link
+              to="/cookie-policy"
+              className="text-sm text-foreground/70 hover:text-primary transition-colors tracking-wide block"
+            >
+              Cookie Policy
+            </Link>
+            <button
+              onClick={() => {
+                localStorage.removeItem('bf_cookie_consent');
+                window.location.reload();
+              }}
+              className="text-sm text-foreground/70 hover:text-primary transition-colors tracking-wide block text-left"
+            >
+              {language === 'it' ? 'Gestisci Cookie' : language === 'ar' ? 'إدارة ملفات تعريف الارتباط' : 'Manage Cookies'}
+            </button>
           </div>
         </div>
 

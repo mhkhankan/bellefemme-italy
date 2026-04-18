@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 export const CookieConsent = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [visible, setVisible] = useState(false);
   const [showCustomise, setShowCustomise] = useState(false);
 
@@ -45,7 +46,14 @@ export const CookieConsent = () => {
         }}
       >
         <p className="text-sm text-foreground/70 text-center sm:text-left">
-          {t.cookie.text}
+          {t.cookie.text}{' '}
+          <Link to="/privacy" className="underline hover:text-primary transition-colors">
+            Privacy Policy
+          </Link>
+          {' · '}
+          <Link to="/cookie-policy" className="underline hover:text-primary transition-colors">
+            Cookie Policy
+          </Link>
         </p>
         <div className="flex flex-wrap gap-3 shrink-0 justify-center">
           <button
