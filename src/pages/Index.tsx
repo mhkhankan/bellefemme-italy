@@ -194,7 +194,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background relative">
-      <StructuredData pageDescription="Dermopigmentazione e Microblading — Master Trainer Mouna Chabbar. Trattamenti esclusivi e formazione professionale · Varese · Milano." />
+      <StructuredData pageDescription="Dermopigmentazione e Microblading · Craft Master Mouna Chabbar. Trattamenti esclusivi e formazione professionale · Varese." />
       <div
         className="fixed inset-0 z-0 pointer-events-none"
         style={{
