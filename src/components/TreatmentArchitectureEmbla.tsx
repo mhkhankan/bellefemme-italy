@@ -202,7 +202,7 @@ const MobileSwiper = ({ treatments, treatmentsIT, language, tickerText, t, onCon
                   </p>
                 </div>
 
-                <div className="flex-1 w-full min-h-0 relative overflow-hidden">
+                <div className="w-full relative overflow-hidden" style={{ height: '55svh', flexShrink: 0 }}>
                   <TreatmentImage
                     item={item}
                     sizeClass="h-full w-full"
