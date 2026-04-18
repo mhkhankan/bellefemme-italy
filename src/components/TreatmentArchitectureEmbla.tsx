@@ -36,7 +36,7 @@ const POSITION_MAP: Record<string, string> = {
   'lip-vitality': 'center 40%',
   'eye-engineering': 'center center',
   'lash-architecture': 'center center',
-  'brow-blueprint': 'center 30%',
+  'brow-blueprint': 'center 45%',
   'lash-sculpting': 'center center',
 };
 
@@ -166,7 +166,7 @@ const MobileSwiper = ({ treatments, treatmentsIT, language, tickerText, t, onCon
   const [emblaRef, emblaApi] = useEmblaCarousel({
     axis: 'x',
     loop: false,
-    dragFree: false,
+    dragFree: true,
     align: 'start',
     containScroll: 'trimSnaps',
   });
@@ -183,25 +183,6 @@ const MobileSwiper = ({ treatments, treatmentsIT, language, tickerText, t, onCon
     return () => { emblaApi.off('select', onSelect); };
   }, [emblaApi, onSelect]);
 
-  // Peek animation: briefly offset to reveal edge of card 2
-  useEffect(() => {
-    if (!emblaApi) return;
-    const timer = setTimeout(() => {
-      const container = emblaApi.containerNode();
-      if (container) {
-        container.style.transition = 'transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-        container.style.transform = 'translateX(-40px)';
-        setTimeout(() => {
-          container.style.transform = 'translateX(0)';
-          setTimeout(() => {
-            container.style.transition = '';
-          }, 600);
-        }, 800);
-      }
-    }, 1200);
-    return () => clearTimeout(timer);
-  }, [emblaApi]);
-
   return (
     <div className="md:hidden">
       {/* Horizontal carousel */}
@@ -211,11 +192,11 @@ const MobileSwiper = ({ treatments, treatmentsIT, language, tickerText, t, onCon
             {treatments.map((item, idx) => (
               <div
                 key={item.id}
-                className="flex-[0_0_100%] min-w-0 flex flex-col"
+                className="flex-[0_0_90%] min-w-0 flex flex-col"
                 style={{ height: 'calc(100svh - 60px)', marginTop: '60px' }}
               >
                 {/* Header inside each slide */}
-                <div className="flex-shrink-0 px-6 pt-8 pb-4 text-center space-y-2">
+                <div className="flex-shrink-0 px-6 pt-3 pb-2 text-center space-y-2">
                   <h2 className="font-cormorant text-3xl font-light text-foreground tracking-[2px]">
                     {t.nav.atelier}
                   </h2>
@@ -234,7 +215,7 @@ const MobileSwiper = ({ treatments, treatmentsIT, language, tickerText, t, onCon
                 </div>
 
                 {/* Content */}
-                <div className="flex-shrink-0 px-5 py-5 space-y-3">
+                <div className="flex-shrink-0 px-5 py-3 space-y-2.5">
                   <div className="flex items-baseline gap-3">
                     <span className="font-cormorant text-3xl font-light text-primary/20">
                       {item.number}
@@ -258,7 +239,7 @@ const MobileSwiper = ({ treatments, treatmentsIT, language, tickerText, t, onCon
                       item.title,
                       treatmentsIT.find(ti => ti.id === item.id)?.title ?? item.title
                     )}
-                    className="w-full min-h-[48px] bg-primary px-8 py-3 font-inter text-[11px] font-bold uppercase tracking-[0.22em] text-primary-foreground transition-all duration-300 hover:bg-primary/90"
+                    className="w-full min-h-[44px] bg-primary px-8 py-2.5 font-inter text-[11px] font-bold uppercase tracking-[0.22em] text-primary-foreground transition-all duration-300 hover:bg-primary/90"
                   >
                     {t.treatments.checkAvailability}
                   </button>
