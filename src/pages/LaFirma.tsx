@@ -245,8 +245,8 @@ const LaFirma = () => {
             <div className="h-px w-12" style={{ backgroundColor: 'rgba(212, 175, 55, 0.5)' }} />
             <p className="text-[16px] leading-[1.7]" style={{ color: 'rgba(245, 245, 245, 0.7)' }}>
               {language === 'it'
-                ? "Una laurea in Belle Arti e Comunicazioni Visive. Un decennio di competizione internazionale. Mouna Chabbar ha costruito un metodo dove la bellezza è il risultato di una progettazione rigorosa — non di un'interpretazione."
-                : "A degree in Fine Arts and Visual Communications. A decade of international competition. Mouna Chabbar built a method where beauty is the result of rigorous engineering — not interpretation."}
+                ? "Una laurea in Belle Arti e Comunicazioni Visive. Anni di competizione internazionale. Mouna Chabbar ha costruito un metodo dove la bellezza è il risultato di una progettazione rigorosa — non di un'interpretazione."
+                : "A degree in Fine Arts and Visual Communications. Years of international competition. Mouna Chabbar built a method where beauty is the result of rigorous engineering — not interpretation."}
             </p>
             <p className="text-[16px] leading-[1.7]" style={{ color: 'rgba(245, 245, 245, 0.7)' }}>
               {language === 'it'

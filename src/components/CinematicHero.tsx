@@ -19,7 +19,7 @@ export const CinematicHero = () => {
         {!imgError && (
           <img
             src="/branding/hero-mouna-architecture.jpg"
-            alt="Belle Femme Atelier — Master Trainer Mouna Chabbar"
+            alt="Belle Femme Atelier · Craft Master Mouna Chabbar"
             className="absolute inset-0 w-full h-full object-cover"
             style={{ objectPosition: 'top center', animation: 'kenBurns 20s ease-in-out infinite' }}
             fetchPriority="high"
