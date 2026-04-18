@@ -227,7 +227,14 @@ const MobileSwiper = ({ treatments, treatmentsIT, language, tickerText, t, onCon
                     </div>
                   </div>
 
-                  <p className="text-[13px] leading-relaxed text-foreground/70">
+                  <p
+                    className="text-[13px] leading-relaxed text-foreground/70 overflow-hidden"
+                    style={{
+                      display: '-webkit-box',
+                      WebkitLineClamp: 4,
+                      WebkitBoxOrient: 'vertical',
+                    }}
+                  >
                     {item.description}
                   </p>
 
