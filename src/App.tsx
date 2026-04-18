@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import LaFirma from "./pages/LaFirma";
 import LaScena from "./pages/LaScena";
 import Privacy from "./pages/Privacy";
+import CookiePolicy from "./pages/CookiePolicy";
 import NotFound from "./pages/NotFound";
 import CoursePMU from "./pages/CoursePMU";
 import CourseMicroblading from "./pages/CourseMicroblading";
@@ -41,6 +42,7 @@ const App = () => (
           <Route path="/la-firma" element={<LaFirma />} />
           <Route path="/la-scena" element={<LaScena />} />
           <Route path="/privacy" element={<Privacy />} />
+          <Route path="/cookie-policy" element={<CookiePolicy />} />
           <Route path="/corso-pmu-completo" element={<CoursePMU />} />
           <Route path="/corso-microblading" element={<CourseMicroblading />} />
           <Route path="/corso-correzione-pmu" element={<CourseOmbrePowder />} />
