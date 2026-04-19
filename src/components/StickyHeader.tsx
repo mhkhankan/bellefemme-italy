@@ -111,7 +111,7 @@ export const StickyHeader = () => {
               onClick={() => setMenuOpen(false)}
               className="font-cormorant text-3xl font-light text-foreground/70 hover:text-primary transition-colors min-h-[56px] flex items-center justify-center tracking-[0.1em]"
             >
-              La Scena
+              {t.nav.scena}
             </Link>
           </div>
 
@@ -185,7 +185,7 @@ export const StickyHeader = () => {
               to="/la-scena"
               className="text-[11px] tracking-[0.25em] uppercase text-foreground/70 hover:text-primary transition-colors duration-500"
             >
-              La Scena
+              {t.nav.scena}
             </Link>
           </nav>
 

@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface TruncatedQuoteProps {
   text: string;
@@ -7,11 +8,12 @@ interface TruncatedQuoteProps {
   language: string;
 }
 
-const TruncatedQuote = ({ text, maxLines, language }: TruncatedQuoteProps) => {
+const TruncatedQuote = ({ text, maxLines }: TruncatedQuoteProps) => {
   const [expanded, setExpanded] = useState(false);
   const [needsTruncation, setNeedsTruncation] = useState(false);
   const textRef = useRef<HTMLParagraphElement>(null);
   const MARGIN_TOP = 28;
+  const { t } = useLanguage();
 
   useEffect(() => {
     if (textRef.current) {
@@ -58,10 +60,7 @@ const TruncatedQuote = ({ text, maxLines, language }: TruncatedQuoteProps) => {
           className="font-inter text-[9px] tracking-[0.15em] uppercase mt-2 transition-colors"
           style={{ color: 'rgba(212,175,55,0.75)' }}
         >
-          {expanded
-            ? (language === 'it' ? 'Chiudi' : 'Close')
-            : (language === 'it' ? 'Leggi tutto →' : 'Read more →')
-          }
+          {expanded ? t.truncatedQuote.close : t.truncatedQuote.readMore}
         </button>
       )}
     </div>

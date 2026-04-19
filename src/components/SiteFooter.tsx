@@ -28,7 +28,7 @@ export const SiteFooter = () => {
                 Belle Femme
               </p>
               <p className="text-[10px] tracking-[0.2em] uppercase text-primary/60 mt-1">
-                Advanced Facial Engineering | Analytic Visagism
+                {t.footerLabels.tagline}
               </p>
             </div>
           </div>
@@ -39,16 +39,16 @@ export const SiteFooter = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
           <div className="space-y-2">
             <a href="#atelier-in-residenza" className="text-xs tracking-[0.2em] uppercase text-primary/50 mb-3 hover:text-primary transition-colors block">
-              {language === 'it' ? 'Sedi' : 'Locations'}
+              {t.footerLabels.sedi}
             </a>
             <p className="text-sm text-foreground/70 tracking-wide">
-              Provincia di Varese · Lombardia
+              {t.footerLabels.province}
             </p>
           </div>
 
           <div className="space-y-2">
             <p className="text-xs tracking-[0.2em] uppercase text-primary/50 mb-3">
-              {language === 'it' ? 'Contatti' : 'Contact'}
+              {t.footerLabels.contatti}
             </p>
             <a
               href="https://wa.me/393924487530"
@@ -68,7 +68,7 @@ export const SiteFooter = () => {
 
           <div className="space-y-2">
             <p className="text-xs tracking-[0.2em] uppercase text-primary/50 mb-3">
-              {language === 'it' ? 'Legale' : 'Legal'}
+              {t.footerLabels.legale}
             </p>
             <Link
               to="/privacy"

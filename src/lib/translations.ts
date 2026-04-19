@@ -37,6 +37,7 @@ export const translations = {
       atelier: "L'Atelier",
       academy: "L'Accademia",
       firma: 'La Firma',
+      scena: 'La Scena',
     },
     treatments: {
       title: 'Trattamenti',
@@ -104,6 +105,17 @@ export const translations = {
       academy: 'Belle Femme Academy - Varese',
       reach: 'REACH 2026 Conforme',
       gdpr: 'Privacy GDPR',
+    },
+    footerLabels: {
+      sedi: 'Sedi',
+      contatti: 'Contatti',
+      legale: 'Legale',
+      tagline: 'Advanced Facial Engineering | Analytic Visagism',
+      province: 'Provincia di Varese · Lombardia',
+    },
+    truncatedQuote: {
+      readMore: 'Leggi tutto →',
+      close: 'Chiudi',
     },
     about: {
       label: 'Belle Femme Academy',
@@ -292,6 +304,7 @@ export const translations = {
       atelier: 'The Atelier',
       academy: 'The Academy',
       firma: 'The Signature',
+      scena: 'La Scena',
     },
     treatments: {
       title: 'Treatments',
@@ -359,6 +372,17 @@ export const translations = {
       academy: 'Belle Femme Academy - Varese',
       reach: 'REACH 2026 Compliant',
       gdpr: 'GDPR Privacy',
+    },
+    footerLabels: {
+      sedi: 'Locations',
+      contatti: 'Contact',
+      legale: 'Legal',
+      tagline: 'Advanced Facial Engineering | Analytic Visagism',
+      province: 'Province of Varese · Lombardia',
+    },
+    truncatedQuote: {
+      readMore: 'Read more →',
+      close: 'Close',
     },
     about: {
       label: 'Belle Femme Academy',
@@ -538,7 +562,7 @@ export const translations = {
   },
   ar: {
     hero: { title: '', subtitle: '', viewCourses: '', bookTreatment: '' },
-    nav: { atelier: '', academy: '', firma: '' },
+    nav: { atelier: '', academy: '', firma: '', scena: '' },
     treatments: {
       title: '', subtitle: '', microblading: '', lipBlush: '', plasmaPen: '',
       checkAvailability: '', spotsRemaining: '', soldOut: '', waitlistOnly: '',
@@ -554,6 +578,8 @@ export const translations = {
     gallery: { title: '', subtitle: '', healed: '', beforeLabel: '', afterLabel: '' },
     contact: { title: '', location: '', whatsapp: '' },
     footer: { academy: '', reach: '', gdpr: '' },
+    footerLabels: { sedi: '', contatti: '', legale: '', tagline: '', province: '' },
+    truncatedQuote: { readMore: '', close: '' },
     about: {
       label: '', heroTitle: '', bio1: '', bio2: '', bio3: '',
       credentialsLabel: '', credentialsTitle: '',
